@@ -1,2 +1,49 @@
 format: jb-book
 root: intro
+
+parts:
+
+-caption: Computational Modelling using FEM
+chapters:
+-file: Elastostatics
+
+-file: The poisson equation
+
+-file: The Timoshenko Beam
+
+-file: Elements and Shape Functions
+  sections:
+  -file: Shape functions
+  sections:
+  -file: Numerical integration
+  sections:
+  -file: Gauss on line     
+  sections:
+  -file: Isoparametric mapping
+
+-file: XFEM
+
+-file: Nonlinear FEM
+  sections: 
+  -file: Newton-Raphson solution scheme
+  sections:
+  -file: Arclength methods
+  sections:
+  -file: Geometric nonlinearity
+
+-file: Nonlinear material models
+  sections:
+  -file: Plasticity
+  sections:
+  -file: Damage
+  sections:
+  -file: Viscoelasticity
+  sections:
+  -file: Viscoplasticity
+  sections:
+  -file: Cohesive zone models
+
+
+-file: Linear buckling analysis
+
+-file: Modal analysis
