@@ -4,7 +4,9 @@ root: intro
 parts:
 
 -caption: Computational Modelling using FEM
+
 chapters:
+-file: Poisson equation (1D/2D/3D)
 -file: Elastostatics
 
 -file: The poisson equation
@@ -22,6 +24,18 @@ chapters:
   -file: Isoparametric mapping
 
 -file: XFEM
+
+-file: Time discretization
+  sections:
+  -file: Diffusion
+    sections:
+    -file: explicit
+    -file: trapezoidal
+  -file: Mechanics 
+  sections:
+  -file: explicit
+  -file: Newmark
+
 
 -file: Nonlinear FEM
   sections: 
