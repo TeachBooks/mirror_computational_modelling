@@ -4,7 +4,7 @@ root: intro
 parts:
   - caption: Computational Modelling using FEM
     chapters: 
-      -file:
+      - file:
   - caption: Poisson equation (1D/2D/3D)
     chapters:
       - file:
