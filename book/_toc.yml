@@ -2,62 +2,156 @@ format: jb-book
 root: intro
 
 parts:
-
--caption: Computational Modelling using FEM
-
-chapters:
--file: Poisson equation (1D/2D/3D)
--file: Elastostatics
-
--file: The poisson equation
-
--file: The Timoshenko Beam
-
--file: Elements and Shape Functions
-  sections:
-  -file: Shape functions
-  sections:
-  -file: Numerical integration
-  sections:
-  -file: Gauss on line     
-  sections:
-  -file: Isoparametric mapping
-
--file: XFEM
-
--file: Time discretization
-  sections:
-  -file: Diffusion
-    sections:
-    -file: explicit
-    -file: trapezoidal
-  -file: Mechanics 
-  sections:
-  -file: explicit
-  -file: Newmark
-
-
--file: Nonlinear FEM
-  sections: 
-  -file: Newton-Raphson solution scheme
-  sections:
-  -file: Arclength methods
-  sections:
-  -file: Geometric nonlinearity
-
--file: Nonlinear material models
-  sections:
-  -file: Plasticity
-  sections:
-  -file: Damage
-  sections:
-  -file: Viscoelasticity
-  sections:
-  -file: Viscoplasticity
-  sections:
-  -file: Cohesive zone models
-
-
--file: Linear buckling analysis
-
--file: Modal analysis
+  - caption: Computational Modelling using FEM
+    chapters: 
+      -file:
+  - caption: Poisson equation (1D/2D/3D)
+    chapters:
+      - file:
+  - caption: Elastostatics
+    chapters:
+      - file:
+  - caption: The poisson equation
+    chapters:
+      - file:
+  - caption: The Timoshenko Beam
+    chapters:
+      - file: 
+  - caption: Elements and Shape Functions
+    chapters:
+      - file:
+  - caption: Gauss on line 
+    chapters:
+      - file:
+  - caption: Isoparametric mapping 
+    chapters:
+      - file:
+  - caption: XFEM
+    chapters:
+      - file:
+  - caption: Time Discretisation
+    chapters: Explicit 
+      - file:
+    chapters: Trapezoidal
+      - file:
+    chapters: Newmark  
+  - caption: Linear buckling analysis
+    chapters:
+      - file:
+  - caption: Modal analysis
+    chapters:
+      - file:
+parts:
+  - caption: Introduction / Notation 
+    chapters:
+      - file:
+  - caption: Strong Form
+    chapters:
+      - file:
+  - caption: Weak Form and Link to virtual design  
+    chapters:
+      - file:
+  - caption: Equivalence strong- weak
+    chapters:
+      - file:
+  - caption: Galerkin Method
+    chapters:
+      - file:
+  - caption: Matrix Form
+    chapters:
+      - file:
+  - caption: Special case of liniear shape functions 
+    chapters:
+      - file:
+  - caption: Numerical Integration
+    chapters:
+      - file:
+  - caption: Isoparametric Element in 1d
+    chapters:
+      - file:
+  - caption: Tutorial
+    chapters:
+      - file:
+  - caption: Appendix 1. High Order Lagrange Polynomials 
+    chapters:
+      - file:
+  - caption: Appendix 2. Other types of shape functions (Legendre polynomials) 
+    chapters:
+      - file:
+parts:
+  - caption: Finite elemets for linear static Civil Engineering Applications
+    chapters:
+      - file:
+  - caption: 1D Problems
+    chapters:
+      - file:
+  - caption: Poisson Problem in 1D
+    chapters:
+      - file:
+  - caption: Euler- Bernoulli Beam
+    chapters:
+      - file:
+  - caption: Timoshenko Beam
+    chapters:
+      - file:
+  - caption: Space frame structures
+    chapters:
+      - file:
+  - caption: 2D Problems 
+    chapters:
+      - file:
+  - caption: Poisson problems in 2D
+    chapters:
+      - file:
+  - caption: Linear Elasticity in 2D
+    chapters:
+      - file:
+  - caption: Stokes Flow 2D
+    chapters:
+      - file:
+  - caption: 3D Problems
+    chapters:
+      - file:
+  - caption: Poisson Problem in 3D
+    chapters:
+      - file:
+  - caption: Linear Elasticity in 3D
+    chapters:
+      - file:
+  - caption: Stokes Flow 3D
+    chapters:
+      - file:
+parts:
+  - caption: Finite elemets for linear dynamic Civil Engineering Applications
+    chapters:
+    - file: 
+  - caption:  Diffusion in 1D
+    chapters:
+    - file: 
+  - caption: Dynamic Beams, EB, Timoshenko
+    chapters:
+  - caption:  Dynamic space frame structures
+    chapters:
+    - file: 
+parts:
+  - caption: Introduction to numerical analysis of finite elements
+    chapters:
+      - file:
+  - caption: Introduction to functional spaces
+    chapters:
+      - file:
+  - caption: Well posedness of the variational problem
+    chapters:
+      - file:
+  - caption: Well posedness of the discrete problem
+    chapters:
+      - file:
+  - caption: Galerkin orthogonality 
+    chapters:
+      - file:
+  - caption: Convergence
+    chapters:
+      - file:
+  - caption: Error estimates
+    chapters:
+      - file:
