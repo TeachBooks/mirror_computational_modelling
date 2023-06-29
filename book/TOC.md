@@ -39,6 +39,7 @@
 #### 3.2.2. Linear elasticity in 2D (plane strain, plane stress, isotropic/anisotropic, ...)
 #### 3.2.3. Linear elasticity in 3D
 #### 3.2.4. Stokes flow
+#### 3.2.5. Poroelasticity with Darcy flow
 
 ### 3.3. Tutorials
 
@@ -87,4 +88,10 @@
 ## 6. Advanced topics on Finite Elements
 ### 6.1. Unfitted Finite Elements
 ### 6.2. Surface-coupled multiphysics problems
+### 6.3. Multiphysics 
+### 6.3. Multiscale methods
+
+## 7. Codes
+### 7.1 Pyjive
+### 7.2 Gridap
 
