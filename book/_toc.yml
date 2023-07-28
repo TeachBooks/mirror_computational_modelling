@@ -27,14 +27,14 @@ parts:
       - file: Chapter2/space_frame_structures
     - file: Chapter2/2D_problems
       sections: 
-      -file: Chapter2/poisson_problem-2D
-      -file: Chapter2/linear_elasticity-2D
-      -file: Chapter2/stokes_flow-2D
+      - file: Chapter2/poisson_problem-2D
+      - file: Chapter2/linear_elasticity-2D
+      - file: Chapter2/stokes_flow-2D
     - file: Chapter2/3D_problems
       sections:
-      -file: Chapter2/poisson_problem-3D
-      -file: Chapter2/linear_elasticity-3D
-      -file: Chapter2/stokes_flow-3D
+      - file: Chapter2/poisson_problem-3D
+      - file: Chapter2/linear_elasticity-3D
+      - file: Chapter2/stokes_flow-3D
   - caption: Finite Elements of linear dynamic problems in CEG Applications
     chapters:
     - file: Chapter3/diffusion_1D
@@ -60,22 +60,22 @@ parts:
     chapters:
     - file: draft_toc/shape_functions
       sections:
-      -file: draft_toc/lagrangian-serendipity_elements
+      - file: draft_toc/lagrangian-serendipity_elements
     - file: draft_toc/numerical_integration 
       sections:
-      -file: gauss_on_line
+      - file: draft_toc/gauss_on_line
     - file: draft_toc/isoparametric_mapping
     - file: draft_toc/XFEM
   - caption: Time discretization (Draft TOC)
     chapters:
     - file: draft_toc/diffusion
       sections: 
-      -file: draft_toc/explicit
-      -file: draft_toc/trapezoidal
+      - file: draft_toc/explicit
+      - file: draft_toc/trapezoidal
     - file: draft_toc/mechanics 
       sections:
-      -file: draft_toc/explicit
-      -file: draft_toc/newmark
+      - file: draft_toc/explicit
+      - file: draft_toc/newmark
   - caption: Nonlinear FEM (Draft TOC)
     chapters:
     - file: draft_toc/plasticity
