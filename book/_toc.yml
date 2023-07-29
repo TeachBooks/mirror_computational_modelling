@@ -29,6 +29,42 @@ parts:
     - file: Chapter3/chapter3-2_2D_3D_Problems
     - file: Chapter3/chapter3_tutorial
     - file: Chapter3/Appendix_3-1_Linear_solvers
+  - caption: 
+    chapters:
+    - file: Chapter4/chapter4-1_Numerical_methods_for_ODEs
+    - file: Chapter4/chapter4-2_Dynamic_Problems_in_1D
+    - file: Chapter4/chapter4-3_Dynamic_problems_in_2D-3D
+    - file: Chapter4/chapter4-4_Modal_analysis
+  - caption: 
+    chapters:
+    - file: Chapter5/chapter5-1_Nonlinear_solvers
+    - file: Chapter5/chapter5-2_Geometrically_nonlinear_problems
+    - file: Chapter5/chapter5-3_Solids
+    - file: Chapter5/chapter5-4_Fluids
+    - file: Chapter5/chapter5_Tutorial
+  - caption: 
+    chapters:
+    - file: Chapter6/chapter6-1_Unfitted_Finite_Elements
+    - file: Chapter6/chapter6-2_Surface_coupled_multiphysics_problems
+    - file: Chapter6/chapter6-3_Multiphysics
+    - file: Chapter6/chapter6-4_Multiscale_methods
+  - caption: 
+    chapters:
+    - file: Chapter7/Gridap
+    - file: Chapter7/Pyjive
+
+
+
+
+
+
+
+
+
+
+
+
+
   - caption: Weak form to strong form derivation (Draft TOC)
     chapters:
     - file: draft_toc/Poisson_equation_1D-2D-3D
