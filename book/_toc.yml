@@ -2,21 +2,19 @@ format: jb-book
 root: intro
 
 parts:
-  - caption: Introduction to Finite Elements
+  - caption: Introduction to Finite elements - 1D Laplacian
     chapters: 
-    - file: Chapter1/introduction
-    - file: Chapter1/notation
-    - file: Chapter1/strong_form
-    - file: Chapter1/weak_form_and_virtual_design
-    - file: Chapter1/equivalence_strong-weak_form
-    - file: Chapter1/galerkin_method
-    - file: Chapter1/matrix_form
-    - file: Chapter1/special_case_of_linear_Langrangean_shape_function
-    - file: Chapter1/numerical_integration
-    - file: Chapter1/isoparametric_element_1D
-    - file: Chapter1/tutorial
-    - file: Chapter1/appendix_1-higher_order_langrange_polynomials
-    - file: Chapter1/appendix_2-type_of_shape_functions_(Legendre-polynomials)
+    - file: Chapter1/chapter1-1_Introduction_and_notation
+    - file: Chapter1/chapter1-2_Strong_form_of_the_problem
+    - file: Chapter1/chapter1-3_Weak_form_of_the_problem
+    - file: Chapter1/chapter1-4_Galerkin_method
+    - file: Chapter1/chapter1-5_Matrix_form
+    - file: Chapter1/chapter1-6_Special_case_for_linear_Lagrangian_shape_functions
+    - file: Chapter1/chapter1-7_Special_case_for_linear_Lagrangian_shape_functions
+    - file: Chapter1/chapter1-7_Numerical_Integration
+    - file: Chapter1/chapter1_Tutorial
+    - file: Chapter1/Appendix1-1-High-order_Langrange_polynomials
+    - file: Chapter1/Appendix1-2_Other_type_of_shape_functions
   - caption: Finite Elements for linear static problems in CEG Applications
     chapters:
     - file: Chapter2/1D_problems
