@@ -15,37 +15,20 @@ parts:
     - file: Chapter1/chapter1_Tutorial
     - file: Chapter1/Appendix1-1-High-order_Langrange_polynomials
     - file: Chapter1/Appendix1-2_Other_type_of_shape_functions
+  - caption: Introduction to numerical analysis of finite elements
+    chapters:
+    - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
+    - file: Chapter2/chapter2-2_Well-posedness_of_the variational_problem
+    - file: Chapter2/chapter2-3_Well-posedness_of_the_discrete_problem
+    - file: Chapter2/chapter2-4_ Galerkin_orthogonality
+    - file: Chapter2/chapter2-5_Convergence
+    - file: Chapter2/chapter2-6_Error_estimates
   - caption: Finite Elements for linear static problems in CEG Applications
     chapters:
-    - file: Chapter2/1D_problems
-      sections:
-      - file: Chapter2/poisson_problem-1D
-      - file: Chapter2/euler-bernoulli_beam
-      - file: Chapter2/timoshenko_beam
-      - file: Chapter2/space_frame_structures
-    - file: Chapter2/2D_problems
-      sections: 
-      - file: Chapter2/poisson_problem-2D
-      - file: Chapter2/linear_elasticity-2D
-      - file: Chapter2/stokes_flow-2D
-    - file: Chapter2/3D_problems
-      sections:
-      - file: Chapter2/poisson_problem-3D
-      - file: Chapter2/linear_elasticity-3D
-      - file: Chapter2/stokes_flow-3D
-  - caption: Finite Elements of linear dynamic problems in CEG Applications
-    chapters:
-    - file: Chapter3/diffusion_1D
-    - file: Chapter3/dynamic_beams
-    - file: Chapter3/dynamic_space_frame_structures
-  - caption: Introduction to numerical analysis for finite elements
-    chapters:
-    - file: Chapter4/introduction_to_functional_spaces
-    - file: Chapter4/well-possedness_of_the_variational_problem
-    - file: Chapter4/well-possedness_of_the_discrete_problem
-    - file: Chapter4/galerkin_orthogonality
-    - file: Chapter4/convergence
-    - file: Chapter4/error_estimates
+    - file: Chapter3/chapter3-2_2D_3D_Problems
+    - file: Chapter3/chapter3-2_2D_3D_Problems
+    - file: Chapter3/chapter3_tutorial
+    - file: Chapter3/Appendix_3-1_Linear_solvers
   - caption: Weak form to strong form derivation (Draft TOC)
     chapters:
     - file: draft_toc/Poisson_equation_1D-2D-3D
