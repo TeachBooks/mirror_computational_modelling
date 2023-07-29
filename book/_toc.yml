@@ -52,55 +52,42 @@ parts:
     chapters:
     - file: Chapter7/Gridap
     - file: Chapter7/Pyjive
-
-
-
-
-
-
-
-
-
-
-
-
-
-  - caption: Weak form to strong form derivation (Draft TOC)
-    chapters:
-    - file: draft_toc/Poisson_equation_1D-2D-3D
-    - file: draft_toc/Elastostatics_2D-3D
-    - file: draft_toc/Timoshenko_beam
-  # - file: draft_toc/(Euler beam)
-  # - file: draft_toc/(Kirchhoff plate)
-  # - file: draft_toc/(Reissner-Mindlin plate)
-  - caption: Elements and shape functions (Draft TOC)
-    chapters:
-    - file: draft_toc/shape_functions
-      sections:
-      - file: draft_toc/lagrangian-serendipity_elements
-    - file: draft_toc/numerical_integration 
-      sections:
-      - file: draft_toc/gauss_on_line
-    - file: draft_toc/isoparametric_mapping
-    - file: draft_toc/XFEM
-  - caption: Time discretization (Draft TOC)
-    chapters:
-    - file: draft_toc/diffusion
-      sections: 
-      - file: draft_toc/explicit
-      - file: draft_toc/trapezoidal
-    - file: draft_toc/mechanics 
-      sections:
-      - file: draft_toc/explicit
-      - file: draft_toc/newmark
-  - caption: Nonlinear FEM (Draft TOC)
-    chapters:
-    - file: draft_toc/plasticity
-    - file: draft_toc/damage
-    - file: draft_toc/viscoelasticity
-    - file: draft_toc/viscoplasticity
-    - file: draft_toc/cohesive_zone_models
-  - caption: Other methods (Draft TOC)
-    chapters:
-    - file: draft_toc/linear_buckling_analysis
-    - file: draft_toc/modal_analysis
+#  - caption: Weak form to strong form derivation (Draft TOC)
+#    chapters:
+#    - file: draft_toc/Poisson_equation_1D-2D-3D
+#    - file: draft_toc/Elastostatics_2D-3D
+#    - file: draft_toc/Timoshenko_beam
+#    - file: draft_toc/(Euler beam)
+#    - file: draft_toc/(Kirchhoff plate)
+#    - file: draft_toc/(Reissner-Mindlin plate)
+#    - caption: Elements and shape functions (Draft TOC)
+#    chapters:
+#    - file: draft_toc/shape_functions
+#      sections:
+#      - file: draft_toc/lagrangian-serendipity_elements
+#      - file: draft_toc/numerical_integration 
+#      sections:
+#      - file: draft_toc/gauss_on_line
+#    - file: draft_toc/isoparametric_mapping
+#    - file: draft_toc/XFEM
+#    - caption: Time discretization (Draft TOC)
+#    chapters:
+#    - file: draft_toc/diffusion
+#      sections: 
+#      - file: draft_toc/explicit
+#      - file: draft_toc/trapezoidal
+#    - file: draft_toc/mechanics 
+#      sections:
+#      - file: draft_toc/explicit
+#      - file: draft_toc/newmark
+#   - caption: Nonlinear FEM (Draft TOC)
+#    chapters:
+#    - file: draft_toc/plasticity
+#    - file: draft_toc/damage
+#    - file: draft_toc/viscoelasticity
+#    - file: draft_toc/viscoplasticity
+#    - file: draft_toc/cohesive_zone_models
+#   - caption: Other methods (Draft TOC)
+#     chapters:
+#     - file: draft_toc/linear_buckling_analysis
+#     - file: draft_toc/modal_analysis
