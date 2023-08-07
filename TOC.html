@@ -1,0 +1,826 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Finite Elements for Civil Engineering and Geosciences &#8212; CiTG Jupyter Book template</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TOC';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/TUDelft_logo_rgb.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/TUDelft_logo_rgb.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Home
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Finite Elements for linear static problems in CEG Applications</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Chapter3/chapter3-2_2D_3D_Problems.html">3.2 2D/3D Problems</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/TOC.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Finite Elements for Civil Engineering and Geosciences</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-finite-elements-1d-laplacian">1. Introduction to Finite elements - 1D Laplacian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-and-notation">1.1. Introduction and notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-form-of-the-problem">1.2. Strong form of the problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-form-of-the-problem">1.3. Weak form of the problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-method">1.4. Galerkin method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-form">1.5. Matrix form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-for-linear-lagrangian-shape-functions">1.6. Special case for linear Lagrangian shape functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isoparametric-element-in-1d">1.7. Isoparametric element in 1D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">1.8. Numerical integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">1.9. Tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-1-high-order-lagrange-polynomials">Appendix 1.1. High-order Lagrange polynomials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-2-other-type-of-shape-functions">Appendix 1.2. Other type of shape functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-numerical-analysis-of-finite-elements-optional-chapter-to-develop-at-the-end">2. Introduction to numerical analysis of Finite Elements (optional chapter - to develop at the end)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-functional-spaces">2.1. Introduction to functional spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#well-posedness-of-the-variational-problem">2.2. Well-posedness of the variational problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#well-posedness-of-the-discrete-problem">2.3. Well-posedness of the discrete problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-orthogonality">2.4. Galerkin orthogonality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">2.5. Convergence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-estimates">2.6. Error estimates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-elements-for-linear-static-problems-in-ceg-applications">3. Finite Elements for linear static problems in CEG applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-problems">3.1. 1D problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-rod-soil-consolidation">3.1.1. Poisson (rod, soil consolidation, …)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-bernoulli-beam">3.1.2. Euler-Bernoulli beam</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timoshenko-beam">3.1.3. Timoshenko beam</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-elements-in-2-3d-space-frame-structures">3.1.4. 1D elements in 2/3D (space-frame structures)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3d-problems">3.2. 2D/3D problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-potential-flow-pressure-in-saturated-soil-temperature-distribution">3.2.1. Poisson (potential flow, pressure in saturated soil, temperature distribution, …)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-elasticity-in-2d-plane-strain-plane-stress-isotropic-anisotropic">3.2.2. Linear elasticity in 2D (plane strain, plane stress, isotropic/anisotropic, …)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-elasticity-in-3d">3.2.3. Linear elasticity in 3D</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-flow">3.2.4. Stokes flow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poroelasticity-with-darcy-flow">3.2.5. Poroelasticity with Darcy flow</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">3.3. Tutorials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-3-1-linear-solvers">Appendix 3.1. Linear solvers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-elements-for-linear-dynamic-problems-in-ceg-applications">4. Finite Elements for linear dynamic problems in CEG applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-methods-for-odes">4.1. Numerical methods for ODEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series">4.1.1. Taylor series</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-solver-from-taylor-series-forward-backward-euler">4.1.2. ODE solver from Taylor series (Forward/Backward Euler)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#type-of-solvers">4.1.3. Type of solvers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">4.1.4. Stability</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-discretization-error">4.1.5. Time discretization error</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-time-stepping">4.1.6. Adaptive time stepping</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-problems-in-1d">4.2. Dynamic problems in 1D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-problems-in-2d-3d">4.3. Dynamic problems in 2D/3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modal-analysis">4.4. Modal analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-elements-for-nonlinear-problems-in-ceg-applications">5. Finite Elements for nonlinear problems in CEG applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-solvers-picard-newton-arclength">5.1. Nonlinear solvers (Picard, Newton, arclength, …)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrically-nonlinear-problems">5.2. Geometrically nonlinear problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-structures-subject-to-large-deformations">5.2.1. 1D structures subject to large deformations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buckling">5.2.2. Buckling ?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperelasticity">5.2.3. Hyperelasticity ?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solids-nonlinear-constitutive-models">5.3. Solids (nonlinear constitutive models)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plasticity">5.3.1. Plasticity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#damage">5.3.2. Damage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viscoelasticity">5.3.3. Viscoelasticity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viscoplasticity">5.3.4. Viscoplasticity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cohesive-zone-models">5.3.5. Cohesive zone models</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluids">5.4. Fluids</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convection-diffusion-reaction">5.4.1. Convection-Diffusion-Reaction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shallow-water-equations">5.4.2. Shallow water equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#navier-stokes-equations">5.4.3. Navier-Stokes equations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.5. Tutorials</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-topics-on-finite-elements">6. Advanced topics on Finite Elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unfitted-finite-elements">6.1. Unfitted Finite Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-coupled-multiphysics-problems">6.2. Surface-coupled multiphysics problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiphysics">6.3. Multiphysics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiscale-methods">6.3. Multiscale methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codes">7. Codes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyjive">7.1 Pyjive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gridap">7.2 Gridap</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="finite-elements-for-civil-engineering-and-geosciences">
+<h1>Finite Elements for Civil Engineering and Geosciences<a class="headerlink" href="#finite-elements-for-civil-engineering-and-geosciences" title="Permalink to this heading">#</a></h1>
+<section id="introduction-to-finite-elements-1d-laplacian">
+<h2>1. Introduction to Finite elements - 1D Laplacian<a class="headerlink" href="#introduction-to-finite-elements-1d-laplacian" title="Permalink to this heading">#</a></h2>
+<section id="introduction-and-notation">
+<h3>1.1. Introduction and notation<a class="headerlink" href="#introduction-and-notation" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="strong-form-of-the-problem">
+<h3>1.2. Strong form of the problem<a class="headerlink" href="#strong-form-of-the-problem" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="weak-form-of-the-problem">
+<h3>1.3. Weak form of the problem<a class="headerlink" href="#weak-form-of-the-problem" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Link to virtual displacement
+</pre></div>
+</div>
+</section>
+<section id="galerkin-method">
+<h3>1.4. Galerkin method<a class="headerlink" href="#galerkin-method" title="Permalink to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Using arbitrary FE spaces
+</pre></div>
+</div>
+</section>
+<section id="matrix-form">
+<h3>1.5. Matrix form<a class="headerlink" href="#matrix-form" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="special-case-for-linear-lagrangian-shape-functions">
+<h3>1.6. Special case for linear Lagrangian shape functions<a class="headerlink" href="#special-case-for-linear-lagrangian-shape-functions" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="isoparametric-element-in-1d">
+<h3>1.7. Isoparametric element in 1D<a class="headerlink" href="#isoparametric-element-in-1d" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="numerical-integration">
+<h3>1.8. Numerical integration<a class="headerlink" href="#numerical-integration" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="tutorial">
+<h3>1.9. Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="appendix-1-1-high-order-lagrange-polynomials">
+<h3>Appendix 1.1. High-order Lagrange polynomials<a class="headerlink" href="#appendix-1-1-high-order-lagrange-polynomials" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="appendix-1-2-other-type-of-shape-functions">
+<h3>Appendix 1.2. Other type of shape functions<a class="headerlink" href="#appendix-1-2-other-type-of-shape-functions" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="introduction-to-numerical-analysis-of-finite-elements-optional-chapter-to-develop-at-the-end">
+<h2>2. Introduction to numerical analysis of Finite Elements (optional chapter - to develop at the end)<a class="headerlink" href="#introduction-to-numerical-analysis-of-finite-elements-optional-chapter-to-develop-at-the-end" title="Permalink to this heading">#</a></h2>
+<section id="introduction-to-functional-spaces">
+<h3>2.1. Introduction to functional spaces<a class="headerlink" href="#introduction-to-functional-spaces" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="well-posedness-of-the-variational-problem">
+<h3>2.2. Well-posedness of the variational problem<a class="headerlink" href="#well-posedness-of-the-variational-problem" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="well-posedness-of-the-discrete-problem">
+<h3>2.3. Well-posedness of the discrete problem<a class="headerlink" href="#well-posedness-of-the-discrete-problem" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="galerkin-orthogonality">
+<h3>2.4. Galerkin orthogonality<a class="headerlink" href="#galerkin-orthogonality" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="convergence">
+<h3>2.5. Convergence<a class="headerlink" href="#convergence" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="error-estimates">
+<h3>2.6. Error estimates<a class="headerlink" href="#error-estimates" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="finite-elements-for-linear-static-problems-in-ceg-applications">
+<h2>3. Finite Elements for linear static problems in CEG applications<a class="headerlink" href="#finite-elements-for-linear-static-problems-in-ceg-applications" title="Permalink to this heading">#</a></h2>
+<section id="d-problems">
+<h3>3.1. 1D problems<a class="headerlink" href="#d-problems" title="Permalink to this heading">#</a></h3>
+<section id="poisson-rod-soil-consolidation">
+<h4>3.1.1. Poisson (rod, soil consolidation, …)<a class="headerlink" href="#poisson-rod-soil-consolidation" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="euler-bernoulli-beam">
+<h4>3.1.2. Euler-Bernoulli beam<a class="headerlink" href="#euler-bernoulli-beam" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="timoshenko-beam">
+<h4>3.1.3. Timoshenko beam<a class="headerlink" href="#timoshenko-beam" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="d-elements-in-2-3d-space-frame-structures">
+<h4>3.1.4. 1D elements in 2/3D (space-frame structures)<a class="headerlink" href="#d-elements-in-2-3d-space-frame-structures" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="d-3d-problems">
+<h3>3.2. 2D/3D problems<a class="headerlink" href="#d-3d-problems" title="Permalink to this heading">#</a></h3>
+<section id="poisson-potential-flow-pressure-in-saturated-soil-temperature-distribution">
+<h4>3.2.1. Poisson (potential flow, pressure in saturated soil, temperature distribution, …)<a class="headerlink" href="#poisson-potential-flow-pressure-in-saturated-soil-temperature-distribution" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="linear-elasticity-in-2d-plane-strain-plane-stress-isotropic-anisotropic">
+<h4>3.2.2. Linear elasticity in 2D (plane strain, plane stress, isotropic/anisotropic, …)<a class="headerlink" href="#linear-elasticity-in-2d-plane-strain-plane-stress-isotropic-anisotropic" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="linear-elasticity-in-3d">
+<h4>3.2.3. Linear elasticity in 3D<a class="headerlink" href="#linear-elasticity-in-3d" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="stokes-flow">
+<h4>3.2.4. Stokes flow<a class="headerlink" href="#stokes-flow" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="poroelasticity-with-darcy-flow">
+<h4>3.2.5. Poroelasticity with Darcy flow<a class="headerlink" href="#poroelasticity-with-darcy-flow" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="tutorials">
+<h3>3.3. Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="appendix-3-1-linear-solvers">
+<h3>Appendix 3.1. Linear solvers<a class="headerlink" href="#appendix-3-1-linear-solvers" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="finite-elements-for-linear-dynamic-problems-in-ceg-applications">
+<h2>4. Finite Elements for linear dynamic problems in CEG applications<a class="headerlink" href="#finite-elements-for-linear-dynamic-problems-in-ceg-applications" title="Permalink to this heading">#</a></h2>
+<section id="numerical-methods-for-odes">
+<h3>4.1. Numerical methods for ODEs<a class="headerlink" href="#numerical-methods-for-odes" title="Permalink to this heading">#</a></h3>
+<section id="taylor-series">
+<h4>4.1.1. Taylor series<a class="headerlink" href="#taylor-series" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="ode-solver-from-taylor-series-forward-backward-euler">
+<h4>4.1.2. ODE solver from Taylor series (Forward/Backward Euler)<a class="headerlink" href="#ode-solver-from-taylor-series-forward-backward-euler" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="type-of-solvers">
+<h4>4.1.3. Type of solvers<a class="headerlink" href="#type-of-solvers" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>1st order: FE/BE, BDF, RK</p></li>
+<li><p>2nd order: Newmark, Generalized-alpha, 2 systems of 1st order</p></li>
+</ul>
+</section>
+<section id="stability">
+<h4>4.1.4. Stability<a class="headerlink" href="#stability" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="time-discretization-error">
+<h4>4.1.5. Time discretization error<a class="headerlink" href="#time-discretization-error" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="adaptive-time-stepping">
+<h4>4.1.6. Adaptive time stepping<a class="headerlink" href="#adaptive-time-stepping" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="dynamic-problems-in-1d">
+<h3>4.2. Dynamic problems in 1D<a class="headerlink" href="#dynamic-problems-in-1d" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="dynamic-problems-in-2d-3d">
+<h3>4.3. Dynamic problems in 2D/3D<a class="headerlink" href="#dynamic-problems-in-2d-3d" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="modal-analysis">
+<h3>4.4. Modal analysis<a class="headerlink" href="#modal-analysis" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="finite-elements-for-nonlinear-problems-in-ceg-applications">
+<h2>5. Finite Elements for nonlinear problems in CEG applications<a class="headerlink" href="#finite-elements-for-nonlinear-problems-in-ceg-applications" title="Permalink to this heading">#</a></h2>
+<section id="nonlinear-solvers-picard-newton-arclength">
+<h3>5.1. Nonlinear solvers (Picard, Newton, arclength, …)<a class="headerlink" href="#nonlinear-solvers-picard-newton-arclength" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="geometrically-nonlinear-problems">
+<h3>5.2. Geometrically nonlinear problems<a class="headerlink" href="#geometrically-nonlinear-problems" title="Permalink to this heading">#</a></h3>
+<section id="d-structures-subject-to-large-deformations">
+<h4>5.2.1. 1D structures subject to large deformations<a class="headerlink" href="#d-structures-subject-to-large-deformations" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="buckling">
+<h4>5.2.2. Buckling ?<a class="headerlink" href="#buckling" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="hyperelasticity">
+<h4>5.2.3. Hyperelasticity ?<a class="headerlink" href="#hyperelasticity" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="solids-nonlinear-constitutive-models">
+<h3>5.3. Solids (nonlinear constitutive models)<a class="headerlink" href="#solids-nonlinear-constitutive-models" title="Permalink to this heading">#</a></h3>
+<section id="plasticity">
+<h4>5.3.1. Plasticity<a class="headerlink" href="#plasticity" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="damage">
+<h4>5.3.2. Damage<a class="headerlink" href="#damage" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="viscoelasticity">
+<h4>5.3.3. Viscoelasticity<a class="headerlink" href="#viscoelasticity" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="viscoplasticity">
+<h4>5.3.4. Viscoplasticity<a class="headerlink" href="#viscoplasticity" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="cohesive-zone-models">
+<h4>5.3.5. Cohesive zone models<a class="headerlink" href="#cohesive-zone-models" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="fluids">
+<h3>5.4. Fluids<a class="headerlink" href="#fluids" title="Permalink to this heading">#</a></h3>
+<section id="convection-diffusion-reaction">
+<h4>5.4.1. Convection-Diffusion-Reaction<a class="headerlink" href="#convection-diffusion-reaction" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="shallow-water-equations">
+<h4>5.4.2. Shallow water equations<a class="headerlink" href="#shallow-water-equations" title="Permalink to this heading">#</a></h4>
+</section>
+<section id="navier-stokes-equations">
+<h4>5.4.3. Navier-Stokes equations<a class="headerlink" href="#navier-stokes-equations" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
+<section id="id1">
+<h3>5.5. Tutorials<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="advanced-topics-on-finite-elements">
+<h2>6. Advanced topics on Finite Elements<a class="headerlink" href="#advanced-topics-on-finite-elements" title="Permalink to this heading">#</a></h2>
+<section id="unfitted-finite-elements">
+<h3>6.1. Unfitted Finite Elements<a class="headerlink" href="#unfitted-finite-elements" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="surface-coupled-multiphysics-problems">
+<h3>6.2. Surface-coupled multiphysics problems<a class="headerlink" href="#surface-coupled-multiphysics-problems" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="multiphysics">
+<h3>6.3. Multiphysics<a class="headerlink" href="#multiphysics" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="multiscale-methods">
+<h3>6.3. Multiscale methods<a class="headerlink" href="#multiscale-methods" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="codes">
+<h2>7. Codes<a class="headerlink" href="#codes" title="Permalink to this heading">#</a></h2>
+<section id="pyjive">
+<h3>7.1 Pyjive<a class="headerlink" href="#pyjive" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="gridap">
+<h3>7.2 Gridap<a class="headerlink" href="#gridap" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-finite-elements-1d-laplacian">1. Introduction to Finite elements - 1D Laplacian</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-and-notation">1.1. Introduction and notation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strong-form-of-the-problem">1.2. Strong form of the problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#weak-form-of-the-problem">1.3. Weak form of the problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-method">1.4. Galerkin method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-form">1.5. Matrix form</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-for-linear-lagrangian-shape-functions">1.6. Special case for linear Lagrangian shape functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isoparametric-element-in-1d">1.7. Isoparametric element in 1D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-integration">1.8. Numerical integration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">1.9. Tutorial</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-1-high-order-lagrange-polynomials">Appendix 1.1. High-order Lagrange polynomials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-1-2-other-type-of-shape-functions">Appendix 1.2. Other type of shape functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-numerical-analysis-of-finite-elements-optional-chapter-to-develop-at-the-end">2. Introduction to numerical analysis of Finite Elements (optional chapter - to develop at the end)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-functional-spaces">2.1. Introduction to functional spaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#well-posedness-of-the-variational-problem">2.2. Well-posedness of the variational problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#well-posedness-of-the-discrete-problem">2.3. Well-posedness of the discrete problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#galerkin-orthogonality">2.4. Galerkin orthogonality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergence">2.5. Convergence</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-estimates">2.6. Error estimates</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-elements-for-linear-static-problems-in-ceg-applications">3. Finite Elements for linear static problems in CEG applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-problems">3.1. 1D problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-rod-soil-consolidation">3.1.1. Poisson (rod, soil consolidation, …)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-bernoulli-beam">3.1.2. Euler-Bernoulli beam</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#timoshenko-beam">3.1.3. Timoshenko beam</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-elements-in-2-3d-space-frame-structures">3.1.4. 1D elements in 2/3D (space-frame structures)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3d-problems">3.2. 2D/3D problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-potential-flow-pressure-in-saturated-soil-temperature-distribution">3.2.1. Poisson (potential flow, pressure in saturated soil, temperature distribution, …)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-elasticity-in-2d-plane-strain-plane-stress-isotropic-anisotropic">3.2.2. Linear elasticity in 2D (plane strain, plane stress, isotropic/anisotropic, …)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-elasticity-in-3d">3.2.3. Linear elasticity in 3D</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stokes-flow">3.2.4. Stokes flow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poroelasticity-with-darcy-flow">3.2.5. Poroelasticity with Darcy flow</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorials">3.3. Tutorials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-3-1-linear-solvers">Appendix 3.1. Linear solvers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-elements-for-linear-dynamic-problems-in-ceg-applications">4. Finite Elements for linear dynamic problems in CEG applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-methods-for-odes">4.1. Numerical methods for ODEs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#taylor-series">4.1.1. Taylor series</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ode-solver-from-taylor-series-forward-backward-euler">4.1.2. ODE solver from Taylor series (Forward/Backward Euler)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#type-of-solvers">4.1.3. Type of solvers</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#stability">4.1.4. Stability</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-discretization-error">4.1.5. Time discretization error</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-time-stepping">4.1.6. Adaptive time stepping</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-problems-in-1d">4.2. Dynamic problems in 1D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamic-problems-in-2d-3d">4.3. Dynamic problems in 2D/3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modal-analysis">4.4. Modal analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-elements-for-nonlinear-problems-in-ceg-applications">5. Finite Elements for nonlinear problems in CEG applications</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-solvers-picard-newton-arclength">5.1. Nonlinear solvers (Picard, Newton, arclength, …)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geometrically-nonlinear-problems">5.2. Geometrically nonlinear problems</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#d-structures-subject-to-large-deformations">5.2.1. 1D structures subject to large deformations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#buckling">5.2.2. Buckling ?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperelasticity">5.2.3. Hyperelasticity ?</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solids-nonlinear-constitutive-models">5.3. Solids (nonlinear constitutive models)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plasticity">5.3.1. Plasticity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#damage">5.3.2. Damage</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viscoelasticity">5.3.3. Viscoelasticity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viscoplasticity">5.3.4. Viscoplasticity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cohesive-zone-models">5.3.5. Cohesive zone models</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fluids">5.4. Fluids</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#convection-diffusion-reaction">5.4.1. Convection-Diffusion-Reaction</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shallow-water-equations">5.4.2. Shallow water equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#navier-stokes-equations">5.4.3. Navier-Stokes equations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.5. Tutorials</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advanced-topics-on-finite-elements">6. Advanced topics on Finite Elements</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unfitted-finite-elements">6.1. Unfitted Finite Elements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#surface-coupled-multiphysics-problems">6.2. Surface-coupled multiphysics problems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiphysics">6.3. Multiphysics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiscale-methods">6.3. Multiscale methods</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codes">7. Codes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyjive">7.1 Pyjive</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gridap">7.2 Gridap</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
