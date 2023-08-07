@@ -26,7 +26,6 @@ parts:
   - caption: Finite Elements for linear static problems in CEG Applications
     chapters:
     - file: Chapter3/chapter3-2_2D_3D_Problems
-    - file: Chapter3/chapter3-2_2D_3D_Problems
     - file: Chapter3/chapter3_tutorial
     - file: Chapter3/Appendix_3-1_Linear_solvers
   - caption: 
