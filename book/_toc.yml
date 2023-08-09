@@ -2,7 +2,7 @@ format: jb-book
 root: intro
 
 parts:
-  - caption: Introduction to Finite elements - 1D Laplacian
+  - caption: 1. Introduction to Finite elements - 1D Laplacian
     chapters: 
     - file: Chapter1/chapter1-1_Introduction_and_notation
     - file: Chapter1/chapter1-2_Strong_form_of_the_problem
@@ -11,11 +11,11 @@ parts:
     - file: Chapter1/chapter1-5_Matrix_form
     - file: Chapter1/chapter1-6_Special_case_for_linear_Lagrangian_shape_functions
     - file: Chapter1/chapter1-7_Special_case_for_linear_Lagrangian_shape_functions
-    - file: Chapter1/chapter1-7_Numerical_Integration
+    - file: Chapter1/chapter1-8_Numerical_Integration
     - file: Chapter1/chapter1_Tutorial
-    - file: Chapter1/Appendix1-1-High-order_Langrange_polynomials
+    - file: Chapter1/Appendix1-1_High-order_langrange_polynomials
     - file: Chapter1/Appendix1-2_Other_type_of_shape_functions
-  - caption: Introduction to numerical analysis of finite elements
+  - caption: 2. Introduction to numerical analysis of finite elements
     chapters:
     - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
     - file: Chapter2/chapter2-2_Well-posedness_of_the variational_problem
@@ -23,70 +23,32 @@ parts:
     - file: Chapter2/chapter2-4_ Galerkin_orthogonality
     - file: Chapter2/chapter2-5_Convergence
     - file: Chapter2/chapter2-6_Error_estimates
-  - caption: Finite Elements for linear static problems in CEG Applications
+  - caption: 3. Finite Elements for linear static problems in CEG Applications
     chapters:
+    - file: Chapter3/chapter3-1_1D_Problems
     - file: Chapter3/chapter3-2_2D_3D_Problems
-    - file: Chapter3/chapter3_tutorial
+    - file: Chapter3/chapter3_Tutorial
     - file: Chapter3/Appendix_3-1_Linear_solvers
-  - caption: 
+  - caption: 4. Finite Elements for linear dynamic problems in CEG applications
     chapters:
     - file: Chapter4/chapter4-1_Numerical_methods_for_ODEs
     - file: Chapter4/chapter4-2_Dynamic_Problems_in_1D
     - file: Chapter4/chapter4-3_Dynamic_problems_in_2D-3D
     - file: Chapter4/chapter4-4_Modal_analysis
-  - caption: 
+  - caption: 5. Finite Elements for nonlinear problems in CEG applications
     chapters:
     - file: Chapter5/chapter5-1_Nonlinear_solvers
     - file: Chapter5/chapter5-2_Geometrically_nonlinear_problems
     - file: Chapter5/chapter5-3_Solids
     - file: Chapter5/chapter5-4_Fluids
     - file: Chapter5/chapter5_Tutorial
-  - caption: 
+  - caption: 6. Advanced topics on Finite Elements
     chapters:
     - file: Chapter6/chapter6-1_Unfitted_Finite_Elements
     - file: Chapter6/chapter6-2_Surface_coupled_multiphysics_problems
     - file: Chapter6/chapter6-3_Multiphysics
     - file: Chapter6/chapter6-4_Multiscale_methods
-  - caption: 
+  - caption: 7. Codes
     chapters:
     - file: Chapter7/Gridap
     - file: Chapter7/Pyjive
-#  - caption: Weak form to strong form derivation (Draft TOC)
-#    chapters:
-#    - file: draft_toc/Poisson_equation_1D-2D-3D
-#    - file: draft_toc/Elastostatics_2D-3D
-#    - file: draft_toc/Timoshenko_beam
-#    - file: draft_toc/(Euler beam)
-#    - file: draft_toc/(Kirchhoff plate)
-#    - file: draft_toc/(Reissner-Mindlin plate)
-#    - caption: Elements and shape functions (Draft TOC)
-#    chapters:
-#    - file: draft_toc/shape_functions
-#      sections:
-#      - file: draft_toc/lagrangian-serendipity_elements
-#      - file: draft_toc/numerical_integration 
-#      sections:
-#      - file: draft_toc/gauss_on_line
-#    - file: draft_toc/isoparametric_mapping
-#    - file: draft_toc/XFEM
-#    - caption: Time discretization (Draft TOC)
-#    chapters:
-#    - file: draft_toc/diffusion
-#      sections: 
-#      - file: draft_toc/explicit
-#      - file: draft_toc/trapezoidal
-#    - file: draft_toc/mechanics 
-#      sections:
-#      - file: draft_toc/explicit
-#      - file: draft_toc/newmark
-#   - caption: Nonlinear FEM (Draft TOC)
-#    chapters:
-#    - file: draft_toc/plasticity
-#    - file: draft_toc/damage
-#    - file: draft_toc/viscoelasticity
-#    - file: draft_toc/viscoplasticity
-#    - file: draft_toc/cohesive_zone_models
-#   - caption: Other methods (Draft TOC)
-#     chapters:
-#     - file: draft_toc/linear_buckling_analysis
-#     - file: draft_toc/modal_analysis
