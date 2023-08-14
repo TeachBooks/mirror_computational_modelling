@@ -10,7 +10,7 @@ parts:
     - file: Chapter1/chapter1-4_Galerkin_method
     - file: Chapter1/chapter1-5_Matrix_form
     - file: Chapter1/chapter1-6_Special_case_for_linear_Lagrangian_shape_functions
-    - file: Chapter1/chapter1-7_Isoparametric_element_in_1D.md
+    - file: Chapter1/chapter1-7_Isoparametric_element_in_1D
     - file: Chapter1/chapter1-8_Numerical_Integration
     - file: Chapter1/chapter1_Tutorial
     - file: Chapter1/Appendix1-1_High-order_langrange_polynomials
