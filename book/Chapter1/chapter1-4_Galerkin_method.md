@@ -6,5 +6,12 @@ The Galerkin method is a weighted residual method, which has a close relationshi
 
 A weighted residual method starts with an estimate of the solution and demand that its weighted average error is minimised. The Boris- Galerkin method is one type of weighted residual methods.
 
+```{figure} .././images/Chapter1/1_4_1.png
+---
+height: 300px
+name: 1_4_1
+---
+Strong form to discetized form
+```
 
 - Using arbitrary FE spaces
