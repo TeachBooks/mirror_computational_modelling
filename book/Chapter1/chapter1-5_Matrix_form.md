@@ -38,7 +38,7 @@ We still have a global integral and the product of all shape functions $N_i$ wit
 
 ```{figure} .././images/Chapter1/1_5_1.png
 ---
-height: 300px
+height: 200px
 name: 1_5_1
 ---
 Linear two-node element

@@ -19,13 +19,11 @@ After integration by parts, a boundary term appears. As long as boundary conditi
 
 ```{figure} .././images/Chapter1/1_3_1.png
 ---
-height: 300px
+height: 400px
 name: 1_3_1
 ---
 Strong form to weak form 
 ```
-
-
 
 
 - Link to virtual displacement
