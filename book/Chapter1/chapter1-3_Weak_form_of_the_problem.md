@@ -1,10 +1,8 @@
 # 1.3. Weak form of the Problem
 
-In the finite element method, before the problem is discretized the governing equation is rewritten in the so-called weak form. 
+In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. One of the key aspects of the FE method is that we do not seek a nodally exact approximation, but an approximation that minimizes certain energy functional. This is why we aim at finding solutions in a *weak* or *variational* sense, which means that the FE solution might not be nodally exact, but it is the solution that minimizes the global energy of the system.
 
-As mentioned in the introduction, the finite element method, in contrast to the the finite difference method, is variational. This becomes more clear in this chapter, as the weak form of the equation is also known as the 'variational form' or 'variational equation'. Hence, the finite element method is a variational method, addressing the weak (variational) form of the corresponding governing equation.
-
-The weak form of the problem is derived by multiplying the strong form by a weight function and then integrate by parts. In this manner, the order of derivatives appearing in the equations is reduced and the resulting equation facilitates a more convenient numerical solution.
+In practice, the weak form of the problem is derived by multiplying the strong form by a weight function and then integrate by parts. In this manner, the order of derivatives appearing in the equations is reduced and the resulting equation facilitates a more convenient numerical solution.
 
 
 The first step is premultiplication of left hand side and right hand side with a weight function $w(x)$ and integrating over the domain:
