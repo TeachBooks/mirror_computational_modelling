@@ -6,14 +6,18 @@ In order to have a complete descreption of the problem, one needs to formulate a
 At this point, let's take as an example the one dimensional poisson equation to illustrate at first the so-called strong form of the problem. 
 
 
-$$ -\nu \frac{\partial^{2} u}{{\partial x}^{2}} = f $$
+$$ 
+-\nu \frac{\partial^{2} u}{{\partial x}^{2}} = f 
+$$ (poissonequation)
 
 The poisson equation is often solved by using the finite element method. This equation can be used to express various physical phenomena such as steady-state heat conduction and flow in permeable media (Darcy’s law).
 
 
 In a general form, the poisson equation can be written as follows: 
 
-$$ −∇· q + f = 0 $$
+$$ 
+−∇· q + f = 0 
+$$ (generalpoissonequation)
 
 where q is a flux vector and f is a source term. 
 
@@ -21,26 +25,25 @@ In the case of heat conductivity, q is the heat flux vector.  In Darcy’s law, 
 
 The constitutive relationship is given by:
 
-$$ q= - \kappa  ∇ u $$
+$$ 
+q= - \kappa  ∇ u 
+$$ (consitutive)
 
-where 
+where $ q_i=-\kappa_{ij} u_j $ and $u$ is a potential 
 
-$$ q_i=-\kappa_{ij} u_j $$
-
-and u is a potential 
-
-Keep in mind that the constitutive relationship always depends on the problem being solved. 
-
-For example, in linear heat conduction, the scalar u in the above equation is the temperature. In case of structural problems, u can also be the displacement. For Darcy’s law, u is the hydraulic head.
+Keep in mind that the constitutive relationship always depends on the problem being solved. For example, in linear heat conduction, the scalar $u$ in the above equation is the temperature. In case of structural problems, u can also be the displacement. For Darcy’s law, u is the hydraulic head.
 
 For an isotropic medium, 
 
-$$ \kappa = k I $$
+$$ \kappa = k \cdot I $$
 
-where k is the thermal conductivity
+where 
 
-For Darcy’s law, u is the hydraulic head and κ is known as the hydraulic conductivity.
+| | | |
+| --- | --- | --- |
+| $k$ | thermal conductivity | - |
 
+For Darcy’s law, $u$ is the hydraulic head and $κ$ is the hydraulic conductivity.
 
 ## Example a of two-node,  single-element structure
 
@@ -56,7 +59,9 @@ One dimensional bar
 
 An application of the Poisson equation is the extension of one-dimensional structural elements. Let us consider a horizontal steel bar with a stiffness $EA = 1.0 \cdot 10^3$ kN with a load applied at the right side of $10$ kN and a length of $5$ m and a distributed load along its length $q(x)$. This equilibrium problem can be described with the following differential equation:
 
-$$EA \frac{\partial^{2} u}{{\partial x}^{2}} = -q(x)$$
+$$
+EA \frac{\partial^{2} u}{{\partial x}^{2}} = -q(x)
+$$ (1dpoisson)
 
 where $u$ is the displacement of the bar as function of location $x$. As can be seen, the form of this equation is exactly the same as the 1D Poisson equation shown in earlier notebooks about the finite difference method. The only difference is in the physical interpretation of $u$ and $q$ and that instead of the constant $\nu$ we use the constant $EA$ (Young's modulus $E$ times cross section area $A$) to describe the stiffness. 
 
