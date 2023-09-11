@@ -22,20 +22,29 @@ The general scheme for FE problems is as follows:
 
 We will explain this for the case of a prismatic rod that is loaded in its axial direction, $q(x)$. Here prismatic means that there no geometry or property changes along its length. The quation of motion (EOM) that describes this phenomenon is 
 
-$$ - EA \frac{\partial^2u(x,t)}{\partial x^2} = q(x) $$
+$$ 
+- EA \frac{\partial^2u(x,t)}{\partial x^2} = q(x) 
+$$ (EOM)
 
-With $E$ the stiffness of the rod, $A$ the cross section area and $u$ the rod elongation.
+With
+
+| | | |
+| --- | --- | --- |
+| $E$ | stifness of the rod | Pascals |
+| $u$ | rod elongation | meters |
 
 Additionally:
 - We take the rod fixed at $x=0$, that means that $u(0) = 0 $. 
-- A point load $P$ is applied at the far end of the beam at $x=L$
+- A point load $P$ is applied at the far end of the beam at $x=L$.
 
-$$ q(x)=\begin{cases}
+$$ 
+q(x)=\begin{cases}
 P\quad\text{if }x=L,\\
 0\quad\text{otherwise}.
-\end{cases} $$
+\end{cases} 
+$$ (pointloadapplication)
 
-Let's assume that we want to find an analytical expression of a function that describes the displacement at any point of the rod, denoted as $ u(x) $. In General, and mostly depending on the complexity of the forcing term $ q(x) $, it is difficult to find an analytical expression that is defined at all points, $u(x)\, ∀ x\in[0,L]$, see red blue in the following figure.
+Let's assume that we want to find an analytical expression of a function that describes the displacement at any point of the rod, denoted as $u(x)$. In general, and mostly depending on the complexity of the forcing term $q(x)$, it is difficult to find an analytical expression that is defined at all points, $u(x)\, ∀ x\in[0,L]$.
 
 ```{figure} .././images/Chapter1/1_1_1.png
 ---
@@ -45,20 +54,21 @@ name: 1_1_1
 Analytical vs approximated functions
 ```
 
-Instead, we might be interested in knowing the value of the function at specific points, $u(x_0),u(x_1),u(x_2),...,u(x_N)$, see red dots in the previous figure. From these set of values, one can reconstruct an approximated function $\tilde{u}(x)$ by, for instance, using a spline interpolation between points (green line in the figure).
+Instead, we might be interested in knowing the value of the function at specific points, $u(x_0)$, $u(x_1)$, $u(x_2)$,..., $u(x_N)$, (see the red dots in Figure {numref}`1_1_1`). From these set of values, one can reconstruct an approximated function $\tilde{u}(x)$ by, for instance, using a spline interpolation between points (see the green line in Figure {numref}`1_1_1`).
 
 For smooth enough functions, $u(x)$, as we increase the number of evaluation points, $N$, the approximated solution solution $\tilde{u}(x)$ will be closer to $u(x)$.
 
-:::{important}
+```{admonition} What's ahead?
 In this book you will learn how to find approximate solutions like $\tilde{u}_N(x)$ by using the FE method. 
-:::
+```
 
+### 1.1.2 Notation
 
-### Notation
-In these notes we will use the following notation, see the figure below: 
+In these notes we will use the following notation, see Figure {numref}`1_1_2`: 
 * $u_i:=u(x_i)$, the function evaluated at location $x_i$. 
 * $\Delta x_i:=x_i-x_{i-1}$, the element size between two points (nodes), $x_{i-1}$ and $x_i$.
 When considering constant element size, in a domain of lenght $L$, $x\in[0,L]$ with $N$ elements, the element size will be $\Delta x=L/N$.
+
 ```{figure} .././images/Chapter1/1_1_2.png
 ---
 height: 300px

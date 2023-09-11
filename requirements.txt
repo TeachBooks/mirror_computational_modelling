@@ -2,3 +2,7 @@ jupyter-book
 numpy
 scipy
 matplotlib
+pandas
+pylance
+ipympl
+plotly
