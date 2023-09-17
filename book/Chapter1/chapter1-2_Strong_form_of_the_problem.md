@@ -93,7 +93,9 @@ $$ (sumofmatrixes)
 
 To solve for global equilibrium, we need to equate the product $\mathbf{Ku}$ to a vector with external forces. Point loads on a node can directly be inserted on the right hand side vector of the equation $\mathbf{Ku}=\mathbf{f}$, while a distributed load $q$ is translated to a load vector with the expression from the derivation:
 
-$$\mathbf{f}=\int_0^L\mathbf{N}^Tq\,dx$$ 
+$$
+\mathbf{f}=\int_0^L\mathbf{N}^Tq\,dx
+$$ (distributedload)
 
 
 
@@ -104,13 +106,13 @@ We derived a way to express the relation between $\mathbf{u}$ and $\mathbf{f}$ t
 
 $$
 \frac{EA}{\Delta x}\left[\begin{matrix}1 & -1 & 0 & 0 \\ -1 & 2 & -1 & 0 \\ 0 & -1 & 2 & -1 \\ 0 & 0 & -1 & 1 \end{matrix}\right] \left[\begin{matrix}0 \\ u_2? \\ u_3? \\ u_4?\end{matrix}\right] = \left[\begin{matrix}f_1? \\ 0 \\ 0 \\ 10\end{matrix}\right]
-$$
+$$ (totalmatrix)
 
 A way to overcome this problem is to leave out equations belonging to nodes for which the solution is known. As long as the fixed degrees of freedom are prescribed at a value of 0 (i.e. homogeneous Dirichlet conditions), we can do this by simply removing the corresponding columns and rows out of our system. Doing that for node 0 in our example, we get:
 
 $$
 \frac{EA}{\Delta x}\left[\begin{matrix} 2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 1 \end{matrix}\right] \left[\begin{matrix}u_2? \\ u_3? \\ u_4?\end{matrix}\right] = \left[\begin{matrix}0 \\ 0 \\ 10\end{matrix}\right]
-$$
+$$ (totalmatrix_afterbcs)
 
 This system can solved, by inverting $\mathbf{K}$, or more efficiently by using an appropriate linear solver. It is important to note that for nonzero Dirichlet conditions, additional steps need to be taken.
 
@@ -118,13 +120,6 @@ Solving the system of equations above will finally result in a vector with value
 
 $$
 u^h(x) = \mathbf{N}\mathbf{u}
-$$
+$$ (continuoussolution)
 
 Moreover, the reaction force $f_1$ can be computed by multiplying the complete $4\times4$-matrix with the nodal displacement vector.
-
-$$
--EA \frac{\partial^{2} u}{{\partial x}^{2}} = q(x)
-$$
-
-where $u$ is the displacement of the bar as function of location $x$. As can be seen, the form of this equation is exactly the same as the 1D Poisson equation shown above. The only difference is in the physical interpretation of $u$ and $q$ and that instead of the constant $\nu$ we use the constant $EA$ (Young's modulus $E$ times cross section area $A$) to describe the stiffness. 
-
