@@ -2,13 +2,13 @@ format: jb-book
 root: intro
 
 parts:
-  - caption: 1. Introduction to Finite elements - 1D Laplacian
+  - caption: 1. Introduction to Finite Elements - 1D Laplacian
     chapters: 
     - file: Chapter1/chapter1-1_Introduction_and_notation
     - file: Chapter1/chapter1-2_Strong_form_of_the_problem
     - file: Chapter1/chapter1-3_Weak_form_of_the_problem.ipynb
     - file: Chapter1/chapter1-4_Galerkin_method
-    - file: Chapter1/chapter1-5_Matrix_form
+    - file: Chapter1/chapter1-5_Matrix_form.ipynb
     - file: Chapter1/chapter1-6_Special_case_for_linear_Lagrangian_shape_functions
     - file: Chapter1/chapter1-7_Isoparametric_element_in_1D
     - file: Chapter1/chapter1-8_Numerical_Integration
