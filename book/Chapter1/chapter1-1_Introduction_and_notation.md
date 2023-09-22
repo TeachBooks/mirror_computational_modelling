@@ -62,7 +62,7 @@ For smooth enough functions, $u(x)$, as we increase the number of evaluation poi
 In this book you will learn how to find approximate solutions like $\tilde{u}_N(x)$ by using the FE method. 
 ```
 
-### 1.1.2 Notation
+## 1.1.2 Notation
 
 In these notes we will use the following notation, see Figure {numref}`1_1_2`: 
 * $u_i:=u(x_i)$, the function evaluated at location $x_i$. 
