@@ -26,42 +26,13 @@ Strong form to weak form
 ```
 ### 1.3.2 Boundary Conditions 
 
-To complete the problem, boundary conditions must be specified. A Dirichlet (essential) boundary condition prescribes the displacement at a point. For example
+To complete the problem, boundary conditions must be specified. We also need to derive a weak form for the boundary conditions. 
 
-$$ u=0 at x=0 $$
+For the Dirichlet boundaary condition, this is satisfied by construction. 
 
-prescribes the displaecement at left end of the barto be zero.
-
-
-A Neumann (natural) boundary condition prescribes the applied traction $ σ_n $.
-
- $ σ_n  = h$, at $ x = L $
-
- when n is the outward normal to the bar. The above boundary condition sets the applied traction at x=L equal to h.
-
-```{figure} .././images/Chapter1/1_3_2.png
----
-height: 400px
-name: 1_3_2
----
-example rod with distributed load
-```
-
-Considering that $ σ= Ε u_x $, applying a force at the end of a bar is equivalent to applying $u_x$.
-
-So finally, we get the following.
-
-
-$$ -E u_{xx} =f  ,  0<x<L $$
-$$ u=0 ,  at  x=0 $$
-$$ E u_{xn} =h , at  x=L $$  
+For the Neumann boundary condition we need to ensure that it is satisfied for the weak form of the problem, for any allowable weight function at x=L.
  
 
-
-
-
-
---------------------------------------------------------------------------------
 Back at the linear elastic rod problem of paragraph 1.2. At the fixed degrees of freedom, there is zero displacement  (i.e. homogeneous Dirichlet conditions). In case that non-zero Dirichlet conditions, additional steps need to be taken, as the matrix **K** cannot be simplified and thus cannot be inverted.
 
 
