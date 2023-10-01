@@ -1,9 +1,5 @@
 # 1.1. Introduction  
 
-This online book offers an introduction to computational modelling using the finite element (FE) method, a numerical method that is widely used to solve Partial Differential Equations (PDEs). The FE method provides a general framework for the solution of PDEs based on the definition of discrete functions that approximate the solution. One of the main advantages of FE method, and probably one of the reasons of its wide adoption, is that it provides a generic framework that can be used to solve many type of PDEs, with a strong mathematical foundation behind it. 
-
-In this book we will try to convey this flexibility by introducing the FE method for simple problems and extending the applicability to a wide variety of PDEs appearing in Civil Engineering and Geosciences applications. 
-
 In this chapter we will introduce all the steps that are usually followed to solve a PDE using the FE method, from the definition of the PDE to the solution of a linear system of equations. To make the learning curve ease, we start with a simple linear static problem in 1 dimension (1D).
 
 <!-- For this purpose, both linear and non-linear problems will be demonstrated. The FEM is a broadly used numerical tool that solves PDEs. The areas of application range from solid and structural mechanics to fluid mechanics. In recent years the application of such a method for solving complex physical phenomena end geometries is receiving more attention and is more frequently applied are it is bound with computational power. To be more specific, when a domain is discretised using FEM, a system of linear equations is built. Then, this matrix is solved numerically, using the available computational power. -->
