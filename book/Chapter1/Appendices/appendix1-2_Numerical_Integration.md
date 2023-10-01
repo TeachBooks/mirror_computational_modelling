@@ -1,4 +1,4 @@
-# 1.8. Numerical Integration
+# A1.2. Numerical Integration
 
 At this chapter we will consider integration over a single element.
 

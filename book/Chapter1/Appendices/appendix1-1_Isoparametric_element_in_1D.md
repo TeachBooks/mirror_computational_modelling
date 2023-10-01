@@ -1,9 +1,9 @@
-# 1.7. Isoparametric element in 1D
+# A1.1. Isoparametric element in 1D
 
 Considering a mesh using finite elements, each cell can have a unique shape and orientation. However, when performing numerical integration, it is preferable to define the selected integration scheme on a reference element and at the same reference cell, define the shape functions.
 Then a special technique is applied in order to bypass the need to prescribe several integration domains. This technique is commonly used in software using FEM and is called isoparametric mapping.
 
-## 1.7.1 Why do we need isoparametric mapping?
+## A1.1.1 Why do we need isoparametric mapping?
 
 Let's consider a linear 3-node element with the nodes located in x=2, x=4 and x=6, respectivelly.
 
@@ -48,7 +48,7 @@ The next step is to link this reference element with an actual element in physic
 
 At this point it is useful to recall that we need this mapping in order to define the element's stiffness matrix, which involves integration over the element domain and derivatives of the shape functions in the global coordinate system.
 
-## 1.7.2 How to implement isoparametric mapping?
+## A1.1.2 How to implement isoparametric mapping?
 
 The first step is to construct the relation between x and $ξ$ with the shape functions.
 
