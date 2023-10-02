@@ -10,11 +10,11 @@ parts:
     - file: Chapter1/chapter1-4_Discrete_form.ipynb
     - file: Chapter1/appendix1.md
       sections:
-      - Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D.md
-      - Chapter1/Appendices/appendix1-2_Numerical_integration.md
+      - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D.md
+      - file: Chapter1/Appendices/appendix1-2_Numerical_integration.md
     - file: Chapter1/exercise1.md
       sections:
-      - Chapter1/Exercises/exercise1-1.md
+      - file: Chapter1/Exercises/exercise1-1.md
     -file: Chapter1/tutorial1.md
       sections:
       - file: Chapter1/Tutorials/Gridap_tutorial_1.ipynb
