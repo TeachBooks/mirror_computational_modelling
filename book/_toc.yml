@@ -15,7 +15,7 @@ parts:
     - file: Chapter1/exercise1.md
       sections:
       - file: Chapter1/Exercises/exercise1-1.md
-    -file: Chapter1/tutorial1.md
+    - file: Chapter1/tutorial1.md
       sections:
       - file: Chapter1/Tutorials/Gridap_tutorial_1.ipynb
 
