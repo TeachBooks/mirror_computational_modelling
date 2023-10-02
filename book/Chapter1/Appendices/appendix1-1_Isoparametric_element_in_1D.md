@@ -1,9 +1,9 @@
-# 1.7. Isoparametric element in 1D
+# A1.1. Isoparametric element in 1D
 
 Considering a mesh using finite elements, each cell can have a unique shape and orientation. However, when performing numerical integration, it is preferable to define the selected integration scheme on a reference element and at the same reference cell, define the shape functions.
 Then a special technique is applied in order to bypass the need to prescribe several integration domains. This technique is commonly used in software using FEM and is called isoparametric mapping.
 
-## Why do we need isoparametric mapping?
+## A1.1.1 Why do we need isoparametric mapping?
 
 Let's consider a linear 3-node element with the nodes located in x=2, x=4 and x=6, respectivelly.
 
@@ -17,7 +17,7 @@ For an element with three nodes, there are three associated shape functions whic
 
 ```{figure} .././images/Chapter1/1_7_1.png
 ---
-height: 200px
+height: 300px
 name: 1_7_1
 ---
 Linear 3-node element.
@@ -48,7 +48,7 @@ The next step is to link this reference element with an actual element in physic
 
 At this point it is useful to recall that we need this mapping in order to define the element's stiffness matrix, which involves integration over the element domain and derivatives of the shape functions in the global coordinate system.
 
-## How to implement isoparametric mapping?
+## A1.1.2 How to implement isoparametric mapping?
 
 The first step is to construct the relation between x and $ξ$ with the shape functions.
 
@@ -60,29 +60,91 @@ We parameterise the mapping of coordinates similarly to the unknown fields {u}.
 
 ```{figure} .././images/Chapter1/1_7_4.png
 ---
-height: 200px
+height: 350px
 name: 1_7_4
 ---
 Mapping process between the two coordinate systems.
 ```
 
-The next step is to calculate the derivatives of the shape functions w.r.t. x- coordinate without the need to defeine the shape functions in terms of the x- coordinate.
+The next step is to calculate the derivatives of the shape functions w.r.t. x- coordinate. Here, the shape functions themselves do not need to be defined in terms of x, as the chain rule is used.
 
-% Add Equation 
-
-Following, we must integrate first on the x- coordinate and then on the coordinates of the reference element.
-
-% Add Equation 
-% Add Equation 
+$$ \frac{\partial N_i}{\partial x} = \frac {1}{J} \, \frac {\partial N_i}{\partial x} $$
 
 
-Stiffness matrix for the Poisson Equation
+where  J is the Jacobian:
+$$ J = \frac {\partial x} {\partial ξ}  = \sum_{i=1}^{n-node}  \frac {\partial N_i} {\partial ξ}  x_i $$
 
-% Add Equations 
+Following, we integrate first on the x- coordinate and then on the coordinates of the reference element.
+
+At the transformation of the integral, the same Jacobian appears, in absolute value.
+
+Integraton is performed as follows
+
+$$ \int_{x_1}^{x_3} f \, dx = \int_{-1}^{1} f |J| \, dξ$$
+
+Then numerical integration is performed using $ξ_i$ and $w_i$ as they were defined on the integration scheme of the reference element.
+
+$$ \int_{-1}^{1} f |J| \, dξ \approx \sum_{i=1}^{n- ip} f(ξ_i)  |J(ξ_i)| w_i $$
 
 
 
-## Recap
+##### Example 
+
+```{figure} .././images/Chapter1/1_7_5.png
+---
+height: 300px
+name: 1_7_5
+---
+Mapping process between the two coordinate systems.
+```
+
+
+| | | 
+| --- | --- |
+|$  N_1= \frac{1 }{2} ξ^2 - \frac{1 }{2} ξ  $| $x_1=2$|
+|$  N_2= 1 - ξ^2$ | $x_2=4$|
+|$  N_3=\frac{1 }{2} ξ^2 + \frac{1 }{2} ξ $ | $x_3=6$|
+
+- Mapping 
+  
+$$ x= N_1 x_1 + N_2 x_2 +N_3 x_3 = 4+2ξ $$
+
+- Derivatives
+  
+$$  J= \frac{\partial N_1}{\partial ξ}   x_1 +  \frac{\partial N_2}{\partial ξ}   x_2    + \frac{\partial N_3}{\partial ξ}   x_3  = 2    $$
+
+
+$$  \frac{\partial N_1}{\partial x} = \frac{1}{2} \frac{\partial N_1}{\partial ξ} $$
+
+## 1.7.3 Stiffness matrix of a 3-node element
+
+$$ \mathbf{K}^e = \int_{Ω^e} \mathbf{B}^T ν \mathbf{B} dΩ   $$
+
+$$ \mathbf{B} = \left[  \frac {\partial N_1}{\partial x}, \frac {\partial N_2}{\partial x}, \frac {\partial N_3}{\partial x} \right] $$ 
+
+Every entry can be integrated separately 
+
+$$ \mathbf{K_{ij} ^e} = \int_{x_1}^{x_3} \frac{\partial N_i}{\partial x} ν  \frac{\partial N_j}{\partial x} dx $$
+
+with isoparametric mapping 
+
+$$ \frac{\partial N_i}{\partial x} = \frac {1}{J} \frac{\partial N_i}{\partial ξ} $$
+
+$$ \int_{x_1}^{x_3} f \, dx = \int_{-1}^{1} f |J| \, dξ$$
+
+Substitution gives 
+
+
+$$ \mathbf{K_{ij} ^e} = \int_{-1}^{1} \frac {1}{J} \frac{\partial N_i}{\partial ξ} ν \frac {1}{J} \frac{\partial N_j}{\partial ξ} |J| dξ =  \int_{-1}^{1} \frac {1}{|J|} \frac{\partial N_i}{\partial ξ} ν  \frac{\partial N_j}{\partial ξ} dξ $$
+
+
+Note that at the left hand side of the equation J appears three times. For the 1D case, this is simplified as you can see, and J appears only once at the right-hand side of the equation. 
+
+J is a measure of the element length, so we see that the stiffness matrix is inversely proportional to the element's length.
+
+In the 2D case a similar operation exists, however in that case J is a matrix.
+
+### Recap
 
 Isoparametric elements are used in finite element software. In this case shape functions are formed in a simple element configuration (unit length side and width sides aligned with the coordinate system). 
 
