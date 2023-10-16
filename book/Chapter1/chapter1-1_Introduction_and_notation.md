@@ -1,10 +1,10 @@
-# 1.1. Introduction  
+# Introduction  
 
 In this chapter we will introduce all the steps that are usually followed to solve a PDE using the FE method, from the definition of the PDE to the solution of a linear system of equations. To make the learning curve ease, we start with a simple linear static problem in 1 dimension (1D).
 
 <!-- For this purpose, both linear and non-linear problems will be demonstrated. The FEM is a broadly used numerical tool that solves PDEs. The areas of application range from solid and structural mechanics to fluid mechanics. In recent years the application of such a method for solving complex physical phenomena end geometries is receiving more attention and is more frequently applied are it is bound with computational power. To be more specific, when a domain is discretised using FEM, a system of linear equations is built. Then, this matrix is solved numerically, using the available computational power. -->
 
-## 1.1.1 Problem setting and notation
+## Problem setting and notation
 
 The general goal of the FE method is to convert PDEs into a form which we, or rather a computer, can solve. The reason for doing this is because it allows a PDE with no analytical solution for the full domain, to be approximated by solving it on smaller 'elements'. This *discretization* into several elements enables us to solve the problems in irregular geometries, different materials, dynamic effects, jumps or complex changes in geometry, ...
 
@@ -58,7 +58,7 @@ For smooth enough functions, $u(x)$, as we increase the number of evaluation poi
 In this book you will learn how to find approximate solutions like $\tilde{u}_N(x)$ by using the FE method. 
 ```
 
-## 1.1.2 Notation
+## Notation
 
 In these notes we will use the following notation, see Figure {numref}`1_1_2`: 
 * $u_i:=u(x_i)$, the function evaluated at location $x_i$. 

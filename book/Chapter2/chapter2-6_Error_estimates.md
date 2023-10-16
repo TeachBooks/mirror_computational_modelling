@@ -1,1 +1,3 @@
-# 2.6 Error Estimates
+# Error Estimates
+
+text

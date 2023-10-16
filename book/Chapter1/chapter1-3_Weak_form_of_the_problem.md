@@ -1,7 +1,7 @@
-# 1.3. Weak form of the Problem
+# Weak form of the Problem
 
 
-### 1.3.1 Derivation of the weak form
+## Derivation of the weak form
 In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. One of the key aspects of the FE method is that we do not seek a nodally exact approximation, but an approximation that minimizes certain energy functional. This is why we aim at finding solutions in a *weak* or *variational* sense, which means that the FE solution might not be nodally exact, but it is the solution that minimizes the global energy of the system.
 
 In practice, the weak form of the problem is derived by multiplying the strong form by a weight function and then integrate by parts. In this manner, the order of derivatives appearing in the equations is reduced and the resulting equation facilitates a more convenient numerical solution. The first step is premultiplication of left hand side and right hand side with a weight function $w(x)$ and integrating over the domain:
@@ -22,7 +22,7 @@ name: 1_3_1
 ---
 Strong form to weak form 
 ```
-### 1.3.2 Boundary Conditions 
+## Boundary Conditions 
 
 To complete the problem, boundary conditions must be specified. We also need to derive a weak form for the boundary conditions. For the Dirichlet boundary condition, this is satisfied by construction. For the Neumann boundary condition we need to ensure that it is satisfied for the weak form of the problem, for any allowable weight function at x=L.
 
