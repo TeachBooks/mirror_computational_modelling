@@ -14,12 +14,26 @@ chapters:
   - file: Chapter1/chapter1-5_Implementation
   - file: Chapter1/Appendices/appendix1-0
     sections:
-    - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D.md
-    - file: Chapter1/Appendices/appendix1-2_Numerical_Integration.md
-- file: Chapter2/chapter2-0
-  sections: 
-  - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
-  - file: Chapter2/chapter2-2_Well-posedness_of_the_variational_problem
+    - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D
+    - file: Chapter1/Appendices/appendix1-2_Numerical_Integration
+
+# - file: Chapter2/chapter2-0
+#   sections: 
+#   - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
+#   - file: Chapter2/chapter2-2_Well-posedness_of_the_variational_problem
+#   - file: Chapter2/chapter2-3_Well-posedness_of_the_discrete_problem
+#   - file: Chapter2/chapter2-4_Galerkin_orthogonality
+#   - file: Chapter2/chapter2-5_Convergence
+#   - file: Chapter2/chapter2-6_Error_estimates
+
+- file: Chapter3/chapter3-0
+  sections:
+  - file: Chapter3/chapter3-1_1D_Problems
+  - file: Chapter3/chapter3-2_2D_3D_Problems
+  - file: Chapter3/appendix3-0
+    sections:
+    - file: Chapter3/Appendix_3-1_Linear_solvers
+
 
 # parts:
 #   - caption: 1. Introduction to Finite Elements - 1D Laplacian
