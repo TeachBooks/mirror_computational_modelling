@@ -1,59 +1,79 @@
 format: jb-book
 root: intro
 
-parts:
-  - caption: 1. Introduction to Finite Elements - 1D Laplacian
-    chapters: 
-    - file: Chapter1/chapter1-1_Introduction_and_notation
-    - file: Chapter1/chapter1-2_Strong_form_of_the_problem
-    - file: Chapter1/chapter1-3_Weak_form_of_the_problem.ipynb
-    - file: Chapter1/chapter1-4_Discrete_form.ipynb
-    - file: Chapter1/chapter1-5_Implementation.ipynb
-    - file: Chapter1/appendix1.md
-      sections:
-      - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D.md
-      - file: Chapter1/Appendices/appendix1-2_Numerical_integration.md
-    - file: Chapter1/exercise1.md
-      sections:
-      - file: Chapter1/Exercises/exercise1-1.md
-    - file: Chapter1/tutorial1.md
-      sections:
-      - file: Chapter1/Tutorials/Gridap_tutorial_1.ipynb
+options:
+  numbered: 2
 
-  - caption: 2. Introduction to numerical analysis of finite elements
-    chapters:
-    - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
-    - file: Chapter2/chapter2-2_Well-posedness_of_the variational_problem
-    - file: Chapter2/chapter2-3_Well-posedness_of_the_discrete_problem
-    - file: Chapter2/chapter2-4_ Galerkin_orthogonality
-    - file: Chapter2/chapter2-5_Convergence
-    - file: Chapter2/chapter2-6_Error_estimates
-  - caption: 3. Finite Elements for linear static problems in CEG Applications
-    chapters:
-    - file: Chapter3/chapter3-1_1D_Problems
-    - file: Chapter3/chapter3-2_2D_3D_Problems
-    - file: Chapter3/chapter3_Tutorial
-    - file: Chapter3/Appendix_3-1_Linear_solvers
-  - caption: 4. Finite Elements for linear dynamic problems in CEG applications
-    chapters:
-    - file: Chapter4/chapter4-1_Numerical_methods_for_ODEs
-    - file: Chapter4/chapter4-2_Dynamic_Problems_in_1D
-    - file: Chapter4/chapter4-3_Dynamic_problems_in_2D-3D
-    - file: Chapter4/chapter4-4_Modal_analysis
-  - caption: 5. Finite Elements for nonlinear problems in CEG applications
-    chapters:
-    - file: Chapter5/chapter5-1_Nonlinear_solvers
-    - file: Chapter5/chapter5-2_Geometrically_nonlinear_problems
-    - file: Chapter5/chapter5-3_Solids
-    - file: Chapter5/chapter5-4_Fluids
-    - file: Chapter5/chapter5_Tutorial
-  - caption: 6. Advanced topics on Finite Elements
-    chapters:
-    - file: Chapter6/chapter6-1_Unfitted_Finite_Elements
-    - file: Chapter6/chapter6-2_Surface_coupled_multiphysics_problems
-    - file: Chapter6/chapter6-3_Multiphysics
-    - file: Chapter6/chapter6-4_Multiscale_methods
-  - caption: 7. Codes
-    chapters:
-    - file: Chapter7/Gridap
-    - file: Chapter7/Pyjive
+chapters:
+- file: Chapter1/chapter1-0
+  sections:
+  - file: Chapter1/chapter1-1_Introduction_and_notation
+  - file: Chapter1/chapter1-2_Strong_form_of_the_problem
+  - file: Chapter1/chapter1-3_Weak_form_of_the_problem
+  - file: Chapter1/chapter1-4_Discrete_form
+  - file: Chapter1/chapter1-5_Implementation
+  - file: Chapter1/Appendices/appendix1-0
+    sections:
+    - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D.md
+    - file: Chapter1/Appendices/appendix1-2_Numerical_Integration.md
+- file: Chapter2/chapter2-0
+  sections: 
+  - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
+  - file: Chapter2/chapter2-2_Well-posedness_of_the_variational_problem
+
+# parts:
+#   - caption: 1. Introduction to Finite Elements - 1D Laplacian
+#     chapters: 
+#     - file: Chapter1/chapter1-1_Introduction_and_notation
+#     - file: Chapter1/chapter1-2_Strong_form_of_the_problem
+#     - file: Chapter1/chapter1-3_Weak_form_of_the_problem.ipynb
+#     - file: Chapter1/chapter1-4_Discrete_form.ipynb
+#     - file: Chapter1/chapter1-5_Implementation.ipynb
+#     - file: Chapter1/appendix1.md
+#       sections:
+#       - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D.md
+#       - file: Chapter1/Appendices/appendix1-2_Numerical_integration.md
+#     - file: Chapter1/exercise1.md
+#       sections:
+#       - file: Chapter1/Exercises/exercise1-1.md
+#     - file: Chapter1/tutorial1.md
+#       sections:
+#       - file: Chapter1/Tutorials/Gridap_tutorial_1.ipynb
+
+#   - caption: 2. Introduction to numerical analysis of finite elements
+#     chapters:
+#     - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
+#     - file: Chapter2/chapter2-2_Well-posedness_of_the variational_problem
+#     - file: Chapter2/chapter2-3_Well-posedness_of_the_discrete_problem
+#     - file: Chapter2/chapter2-4_ Galerkin_orthogonality
+#     - file: Chapter2/chapter2-5_Convergence
+#     - file: Chapter2/chapter2-6_Error_estimates
+#   - caption: 3. Finite Elements for linear static problems in CEG Applications
+#     chapters:
+#     - file: Chapter3/chapter3-1_1D_Problems
+#     - file: Chapter3/chapter3-2_2D_3D_Problems
+#     - file: Chapter3/chapter3_Tutorial
+#     - file: Chapter3/Appendix_3-1_Linear_solvers
+#   - caption: 4. Finite Elements for linear dynamic problems in CEG applications
+#     chapters:
+#     - file: Chapter4/chapter4-1_Numerical_methods_for_ODEs
+#     - file: Chapter4/chapter4-2_Dynamic_Problems_in_1D
+#     - file: Chapter4/chapter4-3_Dynamic_problems_in_2D-3D
+#     - file: Chapter4/chapter4-4_Modal_analysis
+#   - caption: 5. Finite Elements for nonlinear problems in CEG applications
+#     chapters:
+#     - file: Chapter5/chapter5-1_Nonlinear_solvers
+#     - file: Chapter5/chapter5-2_Geometrically_nonlinear_problems
+#     - file: Chapter5/chapter5-3_Solids
+#     - file: Chapter5/chapter5-4_Fluids
+#     - file: Chapter5/chapter5_Tutorial
+#   - caption: 6. Advanced topics on Finite Elements
+#     chapters:
+#     - file: Chapter6/chapter6-1_Unfitted_Finite_Elements
+#     - file: Chapter6/chapter6-2_Surface_coupled_multiphysics_problems
+#     - file: Chapter6/chapter6-3_Multiphysics
+#     - file: Chapter6/chapter6-4_Multiscale_methods
+#   - caption: 7. Codes
+#     chapters:
+#     - file: Chapter7/Gridap
+#     - file: Chapter7/Pyjive
