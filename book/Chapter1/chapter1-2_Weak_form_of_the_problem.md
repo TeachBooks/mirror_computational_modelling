@@ -48,7 +48,7 @@ $$ (1drodNeumann)
 
 Now we can replace equations {eq}`1drodDirichlet` and {eq}`1drodNeumann` into the weak form {eq}`1drod_weak`, and send to the righ-hand site the terms that do not depend on the unknown $u$. This leads us to the final weak form:
 
-$$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx = \int_0^Lwq\,dx + w(L)F,\quad\forall\quad w$$ (1drod_weak)
+$$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx = \int_0^Lwq\,dx + w(L)F,\quad\forall\quad w$$ (1drod_weak_final)
 
 <!-- - Link to virtual displacement -->
 
