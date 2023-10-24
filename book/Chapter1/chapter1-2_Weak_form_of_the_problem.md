@@ -1,6 +1,6 @@
 # Weak form of the Problem
 
-In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. One of the key aspects of the FE method is that we do not seek a nodally exact approximation, but an approximation that minimizes certain energy functional. This is why we aim at finding solutions in a *weak* or *variational* sense, which means that the FE solution might not be nodally exact, but it is the solution that minimizes the global energy of the system.
+In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. In some cases, the weak form can be given a physical intepretation. In solid mechanics, for instance, one can interpret the weak form as an expression for a minimization problem of an energy potential. The weak form is then also referred to as *variational form* in the sense that in the minimization problem a solution is found for which variations in the potential are equal to zero. Here, however, we follow a formal path that arrives at the weak form by recasting the strong form as an integral equation. 
 
 ```{figure} .././images/Chapter1/1_3_1.png
 ---
@@ -13,28 +13,45 @@ Strong form to weak form
 
 ## Derivation of the weak form
 
-In practice, the weak form of the problem is derived by multiplying the strong form by a test function and then integrate by parts the terms containing derivatives[^integration_by_parts]. In this manner, the order of derivatives appearing in the equations is reduced and the resulting form is symmetric (in general), facilitating a more efficient numerical solution. 
+In general, the weak form of the problem is derived by multiplying the strong form by a test function, integrating over the domain, and then applying integration by parts on the terms containing derivatives[^integration_by_parts]. In this manner, the order of derivatives appearing in the equations is reduced and the resulting form is symmetric (in general), facilitating a more efficient numerical solution.
 
 Let's put this in practice for the rod equation {eq}`1drod`. The first step is premultiplication of left hand side and right hand side with a test function $w(x)$ and integrating over the domain:
 
-$$ -\int_{0}^{L} wEA \frac{\partial^{2} u}{\partial x^{2}}\,dx = \int_0^Lwq\,dx,\quad\forall\quad w$$
+$$ -\int_{0}^{L} wEA \frac{\partial^{2} u}{\partial x^{2}}\,dx = \int_0^Lwq\,dx,\quad\forall\quad w$$ (integralform)
 
-The $\forall w$ means that the equality has to hold for all possible test functions $w$. Note that a solution of the *strong form* also satisfies this equation. 
+The $\forall w$ means that the equality has to hold for all possible test functions $w(x)$. Note that a solution of the *strong form* will indeed satisfy this equation for every function $w(x)$. Conversely, for any $u(x)$ that does not satisfy the strong form anywhere in the domain, it is possible to find a function $w(x)$ for which equation {eq}`integralform` does not hold.
 
 Next, integration by parts is used to get rid of the second order derivative in $u$:
 
-$$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx -w EA \left.\frac{\partial u}{\partial x}\right|_0^L = \int_0^Lwq\,dx,\quad\forall\quad w$$ (1drod_weak)
+$$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx -w EA \left[\frac{\partial u}{\partial x}\right]_0^L = \int_0^Lwq\,dx,\quad\forall\quad w$$ (1drod_weak)
 
-Note that after integrating by parts, a boundary term appears. This term is often used to enforce the boundary conditions, see next subsection.
+Note that after integrating by parts, a boundary term appears. 
+
+```(note)
+Recall the definition of integration by parts in 1D
+$$ \int_{0}^{L} \alpha\beta'\,dx = \left[\alpha\beta\right|_0^L-\int_{0}^{L} \alpha'\beta\,dx 
+$$
+Where the $'$ is used to indicate a derivative with respect to $x$. In our case, we have $\alpha=w$ and $\beta={\partial u}/{\partial x}$. 
+
+Note that this integration by parts definition is related to the product rule of differentiation, which says:
+$$
+(\alpha\beta)' = \alpha'\beta + \alpha\beta'
+$$
+```
 
 ## Boundary Conditions 
 
-We typically distinguish between two[^BC_types] type of boundary conditions:
+We typically distinguish between two[^BC_types] types of boundary conditions:
 
-- **Dirichlet** (or *essential*) boundary conditions, where we enforce the value of the solution. In that case $u=u_0$ at $x=0$, with $u_0=0$.
-- **Neumann** (or *natural*) boundary conditions, where we enforce the flux (or force). In that case $EA \frac{\partial u}{\partial x}=F$ at $x=L$, with $F=10$.
+- **Dirichlet** (or *essential*) boundary conditions, where we enforce the value of the solution. 
+- **Neumann** (or *natural*) boundary conditions, where we enforce the flux (or force). 
 
-To enforce Dirichlet boundary conditions we strongly[^weak_bc] prescribe the value of the solution and set the test function to zero at that boundary. This effectively means that the boundart term coming from the integration by parts evaluated at the Dirichlet boundary goes to zero.
+In the case introduced in the previous section (see Figure {numref}`1_5_1`), one boundary condition of each type is specified:
+
+- Dirichlet: $u=0$ at $x=0$
+- Neumann: $EA \frac{\partial u}{\partial x}=10$ at $x=L$
+
+To enforce Dirichlet boundary conditions we strongly[^weak_bc] prescribe the value of the solution and set the test function to zero at that boundary. This effectively means that the boundary term coming from the integration by parts evaluated at the Dirichlet boundary goes to zero.
 
 $$
 {\color{red}w} EA \left.\frac{\partial u}{\partial x}\right|_{x=0} = {\color{red}0} EA \left.\frac{\partial u}{\partial x}\right|_{x=0} = 0
