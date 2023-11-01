@@ -1,6 +1,6 @@
 # Weak form of the Problem
 
-In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. In some cases, the weak form can be given a physical intepretation. In solid mechanics, for instance, one can interpret the weak form as an expression for a minimization problem of an energy potential. The weak form is then also referred to as *variational form* in the sense that in the minimization problem a solution is found for which variations in the potential are equal to zero. Here, however, we follow a formal path that arrives at the weak form by recasting the strong form as an integral equation. 
+In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. In some cases, the weak form can be given a physical intepretation. In solid mechanics, for instance, one can interpret the weak form as an expression for a minimization problem of an energy potential. The weak form is then also referred to as *variational form* in the sense that in the minimization problem a solution is found for which variations in the potential are equal to zero. Here, however, we follow a formal route that arrives at the weak form by recasting the strong form as an integral equation without physical considerations. 
 
 ```{figure} .././images/Chapter1/1_3_1.png
 ---
@@ -67,6 +67,10 @@ Now we can replace equations {eq}`1drodDirichlet` and {eq}`1drodNeumann` into th
 
 $$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx = \int_0^Lwq\,dx + w(L)F,\quad\forall\quad w$$ (1drod_weak_final)
 
+## Test yourself
+
+<iframe src="https://tudelft.h5p.com/content/1292102792292432297/embed" aria-label="Natural boundary conditions" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+
 <!-- - Link to virtual displacement -->
 
 [^integration_by_parts]: Note that this is not a general rule. There are cases of terms containing derivatives that might not be integrated by parts, typically non-symmetric terms.
@@ -74,3 +78,4 @@ $$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,d
 [^BC_types]: We can also find Robin type of boundary conditions, which are a mix between Dirichlet and Neumann type, for example: $\alpha u + EA \frac{\partial u}{\partial x}=f$.
 
 [^weak_bc]: We can also enforce Dirichlet boundary conditions in a *weak* sense, by introducing additional terms on the weak form that penalize the difference between the solution and the prescribed value at the boundary. This will not be covered in this chapter.
+
