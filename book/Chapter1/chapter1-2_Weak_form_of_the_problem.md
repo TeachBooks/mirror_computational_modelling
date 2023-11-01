@@ -27,7 +27,7 @@ $$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,d
 
 Note that after integrating by parts, a boundary term appears. 
 
-```(note)
+```{admonition} Integration by parts
 Recall the definition of integration by parts in 1D
 $$ \int_{0}^{L} \alpha\beta'\,dx = \left[\alpha\beta\right|_0^L-\int_{0}^{L} \alpha'\beta\,dx 
 $$
