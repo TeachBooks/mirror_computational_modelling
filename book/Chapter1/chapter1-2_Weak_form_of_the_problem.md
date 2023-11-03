@@ -67,9 +67,9 @@ Now we can replace equations {eq}`1drodDirichlet` and {eq}`1drodNeumann` into th
 
 $$ \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx = \int_0^Lwq\,dx + w(L)F,\quad\forall\quad w$$ (1drod_weak_final)
 
-**Quiz questions**
-
+:::{card} Quiz questions
 <iframe src="https://tudelft.h5p.com/content/1292102792292432297/embed" aria-label="Natural boundary conditions" width="1088" height="637" frameborder="0" allowfullscreen="allowfullscreen" allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe><script src="https://tudelft.h5p.com/js/h5p-resizer.js" charset="UTF-8"></script>
+:::
 
 <!-- - Link to virtual displacement -->
 
