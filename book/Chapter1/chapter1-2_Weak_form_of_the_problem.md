@@ -15,7 +15,7 @@ Strong form to weak form
 
 In general, the weak form of the problem is derived by multiplying the strong form by a test function, integrating over the domain, and then applying integration by parts on the terms containing derivatives[^integration_by_parts]. In this manner, the order of derivatives appearing in the equations is reduced and the resulting form is symmetric (in general), facilitating a more efficient numerical solution.
 
-Let's put this in practice for the rod equation {eq}`1drod`. The first step is premultiplication of left hand side and right hand side with a test function $w(x)$ and integrating over the domain:
+Let's put this in practice for the rod equation {eq}`1drod`. The first step is premultiplication of left hand side and right hand side with a test function $w(x)$ and integrating over the domain. Assuming constant $EA$, we get:
 
 $$ -\int_{0}^{L} wEA \frac{\partial^{2} u}{\partial x^{2}}\,dx = \int_0^Lwq\,dx,\quad\forall\quad w$$ (integralform)
 
