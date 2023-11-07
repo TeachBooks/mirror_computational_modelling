@@ -1,4 +1,4 @@
-# Weak form of the Problem
+# Weak form of the problem
 
 In the FE method, before the problem is discretized, the governing equation is rewritten in the so-called **weak form**. In some cases, the weak form can be given a physical intepretation. In solid mechanics, for instance, one can interpret the weak form as an expression for a minimization problem of an energy potential. The weak form is then also referred to as *variational form* in the sense that in the minimization problem a solution is found for which variations in the potential are equal to zero. Here, however, we follow a formal route that arrives at the weak form by recasting the strong form as an integral equation without physical considerations. 
 
@@ -42,14 +42,14 @@ $$
 $$
 ```
 
-## Boundary Conditions 
+## Boundary conditions 
 
 We typically distinguish between two[^BC_types] types of boundary conditions:
 
 - **Dirichlet** (or *essential*) boundary conditions, where we enforce the value of the solution. 
 - **Neumann** (or *natural*) boundary conditions, where we enforce the flux (or force). 
 
-In the case introduced in the previous section (see Figure {numref}`barDefinition`), one boundary condition of each type is specified:
+In the case introduced in the previous section (see Figure {numref}`rodDefinition`), one boundary condition of each type is specified:
 
 - Dirichlet: $u=0$ at $x=0$
 - Neumann: $EA \frac{\partial u}{\partial x}=10$ at $x=L$
