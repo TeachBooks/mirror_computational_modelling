@@ -29,11 +29,14 @@ Note that after integrating by parts, a boundary term appears.
 
 ```{admonition} Integration by parts
 Recall the definition of integration by parts in 1D
-$$ \int_{0}^{L} \alpha\beta'\,dx = \left[\alpha\beta\right|_0^L-\int_{0}^{L} \alpha'\beta\,dx 
+
+$$ \int_{0}^{L} \alpha\beta'\,dx = \left[\alpha\beta\right]_0^L-\int_{0}^{L} \alpha'\beta\,dx 
 $$
+
 Where the $'$ is used to indicate a derivative with respect to $x$. In our case, we have $\alpha=w$ and $\beta={\partial u}/{\partial x}$. 
 
 Note that this integration by parts definition is related to the product rule of differentiation, which says:
+
 $$
 (\alpha\beta)' = \alpha'\beta + \alpha\beta'
 $$
