@@ -20,5 +20,5 @@ The general scheme for FE problems is as follows:
 4. Assemble the matrices to obtain the equations for the full solution
 5. Solve a system of equations
 
-We will explain this for the case of a rod that is loaded in its axial direction. 
+We will explain this for the case of a rod that is loaded in its axial direction as an application of the 1-dimensional Poisson equation. Note that the Laplacian operator (i.e. the second derivative) in the Poisson equation appears in many PDEs in various fields of engineering. 
 
