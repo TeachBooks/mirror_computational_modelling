@@ -52,7 +52,7 @@ We typically distinguish between two[^BC_types] types of boundary conditions:
 In the case introduced in the previous section (see Figure {numref}`rodDefinition`), one boundary condition of each type is specified:
 
 - Dirichlet: $u=0$ at $x=0$
-- Neumann: $EA \frac{\partial u}{\partial x}=10$ at $x=L$
+- Neumann: $EA \frac{\partial u}{\partial x}=F$ at $x=L$
 
 To enforce Dirichlet boundary conditions we strongly[^weak_bc] prescribe the value of the solution and set the test function to zero at that boundary. This effectively means that the boundary term coming from the integration by parts evaluated at the Dirichlet boundary goes to zero.
 
