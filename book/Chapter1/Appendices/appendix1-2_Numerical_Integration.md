@@ -73,10 +73,10 @@ Gauss Integration points
 
 
 | Number of points $n_{ip} $| Position $ξ_i$ | weight | Polynomial order $p$|
-| --- | --- | --- | --- |
-| 1 | 0 | 2 | 0 or 1|
-| 2 |   $-1/\sqrt{3} ,  1/\sqrt{3} $ |  1, 1 | 2 or 3|
-| 3 | $-3/\sqrt{5}, 0, 3/\sqrt{5}$ |  5/9, 8/9, 5/9 | 4 or 5|
+| :---: | :---: | :---: | :---: |
+| $1$ | $0$ | $2$ | $0$ or $1$ |
+| $2$ |   $-\frac{1}{\sqrt{3}} ,  \frac{1}{\sqrt{3}} $ |  $1, 1$ | $2$ or $3$ |
+| $3$ | $-\frac{3}{\sqrt{5}}, 0, \frac{3}{\sqrt{5}}$ |  $\frac{5}{9}, \frac{8}{9}, \frac{5}{9}$ | $4$ or $5$ |
 
 
 
