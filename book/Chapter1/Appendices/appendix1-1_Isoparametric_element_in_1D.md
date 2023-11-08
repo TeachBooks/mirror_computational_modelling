@@ -15,7 +15,7 @@ At node i, the associated shape function must be equal to 1 and zero at the othe
 
 For an element with three nodes, there are three associated shape functions which can be solved for the coefficients $a_i$, $b_i$, $c_i$
 
-```{figure} .././images/Chapter1/1_7_1.png
+```{figure} ../.././images/Chapter1/1_7_1.png
 ---
 height: 300px
 name: 1_7_1
@@ -26,7 +26,7 @@ Linear 3-node element.
 
 However this is not often the case in the implementation of the FEM method, where the shape functions are defined on a reference element. Then, all the elements of the mesh have the same "reference element". This reference element is defined in an auxiliary coordinate system.
 
-```{figure} .././images/Chapter1/1_7_2.png
+```{figure} ../.././images/Chapter1/1_7_2.png
 ---
 height: 200px
 name: 1_7_2
@@ -36,7 +36,7 @@ The new reference cordinate system.
 
 In this new coordinate system, we redefine the shape functions and the integration points.
 
-```{figure} .././images/Chapter1/1_7_3.png
+```{figure} ../.././images/Chapter1/1_7_3.png
 ---
 height: 200px
 name: 1_7_3
@@ -58,7 +58,7 @@ In isoparametrix mapping we construct the relation between the two coordinate sy
 
 We parameterise the mapping of coordinates similarly to the unknown fields {u}.
 
-```{figure} .././images/Chapter1/1_7_4.png
+```{figure} ../.././images/Chapter1/1_7_4.png
 ---
 height: 350px
 name: 1_7_4
@@ -90,7 +90,7 @@ $$ \int_{-1}^{1} f |J| \, dξ \approx \sum_{i=1}^{n- ip} f(ξ_i)  |J(ξ_i)| w_i 
 
 ##### Example 
 
-```{figure} .././images/Chapter1/1_7_5.png
+```{figure} ../.././images/Chapter1/1_7_5.png
 ---
 height: 300px
 name: 1_7_5

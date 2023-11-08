@@ -31,7 +31,7 @@ $$ \mathbf{K}_e = \int_{Ω^ε}\ f(x,y)dΩ   =  \sum_{i=1}^{n_ip} ω_i f(x,y) $$
 
 The funciton **f** can be evaluated at a selected number of points, with coordinates x, y and multiplied by weights $ ω_i $
 
-```{figure} .././images/Chapter1/1_8_1.png
+```{figure} ../.././images/Chapter1/1_8_1.png
 ---
 height: 200px
 name: 1_8_1
@@ -62,7 +62,7 @@ $$ p= 2 n_{ip} -1 $$
 This information can be summarised in the following manner. 
 
 
-```{figure} .././images/Chapter1/1_8_2.png
+```{figure} ../.././images/Chapter1/1_8_2.png
 ---
 height: 300px
 name: 1_8_2
@@ -85,7 +85,7 @@ Gauss Integration points
 By using the information above, on te required integration points for 2nd order polynomials, one can decide the Gauss points needed for a 3-node element with the accompanying shape functions.
 
 
-```{figure} .././images/Chapter1/1_7_3.png
+```{figure} ../.././images/Chapter1/1_7_3.png
 ---
 height: 200px
 name: 1_8_3
