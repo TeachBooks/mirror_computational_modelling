@@ -24,14 +24,14 @@ $$ Β1= \frac{1}{x_2-x_1}, Β2= \frac{-1}{x_2-x_1} $$
 $$ \mathbf{K}_e = \frac{v}{x_2-x_1}\left[\begin{matrix}1 & -1 \\ -1 & 1\end{matrix}\right] $$
 
 
-In practice, numerical integration is performed. The idea behind numerical integration is that an integrl can be replaced by a weighted sum, as follows:
+In practice, numerical integration is performed. The idea behind numerical integration is that an integral can be replaced by a weighted sum, as follows:
 
 
 $$ \mathbf{K}_e = \int_{Ω^ε}\ f(x,y)dΩ   =  \sum_{i=1}^{n_ip} ω_i f(x,y) $$
 
 The funciton **f** can be evaluated at a selected number of points, with coordinates x, y and multiplied by weights $ ω_i $
 
-```{figure} .././images/Chapter1/1_8_1.png
+```{figure} ../.././images/Chapter1/1_8_1.png
 ---
 height: 200px
 name: 1_8_1
@@ -62,7 +62,7 @@ $$ p= 2 n_{ip} -1 $$
 This information can be summarised in the following manner. 
 
 
-```{figure} .././images/Chapter1/1_8_2.png
+```{figure} ../.././images/Chapter1/1_8_2.png
 ---
 height: 300px
 name: 1_8_2
@@ -73,19 +73,19 @@ Gauss Integration points
 
 
 | Number of points $n_{ip} $| Position $ξ_i$ | weight | Polynomial order $p$|
-| --- | --- | --- | --- |
-| 1 | 0 | 2 | 0 or 1|
-| 2 |   $-1/\sqrt{3} ,  1/\sqrt{3} $ |  1, 1 | 2 or 3|
-| 3 | $-3/\sqrt{5}, 0, 3/\sqrt{5}$ |  5/9, 8/9, 5/9 | 4 or 5|
+| :---: | :---: | :---: | :---: |
+| $1$ | $0$ | $2$ | $0$ or $1$ |
+| $2$ |   $-\frac{1}{\sqrt{3}} ,  \frac{1}{\sqrt{3}} $ |  $1, 1$ | $2$ or $3$ |
+| $3$ | $-\frac{3}{\sqrt{5}}, 0, \frac{3}{\sqrt{5}}$ |  $\frac{5}{9}, \frac{8}{9}, \frac{5}{9}$ | $4$ or $5$ |
 
 
 
-## Example in 3-node element
+### Example in 3-node element
 
 By using the information above, on te required integration points for 2nd order polynomials, one can decide the Gauss points needed for a 3-node element with the accompanying shape functions.
 
 
-```{figure} .././images/Chapter1/1_7_3.png
+```{figure} ../.././images/Chapter1/1_7_3.png
 ---
 height: 200px
 name: 1_8_3
