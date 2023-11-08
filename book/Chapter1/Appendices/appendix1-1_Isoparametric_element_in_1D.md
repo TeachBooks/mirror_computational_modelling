@@ -3,7 +3,7 @@
 Considering a mesh using finite elements, each cell can have a unique shape and orientation. However, when performing numerical integration, it is preferable to define the selected integration scheme on a reference element and at the same reference cell, define the shape functions.
 Then a special technique is applied in order to bypass the need to prescribe several integration domains. This technique is commonly used in software using FEM and is called isoparametric mapping.
 
-## A1.1.1 Why do we need isoparametric mapping?
+### Why do we need isoparametric mapping?
 
 Let's consider a linear 3-node element with the nodes located in x=2, x=4 and x=6, respectivelly.
 
@@ -48,11 +48,11 @@ The next step is to link this reference element with an actual element in physic
 
 At this point it is useful to recall that we need this mapping in order to define the element's stiffness matrix, which involves integration over the element domain and derivatives of the shape functions in the global coordinate system.
 
-## A1.1.2 How to implement isoparametric mapping?
+### How to implement isoparametric mapping?
 
 The first step is to construct the relation between x and $ξ$ with the shape functions.
 
-$$ x= \sum_{i=1}^{n-node}\N_i(\xi) x_i $$
+$$ x= \sum_{i=1}^{n-node}N_i(\xi) x_i $$
 
 In isoparametrix mapping we construct the relation between the two coordinate systems with the shape functions.
 
@@ -88,7 +88,7 @@ $$ \int_{-1}^{1} f |J| \, dξ \approx \sum_{i=1}^{n- ip} f(ξ_i)  |J(ξ_i)| w_i 
 
 
 
-##### Example 
+### Example 
 
 ```{figure} ../.././images/Chapter1/1_7_5.png
 ---
@@ -116,7 +116,7 @@ $$  J= \frac{\partial N_1}{\partial ξ}   x_1 +  \frac{\partial N_2}{\partial ξ
 
 $$  \frac{\partial N_1}{\partial x} = \frac{1}{2} \frac{\partial N_1}{\partial ξ} $$
 
-## 1.7.3 Stiffness matrix of a 3-node element
+### Stiffness matrix of a 3-node element
 
 $$ \mathbf{K}^e = \int_{Ω^e} \mathbf{B}^T ν \mathbf{B} dΩ   $$
 
@@ -158,14 +158,14 @@ Things to remember about isoparametric mapping:
 
 In practice, the point (x, y) in the cartesian plane is represented as follows:
 
-$$ x= \sum_{i=1}^{nn}\N_i(\xi,\eta) x_i $$
-$$ y= \sum_{i=1}^{nn} \N_i(\xi,\eta) y_i $$
+$$ x= \sum_{i=1}^{nn}N_i(\xi,\eta) x_i $$
+$$ y= \sum_{i=1}^{nn} N_i(\xi,\eta) y_i $$
 
 where (ξ,η) are known as the natural coordinates and nn is the number of nodes of an element.
 
 By using isoparametric mapping, shape functions can be defined on simple shapes, such as the bi-unit square. For example, the displacement  in the x direction at a point is given by:
 
-$$ u^h= \sum_{i=1}^{nn}\N_i(ξ,η) α_{ix} $$
+$$ u^h= \sum_{i=1}^{nn}N_i(ξ,η) α_{ix} $$
 
 
 

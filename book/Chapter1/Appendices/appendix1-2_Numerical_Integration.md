@@ -24,7 +24,7 @@ $$ Β1= \frac{1}{x_2-x_1}, Β2= \frac{-1}{x_2-x_1} $$
 $$ \mathbf{K}_e = \frac{v}{x_2-x_1}\left[\begin{matrix}1 & -1 \\ -1 & 1\end{matrix}\right] $$
 
 
-In practice, numerical integration is performed. The idea behind numerical integration is that an integrl can be replaced by a weighted sum, as follows:
+In practice, numerical integration is performed. The idea behind numerical integration is that an integral can be replaced by a weighted sum, as follows:
 
 
 $$ \mathbf{K}_e = \int_{Ω^ε}\ f(x,y)dΩ   =  \sum_{i=1}^{n_ip} ω_i f(x,y) $$
@@ -80,7 +80,7 @@ Gauss Integration points
 
 
 
-## Example in 3-node element
+### Example in 3-node element
 
 By using the information above, on te required integration points for 2nd order polynomials, one can decide the Gauss points needed for a 3-node element with the accompanying shape functions.
 
