@@ -30,7 +30,12 @@ chapters:
 
 - file: Chapter3/chapter3-0
   sections:
-  - file: Chapter3/chapter3-1_1D_Problems.ipynb
+  - file: Chapter3/chapter3-1_1D_Problems.md
+    sections:
+    - file: Chapter3/chapter3-1-1_Rod.ipynb
+    - file: Chapter3/chapter3-1-2_EB.ipynb
+    - file: Chapter3/chapter3-1-3_TS.ipynb
+    - file: Chapter3/chapter3-1-4_SpaceFrame.ipynb
   - file: Chapter3/chapter3-2_2D_3D_Problems
   - file: Chapter3/appendix3-0
     sections:
