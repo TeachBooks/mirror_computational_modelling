@@ -1,6 +1,6 @@
 # General settings
 title: CiTG Jupyter Book template
-author:  
+author:  Community
 logo: images/TUDelft_logo_rgb.png
 
 # Execute notebooks when building

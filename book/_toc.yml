@@ -1,5 +1,5 @@
 format: jb-book
-root: intro
+root: intro.md
 
 options:
   numbered: 2
@@ -28,18 +28,18 @@ chapters:
 #   - file: Chapter2/chapter2-5_Convergence
 #   - file: Chapter2/chapter2-6_Error_estimates
 
-- file: Chapter3/chapter3-0
-  sections:
-  - file: Chapter3/chapter3-1_1D_Problems.md
-    sections:
-    - file: Chapter3/chapter3-1-1_Rod.ipynb
-    - file: Chapter3/chapter3-1-2_EB.ipynb
-    - file: Chapter3/chapter3-1-3_TS.ipynb
-    - file: Chapter3/chapter3-1-4_SpaceFrame.ipynb
-  - file: Chapter3/chapter3-2_2D_3D_Problems
-  - file: Chapter3/appendix3-0
-    sections:
-    - file: Chapter3/Appendix_3-1_Linear_solvers
+# - file: Chapter3/chapter3-0
+  # sections:
+  # - file: Chapter3/chapter3-1_1D_Problems
+  #   sections:
+  #   - file: Chapter3/chapter3-1-1_Rod.ipynb
+  #   - file: Chapter3/chapter3-1-2_EB.ipynb
+  #   - file: Chapter3/chapter3-1-3_TS.ipynb
+  #   - file: Chapter3/chapter3-1-4_SpaceFrame.ipynb
+  # - file: Chapter3/chapter3-2_2D_3D_Problems
+  # - file: Chapter3/appendix3-0
+  #   sections:
+  #   - file: Chapter3/Appendix_3-1_Linear_solvers
 
 
 # parts:
