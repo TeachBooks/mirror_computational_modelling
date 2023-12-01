@@ -15,8 +15,52 @@ There are several applications where this pde can be used to solve problems in s
 
 ## 3.2 Two dimensional continuum elasticity elements
 
+In two or more dimensions, each unknown field (such as displacement in each directions) in interpolated using polynomial shape functions. The displacement field for an element is given by: 
+
+$$ 
+u^h= \textbf{N} \ \textbf{α}_e  
+$$
+
+and the strain field is given by: 
+
+$$ 
+ε^h= \textbf{Β} \ \textbf{α}_e  
+$$
+
+The matrix N contains the element shape functions. In two dimentions it has the form : 
 
 
+$$  \textbf{N} = \begin{bmatrix}  
+N_1  & 0 & N_2 &  0 &... & N_{nn} & 0 \\
+0 &  N_1 & 0 & N_2 & ...& 0 &  N_{nn} \end{bmatrix}$$
+
+where $nn$ is the numbers of nodes of the element. 
+
+For two-dimensional problems, the matrix $ \textbf{B} $ has the form:
+
+$$ \textbf{B} = 
+\begin{bmatrix} 
+\frac{\partial{N_1}}{\partial{x}}  &  0 & \frac{\partial{N_2}}{\partial{x}} &  0 & ... &  \frac{N_{nn}}{\partial{x}}& 0 \\
+\
+\
+0 &   \frac{\partial{N_1}}{\partial{y}}   & 0 &  \frac{\partial{N_2}}{\partial{y}} & ... & 0 & \frac{\partial{N_{nn}}}{\partial{y}}  \\
+\
+\
+\
+\frac{\partial{N_1}}{\partial{y}} &  \frac{\partial{N_1}}{\partial{x}} &\frac{\partial{N_2}}{\partial{y}} & \frac{\partial{N_2}}{\partial{x}}&... & \frac{\partial{N_{nn}}}{\partial{y}} & \frac{N_{nn}}{\partial{x}} \\
+\end{bmatrix}
+$$
+
+The nodal degrees of freedom (normally one for each spatial dimension at each node for elasticity problems) are stores in a vector $ \alpha$
+
+For a two dimensional problem 
+
+$$ \textbf{α}_e=
+\begin{equation*}
+\begin{Bmatrix} α_{1 \ x} \\ α_{1 \ y} \\ α_{2 \ x} \\ α_{2 \ y} \\ . \\ . \\. \\ α_{nn \ x} \\α_{nn \ y}
+\end{Bmatrix}
+\end{equation*}
+$$
 
 ## 3.3. Governing Equations 
 
