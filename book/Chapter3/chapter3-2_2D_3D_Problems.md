@@ -1,19 +1,108 @@
 # 2D/3D Problems 
 
-## 3.1 Poisson Equation in 2D
+In this chapter, we will introduce finite element formulations for higher order problems. You have already seen 2D frame formulations, but there still the elements themselves were one-dimensional in nature. Now, we will focus on problems where the solution is a field in 2D (or 3D) space. This implies the elements and shape functions need to be different (e.g. triangular, quadrilateral, tetrahedral). We will start with the 2D Poisson equation and then move to 2D elasticity. Interestingly, both of these are generalizations of the 1D Poisson equation you have seen in Chapter 1. Of these, the 2D Poisson equation is the simplest one, so that will be our starting point. 
 
-The PDE at hand in this chapter is the 2D poisson equation, in a steady state (time-independent solution).
+## Poisson Equation in 2D
 
-$$-\nu \left(\frac{\partial^{2} u}{{\partial x}^{2}} + \frac{\partial^{2} u}{{\partial y}^{2}}\right) = q$$
+### Strong form equation 
+
+The PDE at hand in this chapter is the 2D Poisson equation. It describes the steady state (time-independent solution) of a diffusion problem.
+
+$$-\nu \left(\frac{\partial^{2} u}{{\partial x}^{2}} + \frac{\partial^{2} u}{{\partial y}^{2}}\right) = q$$ (poisson2d)
+
+Where $u$ is the unknown field, $\nu$ is the diffusivity parameter and $q$ is a source term. At least $u$ and possibly also $\nu$ and $q$ are a function of $x$ and $y$. 
+
+There are several applications where this PDE can be used to solve problems in sciences and engineering, such as:
+- potential flow
+- pressure in saturated soil
+- temperature distribution in solids
+
+Equation {eq}`poisson2d` can be written with the Laplacian operator $\Delta = \nabla\cdot\nabla$ as 
+
+$$ -\nu\Delta u = q $$
+
+To formulate a problem the strong form governing equation is combined with boundary conditions
+
+$$
+u = \bar{u},\quad \text{on} \quad \Gamma_D \\
+\nu\nabla u\cdot\mathbf{n} = h,\quad \text{on} \Gamma_N
+$$
+
+where $\bar{u}$ stands for prescribed values for the unknown field on the part of the boundary where Dirichlet boundary conditions are applied ($\Gamma_D$) and $h$ for a flux on the part of the boundary where Neumann boundary conditions are applied ($\Gamma_N$). 
+
+### Weak form
+
+As usual, we start with multiplying the strong form equation with a (for now arbirtary) test function and integrating over the domain
+
+$$
+-\int_\Omega w\nabla\cdot\nabla u\,d\Omega = \int_\Omega wq\,d\Omega
+$$
+
+Integration by parts in combination with Divergence theorem gives:
+
+$$
+\int_\Omega \nabla w\nabla u\,d\Omega  - \int_{\Gamma} w\nabla u\cdot\mathbf{n}\,d\Gamma = \int_\Omega wq\,d\Omega
+$$
+
+Substitution of the Neumann boundary in combination with the condition that $w=0$ on $\Gamma_D$ eliminates the unknown $u$ from the boundary term, after which it is moved to the right hand side to arrive at the weak form equation:
+
+$$
+\int_\Omega \nabla w\nabla u\,d\Omega = \int_\Omega wq\,d\Omega + \int_{\Gamma_N} wh\,d\Gamma 
+$$(poisson2d-weak)
+
+### Discrete form
+
+Discretization of the solution is done with 2D shape functions
+
+$$
+u \approx u^h = \sum_j N_j(x,y) u_j = \mathbf{Nu}
+$$
+
+where $\textbf{u}$ contains the degrees of freedom of the discretized field and $\mathbf{N}$ is a row vector with all shape functions:
+
+$$  \textbf{N} = \begin{bmatrix}  N_1  & N_2 &... & N_{n} \end{bmatrix}$$
+
+in which $n$ is the number of degrees of freedom, which is for conventional shape functions equal to the number of nodes in the mesh. 
+
+Following the Bubnov-Galerkin method, the same discretization is introduced for $w$:
+
+$$
+w \approx w^h = \mathbf{Nw}
+$$
+
+The gradients of $u$ and $w$ are defined with the $\mathbf{B}$-matrix as:
+
+$$
+\nabla{u} = \mathbf{Bu} \qquad \text{and} \qquad \nabla{w} = \mathbf{Bw} 
+$$
+
+with
+
+$$
+\mathbf{B} = \begin{bmatrix} \frac{\partial N_1}{\partial x}, \frac{\partial N_2}{\partial x}, \ldots, \frac{\partial N_{n}}{\partial x} \\ \frac{\partial N_1}{\partial y}, \frac{\partial N_2}{\partial y}, \ldots, \frac{\partial N_{n}}{\partial y} \end{bmatrix}
+$$
+
+Substitution into the {eq}`poisson2d-weak` gives
+
+$$
+\int_\Omega \mathbf{Bw}\nu \mathbf{Bu}\,d\Omega = \int_\Omega \mathbf{Nw}q\,d\Omega + \int_{\Gamma_N} \mathbf{Nw}h\,d\Gamma
+$$
+
+As for the 1D problem, eliminating $\mathbf{w}$ involves transposing $\mathbf{N}$ and $\mathbf{B}$ matrices where they are multiplied with $\mathbf{w}$. Finally, we arrive at a linear system of equations written as:
+
+$$
+\mathbf{Ku} = \mathbf{f}
+$$
+
+with
+
+$$
+\mathbf{K} = \int_\Omega \mathbf{B}^T\nu \mathbf{B}\,d\Omega \qquad \text{and} \qquad \mathbf{f} = \int_\Omega \mathbf{N}^Tq\,d\Omega + \int_{\Gamma_N} \mathbf{N}^Th\,d\Gamma
+$$
 
 
-There are several applications where this pde can be used to solve problems in sciences and engineering, such as:
--potential flow
--pressure in saturated soil
--temperature distribution
 
-
-## 3.2 Two dimensional continuum elasticity elements
+## Two dimensional continuum elasticity elements
 
 In two or more dimensions, each unknown field (such as displacement in each directions) in interpolated using polynomial shape functions. The displacement field for an element is given by: 
 
@@ -27,7 +116,7 @@ $$
 ε^h= \textbf{Β} \ \textbf{α}_e  
 $$
 
-The matrix N contains the element shape functions. In two dimentions it has the form : 
+The matrix $\mathbf{N}$ contains the element shape functions. In two dimensions it has the form : 
 
 
 $$  \textbf{N} = \begin{bmatrix}  
@@ -61,9 +150,6 @@ $$ \textbf{α}_e=
 \end{Bmatrix}
 \end{equation*}
 $$
-
-## 3.3. Governing Equations 
-
 
 At this point, the discretised filed $u^h$ will be inserted into the weak form of the governing equation. 
 
