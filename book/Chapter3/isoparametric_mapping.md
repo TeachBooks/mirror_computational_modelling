@@ -132,7 +132,7 @@ $$
 
 ## Isoparametric mapping in higher dimensions
 
-Isoparametric has been illustrated above for the case of 1D. It deserves to be said however, that if there were only finite elements n 1D, the concept of isoparametric mapping would likely not be widespread. The approach really shines in higher dimensions, particularly on unstructured meshes. As an example, take the arbitrarily oriented quadrilateral element shown below. 
+Isoparametric has been illustrated above for the case of 1D. It deserves to be said, however, that if there were only finite elements in 1D, the concept of isoparametric mapping would likely not be widespread. The approach really shines in higher dimensions, particularly on unstructured meshes. As an example, take the arbitrarily oriented quadrilateral element shown below. 
 
 
 ```{figure} ../images/isoparametric_quad.png
@@ -140,7 +140,7 @@ Isoparametric has been illustrated above for the case of 1D. It deserves to be s
 height: 320px
 name: isoparametric-quad
 ---
-Example of isoparametric mapping for a 4-node quadrilateral element
+Example of isoparametric mapping for a 4-node quadrilateral element: reference quad (left) and physical counterpart (right)
 ```
 
 There are now two natural coordinates $\xi$ and $\eta$. The reference quad is defined over the domain $(\xi\in[-1,1],\eta\in[-1,1])$ and its physical counterpart is arbitrarily positioned in 2D space with nodal coordinates $(x_i,y_i),\ i=1\ldots4$. Shape functions are defined once and for all for  the reference element as:
@@ -165,7 +165,7 @@ $$
 \mathbf{J} = \begin{bmatrix} \hpder{x}{\xi} & \hpder{y}{\xi} \\ \hpder{x}{\eta} & \hpder{y}{\eta} \end{bmatrix} \quad \text{with} \quad \pder{x}{\xi} = \sum_i\pder{N_i}{\xi}x_i \quad \text{etc.}
 $$
 
-The inverse of the Jacobian matrix takes the place of $1/J$ in the calculation of shape function derivatives with respect to $x$ and $y$: 
+The inverse of the Jacobian matrix takes the place of $\frac1J$ in the calculation of shape function derivatives with respect to $x$ and $y$: 
 
 $$
 \begin{bmatrix} \hpder{N_i}{x} \\ \hpder{N_i}{y} \end{bmatrix} = \mathbf{J}^{-1}\begin{bmatrix} \hpder{N_i}{\xi} \\ \hpder{N_i}{\eta} \end{bmatrix}
