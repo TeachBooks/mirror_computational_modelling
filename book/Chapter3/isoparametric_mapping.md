@@ -1,4 +1,5 @@
 $\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}$
+$\newcommand{\hpder}[2]{\displaystyle\frac{\partial #1}{\partial #2}}$
 
 # Isoparametric mapping
 
@@ -102,7 +103,7 @@ $$
 $$
 
 :::{card} Exercise
-For the example from the previous exercise, compute the jacobian $\pder{x}{\xi}$ following the definition above. 
+For the example from the previous exercise, compute the Jacobian $\pder{x}{\xi}$ following the definition above. 
 
 ```{admonition} Solution
 :class: tip, dropdown
@@ -116,7 +117,7 @@ The result here is independent of $\xi$. Upon inspection of the performed operat
 ```
 :::
 
-The Jacobian itself is immediately what is needed to perform the numerical integration over the reference domain. For evaluation of shape function derivatives, we need $\pder{\xi}{x}$, which is the inverse of the jacobian. Introducing the symbol $J$ for the jacobian, we can write:
+The Jacobian itself is immediately what is needed to perform the numerical integration over the reference domain. For evaluation of shape function derivatives, we need $\pder{\xi}{x}$, which is the inverse of the Jacobian. Introducing the symbol $J$ for the Jacobian, we can write:
 
 $$
 \int_a^b f(x)\,dx = \int_{-1}^1 f(x(\xi)) |J|\,d\xi
@@ -129,3 +130,50 @@ $$
 $$
 
 
+## Isoparametric mapping in higher dimensions
+
+Isoparametric has been illustrated above for the case of 1D. It deserves to be said however, that if there were only finite elements n 1D, the concept of isoparametric mapping would likely not be widespread. The approach really shines in higher dimensions, particularly on unstructured meshes. As an example, take the arbitrarily oriented quadrilateral element shown below. 
+
+
+```{figure} ../images/isoparametric_quad.png
+---
+height: 320px
+name: isoparametric-quad
+---
+Example of isoparametric mapping for a 4-node quadrilateral element
+```
+
+There are now two natural coordinates $\xi$ and $\eta$. The reference quad is defined over the domain $(\xi\in[-1,1],\eta\in[-1,1])$ and its physical counterpart is arbitrarily positioned in 2D space with nodal coordinates $(x_i,y_i),\ i=1\ldots4$. Shape functions are defined once and for all for  the reference element as:
+
+$$
+N_1 = \frac14(1-\xi)(1-\eta) \\
+N_2 = \frac14(1+\xi)(1-\eta) \\
+N_3 = \frac14(1+\xi)(1+\eta) \\
+N_4 = \frac14(1-\xi)(1+\eta) \\
+$$
+
+The $(\xi,\eta)$-coordinates of any point inside the reference element are mapped to $(x,y)$-coordinates in physical space through a mapping:
+
+$$
+x(\xi,\eta) = \sum_iN_i(\xi,\eta)x_i \\
+y(\xi,\eta) = \sum_iN_i(\xi,\eta)y_i
+$$
+
+The Jacobian is now a matrix, there are $2\times2$ derivatives of physical coordinates with respect to natural coordinates:
+
+$$
+\mathbf{J} = \begin{bmatrix} \hpder{x}{\xi} & \hpder{y}{\xi} \\ \hpder{x}{\eta} & \hpder{y}{\eta} \end{bmatrix} \quad \text{with} \quad \pder{x}{\xi} = \sum_i\pder{N_i}{\xi}x_i \quad \text{etc.}
+$$
+
+The inverse of the Jacobian matrix takes the place of $1/J$ in the calculation of shape function derivatives with respect to $x$ and $y$: 
+
+$$
+\begin{bmatrix} \hpder{N_i}{x} \\ \hpder{N_i}{y} \end{bmatrix} = \mathbf{J}^{-1}\begin{bmatrix} \hpder{N_i}{\xi} \\ \hpder{N_i}{\eta} \end{bmatrix}
+$$
+
+Numerical integration of a quantity $f$ over the element domain $\Omega^\mathrm{e}$ is performed over the reference element, now the correction involves the determinant of the Jacobian matrix 
+
+$$
+\iint_{\Omega^\mathrm{e}} f\,dx\,dy = \int_{-1}^1\int_{-1}^1 f\left|\mathbf{J}\right|\,d\xi\,d\eta
+$$
+with $\left|\mathbf{J}\right|=\det{\mathbf{J}}$. Now the integral on the right can be evaluated with numerical integration. This means that position of the integration points for numerical integration can be defined once and for all in the reference element, irrespective of the size and orientation of the element in physical space. The factor $\left|\mathbf{J}\right|$, which does depend on the coordinates of the nodes corrects for the size of the actual element. Similarly, shape functions never need to be defined as function of $x$ and $y$. Only when we need their derivatives with respect to $x$ and $y$ is a transformation needed, which the $\mathbf{J}^{-1}$ takes care of. 
