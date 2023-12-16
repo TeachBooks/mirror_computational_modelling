@@ -18,12 +18,19 @@ chapters:
     title: Elements and shape functions
   - file: Chapter1/videos.md
     title: Videos (summary and additional material)
+  - file: Chapter1/Appendices/appendix1-0.md
+    title: Appendices
     sections:
     - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D
     - file: Chapter1/Appendices/appendix1-2_Numerical_Integration
   - file: Chapter1/Exercises/exercise1
+    title: Exercises
     sections:
     - file: Chapter1/Exercises/exercise1-1.ipynb
+  - file: Chapter1/Tutorials/tutorial1.md
+    title: Tutorials
+    sections:
+    - file: Chapter1/Tutorials/Gridap_tutorial_1.ipynb
 
 - file: Chapter2/chapter2-0
   sections: 
