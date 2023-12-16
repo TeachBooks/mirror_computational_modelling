@@ -3,12 +3,14 @@ root: intro
 options:
   numbered: 3
 chapters:
-- file: Chapter1/chapter1-Introduction.md
+- file: Chapter1/intro.md
   sections:
-  - file: Chapter1/chapter1-1_Strong_form_of_the_problem
-  - file: Chapter1/chapter1-2_Weak_form_of_the_problem
-  - file: Chapter1/chapter1-3_Discrete_form
-  - file: Chapter1/chapter1-4_Matrix_form
+  - file: Chapter1/strong
+  - file: Chapter1/weak
+  - file: Chapter1/discrete
+  - file: Chapter1/matrix
+  - file: Chapter1/shape
+  - file: Chapter1/videos
   - file: Chapter1/Appendices/appendix1-0
     sections:
     - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D
