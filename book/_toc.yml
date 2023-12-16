@@ -4,14 +4,20 @@ options:
   numbered: 3
 chapters:
 - file: Chapter1/intro.md
+  title: Introduction to Finite Elements
   sections:
-  - file: Chapter1/strong
-  - file: Chapter1/weak
-  - file: Chapter1/discrete
-  - file: Chapter1/matrix
-  - file: Chapter1/shape
-  - file: Chapter1/videos
-  - file: Chapter1/Appendices/appendix1-0
+  - file: Chapter1/strong.md
+    title: Strong form of the problem
+  - file: Chapter1/weak.md
+    title: Weak form
+  - file: Chapter1/discrete.ipynb
+    title: Discrete form
+  - file: Chapter1/matrix.ipynb
+    title: Finite element implementation
+  - file: Chapter1/shape.md
+    title: Elements and shape functions
+  - file: Chapter1/videos.md
+    title: Videos (summary and additional material)
     sections:
     - file: Chapter1/Appendices/appendix1-1_Isoparametric_element_in_1D
     - file: Chapter1/Appendices/appendix1-2_Numerical_Integration
