@@ -281,7 +281,7 @@ $$ \textbf{B} =
 \end{bmatrix}
 $$
 
-Substituting $\bB\bc$ for $\nabla^\us\bw$ and $\bB\ba$ for $\nabla^\us\bu$ and adpating the product to Voigt notation ($\beps^T\bD\bsig$) gives the following expression for the discrete form: find $\ba$ such that
+Substituting $\bB\bc$ for $\nabla^\us\bw$ and $\bB\ba$ for $\nabla^\us\bu$ and adapting the product to Voigt notation ($\beps:\iD:\beps\ \rightarrow\ \beps^T\bD\beps$) gives the following expression for the discrete form: find $\ba$ such that
 
 $$
 \int_\Omega (\bB\bc)^T\bD\bB\ba\,\ud\Omega = \int_\Omega (\bN\bc)^T\bb\,\ud\Omega + \int_{\Gamma_N}(\bN\bc)^T\bt\,\ud\Gamma,\quad\forall\bc
