@@ -177,3 +177,41 @@ $$
 \iint_{\Omega^\mathrm{e}} f\,dx\,dy = \int_{-1}^1\int_{-1}^1 f\left|\mathbf{J}\right|\,d\xi\,d\eta
 $$
 with $\left|\mathbf{J}\right|=\det{\mathbf{J}}$. Now the integral on the right can be evaluated with numerical integration. This means that position of the integration points for numerical integration can be defined once and for all in the reference element, irrespective of the size and orientation of the element in physical space. The factor $\left|\mathbf{J}\right|$, which does depend on the coordinates of the nodes corrects for the size of the actual element. Similarly, shape functions never need to be defined as function of $x$ and $y$. Only when we need their derivatives with respect to $x$ and $y$ is a transformation needed, which the $\mathbf{J}^{-1}$ takes care of. 
+
+
+
+:::{card} Exercise
+Consider a distorted quadrilateral element with nodal coordinates 
+
+$$\mathbf{x}_1 = (0,0), \quad\mathbf{x}_2=(4,0), \quad\mathbf{x}_3 = (6,2), \quad\mathbf{x}_4 = (0,5)$$ 
+
+```{figure} ../images/isoparametric_2d_example.png
+---
+height: 200px
+name: isoparametric-2d-example
+---
+4-node quadrilateral element in physical space
+```
+
+- Express $x$ and $y$ in terms of $\xi$ and $\eta$
+- Evaluate the jacobian matrix $\mathbf{J}$ 
+
+```{admonition} Solution
+:class: tip, dropdown
+Coordinates are found with $x=\sum_iN_ix_i$ and $y=\sum_iN_iy_i$: 
+
+$$
+x &= \frac12(1+\xi)(5+\eta) \\
+y &= \frac14(7-3\xi)(1+\eta)
+$$
+
+The Jacobian matrix is found by taking derivatives of the expressions for $x$ and $y$ that were just obtained, or by multiplying the coordinates with the shape function derivatives. For this exercise, the first of these two approaches is most convenient, but the second one is used in finite element implementations as shape function derivatives can be pre-evaluated and hard-coded. Both result in the same Jacobian matrix:
+
+$$
+\mathbf{J} = \begin{bmatrix}
+\frac12(5+\eta) & -\frac34(1+\eta) \\
+\frac12(1+\xi) & \frac14(7-3\xi)
+\end{bmatrix}
+$$
+```
+:::
