@@ -50,6 +50,7 @@ chapters:
     - file: Chapter3/chapter3-1-3_TS.ipynb
     - file: Chapter3/chapter3-1-4_SpaceFrame.ipynb
   - file: Chapter3/chapter3-2_2D_3D_Problems
+  - file: Chapter3/isoparametric_mapping
   - file: Chapter3/appendix3-0
     sections:
     - file: Chapter3/Appendix_3-1_Linear_solvers
