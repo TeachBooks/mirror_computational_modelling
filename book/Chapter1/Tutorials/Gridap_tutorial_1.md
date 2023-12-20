@@ -4,9 +4,9 @@ In this tutorial we will learn how to solve PDEs using the Finite Element method
 
 *Gridap.jl* is a multi-purpose FE library writen in pure [*Julia language*](https://julialang.org/). The *Gridap.jl* library is a very complete that supports linear and nonlinear PDE systems for scalar and vector fields, single and multi-field problems, conforming and nonconforming FE discretizations, on structured and unstructured meshes of simplices and n-cubes. One of the main advantages of *Gridap.jl* is that it has a very expressive API allowing one to solve complex PDEs with very few lines of code, as we will see in what follows.
 
-## Problem setting
+### Problem setting
 
-```{figure} ./figures/barDefinition-1.png
+```{figure} ../figures/barDefinition-1.png
 ---
 height: 150px
 name: rodDefinition
@@ -125,7 +125,7 @@ To visualize the solution we use [Paraview](https://www.paraview.org/), an open-
 writevtk(Ω,"solution",cellfields=["u"=>uₕ])
 ```
 
-```{figure} ./figures/Gridap_solution.png
+```{figure} ../figures/Gridap_solution.png
 ---
 height: 150px
 name: gridapsolution
