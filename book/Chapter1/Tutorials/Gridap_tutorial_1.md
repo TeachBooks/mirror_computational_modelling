@@ -6,7 +6,7 @@ In this tutorial we will learn how to solve PDEs using the Finite Element method
 
 ## Problem setting
 
-```{figure} ./figures/barDefinition-1.png
+```{figure} ../figures/barDefinition-1.png
 ---
 height: 150px
 name: rodDefinition
@@ -125,7 +125,7 @@ To visualize the solution we use [Paraview](https://www.paraview.org/), an open-
 writevtk(Ω,"solution",cellfields=["u"=>uₕ])
 ```
 
-```{figure} ./figures/Gridap_solution.png
+```{figure} ../figures/Gridap_solution.png
 ---
 height: 150px
 name: gridapsolution
