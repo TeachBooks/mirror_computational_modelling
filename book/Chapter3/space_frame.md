@@ -1,5 +1,6 @@
 $\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}$
 $\newcommand{\eps}{\varepsilon}$
+$\newcommand{\GAs}{GA_s}$
 
 # 2D frame analysis
 
@@ -20,10 +21,10 @@ There are three deformations (strain-like  quantities) that are related to these
 
 Then there are three section forces (stress-like quantities) that are related to the strains through constitutive relations:
 - axial force $N = EA\eps$
-- shear force $V = GA\gamma$
+- shear force $V = \GAs\gamma$
 - moment $M = EI\kappa$
 
-Where $E$ is the Young's modulus, $A$ the cross-sectional area, $I$ the second moment of inertia and $GA$ the shear stifness (shear modulus times area, corrected with cross-section dependent shear factor). For non-homogeneous cross section, $EA$, $EI$ and $GA$ should be obtained through integration over the cross section and are not a simple product anymore. 
+Where $E$ is the Young's modulus, $A$ the cross-sectional area, $I$ the second moment of inertia and $\GAs$ the shear stifness (shear modulus times area, corrected with cross-section dependent shear factor). For non-homogeneous cross section, $EA$, $EI$ and $\GAs$ should be obtained through integration over the cross section and are not a simple product anymore. 
 
 Finally there are equilibrium relations that give the strong form equations for the extensible beam element, one for extension and two for the Timoshenko beam formulation. For the element that is aligned with the global $x$-axis, the rod action is uncoupled from the Timoshenko beam action so the resulting element formulation is really just a straightforward combination of rod and Timoshenko elements. 
 
