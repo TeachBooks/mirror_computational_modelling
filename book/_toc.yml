@@ -30,7 +30,7 @@ chapters:
   - file: Chapter1/Tutorials/tutorial1.md
     title: Tutorials
     sections:
-    - file: Chapter1/Tutorials/Gridap_tutorial_1.ipynb
+    - file: Chapter1/Tutorials/Gridap_tutorial_1.md
 
 - file: Chapter2/chapter2-0
   sections: 
