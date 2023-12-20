@@ -24,23 +24,6 @@ test-build:
   script:
     - pip install -r requirements.txt
     - jupyter-book clean book/
-    - name: Setup Julia
-      uses: julia-actions/setup-julia@v1
-    - name: Convert literate notebooks to markdown files
-      shell: julia --color=yes {0}
-      working-directory: 'book'
-      run: |
-        import Pkg
-        Pkg.add("Literate")
-        using Literate
-        for (root, dirs, files) in walkdir(pwd())
-          for file in files
-            if endswith(file, ".jl")
-              nb = joinpath(root, file)
-              Literate.notebook(nb, dirname(nb); mdstrings=true, execute=false)
-            end
-          end
-        end
     - jupyter-book build book/
 
 # This job builds the HTML when it gets pushed to the publish branch
