@@ -20,7 +20,7 @@ $$
 \int_{0}^{L} \frac{\partial w}{\partial x}EA \frac{\partial u}{\partial x}\,dx = \int_0^Lwf\,dx + w(L)F,\quad\forall\quad w
 $$ 
 
-## Domain discretization
+### Domain discretization
 
 The first step that we need to do is to define the discretization of our domain. Since the geometry is defined by a line, we can use the `CartesianDiscreteModel` function. This function creates a discrete model with a Cartesian grid for arbitrary topological dimensions, *i.e.* a line in 1D, a square in 2D, a cube in 3D, ... The function `CartesianDiscreteModel` requires two main arguments: `domain` and `partition`. `domain` is a tuple with inital and final coordinates of the domain in each direction, in our case `domain=(0,L)`. `partition` is a tuple of number of cells per direction, if we solve the problem using 10 elements, we will define `partition=(10,)`. With these two arguments we can define our discrete model `model`:
 
@@ -46,7 +46,7 @@ With the discrete model defined and the boundary entities tagged, we can define 
 Γ = Boundary(Ω,tags="right")
 ```
 
-## Finite Element spaces
+### Finite Element spaces
 
 One of the nice features of Gridap is the versatility in the definition of Finite Element sapces. That is, it allows to define different reference Finite Elements with different types of shape functions and different orders. Here we will use *linear Lagrangian* Finite Elements, using the `ReferenceFE` function with the following arguments: `lagrangian` (type of elements), `Float64` (type of unknown variable) and `1` (polynomial order).
 
@@ -66,7 +66,7 @@ The FE space for the unknowns $u_h$ (trial FE space) is constructed from the tes
 Uₕ = TrialFESpace(V,0.0) 
 ```
 
-## Discrete form
+### Discrete form
 
 The discrete form of the problem reads: *find $u_h\in\mathcal{U}_h$ such that*
 
@@ -111,7 +111,7 @@ Since the problem is linear and static, we can use the function `AffineFEOperato
 op = AffineFEOperator(a,l,Uₕ,Vₕ)
 ```
 
-# Solution and postprocessing
+### Solution and postprocessing
 
 The final step is to solve the system of equations to find the solution of the problem. For this we simply call the function `solve` with the Finite Element operator `op` as argument. Gridap uses the standard *Backslash* operator `\` by default to solve the linear system, however, we could use other type of linears solvers. We are not going to cover this feature in this tutorial.
 
@@ -127,7 +127,7 @@ writevtk(Ω,"solution",cellfields=["u"=>uₕ])
 
 ```{figure} ../figures/Gridap_solution.png
 ---
-height: 150px
+height: 400px
 name: gridapsolution
 ---
 Solution of the rod equation using Gridap
