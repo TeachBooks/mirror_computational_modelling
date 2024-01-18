@@ -84,8 +84,10 @@ $$
 which allows for writing the element stiffness matrix in the familiar form 
 
 $$
-\bK^e = \int_{\Omega^e} \bB^T\bD\bB \,d\Omega
+\bK^e = \int_{\Omega^e} \bB^T\bD\bB \,d x
 $$
+
+where $\Omega^e$ is the element domain. 
 
 Note that we can define an element force vector, defined as 
 
@@ -97,13 +99,13 @@ where the element force vector has length six and the physical interpretation of
 
 $$
 \bff^e = \begin{pmatrix} F_{x1} \\ F_{y1} \\ M_{1} \\ F_{x2} \\ F_{y2} \\ M_{2} \end{pmatrix}
-$$
+$$(elem-force-vector)
 
 where $F_{xi}$ and $F_{yi}$ are the two components of a force vector on node $i$ and $M_i$ is a moment on node $i$. 
 
 
 :::{card} Exercise
-Write out the product $\bB^T\bD\bB$ and show that this element works like a combination of a bar element and a Timoshenko beam element. 
+Write out the matrix product $\bB^T\bD\bB$ in components and show that this element is indeed equivalent to a combination of a rod element and a Timoshenko beam element. 
 
 <!-- TODO: add solution -->
 :::
@@ -146,5 +148,30 @@ $$
 \end{bmatrix}
 $$
 
-where $N_i'$ is the derivative of the shape function along the local coordinate $\xloc$. 
+where $N_i'$ is the derivative of the shape function along the local coordinate $\xloc$. This is actually convenient, because shape functions for these elements are initially defined in 1D along the element. For a 2-noded line element with length $L^e$, the derivatives of the shape functions are given as:
+
+$$
+N_1' = -\frac1L \quad \text{and} \quad N_2' = \frac1L
+$$
+
+This holds irrespective of the orientation of the element.
+
+The element stiffness matrix is then defined in exactly the same form as before, except that integration takes place along the element:
+
+$$
+\bK^e = \int_{\Omega^e} \bB^T\bD\bB \,d \bar{x}
+$$
+
+Where $\Omega^e$ is the domain of the element in local coordinate frame. The exact bounds depend on the choice for how the local coordinate frame is defined. For instance, if $\bar{x}$ is defined such that it is equal to zero at the first node of the element, the integration will be over $\bar{x}\in[0,L^e]$. 
+
+```{admonition} Contrast with continuum formulations
+:class: tip, dropdown
+Firstly, you may notice that in this story there has been no explicit definition for the global stiffness matrix. For 1D problems and continuum problems in 2D or 3D, it can be a useful perspective to consider shape functions as being defined globally and introduce the element-by-element integration and assembly of the global stiffness matrix later on in the derivation. Here, in a case with 1D elements in 2D or 3D space, it would become quite cumbersome to define global shape functions and define global integration over the collection of 1D objects that form the frame. Therefore, we immediately formulate the element matrix here, knowing that this is in the end what is needed in the finite element implementation. Because the degrees of freedom and hence $\bK^e$ are defined in terms of global coordinate frame, the assembly of the global matrix by putting element matrices in the right position is done with exactly the same procedure as otherwise. 
+
+Secondly, we have not used a strong form. For the the extensible beam, the strong form consists of three ODE's, one independent ODE for the rod plus two coupled ODEs for the beam. For the arbitrarily oriented beam, we have not written strong form equations. The connection between differently oriented elements can be interpreted mechanistically through the concept of element force vectors from Equation {eq}`elem-force-vector`. By assembling the global matrix, a global force vector arises where forces from different connected elements should together be in equilibrium with an external force, or just with one another in absence of any external force on the node. A more formal global derivation for finite elements for space frames is possible with the virtual work equation as starting point instead of the strong form. 
+
+
+Finally, there is also no need for isoparametric mapping. Shape functions and integration scheme are defined in local coordinate $\bar{x}$. No mapping between $(\bar{x},\bar{y})$ and $(x,y)$ coordinates is needed, only a transformation of vectors: we have discussed this for displacements, and the same transformation is applied implicitly on forces through the $\phi$'s in $\bB^T$ in the element matrix formalation. A choices needs to be made on where $\bar{x}$ is defined to be zero. A mapping between $\bar{x}\in[0,L^e]$ and a local coordinate $\xi\in[-1,1]$ can be introduced but does bring much benefit. 
+```
+
 
