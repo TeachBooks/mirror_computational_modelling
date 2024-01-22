@@ -1,1 +1,1 @@
-# 5.1. Non linear solvers
+# Non linear solvers
