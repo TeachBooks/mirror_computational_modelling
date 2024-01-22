@@ -55,6 +55,14 @@ chapters:
     sections:
     - file: Chapter3/Appendix_3-1_Linear_solvers
 
+- file: Chapter5/chapter5-0
+  sections:
+  - file: Chapter5/chapter5-1_Nonlinear_solvers
+  - file: Chapter5/chapter5-2_Geometrically_nonlinear_problems
+  - file: Chapter5/chapter5-3_Solids
+  - file: Chapter5/chapter5-4_Fluids
+  - file: Chapter5/chapter5_Tutorial
+
 
 # parts:
 #   - caption: 1. Introduction to Finite Elements - 1D Laplacian
