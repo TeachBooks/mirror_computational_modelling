@@ -1,4 +1,5 @@
 $\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}$
+$\newcommand{\hpder}[2]{\dfrac{\partial #1}{\partial #2}}$
 $\newcommand{\eps}{\varepsilon}$
 $\newcommand{\beps}{\boldsymbol\varepsilon}$
 $\newcommand{\bsig}{\boldsymbol\sigma}$
@@ -35,8 +36,27 @@ Then there are three section forces (stress-like quantities) that are related to
 
 Where $E$ is the Young's modulus, $A$ the cross-sectional area, $I$ the second moment of inertia and $\GAs$ the shear stifness (shear modulus times area, corrected with cross-section dependent shear factor). For non-homogeneous cross section, $EA$, $EI$ and $\GAs$ should be obtained through integration over the cross section and are not a simple product anymore. 
 
-Finally there are equilibrium relations that give the strong form equations for the extensible beam element, one for extension and two for the Timoshenko beam formulation. For the element that is aligned with the global $x$-axis, the rod action is uncoupled from the Timoshenko beam action so the resulting element formulation is really just a straightforward combination of rod and Timoshenko elements. 
+Finally there are equilibrium relations that give the strong form equations for the extensible beam element, one for extension and two for the Timoshenko beam formulation. For the element that is aligned with the global $x$-axis, the rod action is uncoupled from the Timoshenko beam action so the resulting element formulation is really just a straightforward combination of rod and Timoshenko elements, resulting in three differential equations for the strong form (cf. Equations {eq}`1Dpoissonequation`, {eq}`TS_STRONG_eq1` and {eq}`TS_STRONG_eq2`):
 
+- balance of linear momentum in $x$-direction: 
+
+$$
+EA \dfrac{d^2 u_x}{dx^2} + f_x = 0
+$$
+
+- balance of linear momentum in $y$-direction:
+
+$$
+GA_s \left(\dfrac{d^2 u_y}{dx^2} - \dfrac{d\theta}{dx}\right) + f_y = 0
+$$ 
+
+- balance of angular momentum (rotations in $x-y$-plane): 
+
+$$
+-EI \dfrac{d^2 \theta}{dx^2} - GA_s \left(\dfrac{du_y}{dx} - \theta\right) = 0
+$$
+
+where $f_x$ and $f_y$ are distributed loads in axial and transverse direction respectively, and distributed moments are left out of the consideration. 
 
 ### Element formulation 
 Using the same set of shape functions $N_1$, $N_2$ to interpolate the three fields over the element domain, the strain-displacement relation for a single element is given as: 
@@ -148,13 +168,13 @@ $$
 \end{bmatrix}
 $$
 
-where $N_i'$ is the derivative of the shape function along the local coordinate $\xloc$. This is actually convenient, because shape functions for these elements are initially defined in 1D along the element. For a 2-noded line element with length $L^e$, the derivatives of the shape functions are given as:
+where $N_i'$ is the derivative of the shape function along the local coordinate $\xloc$. This is convenient, because shape functions for these elements are initially defined in 1D along the element. For a 2-noded line element with length $L^e$, the derivatives of the shape functions are given as:
 
 $$
-N_1' = -\frac1L \quad \text{and} \quad N_2' = \frac1L
+N_1' = -\frac1{L^e} \quad \text{and} \quad N_2' = \frac1{L^e}
 $$
 
-This holds irrespective of the orientation of the element.
+irrespective of the orientation of the element.
 
 The element stiffness matrix is then defined in exactly the same form as before, except that integration takes place along the element:
 
