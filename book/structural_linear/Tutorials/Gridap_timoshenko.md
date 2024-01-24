@@ -37,7 +37,7 @@ As an initial setup we will consider the left end as a fixed boundary ($\Gamma_D
 
 ### Domain discretization
 
-Here we will follow the steps definied in [**tutorial 1**](../../introduction/Tutorials/Gridap_tutorial_1.md), feel free to check this tutorial for in-depth description of all the steps. Again, we will use a one-dimensional beam of size $L=3.0$, discretized using 10 elements.
+Here we will follow the steps defined in [**tutorial 1**](../../introduction/Tutorials/Gridap_tutorial_1.md), feel free to check this tutorial for in-depth description of all the steps. Again, we will use a one-dimensional beam of size $L=3.0$, discretized using 10 elements.
 
 ```julia
 using Gridap
@@ -141,7 +141,7 @@ t₀ = 0.1
 vₕ,θₕ = solve(op(t₀))
 ```
 
-As usual, we can postrpocess the solution using [Paraview](https://www.paraview.org/): 
+As usual, we can postprocess the solution using [Paraview](https://www.paraview.org/): 
 
 ```julia
 writevtk(Ω,"Timoshenko_solution",cellfields=["v"=>vₕ,"theta"=>θₕ])
@@ -162,7 +162,7 @@ name: TimoshenkoBeamRotation
 Beam rotations
 ```
 
-One thing to highlight in the previous figures is that, in contrast with the [Euler-Bernoulli beam](./Gridap_euler_bernoulli.md), the rotations are continuos. That is because the rotations belong to a continuous Finite Element space by construction.
+One thing to highlight in the previous figures is that, in contrast with the [Euler-Bernoulli beam](./Gridap_euler_bernoulli.md), the rotations are continuous. That is because the rotations belong to a continuous Finite Element space by construction.
 
 We can also compare the solution to the exact analytical value. In that case we evaluate the value at the tip of the beam, which should be given by
 
@@ -211,7 +211,7 @@ name: timoshenkoBeamLockingGalerkin
 Shear locking
 ```
 
-In the previous plot we clearly see that the deflection of the computed solution relative to the exact solution decreases as we decrease the beam thickness. To addess the issue of shear locking, here we propose three different solution strategies:
+In the previous plot we clearly see that the deflection of the computed solution relative to the exact solution decreases as we decrease the beam thickness. To address the issue of shear locking, here we propose three different solution strategies:
 
 1. **Sub-integration**: use a quadrature rule with lower degree for the terms involving the rotations
 2. **Consistent FE spaces**: use FE spaces 
@@ -274,7 +274,7 @@ Yₕ₂ = MultiFieldFESpace([Vₕ₂,Ψₕ₂])
 op₂(t) = AffineFEOperator((x,y)->a(t,x,y),l,Xₕ₂,Yₕ₂)
 ```
 
-If we compute the solution for a range of thicknes and plot the relative beam deflection at the tip, we see that this approach also addresses the shear locking phenomena.
+If we compute the solution for a range of thicknesses and plot the relative beam deflection at the tip, we see that this approach also addresses the shear locking phenomena.
 
 ```julia
 v_rel₂ = Float64[]

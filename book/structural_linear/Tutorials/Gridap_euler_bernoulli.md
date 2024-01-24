@@ -42,7 +42,7 @@ As an initial setup we will consider the left end as a fixed boundary ($\Gamma_D
 
 ### Domain discretization
 
-Here we will follow the steps definied in [**tutorial 1**](../../introduction/Tutorials/Gridap_tutorial_1.md), feel free to check this tutorial for in-depth description of all the steps. Again, we will use a one-dimensional beam of size $L=3.0$, discretized using 10 elements.
+Here we will follow the steps defined in [**tutorial 1**](../../introduction/Tutorials/Gridap_tutorial_1.md), feel free to check this tutorial for in-depth description of all the steps. Again, we will use a one-dimensional beam of size $L=3.0$, discretized using 10 elements.
 
 ```julia
 using Gridap
@@ -95,9 +95,9 @@ Elements and points of the beam discretization
 
 ### Finite Element spaces
 
-Traditional Finite Element spaces for fourth-order operators, as the one appearing in the Euler-Bernoulli beam problem, use reference elements with polynomials that satisfy $C^1$ continuity. This means that both, the unknown and its first derivative are continuous accross elements. This can be achieved using, for instance, [Hermite polynomials](https://en.wikipedia.org/wiki/Hermite_polynomials). 
+Traditional Finite Element spaces for fourth-order operators, as the one appearing in the Euler-Bernoulli beam problem, use reference elements with polynomials that satisfy $C^1$ continuity. This means that both, the unknown and its first derivative are continuous across elements. This can be achieved using, for instance, [Hermite polynomials](https://en.wikipedia.org/wiki/Hermite_polynomials). 
 
-However, in this tutorial we will show that *Lagrange* polynomials can also be used to solve the Euler-Bernoulli beam problem, even though they are only $C^0$, meaning only the unknown is continuous accross elements and not its derivative. Thus, here we follow exaclty the same process as the one defined in [tutorial 1](../../introduction/Tutorials/Gridap_tutorial_1.md). The only difference is that here need to use quadratic polynomials at least, since there will appear second derivatives in the weak form.
+However, in this tutorial we will show that *Lagrange* polynomials can also be used to solve the Euler-Bernoulli beam problem, even though they are only $C^0$, meaning only the unknown is continuous across elements and not its derivative. Thus, here we follow exactly the same process as the one defined in [tutorial 1](../../introduction/Tutorials/Gridap_tutorial_1.md). The only difference is that here need to use quadratic polynomials at least, since there will appear second derivatives in the weak form.
 
 ```julia
 reffe = ReferenceFE(lagrangian,Float64,2)
@@ -188,7 +188,7 @@ and the problem parameters, including the forcing term function:
 
 ```julia
 EI = 1.5e7
-q(x) = -1.0e3*(L-x[1]) # triangular dustributed load
+q(x) = -1.0e3*(L-x[1]) # triangular distributed load
 ```
 
 The discrete form is given by the following bilinear and linear forms:
