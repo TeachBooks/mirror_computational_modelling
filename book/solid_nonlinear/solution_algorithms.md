@@ -1,1 +1,1 @@
-# Non linear solvers
+# Incremental-iterative algorithms

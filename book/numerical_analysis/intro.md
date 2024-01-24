@@ -1,4 +1,4 @@
-# Numerical analysis of finite elements
+# Theoretical analysis
 
 This chapter contains the following sections:
 

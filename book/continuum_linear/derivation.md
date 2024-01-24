@@ -15,7 +15,7 @@ $\newcommand{\bK}{\mathbf{K}}$
 $\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}$
 $\newcommand{\iD}{\boldsymbol{\mathcal{D}}}$
 
-# Finite element formulation for continuum elasticity
+# From strong to discrete form
 
 In this chapter, we will introduce finite element formulations for higher order problems. You have already seen 2D frame formulations, but there still the elements themselves were one-dimensional in nature. Now, we will focus on solid mechanics problems where the solution is a field in 2D (or 3D) space. This implies the elements and shape functions need to be different (e.g. triangular, quadrilateral, tetrahedral). 
 

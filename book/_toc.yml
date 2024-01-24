@@ -2,68 +2,89 @@ format: jb-book
 root: intro
 options:
   numbered: 3
-chapters:
-- file: introduction/intro
-  sections:
-  - file: introduction/strong
-  - file: introduction/weak
-  - file: introduction/discrete
-  - file: introduction/matrix
-  - file: introduction/shape
-  - file: introduction/numerical_integration
-  - file: introduction/poisson2d
-  - file: introduction/isoparametric_mapping
-  - file: introduction/videos
-  - file: introduction/Exercises/exercise1
-    title: Exercises
-    sections:
-    - file: introduction/Exercises/exercise1-1.ipynb
-  - file: introduction/Tutorials/tutorial1.md
-    title: Tutorials
-    sections:
-    - file: introduction/Tutorials/Gridap_tutorial_1.md
 
-- file: numerical_analysis/intro
-  sections: 
-  - file: numerical_analysis/functional_spaces
-  - file: numerical_analysis/variational_well_posed
-  - file: numerical_analysis/discrete_well_posed
-  - file: numerical_analysis/galerkin_orthogonality
-  - file: numerical_analysis/convergence
-  - file: numerical_analysis/error_estimates
+parts:
+  - caption: Fundamentals
+    numbered: 3
+    chapters:
+    - file: preliminaries/intro
+      sections:
+      - file: preliminaries/tensors
+      - file: preliminaries/linear_algebra
+      - file: preliminaries/continuum_mechanics
 
-- file: structural_linear/intro
-  sections:
-  - file: structural_linear/euler_bernouilli
-  - file: structural_linear/timoshenko
-  - file: structural_linear/space_frame
-  - file: structural_linear/Tutorials/tutorials.md
-    title: Tutorials
-    sections:
-    - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
-    - file: structural_linear/Tutorials/Gridap_timoshenko.md
+    - file: introduction/intro
+      sections:
+      - file: introduction/strong
+      - file: introduction/weak
+      - file: introduction/discrete
+      - file: introduction/matrix
+      - file: introduction/shape
+      - file: introduction/numerical_integration
+      - file: introduction/poisson2d
+      - file: introduction/isoparametric_mapping
+      - file: introduction/videos
+      - file: introduction/Exercises/exercise1
+        title: Exercises
+        sections:
+        - file: introduction/Exercises/exercise1-1.ipynb
+      - file: introduction/Tutorials/tutorial1.md
+        title: Tutorials
+        sections:
+        - file: introduction/Tutorials/Gridap_tutorial_1.md
 
+    - file: numerical_analysis/intro
+      sections: 
+      - file: numerical_analysis/functional_spaces
+      - file: numerical_analysis/variational_well_posed
+      - file: numerical_analysis/discrete_well_posed
+      - file: numerical_analysis/galerkin_orthogonality
+      - file: numerical_analysis/convergence
+      - file: numerical_analysis/error_estimates
 
-- file: continuum_linear/intro
-  sections:
-  - file: continuum_linear/derivation
+  - caption: Solids and Structures
+    numbered: 3
+    chapters:
+    - file: structural_linear/intro
+      sections:
+      - file: structural_linear/euler_bernouilli
+      - file: structural_linear/timoshenko
+      - file: structural_linear/space_frame
+      - file: structural_linear/Tutorials/tutorials
+        title: Tutorials
+        sections:
+        - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
+        - file: structural_linear/Tutorials/Gridap_timoshenko.md
 
-- file: solid_nonlinear/intro
-  sections:
-  - file: solid_nonlinear/solution_algorithms
-  - file: solid_nonlinear/geometric_nonlinearity
-  - file: solid_nonlinear/material_nonlinearity
+    - file: continuum_linear/intro
+      sections:
+      - file: continuum_linear/derivation
+      - file: continuum_linear/3d
+      - file: continuum_linear/2d
 
-- file: dynamics/intro
-  sections:
-  - file: dynamics/ODEs
-  - file: dynamics/semi_discrete
-  - file: dynamics/time_steppers
-  - file: dynamics/modal_analysis
+    - file: solid_nonlinear/intro
+      sections:
+      - file: solid_nonlinear/linearization
+      - file: solid_nonlinear/solution_algorithms
+      - file: solid_nonlinear/path-following
+      - file: solid_nonlinear/geometric_nonlinearity
+      - file: solid_nonlinear/material_nonlinearity
 
-- file: fluid_dynamics/intro
-  sections:
-  - file: fluid_dynamics/fluids
+    - file: dynamics/intro
+      sections:
+      - file: dynamics/ODEs
+      - file: dynamics/diffusion
+      - file: dynamics/diffusion_steppers
+      - file: dynamics/semi_discrete
+      - file: dynamics/time_steppers
+      - file: dynamics/modal_analysis
+
+  - caption: Fluids
+    numbered: 3
+    chapters:
+    - file: fluid_dynamics/intro
+      sections:
+      - file: fluid_dynamics/fluids
 
 # - file: advanced_topics/intro
 #   chapters:

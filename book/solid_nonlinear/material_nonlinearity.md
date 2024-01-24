@@ -1,4 +1,4 @@
-# Solids
+# Material non-linearity
 
 ## Plasticity
 ## Damage
