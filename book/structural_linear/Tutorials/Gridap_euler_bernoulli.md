@@ -26,6 +26,7 @@ In addition, in this tutorial we will learn the following Gridap features:
 
 Let us consider the steady-state Euler-Bernoulli beam equation and associated boundary conditions:
 
+$$
 \begin{align}
     \frac{\partial^2 }{\partial x^2}\left(EI \frac{\partial^2 v}{\partial x^2}\right) &= q\qquad&\text{in $\Omega$},\\
     v &= v_D\qquad&\text{in $\Gamma_D$},\\
@@ -33,6 +34,7 @@ Let us consider the steady-state Euler-Bernoulli beam equation and associated bo
     EI\frac{\partial^2 v}{\partial x^2} &= M_N\qquad&\text{in $\Gamma_N$},\\
     EI\frac{\partial^3 v}{\partial x^3} &= V_N\qquad&\text{in $\Gamma_N$}.
 \end{align}
+$$
 
 Where $\Gamma_D$ are the *Dirichlet* boundaries with prescribed deflection, $v_D$, and rotation, $\theta_D$, and $\Gamma_N$ are the *Neumann* boundaries with prescribed moment, $M_N$, and shear, $V_N$. Note that $q$ is an external load that can depend on the $x$-coordinate.
 

@@ -41,6 +41,7 @@ chapters:
     title: Tutorials
     sections:
     - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
+    - file: structural_linear/Tutorials/Gridap_timoshenko.md
 
 
 - file: continuum_linear/intro
