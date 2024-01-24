@@ -1,4 +1,4 @@
-# Dynamics of solids and structures
+# Time-dependent problems
 
 This chapter contains the following sections:
 

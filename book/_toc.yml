@@ -64,6 +64,8 @@ parts:
     - file: dynamics/intro
       sections:
       - file: dynamics/ODEs
+      - file: dynamics/diffusion
+      - file: dynamics/diffusion_steppers
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
