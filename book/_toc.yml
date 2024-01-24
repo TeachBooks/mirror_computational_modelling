@@ -37,6 +37,11 @@ chapters:
   - file: structural_linear/euler_bernouilli
   - file: structural_linear/timoshenko
   - file: structural_linear/space_frame
+  - file: structural_linear/Tutorials/tutorials.md
+    title: Tutorials
+    sections:
+    - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
+
 
 - file: continuum_linear/intro
   sections:
