@@ -1,7 +1,2 @@
 [deps]
-Gridap = "0.17.18"
-GridapMakie = "0.1.2"
-IJulia = "1.24.2"
-MPI = "0.20.14"
-Plots = "1.39.0"
-LinearAlgebra = ""
+Gridap = "56d4f2e9-7ea1-5844-9cf6-b9c51ca7ce8e"
