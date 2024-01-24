@@ -2,7 +2,7 @@
 
 In this tutorial we will learn how to solve the steady-state Euler-Bernoulli beam equation using a *Continuous/Discontinuous Finite Element approximation* using Gridap. 
 
-```{figure} ../figures/Deflection_fine.png
+```{figure} ../figures/EulerDeflection_fine.png
 ---
 height: 150px
 name: beamDeflectionFineIntro
@@ -83,7 +83,7 @@ writevtk(Λ,"Lambda")
 
 If we open the VTK files, we can see that we have $\Omega$, defined by the set of black lines in the following figure, $\Gamma_l$ defined by the red point, $\Gamma_r$ defined by the blue point and $\Lambda$ defined by the set of green points.
 
-```{figure} ../figures/Triangulations.png
+```{figure} ../figures/EulerTriangulations.png
 ---
 height: 150px
 name: beamTriangulations
@@ -220,14 +220,14 @@ writevtk(Ω,"EB_solution",cellfields=["v"=>vₕ,"theta"=>∇(vₕ)])
 
 Through Paraview we can visualize the beam deflection and the beam rotation. 
 
-```{figure} ../figures/Deflection.png
+```{figure} ../figures/EulerDeflection.png
 ---
 height: 150px
 name: beamDeflection
 ---
 Beam deflection
 ```
-```{figure} ../figures/Rotation.png
+```{figure} ../figures/EulerRotation.png
 ---
 height: 150px
 name: beamRotation
@@ -237,14 +237,14 @@ Beam rotations
 
 Note that the rotation is a discontinuous field and it does not satisfy the zero rotation at the left end point. This is because we enforce these conditions in a weak sense. As we refine the mesh, the solution satisfies better these conditions. See below how the deflection and rotations look like when we use a mesh of 100 elements instead of 10.
 
-```{figure} ../figures/Deflection_fine.png
+```{figure} ../figures/EulerDeflection_fine.png
 ---
 height: 150px
 name: beamDeflectionFine
 ---
 Beam deflection with 100 elements
 ```
-```{figure} ../figures/Rotation_fine.png
+```{figure} ../figures/EulerRotation_fine.png
 ---
 height: 150px
 name: beamRotationFine
