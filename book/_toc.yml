@@ -59,7 +59,9 @@ parts:
 
     - file: solid_nonlinear/intro
       sections:
+      - file: solid_nonlinear/linearization
       - file: solid_nonlinear/solution_algorithms
+      - file: solid_nonlinear/path-following
       - file: solid_nonlinear/geometric_nonlinearity
       - file: solid_nonlinear/material_nonlinearity
 
