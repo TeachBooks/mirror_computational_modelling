@@ -1,4 +1,4 @@
-# Linear continuum mechanics
+# Linear elasticity
 
 This chapter contains the following sections:
 

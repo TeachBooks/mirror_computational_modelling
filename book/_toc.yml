@@ -54,6 +54,8 @@ parts:
     - file: continuum_linear/intro
       sections:
       - file: continuum_linear/derivation
+      - file: continuum_linear/3d
+      - file: continuum_linear/2d
 
     - file: solid_nonlinear/intro
       sections:
