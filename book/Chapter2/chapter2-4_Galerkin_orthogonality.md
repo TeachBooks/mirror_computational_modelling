@@ -1,3 +1,0 @@
-# Galerkin Orthogonality
-
-Text
