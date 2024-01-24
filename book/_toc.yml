@@ -7,6 +7,12 @@ parts:
   - caption: Fundamentals
     numbered: 3
     chapters:
+    - file: preliminaries/intro
+      sections:
+      - file: preliminaries/tensors
+      - file: preliminaries/linear_algebra
+      - file: preliminaries/continuum_mechanics
+
     - file: introduction/intro
       sections:
       - file: introduction/strong
