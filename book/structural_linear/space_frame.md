@@ -14,12 +14,20 @@ $\newcommand{\yloc}{{\bar{y}}}$
 
 # 2D frame analysis
 
-Frame structures are structures made of one-dimensional structural elements that are loaded axially as well as in bending. These structural elements can be considered a combination of the rod and the beam. One more conceptual ingredient needs to be added and that is that the structure is defined in two-dimensional space (or three-dimensional, but we limit the discussion to 2D here). This is different from rods and beams, which are 1D objects in 1D space. In a frame, different members are present that have different orientations, therefore a global coordinate frame is needed. In this chapter, we start with  the formulation of an extensible beam element that is aligned with global coordinates. After that, we define the element for arbitrary orientation. 
+Frame structures are structures made of one-dimensional structural elements that are loaded axially as well as in bending. These structural elements can be considered a combination of the rod and the beam. One more conceptual ingredient needs to be added and that is that the structure is defined in two-dimensional space (or three-dimensional, but we limit the discussion to 2D here). This is different from rods and beams, which are 1D objects in 1D space. In a frame, different members are present that have different orientations, therefore a global coordinate frame is needed (see {numref}`frameElement`). In this chapter, we start with the formulation of an extensible beam element that is aligned with global coordinates. After that, we define the element for arbitrary orientation. 
  
+```{figure} ../images/frame_element.png
+---
+name: frameElement
+height: 300 px
+---
+The building block for 2D frame analysis: extensible beam element with three degrees of freedom per node and arbitrary orientation with respect to global coordinate frame
+```
+
 ## Extensible beam element
 
 ### Governing equations 
-The extensible beam element is a combination of the rod element with a beam element. Here, we use a Timoshenko beam element. We take a linear 2-node element, initially one that is aligned with the global $x$-axis. Notably, the same linear hat functions can be used as shape functions for rod elements as well as for Timoshenko beam elements, so in terms of shape functions, we need only one set. The same shape functions are used to interpolate three different fields (displacement-like quantities): 
+The extensible beam element is a combination of the rod element with a beam element. Here, we use a Timoshenko beam element. We take a linear 2-node element, initially one that is aligned with the global $x$-axis ($\phi=0$ in {numref}`frameElement`). Notably, the same linear hat functions can be used as shape functions for rod elements as well as for Timoshenko beam elements, so in terms of shape functions, we need only one set. The same shape functions are used to interpolate three different fields (displacement-like quantities): 
 - the displacement in $x$-direction, $u_x$, this is the $u$ from rod analysis  
 - the displacement in $y$-direction, $u_y$, this is the $v$ from beam analysis
 - and the rotation $\theta$, also known from beam analysis
@@ -135,7 +143,16 @@ Write out the matrix product $\bB^T\bD\bB$ in components and show that this elem
 
 A 2D frame can be described by connecting different extensible beam domains with different orientations to one another. In the element formulation given above, the beam was aligned with the global $x$-axis. In a 2D domain, that is not necessarily the case. Relation between forces and displacements does not fundamentally change, but to connect different elements with possibly different orientations we need to define the degrees of freedom in terms of displacements in global coordinate frame. To evaluate the deformations of the element, a transformation then needs to be applied to the displacements. Note that the rotational degree of freedom $\theta$ is independent of the choice of coordinate frame. 
 
-We can define a local coordinate frame $(\xloc,\yloc)$ that is aligned with the frame. Then we have 
+
+```{figure} ../images/frame_mesh.png
+---
+name: frameMesh
+height: 350 px
+---
+Example of discretization of a 2D frame structure with local coordinate frame indicated for three different elements
+```
+
+For every element in the frame, we can define a local coordinate frame $(\xloc,\yloc)$ that is aligned with the frame element (see {numref}`frameMesh`). Then we have 
 
 $$
 \eps &= \pder{u_\xloc}{\xloc} \\
