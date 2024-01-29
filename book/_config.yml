@@ -6,3 +6,9 @@ logo: images/TUDelft_logo_rgb.png
 # Execute notebooks when building
 execute:
   execute_notebooks: auto
+
+sphinx:
+  extra_extensions: ["sphinx_multitoc_numbering"]
+
+html:
+  use_multitoc_numbering: true
