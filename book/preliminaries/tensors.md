@@ -130,11 +130,11 @@ $$
 ```
 ````
 
-As scalars require no further explanation, we move straight to higher-order tensors.
+As scalars require no further explanation, we can move straight to vectors.
 
 ## Vectors 
 
-First-order tensors are also known as vectors. In space $\mathbb{R}^n$, they may be expressed in terms of their components. For instance in a 3D space:
+First-order tensors are also known as vectors. In space $\mathbb{R}^m$, they may be expressed in terms of their components. For instance in a 3D space ($m=3$):
 
 $$
 \ba = a_i = \myMat{a_1\\a_2\\a_3}
@@ -148,15 +148,17 @@ $$
 \lVert\ba\rVert = \sqrt{\ba\T\ba} = \sqrt{\ba\cdot\ba} = \sqrt{a_ia_i}
 $$(p-t-l2vecnorm)
 
+which is therefore the square root of the sum of the squared vector components. When using index notation, remember that summation (in this case over $i$) is implied.
+
 ## Matrices
 
-Second-order tensors are also known as matrices. A matrix in space $\mathbb{R}^n\times\mathbb{R}^n$ may be expressed in terms of its components. For instance with $n=3$ we have:
+Second-order tensors are also known as matrices. A matrix in space $\mathbb{R}^m\times\mathbb{R}^n$ may be expressed in terms of its components. For instance with $m=n=3$ we have:
 
 $$
 \mbf{A} = a_{ij} = \myMat{A_{11} & A_{12} & A_{13}\\A_{21} & A_{22} & A_{23}\\A_{31} & A_{32} & A_{33}}
 $$(p-t-matrixdef)
 
-A matrix is said to be **diagonal** when only its diagonal entries are non-zero:
+A matrix is said to be **square** when it has as many rows as columns ($m=n$). A square matrix is said to be **diagonal** when only its diagonal entries are non-zero:
 
 $$
 \mbf{A} = \myMat{A_{11} & 0 & 0\\0 & A_{22} & 0\\ 0 & 0 & A_{33}}
