@@ -36,15 +36,6 @@ The following two integration schemes are relevant for Finite Element Analysis:
 
 A Newton-Cotes scheme uses equally spaced integration points. In this scheme, with the appropriate set of weights, $n+1$ integration points are needed to integrate a $n$-th order polynomial exactly. Gauss integration (or *Gauss quadrature*) is more common in finite element analysis. This defines integration locations and weights such that they are optimal in the sense that polynomial functions can be integrated exactly with a minumum number of integration points. 
 
-```{figure} ../.././images/Chapter1/1_8_1.png
----
-height: 200px
-name: 1_8_1
----
-Arbitrary discretised shape
-``` 
-
-
 Let's consider a reference element defined from -1 to +1 in a local $\xi$-coordinate. In the Gauss integration scheme the position and weights are optimised for exactly integrating polynomials to as high order as possible.Let's now look at an example. 
 
 - For a O-th order polynomial ($ f= c $) the position of the integration point is not important, as long as the weight is equal to the length of the domain, which in this case is 2.
@@ -59,7 +50,7 @@ $$ p= 2 n_{ip} -1 $$
 This information can be summarised in the following manner. 
 
 
-```{figure} ../.././images/Chapter1/1_8_2.png
+```{figure} ./figures/numericalIntegration1D.png
 ---
 height: 300px
 name: 1_8_2
