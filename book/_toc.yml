@@ -23,7 +23,6 @@ parts:
       - file: introduction/numerical_integration
       - file: introduction/poisson2d
       - file: introduction/isoparametric_mapping
-      - file: introduction/videos
       - file: introduction/Exercises/exercise1
         title: Exercises
         sections:
