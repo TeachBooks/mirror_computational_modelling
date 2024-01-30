@@ -4,7 +4,7 @@ The story of the derivation of the finite element method is told once more in th
 
 ## Derivation of the finite element formulation in 1D
 
-Recap of the derivation of the FE formulation for the 1D Poisson equation. 
+Recap of the derivation of the finite element formulation for the 1D Poisson equation. 
 
 ```{eval-rst}
 .. raw:: html
