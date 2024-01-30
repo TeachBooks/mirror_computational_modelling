@@ -40,6 +40,7 @@ build-book:
   before_script:
     - docker info
   script:
+    - if [ "$TAG" = $TAG_PUBLISH ]; then sed --in-place=".bak" '/# START REMOVE-FROM-PUBLISH/,/# END REMOVE-FROM-PUBLISH/{//!d}' book/_toc.yml; fi
     - docker build -t $TAG .
     - docker push $TAG
 
