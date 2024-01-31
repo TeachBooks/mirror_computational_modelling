@@ -152,7 +152,7 @@ which is therefore the square root of the sum of the squared vector components. 
 
 ## Matrices
 
-Second-order tensors are also known as matrices. A matrix in space $\mathbb{R}^m\times\mathbb{R}^n$ may be expressed in terms of its components. For instance with $m=n=3$ we have:
+Second-order tensors are also known as matrices. A matrix in space $\mathbb{R}^{m\times n}$ may be expressed in terms of its components. For instance with $m=n=3$ we have:
 
 $$
 \mbf{A} = a_{ij} = \myMat{A_{11} & A_{12} & A_{13}\\A_{21} & A_{22} & A_{23}\\A_{31} & A_{32} & A_{33}}
