@@ -51,7 +51,7 @@ $$
 \frac{\partial^2u}{\partial x\partial y} = u_{,xy}
 $$(p-c-derivatives)
 
-We can gather these derivatives into a **gradient vector**, which we represent by using the operator $\nabla$. Assuming $\mbf{x}$ is three-dimensional, we have:
+We can gather the first order derivatives into a **gradient vector**, which we represent by using the operator $\nabla$. Assuming $\mbf{x}$ is three-dimensional, we have:
 
 $$
 \nabla u = \myMat{\displaystyle\frac{\partial u}{\partial x}\\\displaystyle\frac{\partial u}{\partial y}\\\displaystyle\frac{\partial u}{\partial z}}
@@ -102,11 +102,17 @@ $$
 \displaystyle\int_\Omega\nabla\cdot\left(a\mbf{b}\right)\,\ud\Omega = \int_\Omega\nabla a\cdot\mbf{b}\,\ud\Omega + \int_\Omega a\left(\nabla\cdot\mbf{b}\right)\,\ud\Omega
 $$(p-c-prodderivscalarvec)
 
-Now, using Eq. {eq}`p-c-divtheoremvec` but setting $\mbf{a}=a\mbf{b}$ we can substitute the divergence theorem result into Eq. {eq}`p-c-prodderivscalarvec`:
+Now, using Eq. {eq}`p-c-divtheoremvec` but setting $\mbf{a}=a\mbf{b}$ we can substitute the divergence theorem result into the left hand side of Eq. {eq}`p-c-prodderivscalarvec` to get:
 
 $$
-\displaystyle\int_\Omega\left(\nabla\cdot\bb\right)\,\ud\Omega = -\int_\Omega\nabla a\cdot\bb\,\ud\Omega + \int_\Gamma a\bb\cdot\mbf{n}\,\ud\Gamma
+\displaystyle\int_\Gamma a\mbf{b}\cdot\mbf{n}\,\ud\Gamma = \int_\Omega\nabla a\cdot\mbf{b}\,\ud\Omega + \int_\Omega a\left(\nabla\cdot\mbf{b}\right)\,\ud\Omega
 $$(p-c-intbypartsscalar)
+
+Finally, restructuring gives an equality that will be used in finite element derivations: 
+
+$$
+\displaystyle\int_\Omega a\left(\nabla \cdot\bb\right)\,\ud\Omega = -\int_\Omega\nabla a\cdot\bb\,\ud\Omega + \int_\Gamma a\bb\cdot\mbf{n}\,\ud\Gamma
+$$(p-c-divtheoremvecfinal)
 
 We can proceed in the exact same way for integrating the divergence of a second-order tensor. In that case the divergence theorem reads:
 
@@ -118,6 +124,6 @@ and again using the derivative of a product we get to the integration by parts e
 
 $$
 \displaystyle\int_\Omega\ba\cdot\left(\nabla\cdot\mbf{B}\right)\,\ud\Omega = -\int_\Omega\nabla\ba:\mbf{B}\,\ud\Omega + \int_\Gamma\ba\cdot\mbf{B}\cdot\mbf{n}\,\ud\Gamma
-$$
+$$(p-c-divtheoremmatfinal)
 
 Check the expression above and make sure you can see that all integrals evaluate to scalars.

@@ -121,13 +121,21 @@ where $\mbf{I}$ is the identity matrix.
 
 ## Eigenvalue problems
 
-For a given square matrix $\mbf{A}\in\mathbb{R}^{m\times m}$, let a set of vectors $\mbf{b}$ and scalars $\lambda$ be defined such that:
+For a given square matrix $\mbf{A}\in\mathbb{R}^{m\times m}$, let a set of vectors $\mbf{v}$ and scalars $\lambda$ be defined such that:
 
 $$
-\left(\mbf{A}-\lambda\mbf{I}\right)\mbf{b}=\mbf{0}
+\left(\mbf{A}-\lambda\mbf{I}\right)\mbf{v}=\mbf{0}
 $$(p-l-eigenvalueproblem)
 
-is satisfied. Then $\lambda$ and $\mbf{b}$ would respectively be the set of **eigenvalues** and **eigenvectors** of $\mbf{A}$. For certain problems in FEM we will be concerned with finding $\mbf{b}$ and $\lambda$, with their physical meanings differing between problems.
+is satisfied. Then $\lambda$ and $\mbf{v}$ would respectively be the set of **eigenvalues** and **eigenvectors** of $\mbf{A}$. 
+
+A generalized eigenvalue problem is one where the identity matrix $\mbf{I}$ is replaced with a general matrix $\mbf{B}$ of the same size of $\mbf{A}$. 
+
+$$
+\left(\mbf{A}-\lambda\mbf{B}\right)\mbf{v}=\mbf{0}
+$$(p-l-geneigenvalueproblem)
+
+For certain problems in FEM we will be concerned with finding $\mbf{v}$ and $\lambda$ for such generalized eigenvalue problems, with their physical meanings differing between problems.
 
 ## Linear systems of equations
 

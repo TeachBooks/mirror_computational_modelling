@@ -127,6 +127,8 @@ A_{ij} = b_ic_j
 \quad
 a = b_ic_i
 $$
+
+where the repeated index $i$ in $a=b_ic_i$ implies that summation takes place $b_ic_i\equiv\sum_ib_ic_i$. 
 ```
 ````
 
