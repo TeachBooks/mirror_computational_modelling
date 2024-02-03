@@ -18,7 +18,7 @@ $\newcommand{\myMat}[1]{\left[ \begin{matrix} #1 \end{matrix} \right]}$
 
 # From strong to discrete form
 
-In this chapter, we will introduce finite element formulations for higher order problems. You have already seen 2D frame formulations, but there still the elements themselves were one-dimensional in nature. Now, we will focus on solid mechanics problems where the solution is a field in 2D (or 3D) space. This implies the elements and shape functions need to be different (e.g. triangular, quadrilateral, tetrahedral). 
+In this chapter, we will introduce finite element formulations for higher order continuum problems. We will focus on solid mechanics problems where the solution is a field in 2D (or 3D) space. This implies the elements and shape functions need to be different (e.g. triangular, quadrilateral, tetrahedral) from what we have seen for 1D problems.
 
 ## Preliminaries
 

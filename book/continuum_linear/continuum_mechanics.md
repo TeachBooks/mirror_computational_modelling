@@ -179,6 +179,12 @@ $$
 \displaystyle\frac{\partial\sigma_{yy}}{\partial y} + \frac{\partial\sigma_{yx}}{\partial y} + b_y = 0
 $$(c-c-transequilibrium2d)
 
+These equilibrium relations can be summarized in a single expression as: 
+
+$$
+\nabla\cdot\bsig+\mbf{b}=\mbf{0}
+$$(c-c-transequilibrium-general)
+
 For the rotational equilibrium the easiest is to compute the moments at the center of the volume. This leads to:
 
 $$
@@ -199,12 +205,12 @@ $$
 \displaystyle\int_\Omega\nabla\cdot\bsig + \mbf{b}\,\ud\Omega = \mbf{0}
 $$(c-c-transequilibrium3d-2)
 
-and since this must hold not only in an integral sense but also at any specific point in $\Omega$, we require:
+and since this must hold also not only for the whole body $\Omega$, but also for every subdomain inside the body, it follows from this expression that the earlier obtained Equation {eq}`c-c-transequilibrium-general` must hold at every point:
 
 $$
 \nabla\cdot\bsig+\mbf{b}=\mbf{0}
 \quad\text{in}\,\,\Omega
 $$(c-c-transequilibrium3d-3)
 
-Enforcing moment equilibrium is a bit more involved, but results again in the requirement that $\bsig$ is symmetric.
+Enforcing rotational equilibrium in an integral sense is a bit more involved, but results again in the requirement that $\bsig$ is symmetric.
 
