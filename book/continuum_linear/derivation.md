@@ -14,15 +14,15 @@ $\newcommand{\bD}{\mathbf{D}}$
 $\newcommand{\bK}{\mathbf{K}}$
 $\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}$
 $\newcommand{\iD}{\boldsymbol{\mathcal{D}}}$
+$\newcommand{\myMat}[1]{\left[ \begin{matrix} #1 \end{matrix} \right]}$
 
 # From strong to discrete form
 
 In this chapter, we will introduce finite element formulations for higher order problems. You have already seen 2D frame formulations, but there still the elements themselves were one-dimensional in nature. Now, we will focus on solid mechanics problems where the solution is a field in 2D (or 3D) space. This implies the elements and shape functions need to be different (e.g. triangular, quadrilateral, tetrahedral). 
 
-
 ## Preliminaries
 
-We have already shown the finite element derivation for the [Poisson equation in 2D](../introduction/poisson2d.md). The most essential difference between the 2D Poisson equation and 2D continuum elasticity is that in elasticity, the unknown field is a vector field. When solving for displacements in 2D, there are 2 unknowns at every point $(x,y)$ in the domain: $u_x(x,y)$ and $u_y(x,y)$, unlike when solving for instance for temperature with the Poisson equation, where there is only one unknown at every point, i.e. a scalar fild. Above, we have used $\bu$ for the degree of freedom vector, distinct from the scalar $u$ that was the unknown field. Now the unknown field is already a vector, so we keep the symbol $\bu$ for the displacement field
+We have already shown the finite element derivation for the [Poisson equation in 2D](../introduction/poisson2d.md). The most essential difference between the 2D Poisson equation and 2D continuum elasticity is that in elasticity, the unknown field is a vector field. When solving for displacements in 2D, there are 2 unknowns at every point $(x,y)$ in the domain: $u_x(x,y)$ and $u_y(x,y)$, unlike when solving for instance for temperature with the Poisson equation, where there is only one unknown at every point, i.e. a scalar field. Above, we have used $\bu$ for the degree of freedom vector, distinct from the scalar $u$ that was the unknown field. Now the unknown field is already a vector, so we keep the symbol $\bu$ for the displacement field
 
 $$
 \bu \equiv \begin{pmatrix} u_x \\ u_y \end{pmatrix}
@@ -36,30 +36,11 @@ $$
 
 where $a_{ij}$ is the displacement at node $i$ in direction $j$. 
 
-The approximation of the vector field $\bu$ is a component wise interpolation with the shape functions: 
-
-$$
-\bu \approx \bu^h \quad\text{with}\quad u^h_x = \sum_j N_j a_{jx} \quad \text{and}\quad  u^h_y = \sum_j N_j a_{jy} 
-$$
-
-To compute the $\bu^h$ vector in a single operation, we define the $\bN$ matrix as
-
-$$  
-\textbf{N} = \begin{bmatrix}  
-N_1  & 0 & N_2 &  0 &... & N_{n} & 0 \\
-0 &  N_1 & 0 & N_2 & ...& 0 &  N_{n} \end{bmatrix}
-$$
-
-resulting in
-
-$$ 
-\bu^h = \mathbf{Na}
-$$
 
 
 ## Strong form equation
 
-The **equilibrium equation** in a continuum can be written as 
+We have reached a strong form for the equilibrium equation in the {doc}`previous page<continuum_mechanics>`. Here we can briefly reitarate that result: 
 
 $$
 \nabla\cdot\bsig + \bb = \boldsymbol{0}
@@ -113,7 +94,21 @@ $$
 
 ## Discrete form
 
-Now we introduce the approximation, instead of finding $\bu$ that satisfies the weak form equation $\forall\ \bw$, we find $\bu^h$ that satisfies the weak form for all $\bw^h$ with
+Instead of finding $\bu$ that satisfies the weak form equation $\forall\ \bw$, we introduce an approximation $\bu^h$ as a component wise interpolation with the shape functions: 
+
+$$
+\bu \approx \bu^h \quad\text{with}\quad u^h_x = \sum_j N_j a_{jx} \quad \text{and}\quad  u^h_y = \sum_j N_j a_{jy} 
+$$
+
+To compute the $\bu^h$ vector in a single operation, we define the $\bN$ matrix as
+
+$$  
+\textbf{N} = \begin{bmatrix}  
+N_1  & 0 & N_2 &  0 &... & N_{n} & 0 \\
+0 &  N_1 & 0 & N_2 & ...& 0 &  N_{n} \end{bmatrix}
+$$
+
+and employ the same approximation for $\bw$, resulting in
 
 $$
 \bu^h = \bN\ba \quad \text{and} \quad \bw^h = \bN\bc
@@ -121,15 +116,7 @@ $$
 
 where $\ba$ is the vector with nodal degrees of freedom defined above and $\bc$ is a similar vector with nodal coefficients for the test function space. 
 
-At this point, we also change notation. Although stress and strain are defined as second order tensors, it is convenient to treat them as vectors. Using their symmetry, the components can be stored in a vector of length 3 in 2D (and length 6 in 3D). In Voigt notation, these vectors are defined for 2D as:
-
-$$
-\bsig = \begin{pmatrix} \sigma_{xx} \\ \sigma_{yy} \\ \sigma_{xy} \end{pmatrix}
-\quad\text{and}\quad
-\beps = \begin{pmatrix} \pder{u_x}{x} \\ \pder{u_y}{y} \\ \pder{u_x}{y} + \pder{u_y}{x} \end{pmatrix}
-$$
-
-The **constitutive eqation** can then be recast as a matrix-vector multiplication
+At this point, it is convenient to switch to Voigt notation for stresses and strains. The **constitutive equation** can then be recast as a matrix-vector multiplication
 
 $$
 \bsig = \bD\beps
@@ -179,10 +166,22 @@ $$
 
 
 ```{admonition} Continuum elasticity in 3D
-Again, the derivation in 3D is exactly the same as in 2D. The $\ba$-vector now has the length of three times the number of nodes. The $3\times3$ strain tensor is in Voigt notation made into a vector as
+Again, the derivation in 3D is exactly the same as in 2D. The $\ba$-vector now has the length of three times the number of nodes and $\bN$ changes accordingly:
 
 $$
-\beps = \begin{pmatrix} \varepsilon_{xx} & \varepsilon_{yy} & \varepsilon_{zz} & \varepsilon_{xy} & \varepsilon_{yz} & \varepsilon_{zx} \end{pmatrix}^T
+\ba \equiv \begin{pmatrix} a_{1x} \\ a_{1y} \\ a_{1z} \\ a_{2x} \\ a_{2y} \\ a_{2z} \\ \vdots \\ a_{nx} \\ a_{ny} \\ a_{nz} \end{pmatrix}
+\quad
+\bN = \myMat{
+N_1 & 0   & 0   & N_2 & 0   & 0   & ... & N_n & 0   & 0\\
+0   & N_1 & 0   & 0   & N_2 & 0   & ... & 0   & N_n & 0\\
+0   & 0   & N_1 & 0   & 0   & N_2 & ... & 0   & 0   & N_n\\
+}
+$$
+
+The $3\times3$ strain tensor is in Voigt notation made into a vector as
+
+$$
+\beps = \begin{pmatrix} \varepsilon_{xx} & \varepsilon_{yy} & \varepsilon_{zz} & \gamma_{xy} & \gamma_{yz} & \gamma_{zx} \end{pmatrix}^T
 $$
 
 Consequently, the $\bB$-matrix becomes
