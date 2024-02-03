@@ -32,6 +32,7 @@ parts:
         sections:
         - file: introduction/Tutorials/Gridap_tutorial_1.md
 
+# START REMOVE-FROM-PUBLISH
     - file: numerical_analysis/intro
       sections: 
       - file: numerical_analysis/functional_spaces
@@ -40,6 +41,7 @@ parts:
       - file: numerical_analysis/galerkin_orthogonality
       - file: numerical_analysis/convergence
       - file: numerical_analysis/error_estimates
+# END REMOVE-FROM-PUBLISH
 
   - caption: Solids and Structures
     numbered: 3
@@ -68,6 +70,7 @@ parts:
       - file: solid_nonlinear/geometric_nonlinearity
       - file: solid_nonlinear/material_nonlinearity
 
+# START REMOVE-FROM-PUBLISH
     - file: dynamics/intro
       sections:
       - file: dynamics/ODEs
@@ -83,6 +86,7 @@ parts:
     - file: fluid_dynamics/intro
       sections:
       - file: fluid_dynamics/fluids
+# END REMOVE-FROM-PUBLISH
 
 # - file: advanced_topics/intro
 #   chapters:
@@ -95,3 +99,6 @@ parts:
 #     chapters:
 #     - file: Chapter7/Gridap
 #     - file: Chapter7/Pyjive
+
+# END REMOVE-FROM-PUBLISH
+
