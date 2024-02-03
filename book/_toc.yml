@@ -1,92 +1,104 @@
 format: jb-book
 root: intro
+options:
+  numbered: 3
 
 parts:
-  - caption: Introduction to Finite elements - 1D Laplacian
-    chapters: 
-    - file: Chapter1/chapter1-1_Introduction_and_notation
-    - file: Chapter1/chapter1-2_Strong_form_of_the_problem
-    - file: Chapter1/chapter1-3_Weak_form_of_the_problem
-    - file: Chapter1/chapter1-4_Galerkin_method
-    - file: Chapter1/chapter1-5_Matrix_form
-    - file: Chapter1/chapter1-6_Special_case_for_linear_Lagrangian_shape_functions
-    - file: Chapter1/chapter1-7_Special_case_for_linear_Lagrangian_shape_functions
-    - file: Chapter1/chapter1-7_Numerical_Integration
-    - file: Chapter1/chapter1_Tutorial
-    - file: Chapter1/Appendix1-1-High-order_Langrange_polynomials
-    - file: Chapter1/Appendix1-2_Other_type_of_shape_functions
-  - caption: Introduction to numerical analysis of finite elements
+  - caption: Fundamentals
+    numbered: 3
     chapters:
-    - file: Chapter2/chapter2-1_Introduction_to_functional_spaces
-    - file: Chapter2/chapter2-2_Well-posedness_of_the variational_problem
-    - file: Chapter2/chapter2-3_Well-posedness_of_the_discrete_problem
-    - file: Chapter2/chapter2-4_ Galerkin_orthogonality
-    - file: Chapter2/chapter2-5_Convergence
-    - file: Chapter2/chapter2-6_Error_estimates
-  - caption: Finite Elements for linear static problems in CEG Applications
+    - file: preliminaries/intro
+      sections:
+      - file: preliminaries/tensors
+      - file: preliminaries/linear_algebra
+      - file: preliminaries/calculus
+
+    - file: introduction/intro
+      sections:
+      - file: introduction/strong
+      - file: introduction/weak
+      - file: introduction/discrete
+      - file: introduction/matrix
+      - file: introduction/shape
+      - file: introduction/numerical_integration
+      - file: introduction/poisson2d
+      - file: introduction/isoparametric_mapping
+      - file: introduction/Exercises/exercise1
+        title: Exercises
+        sections:
+        - file: introduction/Exercises/exercise1-1.ipynb
+      - file: introduction/Tutorials/tutorial1.md
+        title: Tutorials
+        sections:
+        - file: introduction/Tutorials/Gridap_tutorial_1.md
+
+# START REMOVE-FROM-PUBLISH
+    - file: numerical_analysis/intro
+      sections: 
+      - file: numerical_analysis/functional_spaces
+      - file: numerical_analysis/variational_well_posed
+      - file: numerical_analysis/discrete_well_posed
+      - file: numerical_analysis/galerkin_orthogonality
+      - file: numerical_analysis/convergence
+      - file: numerical_analysis/error_estimates
+# END REMOVE-FROM-PUBLISH
+
+  - caption: Solids and Structures
+    numbered: 3
     chapters:
-    - file: Chapter3/chapter3-2_2D_3D_Problems
-    - file: Chapter3/chapter3_tutorial
-    - file: Chapter3/Appendix_3-1_Linear_solvers
-  - caption: 
+    - file: continuum_linear/intro
+      sections:
+      - file: continuum_linear/continuum_mechanics
+      - file: continuum_linear/derivation
+
+    - file: structural_linear/intro
+      sections:
+      - file: structural_linear/euler_bernouilli
+      - file: structural_linear/timoshenko
+      - file: structural_linear/space_frame
+      - file: structural_linear/Tutorials/tutorials
+        title: Tutorials
+        sections:
+        - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
+        - file: structural_linear/Tutorials/Gridap_timoshenko.md
+   
+    - file: solid_nonlinear/intro
+      sections:
+      - file: solid_nonlinear/linearization
+      - file: solid_nonlinear/solution_algorithms
+      - file: solid_nonlinear/path-following
+      - file: solid_nonlinear/geometric_nonlinearity
+      - file: solid_nonlinear/material_nonlinearity
+
+# START REMOVE-FROM-PUBLISH
+    - file: dynamics/intro
+      sections:
+      - file: dynamics/ODEs
+      - file: dynamics/diffusion
+      - file: dynamics/diffusion_steppers
+      - file: dynamics/semi_discrete
+      - file: dynamics/time_steppers
+      - file: dynamics/modal_analysis
+
+  - caption: Fluids
+    numbered: 3
     chapters:
-    - file: Chapter4/chapter4-1_Numerical_methods_for_ODEs
-    - file: Chapter4/chapter4-2_Dynamic_Problems_in_1D
-    - file: Chapter4/chapter4-3_Dynamic_problems_in_2D-3D
-    - file: Chapter4/chapter4-4_Modal_analysis
-  - caption: 
-    chapters:
-    - file: Chapter5/chapter5-1_Nonlinear_solvers
-    - file: Chapter5/chapter5-2_Geometrically_nonlinear_problems
-    - file: Chapter5/chapter5-3_Solids
-    - file: Chapter5/chapter5-4_Fluids
-    - file: Chapter5/chapter5_Tutorial
-  - caption: 
-    chapters:
-    - file: Chapter6/chapter6-1_Unfitted_Finite_Elements
-    - file: Chapter6/chapter6-2_Surface_coupled_multiphysics_problems
-    - file: Chapter6/chapter6-3_Multiphysics
-    - file: Chapter6/chapter6-4_Multiscale_methods
-  - caption: 
-    chapters:
-    - file: Chapter7/Gridap
-    - file: Chapter7/Pyjive
-#  - caption: Weak form to strong form derivation (Draft TOC)
-#    chapters:
-#    - file: draft_toc/Poisson_equation_1D-2D-3D
-#    - file: draft_toc/Elastostatics_2D-3D
-#    - file: draft_toc/Timoshenko_beam
-#    - file: draft_toc/(Euler beam)
-#    - file: draft_toc/(Kirchhoff plate)
-#    - file: draft_toc/(Reissner-Mindlin plate)
-#    - caption: Elements and shape functions (Draft TOC)
-#    chapters:
-#    - file: draft_toc/shape_functions
-#      sections:
-#      - file: draft_toc/lagrangian-serendipity_elements
-#      - file: draft_toc/numerical_integration 
-#      sections:
-#      - file: draft_toc/gauss_on_line
-#    - file: draft_toc/isoparametric_mapping
-#    - file: draft_toc/XFEM
-#    - caption: Time discretization (Draft TOC)
-#    chapters:
-#    - file: draft_toc/diffusion
-#      sections: 
-#      - file: draft_toc/explicit
-#      - file: draft_toc/trapezoidal
-#    - file: draft_toc/mechanics 
-#      sections:
-#      - file: draft_toc/explicit
-#      - file: draft_toc/newmark
-#   - caption: Nonlinear FEM (Draft TOC)
-#    chapters:
-#    - file: draft_toc/plasticity
-#    - file: draft_toc/damage
-#    - file: draft_toc/viscoelasticity
-#    - file: draft_toc/viscoplasticity
-#    - file: draft_toc/cohesive_zone_models
-#   - caption: Other methods (Draft TOC)
+    - file: fluid_dynamics/intro
+      sections:
+      - file: fluid_dynamics/fluids
+# END REMOVE-FROM-PUBLISH
+
+# - file: advanced_topics/intro
+#   chapters:
+#   - file: advanced_topics/unfitted
+#   - file: advanced_topics/surface_coupling
+#   - file: advanced_topics/multiphysics
+#   - file: advanced_topics/multiscale
+# 
+#   - caption: 7. Codes
 #     chapters:
-#     - file: draft_toc/linear_buckling_analysis
-#     - file: draft_toc/modal_analysis
+#     - file: Chapter7/Gridap
+#     - file: Chapter7/Pyjive
+
+# END REMOVE-FROM-PUBLISH
+
