@@ -84,14 +84,14 @@ $$
 y_{n+1} = y_n + \Delta t f(y_{n+1},t_{n+1}) \quad\Rightarrow\quad \ba_{n+1} = \ba_n + \Delta t\dot{\ba}_{n+1}
 $$(d-ds-backwardeuler)
 
-for the solution field at time step $n+1$. Note that the forward stepper only needs values from the current time step $n$ and is therefore **explicit**. In contrast, the backward stepper needs values from the current time step and is therefore **implicit**.
+for the solution field at time step $n+1$. Note that the forward stepper only needs values from the previous time step $n$ and is therefore **explicit**. In contrast, the backward stepper needs values from the current time step and is therefore **implicit**.
 
 With these starting points, and using the expressions we derived before, we have:
 
 ```{card}
 **Forward Euler for diffusion**
 ^^^
-Step forward in time with the current velocity:
+Step forward in time with the velocity from the previous time step:
 
 $$
 \ba_{n+1} = \ba_n + \Delta t\dot{\ba}_n
@@ -118,7 +118,7 @@ Store $\dot\ba_{n+1}$ for the next step
 **Backward Euler for diffusion**
 ^^^
 
-Step forward in time with the current velocity:
+Start from a relation between the current velocity and the solution
 
 $$
   \mathbf{a}_{n+1} = \mathbf{a}_n + \Delta t \dot{\mathbf{a}}_{n+1}
@@ -126,13 +126,13 @@ $$
   \dot{\mathbf{a}}_{n+1} = \hfrac{\mathbf{a}_{n+1}-\mathbf{a}_n}{\Delta t}
 $$
 
-Substitute in the discretized form:
+Substitute in the discretized form to eliminate the current velocity:
 
 $$
   \mathbf{M}\left(\hfrac{\mathbf{a}_{n+1}-\mathbf{a}_n}{\Delta t}\right) + \mathbf{K}\mathbf{a}_{n+1} = \mathbf{f}_{n+1}
 $$
 
-Solve for the new velocities:
+Solve for the new solution (and after that the velocity):
 
 $$
   \hat{\mathbf{K}}\mathbf{a}_{n+1} = \hat{\mathbf{f}}
@@ -172,7 +172,7 @@ $$
     \mathbf{M}\left(\hfrac{1}{\theta\Delta t}\left(\mathbf{a}_{n+1}-\mathbf{a}_n\right) - \hfrac{\left(1-\theta\right)}{\theta}\dot{\mathbf{a}}_n\right) + \mathbf{K}\mathbf{a}_{n+1} = \mathbf{f}_{n+1}
 $$
 
-Solve for the new velocities:
+Solve for the new solution (and after that the velocity):
 
 $$
     \hat{\mathbf{K}}\mathbf{a}_{n+1} = \hat{\mathbf{f}}

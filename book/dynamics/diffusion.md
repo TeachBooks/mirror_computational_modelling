@@ -132,7 +132,7 @@ $$
  -\hint_\Omega w\left(\nabla\cdot\mathbf{q}\right)\ud\Omega - \hint_\Omega w\rho c\dot{u}\ud\Omega + \hint_\Omega wf\ud\Omega = 0
 $$(d-d-tweakform1)
 
-with $w$ for this problem is always a scalar field, irrespective of the dimensionality of $\Omega$. The next step is to eliminate the derivative $\nabla\cdot\mbf{q}$ using the divergence theorem and integration by parts. Here we can directly use the result we already derived in Eq. {eq}`p-c-divtheoremvecfinal`:
+where $w$ for this problem is always a scalar field, irrespective of the dimensionality of $\Omega$. The next step is to eliminate the derivative $\nabla\cdot\mbf{q}$ using the divergence theorem and integration by parts. Here we can directly use the result we already derived in Eq. {eq}`p-c-divtheoremvecfinal`:
 
 $$
 \hint_\Omega\nabla w\cdot\mathbf{q}\ud\Omega - \hint_\Omega w\rho c\dot{u}\ud\Omega + \hint_\Omega wf\ud\Omega - \hint_{\Gamma_N} w\mathbf{q}\cdot\mathbf{n}\ud\Gamma = 0
@@ -157,7 +157,7 @@ $$
  -\hint_\Omega wq_{i,i}\ud\Omega - \hint_\Omega w\rho c\dot{u}\ud\Omega + \hint_\Omega wf\ud\Omega = 0
 $$(d-d-iweakform1)
 
-with $w$ for this problem is always a scalar field, irrespective of the dimensionality of $\Omega$. The next step is to eliminate the derivative $q_{i,i}$ using the divergence theorem and integration by parts. Here we can directly use the result we already derived in Eq. {eq}`p-c-divtheoremvecfinal`:
+where $w$ for this problem is always a scalar field, irrespective of the dimensionality of $\Omega$. The next step is to eliminate the derivative $q_{i,i}$ using the divergence theorem and integration by parts. Here we can directly use the result we already derived in Eq. {eq}`p-c-divtheoremvecfinal`:
 
 $$
 \hint_\Omega w_{,i}q_i\ud\Omega - \hint_\Omega w\rho c\dot{u}\ud\Omega + \hint_\Omega wf\ud\Omega - {\hint_{\Gamma_h} wq_in_i\ud\Gamma} = 0
