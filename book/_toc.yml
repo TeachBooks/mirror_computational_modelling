@@ -62,6 +62,7 @@ parts:
         - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
         - file: structural_linear/Tutorials/Gridap_timoshenko.md
    
+# START REMOVE-FROM-PUBLISH
     - file: solid_nonlinear/intro
       sections:
       - file: solid_nonlinear/linearization
@@ -69,17 +70,22 @@ parts:
       - file: solid_nonlinear/path-following
       - file: solid_nonlinear/geometric_nonlinearity
       - file: solid_nonlinear/material_nonlinearity
+# END REMOVE-FROM-PUBLISH
 
-# START REMOVE-FROM-PUBLISH
     - file: dynamics/intro
       sections:
+# START REMOVE-FROM-PUBLISH
       - file: dynamics/ODEs
+# END REMOVE-FROM-PUBLISH
       - file: dynamics/diffusion
       - file: dynamics/diffusion_steppers
+# START REMOVE-FROM-PUBLISH
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
+# END REMOVE-FROM-PUBLISH
 
+# START REMOVE-FROM-PUBLISH
   - caption: Fluids
     numbered: 3
     chapters:
@@ -100,5 +106,4 @@ parts:
 #     - file: Chapter7/Gridap
 #     - file: Chapter7/Pyjive
 
-# END REMOVE-FROM-PUBLISH
 
