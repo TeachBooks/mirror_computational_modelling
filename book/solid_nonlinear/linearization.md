@@ -71,52 +71,83 @@ In this page we go back to the weak form of the equilibrium PDE and offer a rein
 
 ## Virtual work interpretation
 
+We start with the expression for the weak form we {doc}`previously derived<../continuum_linear/derivation>`:
+
 $$
 -\displaystyle\int_\Omega \nabla^\us\bw : \bsig \dOmega + \int_\Omega \bw\cdot\bb\dOmega +\int_{\Gamma_N}\bw\cdot\bt\dGamma = \bzero, \quad\forall\quad\bw
 $$(sn-l-weakform1)
+
+where we employ a weight function $\bw$ with no physical interpretation, and one that in principle is only introduced so it can "absorb" the divergence from $\bsig$ and allow us to obtain new solutions with lower-order differentiability.
+
+Another way to reach the same weak form is by using the **virtual work** principle. From the expression above we can easily reach it by just substituting $\bw$ for a *virtual displacement* $\delta\bu$:
 
 $$
 -\displaystyle\int_\Omega \nabla^\us\delta\bu \dbdot \bsig \dOmega + \int_\Omega \delta\bu\cdot\bb\dOmega +\int_{\Gamma_N}\delta\bu\cdot\bt\dGamma = \bzero, \quad\forall\quad\delta\bu
 $$(sn-l-weakform2)
 
+which should be valid for any **admissible** virtual displacement $\delta\bu$, i.e. any arbitrarily small variation in displacement that does not violate Dirichlet boundary conditions. This is also a reinterpretation of the constraint on $\bw$ we enforced before, namely that $\bw=0$ at $\Gamma_D$.
+
+By recognizing that the gradient of a virtual displacement can be seen as a *virtual strain* (i.e. $\nabla^\us\delta\bu=\delta\beps$), we arrive at:
+
 $$
 \underbrace{-\displaystyle\int_\Omega \delta\beps \dbdot \bsig \dOmega}_{W_\mrm{int}} + \underbrace{\displaystyle\int_\Omega \delta\bu\cdot\bb\dOmega +\displaystyle\int_{\Gamma_N}\delta\bu\cdot\bt\dGamma}_{W_\mrm{ext}} = \bzero, \quad\forall\quad\delta\bu
 $$(sn-l-weakform3)
+
+where we now see two terms with clear physical interpretation. The weak form can therefore be seen as a balance between an internal work driven through deformation and an external work related to the loads applied to the body. To reach the discrete form we introduce $\delta\bu = \bN\delta\ba$ and $\delta\beps = \bB\delta\ba$ and use Eq. {eq}`p-l-transprod` to remove $\delta\ba$ from the integrals:
 
 $$
 \delta\ba\T\underbrace{\displaystyle\int_\Omega \bB\T\bsig\dOmega}_{\bff_\mrm{int}} = \delta\ba\T\underbrace{\left( \displaystyle\int_\Omega \bN\T\bb\dOmega +\displaystyle\int_{\Gamma_N}\bN\T\bt\dGamma \right)}_{\bff_\mrm{ext}}
 $$(sn-l-discreteform1)
 
+We see terms being multiplied by displacements in both sides of the equation above. From the definition of work, these terms must represent **forces**, one representing **internal** forces and the other **external** forces:
+
 $$
 \bff_\mrm{int}\left(\ba\right) = \bff_\mrm{ext}
 $$(sn-l-discreteform2)
 
+and by solving the discrete form for $\ba$ we are enforcing equilibrium between them. We immediately see that $\bff_\mrm{int}$ is a function of $\ba$, and from the discussion on {doc}`the previous page<introduction>` we know this must be the term from which nonlinearities can arise. 
+
+As we will see in the next page, solving Eq. {eq}`sn-l-discreteform2` will involve iterative linearizations of the form:
+
+$$
+\widetilde{\bff}_\mrm{int}(\ba) = \bff_\mrm{int}(\ba_\mrm{o}) + \cB{\hpder{\bff_\mrm{int}}{\ba}}\left(\ba-\ba_\mrm{o}\right)
+$$(sn-l-linearization0)
+
+and it therefore suffices to look at the term in red.
 
 ## Consistent linearization of $\bff_\mrm{int}$
+
+To start off, we restate the expression for the internal force:
 
 $$
 \bff_\mrm{int} = \displaystyle\displaystyle\int_\Omega\bB\T\bsig\dOmega
 $$(sn-l-linearization1)
 
-$$
-\bK_t = \displaystyle\int_\Omega \pder{\bB\T}{\ba}\bsig + \bB\T\pder{\bsig}{\beps}\pder{\beps}{\ba} \dOmega
-$$(sn-l-linearization2)
+and take its derivative with respect to $\ba$. Using the chain rule and the result $(fg)'=f'g+fg'$ for the derivative of a product, we get:
 
 $$
-\bK_t = \displaystyle\int_\Omega \pder{\bB\T}{\ba}\bsig\dOmega + \int_\Omega\bB\T\bD_t\bB \dOmega
+\hpder{\bff_\mrm{int}}{\ba} = \displaystyle\int_\Omega \pder{\bB\T}{\ba}\bsig \dOmega + \int_\Omega\bB\T\pder{\bsig}{\beps}\pder{\beps}{\ba} \dOmega
+$$(sn-l-linearization2)
+
+and recalling that $\bB=\hpder{\beps}{\ba}$ we reach:
+
+$$
+\hpder{\bff_\mrm{int}}{\ba} = \displaystyle\int_\Omega \pder{\bB\T}{\ba}\bsig\dOmega + \int_\Omega\bB\T\pder{\bsig}{\beps}\bB \dOmega
 $$(sn-l-linearization3)
+
+which is a general expression for a **tangent stiffness** following from consistent linearization. This expression already hints at which terms can give rise to nonlinearities, but it to make that clear we start at linear elasticity again and make our way back.
 
 ## Sources of nonlinearity
 
-For linear elasticity, we can further simplify the expression above by noting that $\beps=\bB\ba$ and $\bsig=\bD\beps$, and therefore:
+For linear elasticity, we can further simplify Eq. {eq}`sn-l-linearization3` by noting that $\beps=\bB\ba$ and $\bsig=\bD\beps$, and therefore:
 
 $$
-\displaystyle\pder{\bB\T}{\ba} = \mbf{0},\quad\bD_t = \bD
+\displaystyle\pder{\bB\T}{\ba} = \mbf{0},\quad\hpder{\bsig}{\beps} = \bD
 \quad\Rightarrow\quad
 \bK = \int_\Omega\bB\T\bD\bB \dOmega
 $$(sn-l-linearelasticity)
 
-Working back from linearity back to the general expression of Eq. {eq}`sn-l-linearization3`, we can therefore identify **two sources** of nonlinearity, namely:
+Starting from linearity and working back to the general expression of Eq. {eq}`sn-l-linearization3`, we can therefore identify **two sources** of nonlinearity, namely:
 
 ```{card}
 **Geometric nonlinearity**
@@ -145,5 +176,5 @@ $$
 Different problems of interest will feature different types of nonlinearity, and sometimes both types will be present at once. We will come back to these two types later, but in order to solve for the equilibrium path it suffices for now to assume that the stiffness $\bK$ changes with $\ba$ in some way.
 
 ```{admonition} Tangent matrices
-For the next pages, we assume $\bK$ and $\bD$ represent tangent stiffnesses. We will therefore drop the subscripts $t$ we were using above for compactness of notation.
+For the next pages, we assume $\hpder{\bff_\mrm{int}}{\ba}\equiv\bK$ and $\hpder{\bsig}{\beps}\equiv\bD$, which means that $\bK$ and $\bD$ will denote **tangent** matrices arising from consistent linearization.
 ```
