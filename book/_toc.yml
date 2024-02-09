@@ -26,7 +26,7 @@ parts:
       - file: introduction/Exercises/exercise1
         title: Exercises
         sections:
-        - file: introduction/Exercises/exercise1-1.ipynb
+        - file: introduction/Exercises/supported-rod.ipynb
       - file: introduction/Tutorials/tutorial1.md
         title: Tutorials
         sections:
