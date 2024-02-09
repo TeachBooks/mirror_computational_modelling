@@ -6,6 +6,9 @@ logo: images/TUDelft_logo_rgb.png
 # Execute notebooks when building
 execute:
   execute_notebooks: auto
+  exclude_patterns:
+    - 'Exercises/*.ipynb'
+    - 'Tutorials/*.ipynb'
 
 sphinx:
   extra_extensions: ["sphinx_multitoc_numbering"]

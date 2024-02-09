@@ -1,11 +1,11 @@
 format: jb-book
 root: intro
 options:
-  numbered: 3
+  numbered: 2
 
 parts:
   - caption: Fundamentals
-    numbered: 3
+    numbered: 2
     chapters:
     - file: preliminaries/intro
       sections:
@@ -44,7 +44,7 @@ parts:
 # END REMOVE-FROM-PUBLISH
 
   - caption: Solids and Structures
-    numbered: 3
+    numbered: 2
     chapters:
     - file: continuum_linear/intro
       sections:
@@ -83,11 +83,15 @@ parts:
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
+      - file: dynamics/Exercises/exercises
+        title: Exercises
+        sections:
+        - file: dynamics/Exercises/pyjive_diffusion.ipynb
 # END REMOVE-FROM-PUBLISH
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
-    numbered: 3
+    numbered: 2
     chapters:
     - file: fluid_dynamics/intro
       sections:
