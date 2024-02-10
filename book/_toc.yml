@@ -98,12 +98,18 @@ parts:
       - file: fluid_dynamics/fluids
 # END REMOVE-FROM-PUBLISH
 
-  - caption: Logistics
+  - caption: Practical information
     numbered: 0
     chapters:
     - file: schedules/intro
       sections:
       - file: schedules/1110
+      - file: schedules/5110
+
+    - file: codes/intro
+      sections:
+      - file: codes/Gridap
+      - file: codes/Pyjive
 
 # - file: advanced_topics/intro
 #   chapters:
