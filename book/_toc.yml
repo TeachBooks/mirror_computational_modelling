@@ -53,6 +53,7 @@ parts:
       - file: continuum_linear/Exercises/exercises
         title: Exercises
         sections:
+        - file: continuum_linear/Exercises/pyjive_intro
         - file: continuum_linear/Exercises/pyjive_constraints
 
     - file: structural_linear/intro
