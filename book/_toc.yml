@@ -104,6 +104,7 @@ parts:
     - file: schedules/intro
       sections:
       - file: schedules/1110
+      - file: schedules/5110
 
     - file: codes/intro
       sections:
