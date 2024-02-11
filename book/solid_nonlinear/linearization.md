@@ -99,13 +99,24 @@ $$
 \delta\ba\T\underbrace{\displaystyle\int_\Omega \bB\T\bsig\dOmega}_{\bff_\mrm{int}} = \delta\ba\T\underbrace{\left( \displaystyle\int_\Omega \bN\T\bb\dOmega +\displaystyle\int_{\Gamma_N}\bN\T\bt\dGamma \right)}_{\bff_\mrm{ext}}
 $$(sn-l-discreteform1)
 
-We see terms being multiplied by displacements in both sides of the equation above. From the definition of work, these terms must represent **forces**, one representing **internal** forces and the other **external** forces:
+We see terms being multiplied by displacements in both sides of the equation above. From the definition of work, these terms must represent **forces**, one representing **internal** forces and the other **external** forces. After elimination of $\delta\ba$ we therefore have the following system of equations:
 
 $$
 \bff_\mrm{int}\left(\ba\right) = \bff_\mrm{ext}
 $$(sn-l-discreteform2)
 
 and by solving the discrete form for $\ba$ we are enforcing equilibrium between them. We immediately see that $\bff_\mrm{int}$ is a function of $\ba$, and from the discussion on {doc}`the previous page<introduction>` we know this must be the term from which nonlinearities can arise. 
+
+```{admonition} Flashback to linear problems
+:class: dropdown
+Although we are setting the scene for nonlinear problems, it is good to point out that the expression in Eq. {eq}`sn-l-discreteform2` is for linear problems equivalent to what we have seen before. Substitution of $\bsig=\bD\bB\ba$ into the expression for $\bff_\mrm{int}$ from Eq. {eq}`sn-l-discreteform1` and moving $\ba$ out of the integral gives the familiar left hand side expression:
+
+$$
+\bff_\mrm{int}\left(\ba\right) = \displaystyle\int_\Omega \bB\T\bD\bB\dOmega\,\ba
+$$
+
+which makes $\bff_\mrm{int}=\bff_\mrm{ext}$ take the form of a linear system of equations  $\bK\ba=\bff_\mrm{ext}$. 
+```
 
 As we will see in the next page, solving Eq. {eq}`sn-l-discreteform2` will involve iterative linearizations of the form:
 

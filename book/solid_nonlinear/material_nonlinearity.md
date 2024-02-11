@@ -81,7 +81,7 @@ $$
 \bsig=\mathcal{M}\left(\beps,\balpha\right)
 $$(sn-mn-general1)
 
-where $\mathcal{M}$ represents a function or algorithm that computes material behavior. These state variables usually arise from robust thermodynamics principles and model phenomena that lead to energy dissipation and irreversible changes to material composition. Further details on the nature of these variables and how to arrive at a consistent thermodynamic treatment of material models will be left out of scope for this book. 
+where $\mathcal{M}$ represents a function or algorithm that computes material behavior. These state variables usually arise from robust thermodynamics principles and model phenomena that lead to energy dissipation and irreversible changes to material composition. Further details on the nature of these variables and how to arrive at a consistent thermodynamic treatment of material models will be left out of scope for this page. 
 
 For our discussion here, it suffices to assume that if we know the current value of $\balpha$ we can compute $\bsig$ for any value $\beps$ **without the need to store the complete history of $\beps$** since the beginning of the simulation. It is also important to mention that since these internal variables evolve as the result of irreversible phenomena, we should only update $\balpha$ once equilibrium is reached. In other words, intermediate values we obtain during Newton-Raphson iterations should be discarded.
 
@@ -247,4 +247,4 @@ $$
 d = d\left(\kappa\right)
 $$(sn-mn-damage3)
 
-completing the formulation of the model. Since Eq. {eq}`sn-mn-damage3` represents a unique mapping, it suffices to store only $\kappa$ as internal variable in $\balpha$. Damage model are used to describe failure of a wide range of materials.
+completing the formulation of the model. Since Eq. {eq}`sn-mn-damage3` represents a unique mapping, it suffices to store only $\kappa$ as internal variable in $\balpha$. Damage models are used to describe failure of a wide range of materials.

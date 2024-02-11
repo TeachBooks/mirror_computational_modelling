@@ -108,13 +108,13 @@ with the idea being that if $\widetilde{f}(x)$ is a fair approximation of $f(x)$
 In the example above we have applied Newton's method for a scalar function of a single variable. Actually, the procedure generalizes trivially to vectors, and we can directly apply it to solve Eq. {eq}`sn-sa-residual`. For a fixed $\bff_\mrm{ext}$ and starting from an initial guess $\ba\old$, we can define our linearized residual as:
 
 $$
-\widetilde{\mbf{r}}(\ba) = \mbf{r}\old + \hpder{\mbf{r}\old}{\ba}\left(\ba-\ba\old\right)
+\widetilde{\mbf{r}}(\ba) = \mbf{r}\old + \hpder{\mbf{r}}{\ba}\left(\ba-\ba\old\right)
 $$(sn-sa-rlinearization)
 
 where $\mbf{r}\old = \mbf{r}(\ba\old)$. Recalling our discussion $\bff_\mrm{int}$ {doc}`in the previous page<linearization>`, we can directly write the derivative we need above:
 
 $$
-\hpder{\mbf{r}\old}{\ba} = \hpder{\bff_\mrm{ext}}{\ba} - \hpder{\bff_\mrm{int}}{\ba} = -\bK
+\hpder{\mbf{r}}{\ba} = \hpder{\bff_\mrm{ext}}{\ba} - \hpder{\bff_\mrm{int}}{\ba} = -\bK
 $$(sn-sa-rgrad)
 
 Finally, we use the resulting linearization to compute a new guess for $\ba$:
