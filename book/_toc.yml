@@ -67,7 +67,6 @@ parts:
         - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
         - file: structural_linear/Tutorials/Gridap_timoshenko.md
    
-# START REMOVE-FROM-PUBLISH
     - file: solid_nonlinear/intro
       sections:
       - file: solid_nonlinear/introduction
@@ -75,7 +74,6 @@ parts:
       - file: solid_nonlinear/solution_algorithms
       - file: solid_nonlinear/geometric_nonlinearity
       - file: solid_nonlinear/material_nonlinearity
-# END REMOVE-FROM-PUBLISH
 
     - file: dynamics/intro
       sections:
