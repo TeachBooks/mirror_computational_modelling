@@ -92,23 +92,28 @@ $$(p-l-transprod)
 
 ```{admonition} Tensor contractions
 :class: tip, dropdown
-In tensor notation, we can often determine the dimensionality of the result of an operation by looking at the operator symbol between operands. When the operator contains dots (e.g. $\cdot$, $:$), the number of dots indicates how many dimensions will be eliminated, for instance:
+In tensor notation, we can often determine the dimensionality of the result of an operation by looking at the operator symbol between operands. When the operator contains dots (e.g. $\cdot$, $:$), the number of dots indicates how many dimensions will be summed over, for instance:
 
 $$
-\ba\cdot\bb\quad\Rightarrow\quad\text{one dimension eliminated}\quad\Rightarrow\quad\text{result is a scalar}
-$$
-
-$$
-\mbf{A}\cdot\bb\quad\Rightarrow\quad\text{one dimension eliminated}\quad\Rightarrow\quad\text{result is a vector}
+\ba\cdot\bb\quad\Rightarrow\quad\text{one dimension summed over}\quad\Rightarrow\quad\text{result is a scalar}
 $$
 
 $$
-\mbf{A}:\mbf{B}\quad\Rightarrow\quad\text{two dimensions eliminated}\quad\Rightarrow\quad\text{result is a scalar}
+\mbf{A}\cdot\bb\quad\Rightarrow\quad\text{one dimension summed over}\quad\Rightarrow\quad\text{result is a vector}
 $$
 
 $$
-\bs{\mathcal{A}}:\mbf{B}\quad\Rightarrow\quad\text{two dimensions eliminated}\quad\Rightarrow\quad\text{result is a matrix}
+\mbf{A}\cdot\mbf{B}\quad\Rightarrow\text{one dimension summed over}\quad\Rightarrow\quad\text{result is a matrix}
 $$
+
+$$
+\mbf{A}:\mbf{B}\quad\Rightarrow\quad\text{two dimensions summed over}\quad\Rightarrow\quad\text{result is a scalar}
+$$
+
+$$
+\bs{\mathcal{A}}:\mbf{B}\quad\Rightarrow\quad\text{two dimensions summed over}\quad\Rightarrow\quad\text{result is a matrix}
+$$
+
 ```
 
 Finally we will often deal with inverting matrices. The inverse $\mbf{A}\inv$ of a square matrix $\mbf{A}$ is defined from:
