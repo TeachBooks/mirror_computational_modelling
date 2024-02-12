@@ -174,9 +174,9 @@ Stresses acting on a small piece of continuum $\Omega$.
 where we use only two dimensions for simplicity. Translational equilibrium in $x$ and $y$ directions within this domain therefore requires:
 
 $$
-\displaystyle\frac{\partial\sigma_{xx}}{\partial x} + \frac{\partial\sigma_{xy}}{\partial x} + b_x = 0
+\displaystyle\frac{\partial\sigma_{xx}}{\partial x} + \frac{\partial\sigma_{yx}}{\partial y} + b_x = 0
 \quad\quad
-\displaystyle\frac{\partial\sigma_{yy}}{\partial y} + \frac{\partial\sigma_{yx}}{\partial y} + b_y = 0
+\displaystyle\frac{\partial\sigma_{yy}}{\partial y} + \frac{\partial\sigma_{xy}}{\partial x} + b_y = 0
 $$(c-c-transequilibrium2d)
 
 These equilibrium relations can be summarized in a single expression as: 
