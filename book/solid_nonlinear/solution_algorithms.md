@@ -52,8 +52,8 @@ $\newcommand{\T}{^\mathrm{T}}$
 $\newcommand{\dOmega}{\,\mathrm{d}\Omega}$
 $\newcommand{\dGamma}{\,\mathrm{d}\Gamma}$
 $\newcommand{\us}{\mathrm{s}}$
-$\newcommand{\old}{_\mathrm{o}}$
-$\newcommand{\new}{_\mathrm{n}}$
+$\newcommand{\old}{_0}$
+$\newcommand{\new}{_1}$
 
 $\newcommand{cA}[1]{\textcolor[RGB]{1,113,136}{#1}}$
 $\newcommand{cB}[1]{\textcolor[RGB]{195,49,47}{#1}}$
