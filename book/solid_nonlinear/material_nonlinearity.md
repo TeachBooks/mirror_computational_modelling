@@ -53,8 +53,8 @@ $\newcommand{\T}{^\mathrm{T}}$
 $\newcommand{\dOmega}{\,\mathrm{d}\Omega}$
 $\newcommand{\dGamma}{\,\mathrm{d}\Gamma}$
 $\newcommand{\us}{\mathrm{s}}$
-$\newcommand{\old}{_\mathrm{o}}$
-$\newcommand{\new}{_\mathrm{n}}$
+$\newcommand{\old}{_\mathrm{old}}$
+$\newcommand{\new}{_\mathrm{new}}$
 $\newcommand{\balpha}{\boldsymbol{\alpha}}$
 $\newcommand{\fext}{\bff_\mathrm{ext}}$
 $\newcommand{\fint}{\bff_\mathrm{int}}$
