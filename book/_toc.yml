@@ -1,11 +1,11 @@
 format: jb-book
 root: intro
 options:
-  numbered: 3
+  numbered: 2
 
 parts:
   - caption: Fundamentals
-    numbered: 3
+    numbered: 2
     chapters:
     - file: preliminaries/intro
       sections:
@@ -26,7 +26,7 @@ parts:
       - file: introduction/Exercises/exercise1
         title: Exercises
         sections:
-        - file: introduction/Exercises/exercise1-1.ipynb
+        - file: introduction/Exercises/supported-rod.ipynb
       - file: introduction/Tutorials/tutorial1.md
         title: Tutorials
         sections:
@@ -44,12 +44,17 @@ parts:
 # END REMOVE-FROM-PUBLISH
 
   - caption: Solids and Structures
-    numbered: 3
+    numbered: 2
     chapters:
     - file: continuum_linear/intro
       sections:
       - file: continuum_linear/continuum_mechanics
       - file: continuum_linear/derivation
+      - file: continuum_linear/Exercises/exercises
+        title: Exercises
+        sections:
+        - file: continuum_linear/Exercises/pyjive_intro
+        - file: continuum_linear/Exercises/pyjive_constraints
 
     - file: structural_linear/intro
       sections:
@@ -62,15 +67,13 @@ parts:
         - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
         - file: structural_linear/Tutorials/Gridap_timoshenko.md
    
-# START REMOVE-FROM-PUBLISH
     - file: solid_nonlinear/intro
       sections:
+      - file: solid_nonlinear/introduction
       - file: solid_nonlinear/linearization
       - file: solid_nonlinear/solution_algorithms
-      - file: solid_nonlinear/path-following
       - file: solid_nonlinear/geometric_nonlinearity
       - file: solid_nonlinear/material_nonlinearity
-# END REMOVE-FROM-PUBLISH
 
     - file: dynamics/intro
       sections:
@@ -83,16 +86,33 @@ parts:
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
+      - file: dynamics/Exercises/exercises
+        title: Exercises
+        sections:
+        - file: dynamics/Exercises/pyjive_diffusion.ipynb
 # END REMOVE-FROM-PUBLISH
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
-    numbered: 3
+    numbered: 2
     chapters:
     - file: fluid_dynamics/intro
       sections:
       - file: fluid_dynamics/fluids
 # END REMOVE-FROM-PUBLISH
+
+  - caption: Practical information
+    numbered: 0
+    chapters:
+    - file: schedules/intro
+      sections:
+      - file: schedules/1110
+      - file: schedules/5110
+
+    - file: codes/intro
+      sections:
+      - file: codes/Gridap
+      - file: codes/Pyjive
 
 # - file: advanced_topics/intro
 #   chapters:
