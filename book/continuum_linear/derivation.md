@@ -73,7 +73,7 @@ where $\bt$ is a boundary traction. In general, it is possible to define a Diric
 
 ## Weak form
 
-As Equation {eq}`equilibrium-strong` is a vector equation, we multiply it with a vector of test functions $\bw$ and integrate over the domain in the first step towards a weak form equation:
+As Equation {eq}`equilibrium-strong` is a vector equation, we multiply it with a vector of test functions $\bw$. By integrating the product of strong form and test functions over the domain, we obtain:
 
 $$
 -\int_\Omega \bw\cdot(\nabla\cdot\bsig)\,d\Omega = \int_\Omega \bw\cdot\bb\,d\Omega
@@ -82,13 +82,13 @@ $$
 Divergence theorem and substitution of the Neumann boundary conditions gives the weak form equation:
 
 $$
--\int_\Omega \nabla^\us\bw:\bsig\,d\Omega = \int_\Omega \bw\cdot\bb\,d\Omega + \int_{\Gamma_N} \bw\cdot\bt\,d\Gamma
+\int_\Omega \nabla^\us\bw:\bsig\,d\Omega = \int_\Omega \bw\cdot\bb\,d\Omega + \int_{\Gamma_N} \bw\cdot\bt\,d\Gamma
 $$
 
 For the case of linear constitutive and kinematic relations, the weak form can be written in terms of $\bu$ as:
 
 $$
--\int_\Omega \nabla^\us\bw:\iD:\nabla^\us\bu\,d\Omega = \int_\Omega \bw\cdot\bb\,d\Omega + \int_{\Gamma_N} \bw\cdot\bt\,d\Gamma
+\int_\Omega \nabla^\us\bw:\iD:\nabla^\us\bu\,d\Omega = \int_\Omega \bw\cdot\bb\,d\Omega + \int_{\Gamma_N} \bw\cdot\bt\,d\Gamma
 $$
 
 
