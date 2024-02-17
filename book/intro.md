@@ -10,7 +10,7 @@ In this book we will try to convey this flexibility by introducing the FE method
 
 ## Authors
 
-- Oriol Colomes Gene
+- Oriol Colomés
 - Iuri Rocha
 - Frans van der Meer
 
