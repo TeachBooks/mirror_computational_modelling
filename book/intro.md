@@ -10,6 +10,15 @@ In this book we will try to convey this flexibility by introducing the FE method
 
 ## Authors
 
-## Aknowledgements
+- Oriol Colomes Gene
+- Iuri Rocha
+- Frans van der Meer
 
-## How to contribute
+## Acknowledgements
+
+This book is building on a tradition of computational mechanics education and research at the faculty of Civil Engineering and Geosciences at TU Delft. Lecture notes by Garth Wells (*Introduction to the Finite Element Method*) and by René de Borst and Bert Sluys (*Computational Methods in Non-linear Solid Mechanics*) have been used as source of inspiration for parts of the book. 
+
+Development of the book is supported with two Education Innovation grants from the Education Management Team of the faculty of Civil Engineering and Geosciences in 2023 and 2024. 
+
+
+
