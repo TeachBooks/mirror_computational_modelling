@@ -181,9 +181,8 @@ $\mathit{v}_i \cdot \mathit{A}_{ij} \cdot \mathit{w}_j$
 :class: tip, dropdown
 Scalar
 ```
-:::
+**Exercise 2**
 
-:::{card} Exercise 2
 How would you write the product
 
 $\mathit{v}_i \cdot \mathit{A}_{ij} \cdot \mathit{w}_j$
@@ -193,9 +192,8 @@ in matrix/vector notation?
 :class: tip, dropdown
 $\mathbf{v}^T \cdot \mathbf{A} \cdot \mathbf{w}$
 ```
-:::
+**Exercise 3**
 
-:::{card} Exercise 3
 What is the type of the result of the following product?
 
 $\mathit{v}_i \cdot \mathit{w}_j$
@@ -203,9 +201,9 @@ $\mathit{v}_i \cdot \mathit{w}_j$
 :class: tip, dropdown
 Second order tensor
 ```
-:::
 
-:::{card} Exercise 4
+**Exercise 4**
+
 How would you write the product
 
 $\mathit{A}_{ij} \cdot \mathit{v}_{i}$
@@ -215,9 +213,9 @@ in matrix vector notation?
 :class: tip, dropdown
 $\mathbf{A}^T \cdot \mathbf{v}$
 ```
-:::
 
-:::{card} Exercise 5
+**Exercise 5**
+
 How would you write the result of the product
 
 $\mathit{v}_{i} \cdot \mathit{w}_{j}$
@@ -227,9 +225,9 @@ in matrix vector notation?
 :class: tip, dropdown
 $\mathbf{v} \cdot \mathbf{w}^T$
 ```
-:::
 
-:::{card} Exercise 6
+**Exercise 6**
+
 How would you write the product
 
 $\mathbf{A} \cdot \mathbf{B}^T$
