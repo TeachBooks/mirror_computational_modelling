@@ -66,6 +66,11 @@ parts:
         sections:
         - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
         - file: structural_linear/Tutorials/Gridap_timoshenko.md
+      - file: structural_linear/Exercises/exercises
+        title: Exercises
+        sections:
+        - file: structural_linear/Exercises/pyjive_timoshenko
+        - file: structural_linear/Exercises/pyjive_frame
    
     - file: solid_nonlinear/intro
       sections:
