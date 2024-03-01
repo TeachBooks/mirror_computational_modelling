@@ -83,6 +83,7 @@ parts:
         title: Exercises
         sections:
         - file: solid_nonlinear/Exercises/pyjive_nonlinmodule
+        - file: solid_nonlinear/Exercises/pyjive_material
 
 
     - file: dynamics/intro
