@@ -84,6 +84,7 @@ parts:
         sections:
         - file: solid_nonlinear/Exercises/pyjive_nonlinmodule
         - file: solid_nonlinear/Exercises/pyjive_material
+        - file: solid_nonlinear/Exercises/pyjive_buckling
 
 
     - file: dynamics/intro
