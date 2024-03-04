@@ -172,7 +172,7 @@ Specialized algorithms manage to be even faster in case $\mbf{K}$ is sparse, and
 ## Quiz Notations and Products
 
 :::{card} Exercise 1
-What is the type of the result of the product?
+What is the type of the result of the product (scalar/vector/matrix)?
 
 $\mathit{v}_i \cdot \mathit{A}_{ij} \cdot \mathit{w}_j$
 
@@ -194,12 +194,12 @@ $\mathbf{v}^T \cdot \mathbf{A} \cdot \mathbf{w}$
 ```
 **Exercise 3**
 
-What is the type of the result of the following product?
+What is the type of the result of the following product (scalar/vector/matrix)?
 
 $\mathit{v}_i \cdot \mathit{w}_j$
 ```{admonition} Solution
 :class: tip, dropdown
-Second order tensor
+Matrix
 ```
 
 **Exercise 4**
@@ -208,7 +208,7 @@ How would you write the product
 
 $\mathit{A}_{ij} \cdot \mathit{v}_{i}$
 
-in matrix vector notation?
+in matrix/vector notation?
 ```{admonition} Solution
 :class: tip, dropdown
 $\mathbf{A}^T \cdot \mathbf{v}$
@@ -220,7 +220,7 @@ How would you write the result of the product
 
 $\mathit{v}_{i} \cdot \mathit{w}_{j}$
 
-in matrix vector notation?
+in matrix/vector notation?
 ```{admonition} Solution
 :class: tip, dropdown
 $\mathbf{v} \cdot \mathbf{w}^T$
