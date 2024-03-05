@@ -128,12 +128,12 @@ with which we can repeat this process until $\mbf{r}$ is close enough to zero.
 
 The convergence algorithm can be visualised as follows,
 
-```{figure} ./figures/NRconvergence.gif
+```{figure} ./figures/nrconvergence.gif
 ---
-height: 200px
+width: 100%
 name: nrconvergence 
 ---
-The Newton-Raphson method. Left: as a root-finding algorithm for an arbitrary function $f(x)$; Right: recast as a solver for $\bff_\mrm{int}=\bff_\mrm{ext}$.
+The convergence of the Newton Raphson method for non-linear problems.
 ```
 
 ```{admonition} Coding FEM
