@@ -126,6 +126,16 @@ $$(sn-sa-rnewguess)
 
 with which we can repeat this process until $\mbf{r}$ is close enough to zero.
 
+The convergence algorithm can be visualised as follows,
+
+```{figure} ./figures/NRconvergence.gif
+---
+height: 200px
+name: nrconvergence 
+---
+The Newton-Raphson method. Left: as a root-finding algorithm for an arbitrary function $f(x)$; Right: recast as a solver for $\bff_\mrm{int}=\bff_\mrm{ext}$.
+```
+
 ```{admonition} Coding FEM
 :class: dropdown
 Just as for linear problems, the value of $\ba\new$ above is not actually computed by inverting $\bK$. We instead solve the linearized system of equations $\bK\ba=\mbf{r}\old$. Refer back to the discussion in {doc}`../preliminaries/linear_algebra` for more details on how this is done.
