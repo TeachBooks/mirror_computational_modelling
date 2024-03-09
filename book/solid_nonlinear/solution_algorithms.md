@@ -126,14 +126,12 @@ $$(sn-sa-rnewguess)
 
 with which we can repeat this process until $\mbf{r}$ is close enough to zero.
 
-The convergence algorithm can be visualised as follows,
-
-```{figure} ./figures/nrconvergence.gif
+```{figure} ./figures/linresidual_NR.svg
 ---
 width: 100%
-name: nrconvergence 
+name: Linearising residuals
 ---
-The convergence of the Newton Raphson method for non-linear problems.
+Linearised residuals through Newton-Raphson method.
 ```
 
 ```{admonition} Coding FEM
