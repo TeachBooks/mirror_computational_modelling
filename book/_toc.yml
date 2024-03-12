@@ -86,7 +86,7 @@ parts:
         - file: solid_nonlinear/Exercises/pyjive_material
         - file: solid_nonlinear/Exercises/pyjive_buckling
         - file: solid_nonlinear/Exercises/pyjive_plastic_hinges
-        - file: solid_nonlinear/Exercises/pyjive_exercise
+        - file: solid_nonlinear/Exercises/pyjive_frame_exercise
 
 
     - file: dynamics/intro
