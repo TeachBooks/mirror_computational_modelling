@@ -96,7 +96,6 @@ parts:
 # END REMOVE-FROM-PUBLISH
       - file: dynamics/diffusion
       - file: dynamics/diffusion_steppers
-# START REMOVE-FROM-PUBLISH
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
@@ -104,7 +103,6 @@ parts:
         title: Exercises
         sections:
         - file: dynamics/Exercises/pyjive_diffusion.ipynb
-# END REMOVE-FROM-PUBLISH
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
