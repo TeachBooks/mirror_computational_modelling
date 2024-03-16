@@ -11,6 +11,7 @@ $\newcommand{\bw}{\mathbf{w}}$
 $\newcommand{\bx}{\mathbf{x}}$
 $\newcommand{\bN}{\mathbf{N}}$
 $\newcommand{\bB}{\mathbf{B}}$
+$\newcommand{\bC}{\mathbf{C}}$
 $\newcommand{\bD}{\mathbf{D}}$
 $\newcommand{\bM}{\mathbf{M}}$
 $\newcommand{\bK}{\mathbf{K}}$
@@ -97,7 +98,24 @@ Ignoring the boundary term, show what problem arises in the derivation when repl
 
 ```{admonition} Solution
 :class: tip, dropdown
-We will need the time derivative of $\bw$, with $\bN$ already defined as time-independent, we get $\dot\bw^h=\bN\dot\bc$. After substitution of $\dot\bw^h$, on term in the equation is contains $\dot\bc$ while other terms still have $\bc$. This implies that the step where $\bc$ is eliminated cannote be made anymore. 
+We will need the time derivative of $\bw$, with $\bN$ already defined as time-independent, we get $\dot\bw^h=\bN\dot\bc$. After substitution of $\dot\bw^h$, on term in the equation is contains $\dot\bc$ while other terms still have $\bc$. This implies that $\bc$ cannot be eliminated.
 ```
 :::
+
+## Damping
+
+In structural mechanics, some degree of damping can be expected. On the structural scale, the source of damping is not easily included in a theoretically sounds way. The strong form equation that was the starting point on this page was therefore one an undamped system. In the semi-discrete form, it is conceptually clear how damping can be introduced, namely by introducing a term that is proportional to $\dot\ba$: 
+
+$$
+\bM\ddot\ba + \bC\dot\ba + \bK\ba = \mathbf{f}
+$$(dynamics-discrete-damped)
+
+Where $\bC$ is a damping matrix. Again, sound theories to derive $\bC$ from fundamental principles are lacking. A simple method to construct a meaningful damping matrix is by defining $\bC$ in terms of the known $\bK$ and $\bM$-matrices: 
+
+$$
+\bC = \alpha\bK + \beta\bM
+$$
+
+in which the choice for $\alpha$ and $\beta$ will be problem-dependent. 
+
 
