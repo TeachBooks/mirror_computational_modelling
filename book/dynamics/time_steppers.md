@@ -15,7 +15,7 @@ $\newcommand{\bK}{\mathbf{K}}$
 
 # Time stepping schemes for elasto-dynamics
 
-On the previous page, we have derived the semi-discrete finite element equations for continuum dynamics. Discretization in space was applied, but derivatives with respect to time were maintained. In order to arrive at an algorithm that can be implemented, time discretization should also be applied. It is possible to perform time-discretization with shape functions to arrive at the *space-time finite element method*. However, this is not the most common choice. The finite element discretization approach with nodes, elements and shape functions is convenient for discretization in space, but less so for discretization in time. Therefore, in finite element solvers for time-dependent problems, the finite element discretization in space is usually combined with some type of finite difference discretization in time. To solve th governing equations over a certain time interval, finite time increments $\Delta t$ are introduced and the solution $\ba$ is computed for a finite number of time steps to solve the governing equations over a certain time interval.
+On the previous page, we have derived the semi-discrete finite element equations for continuum dynamics. Discretization in space was applied, but derivatives with respect to time were maintained. In order to arrive at an algorithm that can be implemented, time discretization should also be applied. It is possible to perform time-discretization with shape functions to arrive at the **space-time finite element method**. However, this is not the most common choice. The finite element discretization approach with nodes, elements and shape functions is convenient for discretization in space, but less so for discretization in time. Therefore, in finite element solvers for time-dependent problems, the finite element discretization in space is usually combined with some type of finite difference discretization in time. To solve th governing equations over a certain time interval, finite time increments $\Delta t$ are introduced and the solution $\ba$ is computed for a finite number of time steps to solve the governing equations over a certain time interval.
 
 In this page different algorithms are introduced for the temporal discretization. In every case, the objective is to find the solution vector $\ba_{n+1}=\ba(t_{n+1})$ and if necessary its time derivatives $\dot\ba_{n+1} = \dot\ba(t_{n+1})$ and $\ddot\ba_{n+1}=\ddot\ba(t_{n+1})$ with the previous solution $\ba_{n}=\ba(t_{n})$, $\dot\ba_{n}=\dot\ba(t_{n})$ known. This implies that for the first time step, initial conditions $\ba_0$ and $\dot\ba_0$ need to be given. 
 
@@ -47,6 +47,8 @@ We aim to find $\ba(t)$ for given $\bK$, $\bC$, $\bM$ and $\bff(t)$. On the prev
 This page is about the different options that exist for the time stepping scheme in the algorithm above. The solution is computed with a linear system of equations and involves evaluation of the force vector, either at $t=n\Delta t$ or at $t=(n+1)\Delta t$. 
 
 ## Central difference scheme
+
+### Formulation 
 
 For the first algorithm, we make use of central difference approximations for the first and second order time derivatives at $t_n$. These are: 
 
@@ -92,11 +94,44 @@ $$
 
 This linear system of equations can be solved in a loop over time steps. This time stepping scheme is referred to as the **central difference scheme**. It counts as an explicit time integration scheme and is very popular. The central difference scheme is particularly powerful in combination with **mass lumping**. The matrix $\hat\bM$ can be made diagonal without too much loss of accuracy. Then the system of equations {eq}`central-difference-system` can be solved at much lower cost, becuase the equations are uncoupled. 
 
+```{admonition} Explicit dynamics with finite elements
+The central difference scheme is an explicit time integration scheme. Note how we approximated time derivatives at time step $n$ to compute the solution at time step $n+1$. Also, note that for computing $\ba_{n+1}$, we have $\bff_n-\bK\ba_n$ on the right hand side, which is a measure for the force unbalance at $t=t_n$.
+```
+
+### Stability and accuracy
+The central difference scheme is second order accurate, which means that the magnitude of the error in the solution due to the time-discretization is proportional to the square of the magnitude of the time increments, or $O(\Delta t^2)$. 
+
 A downside of the central difference scheme is that it is only conditionally stable. Time steps need to be chosen sufficiently small to avoid instability in the time integration. This makes the central difference scheme particularly well-suited for fast dynamics problems like impact simulations where the time window of interest is relatively short. 
 
-Because of their robustness, explicit dynamics solvers are also used for solving quasi-static nonlinear equilibrium problems. The critical time step size is then increased by artificially scaling the mass matrix to contain higher values, which is conceptually allowed because in the end the static solution should be independent of the mass. One should remain careful when using explicit solvers for equilibrium problems. Equilibrium is by definition violated in the dynamic solver and the influence of this on the results cannot be assessed with certainty, although it is possible to get some insight by monitoring the energy balance. 
+The time stepping scheme is stable for 
+
+$$
+\Delta t \leq  \frac2{\omega^h}
+$$
+
+where $\omega^h$ is the highest natural frequncy of the discretized system. Note that the continuous system has no upper bound for the natural frequencies without upper bound. The highest eigenfrequency will be inversely proportional to the size of the (smallest) elements in the mesh. This is bad news, theoretically the solution should converge to a unique and exact solution upon mesh-refinement, this is still the case, but only if the mesh-refinement is accompanied with reduction of the time step size. 
+
+For linear elements, the highest natural eigenfrequency is approximately given by:
+
+$$
+\omega^h = \frac{2c}{\Delta x}
+$$
+ 
+where $c=\sqrt{E/\rho}$ is the wave speed, dependent on Young's modulus $E$ and density $\rho$, and $\Delta x$ is the length of the element. This means that the stability criterion becomes
+
+$$ 
+\Delta t \leq \frac{\Delta x}{c}
+$$
+
+which is the Courant, Friedrichs, Lewy (CFL) stability condition: the time step has to be smaller than the time it takes for a stress wave to propagate through an element. 
+
+### Explicit solvers for static-problems
+
+Because of their robustness, explicit dynamics solvers as obtained with the central difference scheme are also used for solving quasi-static nonlinear equilibrium problems. The critical time step size is then increased by artificially scaling the mass matrix to contain higher values, which is conceptually allowed because in the end the static solution should be independent of the mass. One should remain careful when using explicit solvers for equilibrium problems. Equilibrium is by definition violated in the dynamic solver and the influence of this on the results cannot be assessed with certainty, although it is possible to get some insight by monitoring the energy balance. 
 
 ## Newmark scheme
+
+### Formulation 
 
 For slower dynamics problems, the stability requirement from the critical time step can make the central difference scheme impractical. Then implicit time integration schemes are to be preferred. One family of time integration schemes is the Newmark schame. 
 
@@ -153,12 +188,16 @@ $$\hat\bK = \bK + \frac{1}{\beta\Delta t^2}\bM + \frac{\gamma}{\beta\Delta t}\bC
 
 $$
 \hat\bff_{n+1} = \bff_{n+1} + \bM\left(\frac{1}{\beta\Delta t^2}\ba_n + \frac{1}{\beta\Delta t}\dot\ba_n + \left(\frac{1}{2\beta}-1\right) \ddot\ba_n\right) \\ 
-+ \bC\left(\frac{\gamma}{\beta\Delta t}\ba_n + \frac{\gamma}{\beta}\dot\ba_n + \left(\frac{\gamma}{2\beta}-1\right)\Delta t\ddot\ba_n\right)
++ \bC\left(\frac{\gamma}{\beta\Delta t}\ba_n + \left(1-\frac{\gamma}{\beta}\right)\dot\ba_n + \left(\frac{\gamma}{2\beta}-1\right)\Delta t\ddot\ba_n\right)
 $$
 ```
 :::
 
+```{admonition} Implicit dynamics with finite elements
+The Newmark scheme is an implicit time integration scheme. Here we compute the solution at $t=t_{n+1}$ by evaluating the semi-discrete form at $t=t_{n+1}$. The scheme becomes equivalent to the explicit central difference scheme by setting $\beta=0$ and $\gamma=\frac12$
+```
 
+### Stability, accuracy and numerical damping
 
 The Newmark method is unconditionally stable for:
 
@@ -166,8 +205,19 @@ $$
 2\beta \geq \gamma \geq \frac12
 $$
 
-For $\beta=0$, and $\gamma=\frac12$, the central difference approximations are recovered. 
+It is second order accurate for $\gamma=\frac12$, and first order accurate for all other values of $\gamma$, i.e. with $\gamma\neq\frac12$, the time discretization error is of the order $O(\Delta t)$.
 
-## HHT scheme
+It is possible to introduce damping with the Newmark parameters, as an alternative to working with a nonzero $\bC$-matrix. Given the uncertainty around appropriate values for $\bC$, avoiding its construction altogether is appealing. By setting $\gamma>\frac12$, numerical damping is introduced, which can be helpful to filter out unphysical oscillations from the computational repsonse. The degree of numerical damping can be controlled through the choice for $\gamma$. However, introducing any numerical damping does come at a price in accuracy, becuase the order of the time-discretization error becomes $O(\Delta t)$. 
+
+
+## Generalized-$\alpha$ method
+
+An alternative time integration scheme exists that allows for numerical damping while maintaining second order accuracy is the generalized-$\alpha$ method, also referred to as the Hilbert-Hughes-Taylor (or HHT) method. It involves using a Newmark scheme to solve: 
+
+$$
+\bM\ddot\ba_{n+1}+(1-\alpha)\bK\ba_{n+1}-\alpha\bK\ba_n = (1-\alpha)\bff_{n+1}+\alpha\bff_n
+$$
+
+If $0\leq\alpha\leq\frac13$ and the Newmark parameters are set to $\gamma=\frac12+\alpha$ and $\beta=\frac14(1+\alpha)^2$ the scheme is second order accurate while the parameter $\alpha$ can be used to control the amount of numerical damping. For $\alpha=0$ the undamped second order accurate Newmark scheme is recovered, increasing $\alpha$ increases the degree of numerical damping. 
 
 
