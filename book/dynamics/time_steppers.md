@@ -15,9 +15,9 @@ $\newcommand{\bK}{\mathbf{K}}$
 
 # Time stepping schemes for elasto-dynamics
 
-On the previous page, we have derived the semi-discrete finite element equations for continuum dynamics. Discretization in space was applied, but derivatives with respect to time were maintained. In order to arrive at an algorithm that can be implemented, time discretization should also be applied. It is possible to perform time-discretization with shape functions to arrive at the **space-time finite element method**. However, this is not the most common choice. The finite element discretization approach with nodes, elements and shape functions is convenient for discretization in space, but less so for discretization in time. Therefore, in finite element solvers for time-dependent problems, the finite element discretization in space is usually combined with some type of finite difference discretization in time. To solve th governing equations over a certain time interval, finite time increments $\Delta t$ are introduced and the solution $\ba$ is computed for a finite number of time steps to solve the governing equations over a certain time interval.
+On the previous page, we have derived the semi-discrete finite element equations for continuum dynamics. Discretization in space was applied, but derivatives with respect to time were maintained. In order to arrive at an algorithm that can be implemented in computer code, time discretization should also be applied. It is possible to perform time-discretization also with shape functions to arrive at the **space-time finite element method**. However, this is not the most common choice. The finite element discretization approach with nodes, elements and shape functions is convenient for discretization in space, but less so for discretization in time. Therefore, in finite element solvers for time-dependent problems, the finite element discretization in space is usually combined with some type of finite difference discretization in time. To solve the governing equations over a certain time interval, finite time increments $\Delta t$ are introduced and the solution $\ba$ is computed for a finite number of time steps.
 
-In this page different algorithms are introduced for the temporal discretization. In every case, the objective is to find the solution vector $\ba_{n+1}=\ba(t_{n+1})$ and if necessary its time derivatives $\dot\ba_{n+1} = \dot\ba(t_{n+1})$ and $\ddot\ba_{n+1}=\ddot\ba(t_{n+1})$ with the previous solution $\ba_{n}=\ba(t_{n})$, $\dot\ba_{n}=\dot\ba(t_{n})$ known. This implies that for the first time step, initial conditions $\ba_0$ and $\dot\ba_0$ need to be given. 
+In this page different algorithms are introduced for the temporal discretization. In every case, the objective is to find the solution vector $\ba_{n+1}=\ba(t_{n+1})$ and, depending on the scheme, its time derivatives $\dot\ba_{n+1} = \dot\ba(t_{n+1})$ and $\ddot\ba_{n+1}=\ddot\ba(t_{n+1})$, assuming that the previous solution with $\ba_{n}=\ba(t_{n})$ and either $\dot\ba_{n}=\dot\ba(t_{n})$ or $\ba_{n-1}=\ba(t_{n-1})$ is known. This implies that for the first time step, initial conditions $\ba_0$ and $\dot\ba_0$ need to be given. 
 
 Starting point is the semi-discrete form, for generality with damping included:
 
@@ -38,13 +38,13 @@ We aim to find $\ba(t)$ for given $\bK$, $\bC$, $\bM$ and $\bff(t)$. On the prev
 
 - **while** $n<\text{number of time steps}$
     - Compute solution $\ba_{n+1}$ with selected **time stepping scheme**
-    - Update velocity $\dot\ba_{n+1}$ and acceleration $\ddot\ba_{n+1}$
+    - Update velocity $\dot\ba_{n+1}$ (and acceleration $\ddot\ba_{n+1}$)
     - Go to the next time step $n=n+1$
 
 **Return** Nodal displacements for every time step $[\ba_1, \ba_2, \ldots, \ba_n]$ (and velocities, accelerations)
 ```
 
-This page is about the different options that exist for the time stepping scheme in the algorithm above. The solution is computed with a linear system of equations and involves evaluation of the force vector, either at $t=n\Delta t$ or at $t=(n+1)\Delta t$. 
+This page is about the different options that exist for the time stepping scheme in the algorithm above. The solution is computed with a linear system of equations and involves evaluation of the force vector, either at $t=t_n$ or at $t=t_{n+1}$. 
 
 ## Central difference scheme
 
@@ -90,10 +90,10 @@ $$
 \hat\bff_n = \frac{1}{\Delta t^2}\bM \left(2\ba_n-\ba_{n-1}\right) + \frac{1}{2\Delta t}\bC\ba_{n-1} - \bK\ba_n + \bff_n
 $$
 
-This linear system of equations can be solved in a loop over time steps. This time stepping scheme is referred to as the **central difference scheme**. It counts as an explicit time integration scheme and is very popular. The central difference scheme is particularly powerful in combination with **mass lumping**. The matrix $\hat\bM$ can be made diagonal without too much loss of accuracy. Then the system of equations {eq}`central-difference-system` can be solved at much lower cost, becuase the equations are uncoupled. 
+This linear system of equations can be solved step by step in a loop over time steps as shown in the algorithm at the top of this page. This time stepping scheme is referred to as the **central difference scheme**. It counts as an explicit time integration scheme and is very popular. The central difference scheme is particularly powerful in combination with **mass lumping**. The matrix $\hat\bM$ can be made diagonal without too much loss of accuracy. Then the system of equations {eq}`central-difference-system` can be solved at much lower cost than regular linear systems of equations, because the equations are uncoupled. 
 
 ```{admonition} Explicit dynamics with finite elements
-The central difference scheme is an explicit time integration scheme. Note how we approximated time derivatives at time step $n$ to compute the solution at time step $n+1$. Also, note that for computing $\ba_{n+1}$, we have $\bff_n-\bK\ba_n$ on the right hand side, which is a measure for the force unbalance at $t=t_n$.
+The central difference scheme is an explicit time integration scheme. Note how we approximated time derivatives at time step $n$ to compute the solution at time step $n+1$. Moreover, for computing $\ba_{n+1}$, we have $\bff_n-\bK\ba_n$ on the right hand side, which is a measure for the force unbalance at $t=t_n$.
 ```
 
 The central difference scheme is **second order accurate**, which means that the magnitude of the error in the solution due to the time-discretization is proportional to the square of the magnitude of the time increments, or $O(\Delta t^2)$. 
@@ -106,7 +106,7 @@ $$
 \Delta t \leq  \frac2{\omega^h}
 $$
 
-where $\omega^h$ is the highest natural frequncy of the discretized system. Note that the continuous system has no upper bound for the natural frequencies without upper bound. The highest eigenfrequency will be inversely proportional to the size of the (smallest) elements in the mesh. This is bad news, theoretically the solution should converge to a unique and exact solution upon mesh-refinement, this is still the case, but only if the mesh-refinement is accompanied with reduction of the time step size. 
+where $\omega^h$ is the highest natural frequency of the discretized system. The critical time step size is in no way related to the time window of interest. If one is interested in simulating the dynamic response over a long period of time, a very high number of time steps may need to be taken, which in some cases offsets the efficiency gain per time step of solving the uncoupled system of equations with lumped mass matrix.  The continuous system has no upper bound for the natural frequencies without upper bound. The highest eigenfrequency will be inversely proportional to the size of the (smallest) elements in the mesh. This is bad news, theoretically the solution should converge to a unique and exact solution upon mesh-refinement, this is still the case, but only if the mesh-refinement is accompanied with reduction of the time step size. 
 
 For linear elements, the highest natural eigenfrequency is approximately given by:
 
@@ -187,7 +187,7 @@ $$
 :::
 
 ```{admonition} Implicit dynamics with finite elements
-The Newmark scheme is an implicit time integration scheme. Here we compute the solution at $t=t_{n+1}$ by evaluating the semi-discrete form at $t=t_{n+1}$. The scheme becomes equivalent to the explicit central difference scheme by setting $\beta=0$ and $\gamma=\frac12$
+The Newmark scheme is an implicit time integration scheme. Here we compute the solution at $t=t_{n+1}$ by evaluating the semi-discrete form at $t=t_{n+1}$. 
 ```
 
 The Newmark method is **unconditionally stable** for:
@@ -196,9 +196,9 @@ $$
 2\beta \geq \gamma \geq \frac12
 $$
 
-It is **second order accurate** for $\gamma=\frac12$, and first order accurate for all other values of $\gamma$, i.e. with $\gamma\neq\frac12$, the time discretization error is of the order $O(\Delta t)$.
+It is **second order accurate** for $\gamma=\frac12$, and first order accurate for all other values of $\gamma$.
 
-It is possible to introduce **damping** with the Newmark parameters, as an alternative to working with a nonzero $\bC$-matrix. Given the uncertainty around appropriate values for $\bC$, avoiding its construction altogether is appealing. By setting $\gamma>\frac12$, numerical damping is introduced, which can be helpful to filter out unphysical oscillations from the computational repsonse. The degree of numerical damping can be controlled through the choice for $\gamma$. However, introducing any numerical damping does come at a price in accuracy, becuase the order of the time-discretization error becomes $O(\Delta t)$. 
+It is possible to introduce **damping** with the Newmark parameters, as an alternative to working with a nonzero $\bC$-matrix. Given the uncertainty around appropriate values for $\bC$, avoiding its construction altogether is appealing. By setting $\gamma>\frac12$, numerical damping is introduced, which can be helpful to filter out unphysical oscillations from the computational response. The degree of numerical damping can be controlled through the choice for $\gamma$. However, introducing any numerical damping does come at a price in accuracy, because the order of the time-discretization error becomes $O(\Delta t)$. 
 
 
 ## Generalized-$\alpha$ method
@@ -209,6 +209,6 @@ $$
 \bM\ddot\ba_{n+1}+(1-\alpha)\bK\ba_{n+1}-\alpha\bK\ba_n = (1-\alpha)\bff_{n+1}+\alpha\bff_n
 $$
 
-If $0\leq\alpha\leq\frac13$ and the Newmark parameters are set to $\gamma=\frac12+\alpha$ and $\beta=\frac14(1+\alpha)^2$ the scheme is second order accurate while the parameter $\alpha$ can be used to control the amount of numerical damping. For $\alpha=0$ the undamped second order accurate Newmark scheme is recovered, increasing $\alpha$ increases the degree of numerical damping. 
+If $0\leq\alpha\leq\frac13$ and the Newmark parameters are set to $\gamma=\frac12+\alpha$ and $\beta=\frac14(1+\alpha)^2$ the scheme is second order accurate while the parameter $\alpha$ can be used to control the amount of numerical damping. For $\alpha=0$ the undamped second order accurate Newmark scheme is recovered; increasing $\alpha$ increases the degree of numerical damping. 
 
 
