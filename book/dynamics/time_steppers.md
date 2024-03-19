@@ -48,9 +48,7 @@ This page is about the different options that exist for the time stepping scheme
 
 ## Central difference scheme
 
-### Formulation 
-
-For the first algorithm, we make use of central difference approximations for the first and second order time derivatives at $t_n$. These are: 
+One of the most popular time stepping schemes makes use of central difference approximations for the first and second order time derivatives at $t_n$. These are: 
 
 $$
 \dot\ba_n \approx \frac{\ba_{n+1}-\ba_{n-1}}{2\Delta t}
@@ -98,10 +96,9 @@ This linear system of equations can be solved in a loop over time steps. This ti
 The central difference scheme is an explicit time integration scheme. Note how we approximated time derivatives at time step $n$ to compute the solution at time step $n+1$. Also, note that for computing $\ba_{n+1}$, we have $\bff_n-\bK\ba_n$ on the right hand side, which is a measure for the force unbalance at $t=t_n$.
 ```
 
-### Stability and accuracy
-The central difference scheme is second order accurate, which means that the magnitude of the error in the solution due to the time-discretization is proportional to the square of the magnitude of the time increments, or $O(\Delta t^2)$. 
+The central difference scheme is **second order accurate**, which means that the magnitude of the error in the solution due to the time-discretization is proportional to the square of the magnitude of the time increments, or $O(\Delta t^2)$. 
 
-A downside of the central difference scheme is that it is only conditionally stable. Time steps need to be chosen sufficiently small to avoid instability in the time integration. This makes the central difference scheme particularly well-suited for fast dynamics problems like impact simulations where the time window of interest is relatively short. 
+A downside of the central difference scheme is that it is only **conditionally stable**. Time steps need to be chosen sufficiently small to avoid instability in the time integration. This makes the central difference scheme particularly well-suited for fast dynamics problems like impact simulations where the time window of interest is relatively short. 
 
 The time stepping scheme is stable for 
 
@@ -125,15 +122,11 @@ $$
 
 which is the Courant, Friedrichs, Lewy (CFL) stability condition: the time step has to be smaller than the time it takes for a stress wave to propagate through an element. 
 
-### Explicit solvers for static-problems
-
-Because of their robustness, explicit dynamics solvers as obtained with the central difference scheme are also used for solving quasi-static nonlinear equilibrium problems. The critical time step size is then increased by artificially scaling the mass matrix to contain higher values, which is conceptually allowed because in the end the static solution should be independent of the mass. One should remain careful when using explicit solvers for equilibrium problems. Equilibrium is by definition violated in the dynamic solver and the influence of this on the results cannot be assessed with certainty, although it is possible to get some insight by monitoring the energy balance. 
+Because of their robustness, explicit dynamics solvers as obtained with the central difference scheme are also used for solving **quasi-static nonlinear equilibrium problems**. The critical time step size is then increased by artificially scaling the mass matrix to contain higher values, which is conceptually allowed because in the end the static solution should be independent of the mass. One should remain careful when using explicit solvers for equilibrium problems. Equilibrium is by definition violated in the dynamic solver and the influence of this on the results cannot be assessed with certainty, although it is possible to get some insight by monitoring the energy balance. 
 
 ## Newmark scheme
 
-### Formulation 
-
-For slower dynamics problems, the stability requirement from the critical time step can make the central difference scheme impractical. Then implicit time integration schemes are to be preferred. One family of time integration schemes is the Newmark schame. 
+For slower dynamics problems, the stability requirement from the critical time step can make the central difference scheme impractical. Then **implicit time integration** schemes are to be preferred. For this, the Newmark family of time integration schemes is a popular option. 
 
 Starting point of the Newmark scheme are expressions for $\ba_{n+1}$ and $\dot\ba_{n+1}$ in terms of quantities from the previous time step and $\ddot\ba_{n+1}$: 
 
@@ -197,22 +190,20 @@ $$
 The Newmark scheme is an implicit time integration scheme. Here we compute the solution at $t=t_{n+1}$ by evaluating the semi-discrete form at $t=t_{n+1}$. The scheme becomes equivalent to the explicit central difference scheme by setting $\beta=0$ and $\gamma=\frac12$
 ```
 
-### Stability, accuracy and numerical damping
-
-The Newmark method is unconditionally stable for:
+The Newmark method is **unconditionally stable** for:
 
 $$
 2\beta \geq \gamma \geq \frac12
 $$
 
-It is second order accurate for $\gamma=\frac12$, and first order accurate for all other values of $\gamma$, i.e. with $\gamma\neq\frac12$, the time discretization error is of the order $O(\Delta t)$.
+It is **second order accurate** for $\gamma=\frac12$, and first order accurate for all other values of $\gamma$, i.e. with $\gamma\neq\frac12$, the time discretization error is of the order $O(\Delta t)$.
 
-It is possible to introduce damping with the Newmark parameters, as an alternative to working with a nonzero $\bC$-matrix. Given the uncertainty around appropriate values for $\bC$, avoiding its construction altogether is appealing. By setting $\gamma>\frac12$, numerical damping is introduced, which can be helpful to filter out unphysical oscillations from the computational repsonse. The degree of numerical damping can be controlled through the choice for $\gamma$. However, introducing any numerical damping does come at a price in accuracy, becuase the order of the time-discretization error becomes $O(\Delta t)$. 
+It is possible to introduce **damping** with the Newmark parameters, as an alternative to working with a nonzero $\bC$-matrix. Given the uncertainty around appropriate values for $\bC$, avoiding its construction altogether is appealing. By setting $\gamma>\frac12$, numerical damping is introduced, which can be helpful to filter out unphysical oscillations from the computational repsonse. The degree of numerical damping can be controlled through the choice for $\gamma$. However, introducing any numerical damping does come at a price in accuracy, becuase the order of the time-discretization error becomes $O(\Delta t)$. 
 
 
 ## Generalized-$\alpha$ method
 
-An alternative time integration scheme exists that allows for numerical damping while maintaining second order accuracy is the generalized-$\alpha$ method, also referred to as the Hilbert-Hughes-Taylor (or HHT) method. It involves using a Newmark scheme to solve: 
+An alternative time integration scheme exists that allows for **numerical damping while maintaining second order accuracy** is the generalized-$\alpha$ method, also referred to as the Hilbert-Hughes-Taylor (or HHT) method. It involves using a Newmark scheme to solve: 
 
 $$
 \bM\ddot\ba_{n+1}+(1-\alpha)\bK\ba_{n+1}-\alpha\bK\ba_n = (1-\alpha)\bff_{n+1}+\alpha\bff_n
