@@ -60,7 +60,7 @@ $$
 \ddot\ba_n \approx \frac{\ba_{n+1}-2\ba_n+\ba_{n-1}}{\Delta t^2}
 $$
 
-Substituting these expression into Eq. {eq}`steppers-semi-discrete` at $t=t_n$ gives:
+Substituting these expressions into Eq. {eq}`steppers-semi-discrete` at $t=t_n$ gives:
 
 $$
 \bM\frac{\ba_{n-1}-2\ba_n+\ba_{n+1}}{\Delta t^2} + \bC\frac{\ba_{n+1}-\ba_{n-1}}{2\Delta t} + \bK\ba_n = \bff_n
@@ -106,7 +106,7 @@ $$
 \Delta t \leq  \frac2{\omega^h}
 $$
 
-where $\omega^h$ is the highest natural frequency of the discretized system. The critical time step size is in no way related to the time window of interest. If one is interested in simulating the dynamic response over a long period of time, a very high number of time steps may need to be taken, which in some cases offsets the efficiency gain per time step of solving the uncoupled system of equations with lumped mass matrix.  The continuous system has no upper bound for the natural frequencies without upper bound. The highest eigenfrequency will be inversely proportional to the size of the (smallest) elements in the mesh. This is bad news, theoretically the solution should converge to a unique and exact solution upon mesh-refinement, this is still the case, but only if the mesh-refinement is accompanied with reduction of the time step size. 
+where $\omega^h$ is the highest natural frequency of the discretized system. The critical time step size is in no way related to the time window of interest. If one is interested in simulating the dynamic response over a long period of time, a very high number of time steps may need to be taken, which in some cases offsets the efficiency gain per time step of solving the uncoupled system of equations with lumped mass matrix.  The continuous system has no upper bound for the natural frequencies. The highest eigenfrequency will be inversely proportional to the size of the (smallest) elements in the mesh. This is bad news, theoretically the solution should converge to a unique and exact solution upon mesh-refinement. This is still the case, but only if the mesh-refinement is accompanied with reduction of the time step size. 
 
 For linear elements, the highest natural eigenfrequency is approximately given by:
 
@@ -120,7 +120,7 @@ $$
 \Delta t \leq \frac{\Delta x}{c}
 $$
 
-which is the Courant, Friedrichs, Lewy (CFL) stability condition: the time step has to be smaller than the time it takes for a stress wave to propagate through an element. 
+which is the Courant, Friedrichs, Lewy (CFL) stability condition: the time step has to be smaller than the time it takes for a stress wave to propagate through one element. 
 
 Because of their robustness, explicit dynamics solvers as obtained with the central difference scheme are also used for solving **quasi-static nonlinear equilibrium problems**. The critical time step size is then increased by artificially scaling the mass matrix to contain higher values, which is conceptually allowed because in the end the static solution should be independent of the mass. One should remain careful when using explicit solvers for equilibrium problems. Equilibrium is by definition violated in the dynamic solver and the influence of this on the results cannot be assessed with certainty, although it is possible to get some insight by monitoring the energy balance. 
 
@@ -135,7 +135,7 @@ $$
 \ba_{n+1} &= \ba_n + \Delta t\dot\ba_n + \frac{\Delta t^2}{2}\left((1-2\beta)\ddot\ba_n + 2\beta\ddot\ba_{n+1}\right)
 $$(newmark-integration)
 
-of which the first can be recognized as a generalized trapozoidal time-integration scheme with parameter $\gamma$, and the second is a similar kind of time-integration rule with parameter $\beta$. 
+of which the first can be recognized as a generalized trapezoidal time-integration scheme with parameter $\gamma$, and the second is a similar kind of time-integration rule with parameter $\beta$. 
 
 For defining an implicit time stepping scheme from the Newmark family, we rearrange the expressions in {eq}`newmark-integration` to express $\ddot\ba_{n+1}$ and $\dot\ba_{n+1}$ in terms of $\ba_{n+1}$ as:
 
@@ -203,7 +203,7 @@ It is possible to introduce **damping** with the Newmark parameters, as an alter
 
 ## Generalized-$\alpha$ method
 
-An alternative time integration scheme exists that allows for **numerical damping while maintaining second order accuracy** is the generalized-$\alpha$ method, also referred to as the Hilbert-Hughes-Taylor (or HHT) method. It involves using a Newmark scheme to solve: 
+An alternative time integration scheme that allows for **numerical damping while maintaining second order accuracy** is the generalized-$\alpha$ method, also referred to as the Hilbert-Hughes-Taylor (or HHT) method. It involves using a Newmark scheme to solve: 
 
 $$
 \bM\ddot\ba_{n+1}+(1-\alpha)\bK\ba_{n+1}-\alpha\bK\ba_n = (1-\alpha)\bff_{n+1}+\alpha\bff_n

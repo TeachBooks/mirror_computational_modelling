@@ -50,7 +50,7 @@ $$(dynamics-weak)
 
 ## Semi-discrete form
 
-Now we introduce the spatial discretization. The displacement field $\bu(\bx)$ is discretized with a set of weight functions as in Eq. {eq}`continuum-discretization`, with the difference that the time-dependence is accounted for. The time-dependence goes into the degree of freedom vector $\ba$, achieving a separation of variables:
+Now we introduce the spatial discretization. The displacement field $\bu(\bx)$ is discretized with a set of shape functions as in Eq. {eq}`continuum-discretization`, with the difference that the time-dependence is accounted for. The time-dependence goes into the degree of freedom vector $\ba$, achieving a separation of variables:
 
 $$ 
 \bu^h(\bx,t) = \bN(\bx)\ba(t)
@@ -58,7 +58,7 @@ $$(dynamics-discretization)
 
 This separation of variables is consistent with the classical interpretation of $\ba$ as the displacement of the nodes. In a dynamics problem, the dependence on time in $\ba(t)$ then represents how the displacement of the nodes changes over time. 
 
-It follows form Eq. {eq}`dynamics-discretization` that the time derivative of $\bu$ is related to the time derivative of $\ba$ as:
+It follows from Eq. {eq}`dynamics-discretization` that the time derivative of $\bu$ is related to the time derivative of $\ba$ as:
 
 $$
 \dot\bu^h = \bN\dot\ba
@@ -73,7 +73,7 @@ $$
 As usual, we substitute $\bw^h=\bN\bc$ for $\bw$ and eliminate $\bc$ to arrive at: 
 
 $$
-\int_\Omega \bN^T\rho\bN\,\ud\Omega\ddot\ba + \int_\Omega \bB^T\bD\bB\,\ud\Omega \ba = \int_\Omega \bN^T\bb\,\ud\Omega + \int_{\Gamma_N}\bN^T\bt\,\ud\Gamma
+\left(\int_\Omega \bN^T\rho\bN\,\ud\Omega\right)\ddot\ba + \left(\int_\Omega \bB^T\bD\bB\,\ud\Omega\right) \ba = \int_\Omega \bN^T\bb\,\ud\Omega + \int_{\Gamma_N}\bN^T\bt\,\ud\Gamma
 $$(dynamics-discrete-full)
 
 or in short (cf. Eq. {eq}`continuum-discrete-short`):
