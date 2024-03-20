@@ -83,7 +83,7 @@ Divergence theorem and substitution of the Neumann boundary conditions gives the
 
 $$
 \int_\Omega \nabla^\us\bw:\bsig\,d\Omega = \int_\Omega \bw\cdot\bb\,d\Omega + \int_{\Gamma_N} \bw\cdot\bt\,d\Gamma
-$$
+$$(equilibrium-weak)
 
 For the case of linear constitutive and kinematic relations, the weak form can be written in terms of $\bu$ as:
 
@@ -112,7 +112,7 @@ and employ the same approximation for $\bw$, resulting in
 
 $$
 \bu^h = \bN\ba \quad \text{and} \quad \bw^h = \bN\bc
-$$
+$$(continuum-discretization)
 
 where $\ba$ is the vector with nodal degrees of freedom defined above and $\bc$ is a similar vector with nodal coefficients for the test function space. 
 
@@ -144,13 +144,13 @@ Substituting $\bB\bc$ for $\nabla^\us\bw$ and $\bB\ba$ for $\nabla^\us\bu$ and a
 
 $$
 \int_\Omega (\bB\bc)^T\bD\bB\ba\,\ud\Omega = \int_\Omega (\bN\bc)^T\bb\,\ud\Omega + \int_{\Gamma_N}(\bN\bc)^T\bt\,\ud\Gamma,\quad\forall\bc
-$$
+$$(continuum-discrete-full)
 
 The coefficients $\bc$ take the place of the vector $\bw$ from the Poisson derivation and are again eliminated to arrive at a linear system of equations: 
 
 $$
 \mathbf{Ka} = \mathbf{f}
-$$
+$$(continuum-discrete-short)
 
 with
 
