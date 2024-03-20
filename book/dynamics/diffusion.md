@@ -100,7 +100,7 @@ where $g$ is a prescribed value for the solution field and $\mbf{n}$ is the norm
 As always, we start the formulation with the PDE in its strong form:
 
 $$
--q_{i,i} + f = 0,\quad\text{with}\quad q_i = -\kappa_{ij}u_{,j}
+-q_{i,i} - \rho c\dot{u} + f = 0,\quad\text{with}\quad q_i = -\kappa_{ij}u_{,j}
 $$(d-d-istrongform1)
 
 where $u$ is our solution field of interest: in heat conduction problems it would represent temperature; in mass diffusion it would be a concentration; in Darcy flow it would be the hydraulic head. Furthermore, $q_i$ is a gradient-driven flux vector that depends on a diffusivity matrix $\kappa_{ij}$. The new term here is $\rho c\dot{u}$, with $\rho c$ being a capacity parameter and $\dot{u}$ the first time derivative of our solution, i.e. a velocity field.

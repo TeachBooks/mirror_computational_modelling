@@ -66,6 +66,11 @@ parts:
         sections:
         - file: structural_linear/Tutorials/Gridap_euler_bernoulli.md
         - file: structural_linear/Tutorials/Gridap_timoshenko.md
+      - file: structural_linear/Exercises/exercises
+        title: Exercises
+        sections:
+        - file: structural_linear/Exercises/pyjive_timoshenko
+        - file: structural_linear/Exercises/pyjive_frame
    
     - file: solid_nonlinear/intro
       sections:
@@ -78,6 +83,10 @@ parts:
         title: Exercises
         sections:
         - file: solid_nonlinear/Exercises/pyjive_nonlinmodule
+        - file: solid_nonlinear/Exercises/pyjive_material
+        - file: solid_nonlinear/Exercises/pyjive_buckling
+        - file: solid_nonlinear/Exercises/pyjive_plastic_hinges
+        - file: solid_nonlinear/Exercises/pyjive_frame_exercise
 
 
     - file: dynamics/intro
@@ -87,7 +96,6 @@ parts:
 # END REMOVE-FROM-PUBLISH
       - file: dynamics/diffusion
       - file: dynamics/diffusion_steppers
-# START REMOVE-FROM-PUBLISH
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
@@ -95,7 +103,6 @@ parts:
         title: Exercises
         sections:
         - file: dynamics/Exercises/pyjive_diffusion.ipynb
-# END REMOVE-FROM-PUBLISH
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
