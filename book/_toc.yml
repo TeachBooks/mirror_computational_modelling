@@ -102,7 +102,8 @@ parts:
       - file: dynamics/Exercises/exercises
         title: Exercises
         sections:
-        - file: dynamics/Exercises/pyjive_diffusion.ipynb
+        - file: dynamics/Exercises/pyjive_diffusion
+        - file: dynamics/Exercises/pyjive_frequency
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
