@@ -104,6 +104,7 @@ parts:
         sections:
         - file: dynamics/Exercises/pyjive_diffusion
         - file: dynamics/Exercises/pyjive_frequency
+        - file: dynamics/Exercises/pyjive_transient
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
