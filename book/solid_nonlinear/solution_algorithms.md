@@ -103,6 +103,14 @@ $$(sn-sa-fnewguess)
 
 with the idea being that if $\widetilde{f}(x)$ is a fair approximation of $f(x)$, we start from a good initial guess, and repeat this operation enough times we can get arbitrarily close to the actual root. 
 
+```{figure} ./figures/nrconvergence.gif
+---
+width: 20rem
+name: Convergence of the Newton-Raphson method
+---
+The iterative approach of the Newton raphson method.
+```
+
 ## Newton-Raphson for FEM
 
 In the example above we have applied Newton's method for a scalar function of a single variable. Actually, the procedure generalizes trivially to vectors, and we can directly apply it to solve Eq. {eq}`sn-sa-residual`. For a fixed $\bff_\mrm{ext}$ and starting from an initial guess $\ba\old$, we can define our linearized residual as:
