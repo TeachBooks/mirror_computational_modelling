@@ -136,7 +136,7 @@ with which we can repeat this process until $\mbf{r}$ is close enough to zero.
 
 ```{figure} ./figures/linresidual_NR.svg
 ---
-width: 100%
+width:40em
 name: Linearising residuals
 ---
 Linearised residuals through Newton-Raphson method.
