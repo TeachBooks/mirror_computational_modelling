@@ -1,0 +1,3 @@
+[submodule "book/mude_new/mude"]
+	path = book/mude_new/mude
+	url = https://gitlab.tudelft.nl/interactivetextbooks-citg/mude.git
