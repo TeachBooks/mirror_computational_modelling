@@ -1,3 +1,6 @@
+import io
+import os
+import subprocess
 import imageio
 from PIL import Image
 
@@ -14,6 +17,10 @@ def create_gif(image_paths, gif_path, duration=0.5, loop=0, resize=None, transpa
         transparent (bool, optional): If True, GIF will have a transparent background. Defaults to False.
         frame_rate (int, optional): The frame rate (in frames per second) of the GIF.
 
+    Notes:
+        - If SVG images are included in `image_paths`, Inkscape must be installed and added to the system PATH for SVG to PNG conversion.
+        - 'imageio' is also required to be installed for GIF creation.
+        
     Returns:
         None
     
@@ -29,21 +36,26 @@ def create_gif(image_paths, gif_path, duration=0.5, loop=0, resize=None, transpa
     """
     images = []
     for path in image_paths:
-        with Image.open(path) as img:
-            if resize:
-                img = img.resize(resize)
-            if transparent:
-                img = img.convert("RGBA")
-            else:
-                img = img.convert("RGB")
-            images.append(img)
-    
+        if path.endswith('.svg'):
+            temp_path = path.replace('.svg', '.png')
+            subprocess.run(['inkscape', path, '--export-type=png', f'--export-filename={temp_path}'])
+            img = Image.open(temp_path)
+            os.remove(png_path)
+        else:
+            img = Image.open(path)
+
+        if resize:
+            img = img.resize(resize)
+        if transparent:
+            img = img.convert("RGBA")
+        else:
+            img = img.convert("RGB")
+
+        images.append(img)
+
+    kwargs = {'duration': duration, 'loop': loop}
     if frame_rate:
-        kwargs = {'duration': duration, 'loop': loop, 'fps': frame_rate}
-    else:
-        kwargs = {'duration': duration, 'loop': loop}
+        kwargs['fps'] = frame_rate
     
     imageio.mimsave(gif_path, images, **kwargs)
     print(f"GIF saved at {gif_path}")
-
-
