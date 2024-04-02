@@ -34,7 +34,7 @@ parts:
 
 # START REMOVE-FROM-PUBLISH
     - file: numerical_analysis/intro
-      sections: 
+      sections:
       - file: numerical_analysis/functional_spaces
       - file: numerical_analysis/variational_well_posed
       - file: numerical_analysis/discrete_well_posed
@@ -71,7 +71,7 @@ parts:
         sections:
         - file: structural_linear/Exercises/pyjive_timoshenko
         - file: structural_linear/Exercises/pyjive_frame
-   
+
     - file: solid_nonlinear/intro
       sections:
       - file: solid_nonlinear/introduction
@@ -87,6 +87,13 @@ parts:
         - file: solid_nonlinear/Exercises/pyjive_buckling
         - file: solid_nonlinear/Exercises/pyjive_plastic_hinges
         - file: solid_nonlinear/Exercises/pyjive_frame_exercise
+
+    - caption: Old book
+     -file: mude_new/mude/book/intro.md
+
+     -file: old_commod/computational_modelling/book/intro.md
+      sections:
+        -file: old_commod/computational_modelling/book/Exercises/exercise1
 
 
     - file: dynamics/intro
@@ -134,10 +141,8 @@ parts:
 #   - file: advanced_topics/surface_coupling
 #   - file: advanced_topics/multiphysics
 #   - file: advanced_topics/multiscale
-# 
+#
 #   - caption: 7. Codes
 #     chapters:
 #     - file: Chapter7/Gridap
 #     - file: Chapter7/Pyjive
-
-
