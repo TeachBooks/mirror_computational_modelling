@@ -105,7 +105,7 @@ with the idea being that if $\widetilde{f}(x)$ is a fair approximation of $f(x)$
 
 ```{figure} ./figures/nrconvergence.gif
 ---
-width: 20rem
+width: 40rem
 name: Convergence of the Newton-Raphson method
 ---
 The iterative approach of the Newton raphson method.
@@ -136,7 +136,7 @@ with which we can repeat this process until $\mbf{r}$ is close enough to zero.
 
 ```{figure} ./figures/linresidual_NR.svg
 ---
-width:40em
+width:20em
 name: Linearising residuals
 ---
 Linearised residuals through Newton-Raphson method.
