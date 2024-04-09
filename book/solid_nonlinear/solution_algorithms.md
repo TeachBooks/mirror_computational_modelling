@@ -108,7 +108,7 @@ with the idea being that if $\widetilde{f}(x)$ is a fair approximation of $f(x)$
 width: 70ex
 name: Convergence of the Newton-Raphson method
 ---
-The iterative approach of the Newton raphson method.
+Iterations in the Newton-Raphson method for an equilibrium problem
 ```
 
 ## Newton-Raphson for FEM
