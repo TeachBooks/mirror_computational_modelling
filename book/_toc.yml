@@ -129,6 +129,11 @@ parts:
       - file: codes/Gridap
       - file: codes/Pyjive
 
+    - file: exam_tips/intro
+      sections:
+      - file: exam_tips/1110
+      - file: exam_tips/5110
+
 # - file: advanced_topics/intro
 #   chapters:
 #   - file: advanced_topics/unfitted
