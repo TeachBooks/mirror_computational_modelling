@@ -159,7 +159,7 @@ We can use Newton's method in the same form as above to formulate different equi
     - Initialize new solution at old one: $\ba^{n+1} = \ba^n$
     - Compute internal force and stiffness: $\bff_\mrm{int}^{n+1}(\ba^{n+1})$, $\bK^{n+1}(\ba^{n+1})$
     - Evaluate residual: $\mbf{r} = \bff_\mrm{ext}^{n+1} - \bff_\mrm{int}^{n+1}$
-    - **while** $|\mbf{r}| < \text{tolerance}$:
+    - **while** $|\mbf{r}| > \text{tolerance}$:
         - Solve linear system of equations: $\bK^{n+1} \Delta\ba = \mbf{r}$
         - Update solution: $\ba^{n+1} = \ba^{n+1} + \Delta\ba$
         - Compute internal force and stiffness: $\bff_\mrm{int}^{n+1}(\ba^{n+1})$, $\bK^{n+1}(\ba^{n+1})$
@@ -197,7 +197,7 @@ An alternative to overcome this difficulty is to employ Dirichlet constraints an
     - Compute internal force and stiffness: $\bff_\mrm{int}^{n+1}(\ba^{n+1})$, $\bK^{n+1}(\ba^{n+1})$
     - Constrain $\bK^{n+1}$ so that $\Delta\ba_c=\bar{\ba}^{n+1}-\bar{\ba}^{n}$
     - Evaluate residual at free DOFs: $\mbf{r} = - \bff_{\mrm{int},f}^{n+1}$
-    - **while** $|\mbf{r}| < \text{tolerance}$:
+    - **while** $|\mbf{r}| > \text{tolerance}$:
         - Solve linear system of equations: $\bK^{n+1} \Delta\ba = \mbf{r}$
         - Update solution: $\ba^{n+1} = \ba^{n+1} + \Delta\ba$
         - Compute internal force and stiffness: $\bff_\mrm{int}^{n+1}(\ba^{n+1})$, $\bK^{n+1}(\ba^{n+1})$
