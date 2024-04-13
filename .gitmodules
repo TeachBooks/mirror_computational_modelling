@@ -4,3 +4,6 @@
 [submodule "book/old_commod/computational-modelling"]
 	path = book/old_commod/computational-modelling
 	url = https://gitlab.tudelft.nl/interactivetextbooks-citg/computational-modelling.git
+[submodule "book/MUDE/book"]
+	path = book/MUDE/book
+	url = https://gitlab.tudelft.nl/mude/book.git
