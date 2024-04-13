@@ -88,20 +88,21 @@ parts:
         - file: solid_nonlinear/Exercises/pyjive_plastic_hinges
         - file: solid_nonlinear/Exercises/pyjive_frame_exercise
 
-    - caption: Old book
-     -file: mude_new/mude/book/intro.md
-
-     -file: old_commod/computational_modelling/book/intro.md
-      sections:
-        -file: old_commod/computational_modelling/book/Exercises/exercise1
-
-
     - file: dynamics/intro
       sections:
 # START REMOVE-FROM-PUBLISH
       - file: dynamics/ODEs
 # END REMOVE-FROM-PUBLISH
-      - file: dynamics/diffusion
+        title: Numerical methods for ODEs
+        sections:
+          - file: MUDE_test/1-numerical-solns.ipynb
+          - file: MUDE_test/3-taylor-series.ipynb
+            sections:
+            - file: MUDE_test/3-taylor-series-exercise.ipynb
+          - file: MUDE_test/5-numerical_derivatives.ipynb
+          - file: MUDE_test/6-simple_solvers_ODE.ipynb
+          - file: MUDE_test/7-solver_2nd_order.ipynb
+      # - file: dynamics/diffusion
       - file: dynamics/diffusion_steppers
       - file: dynamics/semi_discrete
       - file: dynamics/time_steppers

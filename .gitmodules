@@ -7,3 +7,6 @@
 [submodule "book/MUDE/book"]
 	path = book/MUDE/book
 	url = https://gitlab.tudelft.nl/mude/book.git
+[submodule "book/MUDE/--force"]
+	path = book/MUDE/--force
+	url = https://gitlab.tudelft.nl/mude/book.git

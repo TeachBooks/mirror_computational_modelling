@@ -1,9 +1,6 @@
 # Numerical Methods for ODE's
-## Taylor series
-## ODE solver from Taylor series (Forward/Backward Euler)
-## Type of solvers 
-- 1st order: FE/BE, BDF, RK
-- 2nd order: Newmark, Generalized-alpha, 2 systems of 1st order
-## Stability
-## Time discretization error
-## Adaptive time stepping
+Civil engineering and geosciences now modernised to augment experimental observations with precise numerical techniques, for the analysis and design complex structures. In this regard, the Finite Difference Method (FDM) is a fundamental and indispensable numerical approach, which plays a pivotal role in solving differential equations that govern physical phenomena.
+
+These phenomena include and are not limited to heat flow through media, the distribution of stresses in solid structures, fluid flow through porous media, and pollutant dispersion in the air and water. Solving the differential equations that govern these phenomena is often infeasible for the complex geometries and boundary conditions that are encountered in engineering.
+
+This is where these numerical methods and FDMs come in indispensable as it systematically discretizes the expressions, transforming them into algebraic equations that can be solved numerically on a computer. This approach provides engineers with the flexibility to model and analyze a wide range of scenarios, optimize designs, ensure safety, reduce costs, and predict failures too.
