@@ -10,3 +10,6 @@
 [submodule "book/MUDE/--force"]
 	path = book/MUDE/--force
 	url = https://gitlab.tudelft.nl/mude/book.git
+[submodule "book/old_ComMod/ComModHOS"]
+	path = book/old_ComMod/ComModHOS
+	url = https://github.com/TUDelft-CITG/ComModHOS.git
