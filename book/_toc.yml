@@ -50,6 +50,7 @@ parts:
       sections:
       - file: continuum_linear/continuum_mechanics
       - file: continuum_linear/derivation
+      - file: continuum_linear/linear_elasticity_tutorial_Gridap
       - file: continuum_linear/Exercises/exercises
         title: Exercises
         sections:
