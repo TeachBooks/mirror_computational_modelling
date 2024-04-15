@@ -26,10 +26,10 @@ In these notes we will use the following notation, see the figure below:
 * $u_i:=u(t_i)$, the function evaluated at time $t_i$. 
 * $\Delta t_i:=t_i-t_{i-1}$, the time step between two consecutive time steps, $t_{i-1}$ and $t_i$.
 When considering constant time steps, in an interval of time $t\in[0,T]$ with $N$ time steps, the time step size will be $\Delta t=T/N$.
-```{figure} .././images/Module1/Introduction/1_1_2.png
+```{figure} ./Figures/notation.png
 ---
 height: 300px
-name: 1_1_2
+name: notation
 ---
 Notation
 ```

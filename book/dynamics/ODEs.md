@@ -4,8 +4,8 @@ In this section we will introduce the basic concepts required to solve time-depe
 
 The introductory material will cover the following topics:
 
-- *[Introduction](./ODEs/Introduction.md)*: introduction to the problem setting and notation.
-- *[Taylor Series](./ODEs/Taylor-series.ipynb)*: introduction to the concept of Taylor series to approximate functions.
-- *[ODE solvers](./ODEs/Solvers.ipynb)*: introduction to simple ODE solvers based on Taylor series.
-- *[Numerical error and stability](./ODEs/Error_stability.md)*: introduction to the concept of numerical error and stability.
-- *[Error control](./ODEs/Error_control.md)*: introduction to adaptive time stepping techniques.
+- **[Introduction](./ODEs/Introduction.md)**: introduction to the problem setting and notation.
+- **[Taylor Series](./ODEs/Taylor-series.ipynb)**: introduction to the concept of Taylor series to approximate functions.
+- **[ODE solvers](./ODEs/Solvers.ipynb)**: introduction to simple ODE solvers based on Taylor series.
+- **[Numerical error and stability](./ODEs/Error_stability.md)**: introduction to the concept of numerical error and stability.
+- **[Error control](./ODEs/Error_control.md)**: introduction to adaptive time stepping techniques.
