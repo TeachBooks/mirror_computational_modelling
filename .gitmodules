@@ -1,0 +1,4 @@
+[submodule "submodules/mude"]
+	path = submodules/mude
+	url = https://gitlab.tudelft.nl/mude/book.git
+	branch = publish
