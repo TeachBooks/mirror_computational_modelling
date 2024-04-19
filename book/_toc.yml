@@ -132,6 +132,7 @@ parts:
       sections:
       - file: schedules/1110
       - file: schedules/5110
+      - file: schedules/42X0
 
     - file: codes/intro
       sections:
