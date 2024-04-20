@@ -88,7 +88,6 @@ parts:
         - file: solid_nonlinear/Exercises/pyjive_plastic_hinges
         - file: solid_nonlinear/Exercises/pyjive_frame_exercise
 
-
     - file: dynamics/intro
       sections:
 # START REMOVE-FROM-PUBLISH
