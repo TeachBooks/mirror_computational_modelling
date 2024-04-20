@@ -91,7 +91,6 @@ parts:
 
     - file: dynamics/intro
       sections:
-# START REMOVE-FROM-PUBLISH
       - file: dynamics/ODEs
         sections:
         - file: dynamics/ODEs/Introduction
@@ -101,7 +100,6 @@ parts:
           title: ODE solvers
         - file: dynamics/ODEs/Error_control
         - file: dynamics/ODEs/Error_stability
-# END REMOVE-FROM-PUBLISH
       - file: dynamics/diffusion
       - file: dynamics/diffusion_steppers
       - file: dynamics/semi_discrete
