@@ -112,6 +112,10 @@ parts:
         - file: dynamics/Exercises/pyjive_frequency
         - file: dynamics/Exercises/pyjive_transient
         - file: dynamics/Exercises/pyjive_hammer
+        - file: dynamics/Exercises/w2_t1
+        - file: dynamics/Exercises/w2_t2
+        - file: dynamics/Exercises/w2_t3
+        - file: dynamics/Exercises/w2_t4
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
