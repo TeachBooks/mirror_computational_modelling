@@ -107,15 +107,15 @@ parts:
       - file: dynamics/Exercises/exercises
         title: Exercises
         sections:
-        - file: dynamics/Exercises/w1_t1
+        - file: dynamics/Exercises/Workshop_ODE_Solvers
         - file: dynamics/Exercises/pyjive_diffusion
         - file: dynamics/Exercises/pyjive_frequency
         - file: dynamics/Exercises/pyjive_transient
         - file: dynamics/Exercises/pyjive_hammer
-        - file: dynamics/Exercises/w2_t1
-        - file: dynamics/Exercises/w2_t2
-        - file: dynamics/Exercises/w2_t3
-        - file: dynamics/Exercises/w2_t4
+        - file: dynamics/Exercises/Workshop_Linearizing_EOM
+        - file: dynamics/Exercises/Workshop_EOM_Pendulum
+        - file: dynamics/Exercises/Workshop_EOM_2DOF
+        - file: dynamics/Exercises/Workshop_EOM_4DOF
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
