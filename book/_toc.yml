@@ -53,6 +53,7 @@ parts:
       - file: continuum_linear/Exercises/exercises
         title: Exercises
         sections:
+        - file: continuum_linear/Exercises/Workshop_FEM_Linear_Elasticity
         - file: continuum_linear/Exercises/pyjive_intro
         - file: continuum_linear/Exercises/pyjive_constraints
 
@@ -71,8 +72,6 @@ parts:
         sections:
         - file: structural_linear/Exercises/pyjive_timoshenko
         - file: structural_linear/Exercises/pyjive_frame
-        - file: structural_linear/Exercises/Workshop_FEM_dyn_beam
-        - file: structural_linear/Exercises/Workshop_FEM_dyn_space_frames
 
     - file: solid_nonlinear/intro
       sections:
@@ -107,18 +106,29 @@ parts:
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
       - file: dynamics/Exercises/exercises
-        title: Exercises
-        sections:
-        - file: dynamics/Exercises/Workshop_ODE_Solvers
-        - file: dynamics/Exercises/pyjive_diffusion
-        - file: dynamics/Exercises/pyjive_frequency
-        - file: dynamics/Exercises/pyjive_transient
-        - file: dynamics/Exercises/pyjive_hammer
-        - file: dynamics/Exercises/Workshop_Linearizing_EOM
-        - file: dynamics/Exercises/Workshop_EOM_Pendulum
-        - file: dynamics/Exercises/Workshop_EOM_2DOF
-        - file: dynamics/Exercises/Workshop_EOM_4DOF
-        - file: dynamics/Exercises/Workshop_FEM_dyn_rod
+        sections: 
+        - file: dynamics/Exercises/ode_solvers_workshops/ode_solvers_workshops
+          title: ODE Solvers Workshops
+          sections:
+          - file: dynamics/Exercises/ode_solvers_workshops/Workshop_ODE_Solvers
+          - file: dynamics/Exercises/ode_solvers_workshops/Workshop_Linearizing_EOM
+          - file: dynamics/Exercises/ode_solvers_workshops/Workshop_EOM_Pendulum
+          - file: dynamics/Exercises/ode_solvers_workshops/Workshop_EOM_2DOF
+          - file: dynamics/Exercises/ode_solvers_workshops/Workshop_EOM_4DOF
+          - file: dynamics/Exercises/ode_solvers_workshops/Workshop_FEM_dyn_rod
+        - file: dynamics/Exercises/str_elem_dyn_workshops/str_elem_dyn_workshops
+          title: Structural Elements Dynamics Workshops
+          sections:
+          - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_rod
+          - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_beam
+          - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_space_frames
+        - file: dynamics/Exercises/pyjive_workshops/pyjive_workshops
+          title: Pyjive Workshops
+          sections:
+          - file: dynamics/Exercises/pyjive_workshops/pyjive_diffusion
+          - file: dynamics/Exercises/pyjive_workshops/pyjive_frequency
+          - file: dynamics/Exercises/pyjive_workshops/pyjive_transient
+          - file: dynamics/Exercises/pyjive_workshops/pyjive_hammer
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
