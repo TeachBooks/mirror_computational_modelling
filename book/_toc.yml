@@ -71,6 +71,8 @@ parts:
         sections:
         - file: structural_linear/Exercises/pyjive_timoshenko
         - file: structural_linear/Exercises/pyjive_frame
+        - file: structural_linear/Exercises/Workshop_FEM_dyn_beam
+        - file: structural_linear/Exercises/Workshop_FEM_dyn_space_frames
 
     - file: solid_nonlinear/intro
       sections:
@@ -107,11 +109,16 @@ parts:
       - file: dynamics/Exercises/exercises
         title: Exercises
         sections:
-        - file: dynamics/Exercises/w1_t1
+        - file: dynamics/Exercises/Workshop_ODE_Solvers
         - file: dynamics/Exercises/pyjive_diffusion
         - file: dynamics/Exercises/pyjive_frequency
         - file: dynamics/Exercises/pyjive_transient
         - file: dynamics/Exercises/pyjive_hammer
+        - file: dynamics/Exercises/Workshop_Linearizing_EOM
+        - file: dynamics/Exercises/Workshop_EOM_Pendulum
+        - file: dynamics/Exercises/Workshop_EOM_2DOF
+        - file: dynamics/Exercises/Workshop_EOM_4DOF
+        - file: dynamics/Exercises/Workshop_FEM_dyn_rod
 
 # START REMOVE-FROM-PUBLISH
   - caption: Fluids
