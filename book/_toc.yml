@@ -106,7 +106,7 @@ parts:
       - file: dynamics/time_steppers
       - file: dynamics/modal_analysis
       - file: dynamics/Exercises/exercises
-        sections: 
+        sections:
         - file: dynamics/Exercises/ode_solvers_workshops/ode_solvers_workshops
           title: ODE Solvers Workshops
           sections:
@@ -122,6 +122,8 @@ parts:
           - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_rod
           - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_beam
           - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_space_frames
+          - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_modal_sup_pos_jacket
+          - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_Full_FEM_sup_pos_jacket
         - file: dynamics/Exercises/pyjive_workshops/pyjive_workshops
           title: Pyjive Workshops
           sections:
