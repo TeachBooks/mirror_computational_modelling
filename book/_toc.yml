@@ -81,13 +81,22 @@ parts:
       - file: solid_nonlinear/geometric_nonlinearity
       - file: solid_nonlinear/material_nonlinearity
       - file: solid_nonlinear/Exercises/exercises
-        title: Exercises
         sections:
-        - file: solid_nonlinear/Exercises/pyjive_nonlinmodule
-        - file: solid_nonlinear/Exercises/pyjive_material
-        - file: solid_nonlinear/Exercises/pyjive_buckling
-        - file: solid_nonlinear/Exercises/pyjive_plastic_hinges
-        - file: solid_nonlinear/Exercises/pyjive_frame_exercise
+        - file: solid_nonlinear/Exercises/pyjive_workshops/pyjive_workshops
+          title: Pyjive Workshops
+          sections:
+          - file: solid_nonlinear/Exercises/pyjive_workshops/pyjive_nonlinmodule
+          - file: solid_nonlinear/Exercises/pyjive_workshops/pyjive_material
+          - file: solid_nonlinear/Exercises/pyjive_workshops/pyjive_buckling
+          - file: solid_nonlinear/Exercises/pyjive_workshops/pyjive_plastic_hinges
+          - file: solid_nonlinear/Exercises/pyjive_workshops/pyjive_frame_exercise
+        - file: solid_nonlinear/Exercises/geometric_nonlinear_exercises/geometric_nonlinear_exercises
+          title: Workshops Geometric Nonlinearity
+          sections:
+          - file: solid_nonlinear/Exercises/geometric_nonlinear_exercises/Workshop_1_Static_String
+          - file: solid_nonlinear/Exercises/geometric_nonlinear_exercises/Workshop_2_Offset_Calc
+
+
 
     - file: dynamics/intro
       sections:
@@ -124,6 +133,7 @@ parts:
           - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_FEM_dyn_space_frames
           - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_modal_sup_pos_jacket
           - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_Full_FEM_sup_pos_jacket
+          - file: dynamics/Exercises/str_elem_dyn_workshops/Workshop_Dynamic_String
         - file: dynamics/Exercises/pyjive_workshops/pyjive_workshops
           title: Pyjive Workshops
           sections:
