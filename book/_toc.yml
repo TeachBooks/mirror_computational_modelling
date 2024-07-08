@@ -74,6 +74,12 @@ parts:
         - file: structural_linear/Exercises/pyjive_timoshenko
         - file: structural_linear/Exercises/pyjive_frame
 
+    - file: constitutive_modelling/intro
+      sections:
+      - file: constitutive_modelling/plasticity
+      - file: constitutive_modelling/computational_plasticity
+      - file: constitutive_modelling/discrete_smeared_cracking
+
     - file: solid_nonlinear/intro
       sections:
       - file: solid_nonlinear/introduction
@@ -159,6 +165,7 @@ parts:
       sections:
       - file: schedules/1110
       - file: schedules/5110
+      - file: schedules/5210_U2
       - file: schedules/42X0
 
     - file: codes/intro
