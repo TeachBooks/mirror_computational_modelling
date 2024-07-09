@@ -92,17 +92,121 @@ Different materials have distinct yield functions:
 - **Concrete:** Rankine, Ottosen, Willam/Warnke.
 
 ### Mohr-Coulomb
+The Mohr-Coulomb failure criterion is a model used in geotechnical engineering to predict material failure under shear stress. It states that failure occurs when the shear stress ($\tau$) on a plane reaches a critical value defined by {eq}`p-l-taucrit`.
+
+$$
+\mbf{\tau_{crit}} = \mbf{- \sigma \ tan(\phi)+c}
+$$(p-l-taucrit)
+
+where:
+- c is the cohesion of the material (internal strength)
+- $\sigma$ is the normal stress acting on the plane
+- $\phi$ is the angle of internal friction (resistance to sliding)
+
+This criterion helps engineers assess stability of structures like slopes and foundations. The following figure gives the critical envelope of Mohr-Coulomb.
+
+```{figure} Images/mohr_coulomb_tau_sigma.png
+---
+---
+Mohr-Coulomb
+```
+
+Eq. {eq}`p-l-taucrit` ca also be written as Eq. {eq}`p-l-taucrit2`, which will later be used to obtain the Mohr Coulomb yield function.
+
+$$
+\mbf{\tau_{crit}+\sigma \ tan(\phi)-c} = 0
+$$(p-l-taucrit2)
+
+Using trigonometry the critical envelope for Mohr-Coulomb in terms of principal stresses can be obtained.
+```{Note}
+It must hold that $\sigma_1 < \sigma_2 < \sigma_3$
+``` 
+
+```{figure} Images/mohr_coulomb_circle.png
+---
+---
+Mohr circle
+```
+
+Expressions for the shear and normal stress are given in Eq. {eq}`p-l-shearstress` and Eq. {eq}`p-l-normalstress`, respectively.
+
+$$
+\mbf{\tau} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1) cos{\phi}}
+$$(p-l-shearstress)
+
+$$
+\mbf{\sigma} = \mbf{\frac{1}{2}(\sigma_1 + \sigma_3 ) + \frac{1}{2}(\sigma_3 - \sigma_1) sin{\phi}}
+$$(p-l-normalstress)
+
+When substituting Eq. {eq}`p-l-shearstress` and Eq. {eq}`p-l-normalstress` into Eq. {eq}`p-l-taucrit2`, the following equation (Eq. {eq}`p-l-yieldfunction_1`) is derived:
+
+$$
+\mbf{\frac{1}{2}(\sigma_3 - \sigma_1) + \frac{1}{2}(\sigma_1 + \sigma_3)sin(\phi)-c \ cos(\phi)} = 0
+$$(p-l-yieldfunction_1)
+
+This function written as a function of the stress in Eq. {eq}`p-l-yieldfunction_2`, is know as the $\textcolor{red}{\mbf{Mohr \ Coulomb \ yield \ function}}$.
+
+$$
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1) + \frac{1}{2}(\sigma_1 + \sigma_3)sin(\phi)-c \ cos(\phi)}}
+$$(p-l-yieldfunction_2)
+
+Using 6 permutations for $\sigma_1$, $\sigma_2$ and $\sigma_4$ Mohr-Coulomb can be defined. By using a state of uniaxial compression, meaning that $\sigma_3 = 0$ and $\sigma_2 = 0$, an equation for $\sigma_1$ can be derived.
+
+$$
+\mbf{\sigma_1} = \mbf{-\frac{2c \ cos(\phi)}{1-sin(\phi)}}
+$$(p-l-sigma_1)
+
+If the uniaxial compressive strength is defined as $\mbf{\sigma_1} = \mbf{f_c}$, the cohesion parameter can be 'measured' using the expression of {eq}`p-l-cohesion`.
+
+$$
+\mbf{c} = \mbf{\frac{1-sin(\phi)}{2 \ cos(\phi)}f_c}
+$$(p-l-cohesion)
+
+```{figure} Images/mohr_coulomb_uniaxial_compression.png
+---
+---
+Mohr circle for uniaxial compression
+```
+
+### Drucker Prager
+The $\textcolor{red}{\mbf{Drucker-Prager \ yield \ function}}$ is a smooth approximation of Mohr-Coulomb, this means there are no corners.
+
+$$
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{1}{2}((\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2}) + \frac{1}{3}\alpha(\sigma_1 + \sigma_2 + \sigma_3) - k} = \mbf{\sqrt{J_2} + \alpha p - k}}
+$$(p-l-druckerprageryield)
+
+where:
+- $\mbf{J_2}$ is the 2nd deviatoric stress invariant
+- $\mbf{p}$ is the hydrostatic stress
+- $\mbf{\alpha}$ and $\mbf{k}$ material constants
+
+ Drucker-Prager coincides with 3 outer points of Mohr-Coulomb (in π -plane or two-dimensional principal stress space) if the conditions in {eq}`p-l-alpha` and {eq}`p-l-k` are met. This is illustrated in the figure below.
+
+$$
+\mbf{\alpha} = \mbf{\frac{6 sin(\phi)}{3 - sin(\phi)}}
+$$(p-l-alpha)
+
+$$
+\mbf{k} = \mbf{\frac{6 c \ cos(\phi))}{3 - sin(\phi)}}
+$$(p-l-k)
+
+```{figure} Images/mohr_coulomb_drucker_prager.png
+---
+---
+Mohr Coulomb and Drucker Prager
+```
+
+Both functions contain a point where $\mbf{\sigma_1} = \mbf{\sigma_2} = \mbf{\sigma_3}$, which is called the apex. Substitution of this property in the Mohr-Coulomb function gives $\mbf{\sigma_1} = \mbf{\sigma_2} = \mbf{\sigma_3} = \mbf{\frac{c \ cos(\phi)}{sin(\phi)}} = \mbf{c \ cot(\phi)}$. The apex is defined as $\mbf{(c \ cot(\phi), c \ cot(\phi), c \ cot(\phi))} = \mbf{a}$. The distance to the origin is $\mbf{|a|_2} = \mbf{\sqrt{a^T a}} = \mbf{\sqrt{3} \ c \ cot(\phi)}$.
 
 ### Tresca
 
 ### Von Mises
 
-### Drucker Prager
-
 ### Yield Surface Representation:
 Graphical representations in different stress spaces are:
 - 3D
 - 2D
+- Mohr circle
 - π-plane
 
 ```{dropdown} π-Plane (Deviatoric Plane)
