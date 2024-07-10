@@ -238,7 +238,7 @@ The Tresca yield criterion is widely used in engineering applications, particula
 The Tresca yield criterion provides a straightforward approach to predicting the onset of plastic deformation in ductile materials based on the maximum shear stress. While less accurate than the von Mises criterion, its simplicity makes it a useful tool in many practical engineering scenarios.
 
 ### Von Mises
-The Tresca criterion is often compared with the von Mises yield criterion, which is another common theory for predicting yielding in ductile materials. While the von Mises criterion assumes that yielding begins when the second deviatoric stress invariant reaches a critical value, the Tresca criterion is based on the maximum shear stress. Generally, the von Mises criterion is considered more accurate for predicting yielding in many materials, but the Tresca criterion is simpler and more conservative.
+The Tresca criterion is often compared with the von Mises yield criterion, which is another common theory for predicting yielding in ductile materials. While the von Mises criterion assumes that yielding begins when the second deviatoric stress invariant reaches a critical value, the Tresca criterion is based on the maximum shear stress. Generally, the von Mises criterion is considered more accurate for predicting yielding in many materials, but the Tresca criterion is simpler and more conservative. Von Mises is a smooth approximation of Tresca without corners, the yield function is given in equation {eq}`p-l-vonmises_yield` and simplified in equation {eq}`p-l-vonmises_yield_simplified`.
 
 ```{figure} Images/tresca_vonmises.png
 ---
@@ -246,10 +246,35 @@ The Tresca criterion is often compared with the von Mises yield criterion, which
 Tresca and Von Mises yield criterion
 ```
 
+$$
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{1}{2}((\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2)} - \sigma_{uni}}}
+$$(p-l-vonmises_yield)
+
+$$
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{3}{2}(s_1^2 + s_2^2 + s_3^2)} - \sigma_{uni}} = \mbf{\sqrt{J_2}-\sigma_{uni}}}
+$$(p-l-vonmises_yield_simplified)
+
+where:
+- $\mbf{J_2}$ is the 2nd deviatoric stress invariant
+- $\mbf{\sigma_{uni}}$ is the uniaxial yield strength
+
+```{Note}
+Von Mises coincides with 6 outer points of Tresca (in π -plane or two-dimensional principal stress space)
+Tresca and Von Mises are independent of p ⇒ pressure-independent
+```
+
 ### Yield Surface Representation:
 Graphical representations in different stress spaces are:
 - 3D
 - 2D
+
+```{figure} Images/mc_vm_tr_dp.png
+---
+---
+Left: Tresca and Von Mises, tension = compression;  
+Right: Mohr-Coulomb and Drucker-Prager, tension $\neq$ compression
+```
+
 - Mohr circle
 - π-plane
 
@@ -298,6 +323,9 @@ A good overview of the different yield functions and failure theories, including
 ### Softening
 - The yield surface contracts, leading to material degradation.
 
+## Tangent Operator
+- The consistent tangent operator \( D^t \) is used in numerical implementations to ensure quadratic convergence in Newton-Raphson iterations.
+
 ## Flow Rules
 ### Associated Flow Rule
 - The plastic potential function \( g \) is the same as the yield function \( f \).
@@ -306,9 +334,6 @@ A good overview of the different yield functions and failure theories, including
 ### Non-associated Flow Rule
 - The plastic potential function \( g \) is different from the yield function \( f \).
 - Provides better predictions for volume changes in certain materials like soils.
-
-## Tangent Operator
-- The consistent tangent operator \( D^t \) is used in numerical implementations to ensure quadratic convergence in Newton-Raphson iterations.
 
 ## Loading/Unloading Conditions
 - Governed by Kuhn-Tucker conditions:
