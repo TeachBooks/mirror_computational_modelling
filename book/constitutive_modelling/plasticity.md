@@ -150,7 +150,7 @@ $$
 \textcolor{red}{\mbf{f(\sigma)} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1) + \frac{1}{2}(\sigma_1 + \sigma_3)sin(\phi)-c \ cos(\phi)}}
 $$(p-l-yieldfunction_2)
 
-Using 6 permutations for $\sigma_1$, $\sigma_2$ and $\sigma_4$ Mohr-Coulomb can be defined. By using a state of uniaxial compression, meaning that $\sigma_3 = 0$ and $\sigma_2 = 0$, an equation for $\sigma_1$ can be derived.
+Using 6 permutations for $\sigma_1$, $\sigma_2$ and $\sigma_3$ Mohr-Coulomb can be defined. By using a state of uniaxial compression, meaning that $\sigma_3 = 0$ and $\sigma_2 = 0$, an equation for $\sigma_1$ can be derived.
 
 $$
 \mbf{\sigma_1} = \mbf{-\frac{2c \ cos(\phi)}{1-sin(\phi)}}
@@ -200,7 +200,46 @@ Both functions contain a point where $\mbf{\sigma_1} = \mbf{\sigma_2} = \mbf{\si
 
 ### Tresca
 
+The Tresca yield criterion, also known as the maximum shear stress criterion, is a material failure theory used in the field of solid mechanics. It predicts the onset of plastic deformation in ductile materials under complex loading conditions. This criterion is named after the French mechanical engineer Henri Tresca.
+
+The Tresca yield criterion states that yielding begins when the maximum shear stress in a material reaches a critical value. This critical value is equivalent to the shear stress at yield in a simple tension test. Mathematically, the Tresca criterion can be expressed as in equation {eq}`p-l-tresca`, which can be rewritten as the Tresca yield function in {eq}`p-l-tresca_yield`.
+
+$$
+\mbf{\tau_{crit}} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1)} = \mbf{c}
+$$(p-l-tresca)
+
+$$
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1) - c}}
+$$(p-l-tresca_yield)
+
+Using 6 permutations for $\sigma_1$, $\sigma_2$ and $\sigma_3$, similar to Mohr-Coulomb, Tresca can be defined. By using a state of uniaxial compression, meaning that $\sigma_3 = 0$ and $\sigma_2 = 0$, an equation for $\sigma_1$ can be derived in {eq}`p-l-sigma_1_tresca`. If the uniaxial compressive strength is defined as $\mbf{\sigma_1} = \mbf{f_c}$, the cohesion parameter can be 'measured' using the expression of {eq}`p-l-cohesion_tresca`.
+
+$$
+\mbf{\sigma_1} = \mbf{2c}
+$$(p-l-sigma_1_tresca)
+
+$$
+\mbf{c} = \mbf{\frac{1}{2}f_c}
+$$(p-l-cohesion_tresca)
+
+```{figure} Images/tresca.png
+---
+---
+Tresca yield criterion
+```
+
+The Tresca yield criterion is widely used in engineering applications, particularly in designing components subjected to complex loading conditions, such as shafts, pressure vessels, and structural beams.
+
+The Tresca yield criterion provides a straightforward approach to predicting the onset of plastic deformation in ductile materials based on the maximum shear stress. While less accurate than the von Mises criterion, its simplicity makes it a useful tool in many practical engineering scenarios.
+
 ### Von Mises
+The Tresca criterion is often compared with the von Mises yield criterion, which is another common theory for predicting yielding in ductile materials. While the von Mises criterion assumes that yielding begins when the second deviatoric stress invariant reaches a critical value, the Tresca criterion is based on the maximum shear stress. Generally, the von Mises criterion is considered more accurate for predicting yielding in many materials, but the Tresca criterion is simpler and more conservative.
+
+```{figure} Images/tresca_vonmises.png
+---
+---
+Tresca and Von Mises yield criterion
+```
 
 ### Yield Surface Representation:
 Graphical representations in different stress spaces are:
@@ -232,6 +271,11 @@ Yield functions define surfaces in stress space. When projected onto the π-plan
 - **Simplification**: The π-plane provides a simplified, yet insightful view of the yield condition by focusing only on the deviatoric stresses.
 - **Material Behavior**: Understanding how different materials yield under deviatoric stresses is crucial for designing components that can withstand specific loading conditions without permanent deformation.
 - **Comparison**: It allows for an easier comparison of different yield criteria and their implications on material behavior under multi-axial loading conditions.
+```
+```{figure} Images/yield_piplane.png
+---
+---
+Yield functions in π-Plane
 ```
 
 A good overview of the different yield functions and failure theories, including yield surface representations, is given in the video below.
