@@ -315,13 +315,35 @@ A good overview of the different yield functions and failure theories, including
     <iframe width="560" height="315" src="https://www.youtube.com/embed/xkbQnBAOFEg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ```
 
-## Hardening/Softening Plasticity
-### Hardening
-- **Isotropic Hardening:** The yield surface expands uniformly.
-- **Kinematic Hardening:** The yield surface translates in stress space.
+## Hardening/softening Plasticity
 
-### Softening
-- The yield surface contracts, leading to material degradation.
+Hardening is a phenomenon where a material becomes stronger and more resistant to deformation as it is deformed plastically. Softening, conversely, is the reduction in strength and hardness of a material. In practical applications, materials often experience a combination of hardening and softening mechanisms. For instance, during cyclic loading (as seen in fatigue), a material may initially harden but eventually soften due to damage accumulation and microstructural changes. Understanding the interplay between hardening, softening, and plasticity is crucial for predicting the behavior of materials under various loading conditions, which is essential for designing components that can withstand mechanical stresses in real-world applications.
+
+The simplest extension beyond the model of ideal plasticity as adopted in the previous yield function(s), is to make the yield function also dependent on a scalar measure of the plastic strain tensor:
+
+$$
+\mbf{f(\sigma)} = \mbf{f(\sigma, \kappa)}
+$$(p-l-yield_depending_strain)
+
+There are several mechanisms of hardening:
+
+```{figure} Images/tresca_hardening.png 
+---
+---
+Hardening/softening Tresca
+```
+
+```{figure} Images/vonmises_hardening.png
+---
+---
+Hardening/softening Von Mises
+```
+Isotropic hardening: $\kappa$ is a scalar. The yield surface expands uniformly.  
+Kinematic hardening: $\kappa$ is a vector (back stress), e.g. Bauschinger effect in metals. The yield surface translates in stress space.
+
+```{dropdown} Bauschinger effect
+The Bauschinger effect is a phenomenon observed in metals and alloys, where the material exhibits a reduction in yield strength when the direction of loading is reversed after plastic deformation. Named after the German engineer Johann Bauschinger, who first reported this effect in the late 19th century, it highlights the anisotropic nature of work hardening in materials.
+```
 
 ## Tangent Operator
 - The consistent tangent operator \( D^t \) is used in numerical implementations to ensure quadratic convergence in Newton-Raphson iterations.
