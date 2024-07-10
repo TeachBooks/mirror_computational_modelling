@@ -228,6 +228,11 @@ $$(p-l-cohesion_tresca)
 Tresca yield criterion
 ```
 
+```{Admonition} Do you see that...
+:class: tip
+...Mohr-Coulomb with friction angle $\phi = 0$ gives Tresca
+```
+
 The Tresca yield criterion is widely used in engineering applications, particularly in designing components subjected to complex loading conditions, such as shafts, pressure vessels, and structural beams.
 
 The Tresca yield criterion provides a straightforward approach to predicting the onset of plastic deformation in ductile materials based on the maximum shear stress. While less accurate than the von Mises criterion, its simplicity makes it a useful tool in many practical engineering scenarios.
