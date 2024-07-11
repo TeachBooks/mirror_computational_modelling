@@ -325,7 +325,22 @@ $$
 \mbf{f(\sigma)} = \mbf{f(\sigma, \kappa)}
 $$(p-l-yield_depending_strain)
 
-There are several mechanisms of hardening:
+$$
+\mbf{\kappa} = \mbf{\int \dot{\kappa} \ dt}
+$$(p-l-kappa)
+
+The scalar-valued hardening parameter $\kappa$ is typically dependent on the strain history through invariants of the plastic strain tensor $\varepsilon^p$. Another suitable, frame-invariant choice would be the dissipated plastic work. Although a host of possibilities now emerges, for any function of the invariants of $\varepsilon^p$ and/or the plastic work could serve the purpose, two choices have gained more popularity than most other propostions, namely the work-hardening hypothesis and the strain hardening hypothesis. While the former assumptions sets the rate of the hardening parameter equal to {eq}`p-l-work_hardening`, the latter possibility postulates that {eq}`p-l-strain_hardening`.
+ 
+$$
+\mbf{\dot{\kappa}} = \mbf{\sigma^T \dot{\varepsilon^p}}
+$$(p-l-work_hardening)
+
+$$
+\mbf{\dot{\kappa}} = \mbf{\sqrt{\frac{2}{3}(\dot{\varepsilon^p})^T Q \dot{\varepsilon^p}}}
+$$(p-l-strain_hardening)
+
+where $\mbf{Q = diag[1, 1, 1, \frac{1}{2}, \frac{1}{2}, \frac{1}{2}]}$, which takes into account the effect that the shear strains incorporated in the vect0r format of $\varepsilon$ are in fact the double, engineering shear strains.
+
 
 ```{figure} Images/tresca_hardening.png 
 ---
@@ -345,8 +360,99 @@ Kinematic hardening: $\kappa$ is a vector (back stress), e.g. Bauschinger effect
 The Bauschinger effect is a phenomenon observed in metals and alloys, where the material exhibits a reduction in yield strength when the direction of loading is reversed after plastic deformation. Named after the German engineer Johann Bauschinger, who first reported this effect in the late 19th century, it highlights the anisotropic nature of work hardening in materials.
 ```
 
-## Tangent Operator
-- The consistent tangent operator \( D^t \) is used in numerical implementations to ensure quadratic convergence in Newton-Raphson iterations.
+## Continuum tangent matrix
+In order to derive the tangent stiffness matrix $\mbf{D_i}$, some steps need to be explained. The first is the principle of additive decomposition of strains, meaning that strains consists out of an $\textbf{elastic}$ and $\textbf{plastic}$ part as in {eq}`p-l-decomposition_strains`.
+
+$$
+\mbf{\varepsilon} = \mbf{\varepsilon_e + \varepsilon_p} \rightarrow \mbf{\dot{\varepsilon}} = \mbf{\dot{\varepsilon_e} + \dot{\varepsilon_p}} \rightarrow \mbf{\dot{\varepsilon_e}} = \mbf{\dot{\varepsilon} - \dot{\varepsilon_p}}
+$$(p-l-decomposition_strains)
+
+Furthermore, for the elastic part it holds that:
+
+$$
+\mbf{\sigma} = \mbf{D_e \varepsilon_e} \rightarrow \mbf{\dot{\sigma}} = \mbf{D_e \dot{\varepsilon_e}}
+$$(p-l-elastic_part)
+
+For the plastic part, the flow rule can be used:
+
+$$
+\mbf{\dot{\varepsilon_p}} = \mbf{\dot{\lambda} m}
+$$(p-l-plastic_part)
+
+where:
+- $\mbf{\dot{\lambda}}$ is the plastic multiplier, which gives the magnitude of plastic flow
+- $\mbf{m}$ gives the direction of plastic flow
+
+Substitution of {eq}`p-l-plastic_part` into {eq}`p-l-decomposition_strains` and subsequently in {eq}`p-l-elastic_part` gives:
+
+$$
+\mbf{\dot{\sigma}} = \mbf{D_e (\dot{\varepsilon} - \dot{\lambda} m)}
+$$(p-l-sigma_der)
+
+
+Using the yield function in {eq}`p-l-yield_depending_strain` and Prager's consistency condition given in {eq}`p-l-prager_condition`
+
+$$
+\mbf{\dot{f}(\sigma, \kappa)} = \mbf{0} \rightarrow \mbf{(\frac{\partial f}{\partial \sigma})^T \dot{\sigma} + (\frac{\partial f}{\partial \kappa}) \dot{\kappa}} = \mbf{0}
+$$(p-l-prager_condition)
+
+```{dropdown} Prager's consistency condition
+Prager's consistency condition is a mathematical condition that ensures the consistency of the plastic state in a material undergoing kinematic hardening. It is derived from the principle that during plastic deformation, the stress state must always remain on the yield surface. This requires that the rate of change of the yield function must be zero during plastic flow.
+```
+
+It can be used that the gradient to the yield surface can be expressed as in equation {eq}`p-l-gradient_n`:
+
+$$
+\mbf{\frac{\partial f}{\partial \sigma}} = \mbf{n}
+$$(p-l-gradient_n)
+
+```{figure} Images/gradient_vector_n.png 
+---
+---
+Orthogonality of gradient vector n to the yield surface $f = 0$
+```
+
+```{Admonition} Example gradient vector: Von Mises
+:class: tip
+$$
+\mbf{f(\sigma, \kappa)} = \mbf{\sqrt{\frac{1}{2}((\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2)} - \sigma_{uni}(\kappa)}
+$$(p-l-vonmises_gradient)
+
+$$
+ \mbf{n} = \mbf{\frac{\partial f}{\partial \sigma}} = \left[\begin{matrix}\frac{\partial f}{\partial \sigma_1} \\ \frac{\partial f}{\partial \sigma_2} \\ \frac{\partial f}{\partial \sigma_3} \end{matrix}\right] = \frac{1}{2 \sqrt{3 J_2}} \left[\begin{matrix}2 \sigma_1 - \sigma_2 - \sigma3 \\ 2 \sigma_2 - \sigma_3 - \sigma1 \\ 2 \sigma_3 - \sigma_1 - \sigma_2 \end{matrix}\right]
+$$(p-l-vonmises_example)
+```
+
+Using the gradient vector, {eq}`p-l-prager_condition` can be rewritten as {eq}`p-l-prager_rewritten`.
+
+$$
+\mbf{n^T \dot{\sigma} - h \dot{\lambda}} = \mbf{0}
+$$(p-l-prager_rewritten)
+
+Here the hardening/softening modulus h is defined as in {eq}`h_mod`.
+
+$$
+\mbf{h} = \mbf{- \frac{1}{\dot{\lambda}} \frac{\partial f}{\partial \kappa} \dot{\kappa}}
+$$(h_mod)
+
+Equation {eq}`p-l-sigma_der` can be rewritten as in {eq}`sigma_der_rewritten`:
+
+$$
+\mbf{\dot{\varepsilon}} = \mbf{D_e^{-1} \dot{\sigma} + \dot{\lambda} m} 
+$$(sigma_der_rewritten)
+
+By eliminating $\dot{\lambda}$ from {eq}`sigma_der_rewritten`, the compliance form can be derived in {eq}`compliance`:
+
+$$
+\dot{\mbf{\varepsilon}} = \left[ \mbf{D}_e^{-1} + \frac{1}{h} \mbf{m} \mbf{n}^\mathrm{T} \right] \dot{\mbf{\sigma}}
+$$(compliance)
+
+This can be inverted with the Sherman-Morrison formulae to end up with {eq}`cont_tangent`. Between the brackets [], the final continuum tangent matrix $\mbf{D_i}$ has been obtained.
+
+$$
+\dot{\mbf{\sigma}} = \left[ \mbf{D}_e - \frac{\mbf{D}_e \mbf{m} \mbf{n}^\mathrm{T} \mbf{D}_e}{h + \mbf{n}^\mathrm{T} \mbf{D}_e \mbf{m}} \right] \dot{\mbf{\varepsilon}}
+$$(cont_tangent)
+
 
 ## Flow Rules
 ### Associated Flow Rule
