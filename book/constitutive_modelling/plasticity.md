@@ -523,8 +523,43 @@ $$(plastic_flow)
 
 ## Multi-surface Plasticity
 
+The image below gives a corner in the yield surface and/or plastic potential function g (for multi-surface plasticity)
+
 ```{figure} Images/multi_surface_plasticity.png 
 ---
 ---
 Multi-surface plasticity
 ```
+
+The starting point for multi-surface plasticity is in equation {eq}`origin`:
+
+$$
+\mbf{\dot{\sigma}} = \mbf{D_e (\dot{\varepsilon} - \dot{\varepsilon^p})}
+$$(origin)
+
+Now the Koiter assumption {eq}`koiter`, stating that the flow rule is a linear combination ($\rightarrow$ no unique flow direction) comes in handy.
+
+$$
+\mbf{\dot{\varepsilon^p}} = \mbf{\dot{\lambda_1} m_1 + \dot{\lambda_2} m_2}
+$$(koiter)
+
+After ubstitution of {eq}`koiter` into {eq}`origin`, equation {eq}`substituted` is obtained. Furthermore, also {eq}`yield_zero1` and {eq}`yield_zero2` hold.
+
+$$
+\mbf{\dot{\sigma}} = \mbf{D_e (\dot{\varepsilon} - \dot{\lambda_1} m_1 - \dot{\lambda_2} m_2)}
+$$(substituted)
+
+$$
+\mbf{f_1(\sigma)} = \mbf{0}
+$$(yield_zero1)
+
+$$
+\mbf{f_2(\sigma)} = \mbf{0}
+$$(yield_zero2)
+
+The solution for the plane-stress case consists of 3 equations from {eq}`substituted`, equation {eq}`yield_zero1` and {eq}`yield_zero2`; meaning there are 5 equations in total. The unknowns are also 5 in total; 3 stress componenents ($\sigma_{xx}, \sigma_{yy}, \sigma_{xy}$) and $\mbf{\dot{\lambda_1}}$ and $\mbf{\dot{\lambda_2}}$.
+
+```{Admonition} Remark
+The consistency condition is not used!
+```
+
