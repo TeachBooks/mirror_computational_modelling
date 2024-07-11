@@ -429,11 +429,17 @@ $$
 \mbf{n^T \dot{\sigma} - h \dot{\lambda}} = \mbf{0}
 $$(p-l-prager_rewritten)
 
-Here the hardening/softening modulus h is defined as in {eq}`h_mod`.
+Here the hardening/softening modulus h is defined as in {eq}`h_mod`. This is the slope of the hardening diagram below.
 
 $$
 \mbf{h} = \mbf{- \frac{1}{\dot{\lambda}} \frac{\partial f}{\partial \kappa} \dot{\kappa}}
 $$(h_mod)
+
+```{figure} Images/hardening_diagram.png 
+---
+---
+Hardening diagram for metal plasticity
+```
 
 Equation {eq}`p-l-sigma_der` can be rewritten as in {eq}`sigma_der_rewritten`:
 
@@ -480,16 +486,36 @@ $$(p-l-gradient_m)
 ### Example:
 For certain types of polymers or geological materials, non-associative plasticity models such as the Drucker-Prager model are commonly used. These models assume a fixed yield surface and focus on capturing the material's response to loading conditions without considering the history-dependent effects observed in associative plasticity models.
 
+The non-associated flow rule is defined as in {eq}`non_associated_flow`. Here g is the plastic potential.
+
+$$
+\mbf{\dot{\varepsilon^p}} = \mbf{\dot{\lambda} \frac{\partial g}{\partial \sigma}}
+$$(non_associated_flow)
+
+
 ```{figure} Images/non_associated_flow_rule.png 
 ---
 ---
 Non-associated flow
 ```
 
-```{figure} Images/hardening_diagram.png 
----
----
-Hardening diagram for metal plasticity
+```{Admonition} Example Mohr-Coulomb
+:class: tip
+$$
+\mbf{f(\sigma)} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1) + \frac{1}{2}(\sigma_1 + \sigma_3)sin(\phi) - c \ cos(\phi)}
+$$(f)
+
+$$
+\mbf{g(\sigma)} = \mbf{\frac{1}{2}(\sigma_3 - \sigma_1) + \frac{1}{2}(\sigma_1 + \sigma_3)sin(\psi) + \textit{const}}
+$$(g)
+
+where $\psi$ is the angle of dilatancy. $\psi$ should be related to volume change using {eq}`vol_change`:
+
+$$
+\mbf{\dot{\varepsilon_{vol}}} = \mbf{\dot{\varepsilon_1}} + \mbf{\dot{\varepsilon_2}} + \mbf{\dot{\varepsilon_3}} \approx \mbf{\dot{\varepsilon_1^p}} + \mbf{\dot{\varepsilon_2^p}} + \mbf{\dot{\varepsilon_3^p}}
+$$(vol_change)
+
+Volume change can be measured in experiments (e.g. sands). Non-associated flow rule gives a better prediction of volume change by a proper choice of $\psi$ (instead of using $\phi$ in an associated flow rule).
 ```
 
 ## Loading/Unloading Conditions
