@@ -453,22 +453,78 @@ $$
 \dot{\mbf{\sigma}} = \left[ \mbf{D}_e - \frac{\mbf{D}_e \mbf{m} \mbf{n}^\mathrm{T} \mbf{D}_e}{h + \mbf{n}^\mathrm{T} \mbf{D}_e \mbf{m}} \right] \dot{\mbf{\varepsilon}}
 $$(cont_tangent)
 
+## Associative Plasticity $\mbf{m = n}$
 
-## Flow Rules
-### Associated Flow Rule
-- The plastic potential function \( g \) is the same as the yield function \( f \).
-- Ensures normality condition: \( \dot{\epsilon}^p = \lambda \frac{\partial f}{\partial \sigma} \).
+Associative plasticity in constitutive modeling refers to a type of material behavior where the yield surface evolves based on the stress history and the current stress state of the material. This approach is commonly used to model materials that exhibit complex behaviors under varying loading conditions, such as metals undergoing plastic deformation.
 
-### Non-associated Flow Rule
-- The plastic potential function \( g \) is different from the yield function \( f \).
-- Provides better predictions for volume changes in certain materials like soils.
+### Key Characteristics:
+- Direction of plastic flow is equal to gradient yield surface
+- Product $\mbf{n n^T}$ is symmetric $\rightarrow$ tangent stiffness $\mbf{D_i}$ is symmetric.
+- Can be derived from Drucker's postulate (normality rule)
+
+### Example:
+In finite element simulations of metal forming processes, associative plasticity models like the von Mises yield criterion are often employed. These models accurately capture the material's ability to undergo plastic deformation under different stress states and loading conditions, facilitating the prediction of material flow and strain distribution.
+
+## Non-Associative Plasticity $\mbf{m \neq n}$
+
+Non-associative plasticity in constitutive modeling refers to models where the yield surface does not evolve with plastic deformation. $\mbf{n}$ and $\mbf{m}$ can be described as in {eq}`p-l-gradient_n`, respectively {eq}`p-l-gradient_m`, where g is the plastic potential.
+
+$$
+\mbf{\frac{\partial g}{\partial \sigma}} = \mbf{m}
+$$(p-l-gradient_m)
+
+### Key Characteristics:
+- Direction of plastic flow is unequal to gradient yield surface
+- Product $\mbf{m n^T}$ is non-symmetric $\rightarrow$ tangent stiffness $\mbf{D_i}$ is non-symmetric.
+
+### Example:
+For certain types of polymers or geological materials, non-associative plasticity models such as the Drucker-Prager model are commonly used. These models assume a fixed yield surface and focus on capturing the material's response to loading conditions without considering the history-dependent effects observed in associative plasticity models.
+
+```{figure} Images/non_associated_flow_rule.png 
+---
+---
+Non-associated flow
+```
+
+```{figure} Images/hardening_diagram.png 
+---
+---
+Hardening diagram for metal plasticity
+```
 
 ## Loading/Unloading Conditions
-- Governed by Kuhn-Tucker conditions:
-  \[
-  f \leq 0, \quad \lambda \geq 0, \quad \lambda f = 0
-  \]
+The Kuhn/Tucker loading conditions, often associated with the Kuhn-Tucker theorem, are used to determine when a material transitions from elastic to plastic behavior and to enforce the constraints of the yield condition during plastic deformation.
+
+For rate independent elasto-plasticity the following equations hold {eq}`rate_indep_plasticity` and {eq}`lambda` :
+
+$$
+\mbf{f} \leq \mbf{0}
+$$(rate_indep_plasticity)
+
+$$
+\mbf{\dot{\lambda}} \geq \mbf{0}
+$$(lambda)
+
+For the elastic state equation {eq}`elastic_state` and for the plastic state equation {eq}`plastic_state` hold.
+
+$$
+\mbf{f} < \mbf{0} \rightarrow \mbf{\dot{\lambda}} = \mbf{0}
+$$(elastic_state)
+
+$$
+\mbf{f} = \mbf{0} \rightarrow \mbf{\dot{\lambda}} \neq \mbf{0}
+$$(plastic_state)
+
+During plastic flow, Prager's consistency condition gives {eq}`plastic_flow`:
+
+$$
+\mbf{\dot{f}} = \mbf{0}
+$$(plastic_flow)
 
 ## Multi-surface Plasticity
-- Involves multiple yield surfaces or different loading conditions.
-- The plastic strain rate is a linear combination of individual strain rates from each yield surface.
+
+```{figure} Images/multi_surface_plasticity.png 
+---
+---
+Multi-surface plasticity
+```
