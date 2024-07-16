@@ -47,6 +47,36 @@ align: right
 ---
 ```
 
+$$
+\Delta \sigma = \mathbf{D}_e \Delta \varepsilon - \frac{\mathbf{D}_e \mathbf{m}_0 \mathbf{n}_0^T \mathbf{D}_e}{h_0 + \mathbf{n}_0^T \mathbf{D}_e \mathbf{m}_0} \Delta \varepsilon \quad 
+$$(initial_eq)
+
+Rewrite equation {eq}`initial_eq` as in {eq}`rewritten` where {eq}`delta_lambda` is used.
+
+$$
+\sigma_0 + \Delta \sigma = \sigma_0 + \mathbf{D}_e \Delta \varepsilon - \Delta \lambda \mathbf{D}_e \mathbf{m}_0
+$$(rewritten)
+
+$$
+\Delta \lambda = \frac{\mathbf{n}_0^T \mathbf{D}_e \Delta \varepsilon}{h_0 + \mathbf{n}_0^T \mathbf{D}_e \mathbf{m}_0}
+$$(delta_lambda)
+
+A new equation {eq}`sigma_trial` is assumed and substituted into equation {eq}`elastic_plastic_corrector`. Here $\sigma_{trial}$ is the **elastic predictor** and $\Delta \lambda \mathbf{D}_e \mathbf{m}_0$ the **plastic corrector**.
+
+$$
+\sigma_{trial} = \sigma_0 + \mathbf{D}_e \Delta \varepsilon
+$$(sigma_trial)
+
+$$
+\sigma_n = \sigma_{trial} - \Delta \lambda \mathbf{D}_e \mathbf{m}_0
+$$(elastic_plastic_corrector)
+
+```{Admonition} Remarks
+- Explicit scheme
+- Error big when yield contour is very curved
+- If initial stress point $\sigma_0$ is inside yield contour, contact stress $\sigma_c$ must be calculated first (alternative: calculate $\mathbf{m}$, $\mathbf{n}$ and $\mathit{h}$ in trial stress state)
+```
+
 ```{figure} Images/elastic_plastic.png 
 ---
 ---
