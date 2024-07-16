@@ -36,10 +36,12 @@ $\newcommand{cK}[1]{\textcolor[RGB]{231,41,138}{#1}}$
 # Computational plasticity
 
 There are multiple stress update algorithms. Those solve nonlinear differential equations at integration point/local level. In this chapter two methods are given. Those are:
-- Euler forward method (explicit)
-- Iterative method (implicit)
+- Euler Forward method (explicit)
+- Euler Backward method (implicit)
 
-## Euler forward method
+## Euler Forward method
+
+To obtain the strains and stresses in a structure that relate to a generic loading stage, they must be integrated along the loading path. The most straightforward way to integrate is to use one-point Euler forward integration rule. Such a scheme is fully **explicit**: the stresses and the value of the hardening modulus $\mathit{h}$ are known at the beginning of the strain increment so that the tangential stiffness matrix can be evaluated directly. Therefore the equation {eq}`initial_eq` is used.
 
 ```{figure} Images/euler_forward.png 
 ---
@@ -83,7 +85,18 @@ $$(elastic_plastic_corrector)
 Explicit integration: the total strain is divided into an elastic and a plastic part. The plastic part is integrated with an Euler forward rule.
 ```
 
-## Iterative (implicit) method
+It can be read from the figure above that, while the correction for plastic straining is governed by the direction of the flow vector at $\sigma_c$, the final or new stress point $\sigma_n$
+is found at the intersection of the hyperplane that is tangent to the yield surface at $\sigma_c$ and the return direction $\mathbf{m_c}$ (in the absence of hardening). Apparently, the forward Euler method does not guarantee a rigorous return to the yield surface. An error is ocmmitted with a magnitude which depends upon the local curvature of the yield surface. A strongly curved yield surface gives rise to larger errors than an almost flat yield contour. Especially when relatively large loading steps are used, the accumulation of errors may become quite significant, and may even lead to numerical instability of the algorithm. In some situations, the direction of the correction of plastic flow is such that yield surface will never be reached. For the Euler Forward algorithm it can be proven rigorously that stability of the numerical algorithm is only ensured for relatively small loading steps.
+
+The latter property of the Euler Forward method is at variance with the customs of many - especially inexperienced - users of nonlinear finite element programs, who preferably use very large loading steps. Generally, a numerical program should be made as robust as possible, since users of the program will always step beyond the assumptions made - implicitly or explicitly - by its developers. Therefore, the conceptual simplicity of the Euler Forward method should be sacrificed to a more robust algorithm which warrants numerical stability irrespective of the stepsize. A good and still relatively simple algorithm is the fully implicit **Euler backward method**.
+
+## Euler Backward method
+
+The iterative (implicit) method makes use of the function {eq}`elastic_plastic_corrector`, in which $\mathbf{\Delta \lambda}$ is a function of $\mathbf{m_n}$, $\mathbf{n_n}$ and $\mathit{h_n}$.
+
+$$
+\sigma_n = \sigma_{trial} - \Delta \lambda \mathbf{D}_e \mathbf{m}_n
+$$(sigma_n)
 
 ```{figure} Images/iterative_method.png 
 ---
@@ -145,6 +158,18 @@ Convergence
 | Convergence rate | Linear | Quadratic |
 
 ## Locking
+
+An equation for Von Mises associative plasticity can be found in {eq}`associative_plasticity`.
+
+$$
+\dot{\varepsilon}^p = \frac{\dot{\lambda}}{2 \bar{\sigma}} \left[\begin{matrix}2 \sigma_1 - \sigma_2 - \sigma3 \\ 2 \sigma_2 - \sigma_3 - \sigma1 \\ 2 \sigma_3 - \sigma_1 - \sigma_2 \end{matrix}\right]
+$$(associative_plasticity)
+
+An equation for incompressible material behaviour can be found in {eq}`incompressible_material`.
+
+$$
+\dot{\varepsilon}_{vol}^p = \dot{\varepsilon}_1^p + \dot{\varepsilon}_2^p + \dot{\varepsilon}_3^p = 0
+$$(incompressible_material)
 
 ```{figure} Images/locking.png 
 ---
