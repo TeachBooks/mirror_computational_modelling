@@ -92,18 +92,30 @@ The latter property of the Euler Forward method is at variance with the customs 
 
 ## Euler Backward method
 
-The iterative (implicit) method makes use of the function {eq}`elastic_plastic_corrector`, in which $\mathbf{\Delta \lambda}$ is a function of $\mathbf{m_n}$, $\mathbf{n_n}$ and $\mathit{h_n}$.
-
-$$
-\sigma_n = \sigma_{trial} - \Delta \lambda \mathbf{D}_e \mathbf{m}_n
-$$(sigma_n)
-
 ```{figure} Images/iterative_method.png 
 ---
 align: right
 ---
 Iterative Method
 ```
+
+The iterative (implicit) method makes use of the function {eq}`elastic_plastic_corrector`, in which $\mathbf{\Delta \lambda}$ is a function of $\mathbf{m_n}$, $\mathbf{n_n}$ and $\mathit{h_n}$.
+
+$$
+\sigma_n = \sigma_{trial} - \Delta \lambda \mathbf{D}_e \mathbf{m}_n
+$$(sigma_n)
+
+Taylor series expansion of yield function in current state:
+
+$$
+f_C = f_B + \frac{\partial f_B^T}{\partial \sigma} d\sigma + \frac{\partial f_B}{\partial \kappa} d\kappa = f_B + \mathbf{n}_B^T d\sigma + \frac{1}{d\lambda} \frac{\partial f_B}{\partial \kappa} d\kappa d\lambda
+$$(taylor_expansion_yield)
+
+Substitute $ d\sigma = -d\lambda \mathbf{D}_e \mathbf{m}_B $ and $ h_B = -\frac{1}{d\lambda} \frac{\partial f_B}{\partial \kappa} d\kappa $ and assume $ f_C = 0 $:
+
+$$
+d\lambda = \frac{f_B}{h_B + \mathbf{n}_B^T \mathbf{D}_e \mathbf{m}_B}
+$$(delta_lambda)
 
 ```{Admonition} Remarks
 - Update stress and solve in an iterative way
@@ -140,9 +152,45 @@ FOR EACH INTEGRATION POINT:
 10. Next integration point
 ```
 
+```{Admonition} This is 4 loops deep in the FE code!
+:class: Tip
+The Full Newton-Raphson loops are:  
+1 Load/displacement, time steps  
+$\rightarrow$ 2 Per load step iterations  
+$\rightarrow  \rightarrow$ 3 For every integration point  
+ $\rightarrow \rightarrow \rightarrow$ 4 Iterative return mapping
+
+```
 ### Consistent tangent operator
 
-Convergence behaviour when using a consistent tangent operator in a full Newton-Raphson iteration scheme is shown in the graph below. It can be seen that the consistent tangent converges much faster than the continuum tangent.
+Consistent Tangent Operator [Simo and Taylor, 1985]
+
+Tangent operator can be derived **consistently** with implicit stress update algorithm for {eq}`associative_plasticity`:
+
+$$
+\sigma_n = \sigma^{\text{trial}} - \Delta \lambda \mathbf{D}_e \mathbf{n}
+$$(associative_plasticity)
+
+Linearize this problem and not the continuum problem to optimize convergence rate in {eq}`linearization`:
+
+$$
+\dot{\sigma} = \mathbf{D}_e \dot{\varepsilon} - \dot{\lambda} \mathbf{D}_e \mathbf{n} - \Delta \lambda \mathbf{D}_e \frac{\partial^2 f}{\partial \sigma^2} \dot{\sigma}
+$$(linearization)
+
+Rewrite to {eq}`rewrite`:
+
+$$
+\dot{\sigma} = \mathbf{H} (\dot{\varepsilon} - \dot{\lambda} \mathbf{n}) \quad \text{with} \quad \mathbf{H} = \left( \mathbf{I} + \Delta \lambda \mathbf{D}_e \frac{\partial^2 f}{\partial \sigma^2} \right)^{-1} \mathbf{D}_e
+$$(rewrite)
+
+The for ideal plasticity we have {eq}`ideal_plasticity` for the **consistent tangent**:
+
+$$
+\dot{\sigma} = \left[ \mathbf{H} - \frac{\mathbf{H} \mathbf{n} \mathbf{n}^T \mathbf{H}}{\mathbf{n}^T \mathbf{H} \mathbf{n}} \right] \dot{\varepsilon}
+$$(ideal_plasticity)
+
+
+In a full Newton-Raphson procedure, a consistent tangent operator warrants for **quadratic convergence**. Convergence behaviour when using a consistent tangent operator in a full Newton-Raphson iteration scheme is shown in the graph below. It can be seen that the consistent tangent converges much faster than the continuum tangent.
 
 ```{figure} Images/convergence.png 
 ---
