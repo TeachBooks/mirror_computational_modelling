@@ -53,7 +53,7 @@ $$
 \Delta \sigma = \mathbf{D}_e \Delta \varepsilon - \frac{\mathbf{D}_e \mathbf{m}_0 \mathbf{n}_0^T \mathbf{D}_e}{h_0 + \mathbf{n}_0^T \mathbf{D}_e \mathbf{m}_0} \Delta \varepsilon \quad 
 $$(initial_eq)
 
-Rewrite equation {eq}`initial_eq` as in {eq}`rewritten` where {eq}`delta_lambda` is used.
+Rewrite equation {eq}`initial_eq` as in {eq}`rewritten` where {eq}`delta_lam` is used.
 
 $$
 \sigma_0 + \Delta \sigma = \sigma_0 + \mathbf{D}_e \Delta \varepsilon - \Delta \lambda \mathbf{D}_e \mathbf{m}_0
@@ -61,7 +61,7 @@ $$(rewritten)
 
 $$
 \Delta \lambda = \frac{\mathbf{n}_0^T \mathbf{D}_e \Delta \varepsilon}{h_0 + \mathbf{n}_0^T \mathbf{D}_e \mathbf{m}_0}
-$$(delta_lambda)
+$$(delta_lam)
 
 A new equation {eq}`sigma_trial` is assumed and substituted into equation {eq}`elastic_plastic_corrector`. Here $\sigma_{trial}$ is the **elastic predictor** and $\Delta \lambda \mathbf{D}_e \mathbf{m}_0$ the **plastic corrector**.
 
@@ -207,11 +207,11 @@ Convergence
 
 ## Locking
 
-An equation for Von Mises associative plasticity can be found in {eq}`associative_plasticity`.
+An equation for Von Mises associative plasticity can be found in {eq}`associative_plas`.
 
 $$
 \dot{\varepsilon}^p = \frac{\dot{\lambda}}{2 \bar{\sigma}} \left[\begin{matrix}2 \sigma_1 - \sigma_2 - \sigma3 \\ 2 \sigma_2 - \sigma_3 - \sigma1 \\ 2 \sigma_3 - \sigma_1 - \sigma_2 \end{matrix}\right]
-$$(associative_plasticity)
+$$(associative_plas)
 
 An equation for incompressible material behaviour can be found in {eq}`incompressible_material`.
 
