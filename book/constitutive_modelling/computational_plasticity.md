@@ -161,7 +161,7 @@ $\rightarrow  \rightarrow$ 3 For every integration point
  $\rightarrow \rightarrow \rightarrow$ 4 Iterative return mapping
 
 ```
-### Consistent tangent operator
+## Consistent tangent operator
 
 Consistent Tangent Operator [Simo and Taylor, 1985]
 

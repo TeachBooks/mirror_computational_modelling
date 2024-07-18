@@ -79,6 +79,8 @@ parts:
       - file: constitutive_modelling/plasticity
       - file: constitutive_modelling/computational_plasticity
       - file: constitutive_modelling/discrete_smeared_cracking
+      - file: constitutive_modelling/damage
+      - file: constitutive_modelling/instabilities
 
     - file: solid_nonlinear/intro
       sections:

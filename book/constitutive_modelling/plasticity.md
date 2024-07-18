@@ -247,16 +247,16 @@ Tresca and Von Mises yield criterion
 ```
 
 $$
-\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{1}{2}((\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2)} - \sigma_{uni}}}
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{1}{2}((\sigma_1 - \sigma_2)^2 + (\sigma_2 - \sigma_3)^2 + (\sigma_3 - \sigma_1)^2)} - \bar{\sigma}}}
 $$(p-l-vonmises_yield)
 
 $$
-\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{3}{2}(s_1^2 + s_2^2 + s_3^2)} - \sigma_{uni}} = \mbf{\sqrt{J_2}-\sigma_{uni}}}
+\textcolor{red}{\mbf{f(\sigma)} = \mbf{\sqrt{\frac{3}{2}(s_1^2 + s_2^2 + s_3^2)} - \sigma_{uni}} = \mbf{\sqrt{J_2}-\bar{\sigma}}}
 $$(p-l-vonmises_yield_simplified)
 
 where:
 - $\mbf{J_2}$ is the 2nd deviatoric stress invariant
-- $\mbf{\sigma_{uni}}$ is the uniaxial yield strength
+- $\mbf{\bar{\sigma}}$ is the uniaxial yield strength
 
 ```{Note}
 Von Mises coincides with 6 outer points of Tresca (in π -plane or two-dimensional principal stress space)
