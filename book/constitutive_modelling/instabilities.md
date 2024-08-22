@@ -75,7 +75,7 @@ $$
 
 $\delta^2 W_i$ - second-order internal work (=second derivative of potential energy)
 
-$\textcolor{red}{Second-order \ work}$
+$\textcolor{red}{\text{Second-order work}}$
 
 $$
 \delta^2 W_i = \frac{1}{2} \int_V \delta \epsilon^T \delta \sigma \, dV \quad \text{(second-order internal work)}
@@ -95,9 +95,9 @@ $$
 ```
 
 - Material (local) instability ≠ structural (global) instability
-- A material instability $\textcolor{red}{preceeds}$ a structural instability
+- A material instability $\textcolor{red}{\text{preceeds}}$ a structural instability
 
-$\textcolor{red}{Finite \ elements}$
+$\textcolor{red}{\text{Finite elements}}$
 
 $$
 \mbf{\dot{\varepsilon} = B \dot{a}} \ \text{or} \ \mbf{\dot{\varepsilon}^T = \dot{a}^T B^T}
@@ -256,62 +256,167 @@ Truss element (A=1)
 ---
 ```
 
+m = 1 One element ⇒ homogeneous solution
+m = 2 Localisation in half bar
+m = n Vertical tangent if n = ε u/ε 0 (∆u/∆σ = 0 or ∆σ /∆u = ∞)
+m = ∞ Map back on elastic branch (no energy dissipation)
+
 ```{figure} Images/n_elements.png 
 ---
 ---
 ```
 
+⇒ Loss of material/local stability
+⇒ Loss of structural/global stability (in case of load/arc-length control)
+⇒ Loss of ellipticity (loss of well-posedness)
+⇒ Mesh dependence
+
 ## Localisation - bifurcation
+
+$\textcolor{red}{\text{Strain-softening bar}}$
 
 ```{figure} Images/5_elements.png 
 ---
 ---
 ```
 
+⇒ $\textcolor{red}{\text{without imperfections}}$
+
+At peak load : 6 negative pivots / eigenvalues  
+1: descending branch homogeneous solution  
+5: localised solutions in each of the 5 elements
+
+Limit point = bifurcation point (loss of uniqueness)  
+However, localised solution cannot be "entered"
+
+⇒ $\textcolor{red}{\text{Imperfect bar (1 weak element)}}$
+
+At peak load : 1 negative pivot / eigenvalue (= limit point)  
+Localised solution is traced, no bifurcation  
+(However, an imperfect bar with displacement control ⇒ no negative pivot)
+
+
 ### Mesh sensitivity w.r.t. element size
+
+- $\textcolor{red}{\text{Localisation}}$ - debonding and matrix cracking in a SiC/C composite
 
 ```{figure} Images/localisation_debonding.png 
 ---
 ---
-Localisation - debonding and matrix cracking in a SiC/C composite
 ```
 
+- $\textcolor{red}{\text{Finer mesh results in a more brittle response !!!}}$
+
 ### Mesh sensitivity w.r.t. element orientation
+
+- $\textcolor{red}{\text{Localisation}}$ - shear banding in a biaxial test (dynamic loading)  
+Plane-strain condition - von Mises plasticity model - imperfection in lower right corner
 
 ```{figure} Images/Localisation_shearbanding.png 
 ---
 ---
 ```
 
+- $\textcolor{red}{\text{Failure mode is dominated by mesh bias !!!}}$
+
+- $\textcolor{red}{\text{Dynamic problems}}$
+
+Wave equation (1D):  
+$
+\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
+$
+
+Wave speed:  
+$
+c = \sqrt{\frac{E}{\rho}} \text{ (elastic)} \quad \text{and} \quad c = \sqrt{\frac{h}{\rho}} \text{ (softening)}
+$
+
+Characteristics:  
+$
+\frac{dx}{dt} = \pm c
+$
+
 ```{figure} Images/wave_speed.png 
 ---
 ---
 ```
 
+- $\textcolor{red}{\text{Wave speed becomes imaginary}}$ at the onset of strain softening
+- $\textcolor{red}{\text{Ill-posed}}$ initial-value problem
+
 ```{figure} Images/wave_propagation.png 
 ---
 ---
-Wa ve propagation in a strain-softening bar - analytical solution
+Wave propagation in a strain-softening bar - analytical solution
 ```
+
+
+$\textcolor{red}{\text{Wave propagation in a strain-softening bar}}$ - numerical solution
 
 ```{figure} Images/n_elements_k.png 
 ---
 ---
 ```
 
+⇒ Width of localisation zone = finite element size
+⇒ Analytical solution is approached upon mesh refinement (width localisation zone, energy dissipation, reflected compression wave)
+
+- $\textcolor{red}{\text{Remedies to solve mesh dependency}}$ (introduction of length scale parameter)
+
+- **Fracture energy-type models**  
+  Localisation occurs in 1 element ⇒ fracture energy should be dissipated in 1 element  
+  Softening modulus $h$ (fracture energy $G_f$) is a function of finite element size
+
 ```{figure} Images/fracture_energy.png 
 ---
 ---
 ```
+
+- **Discontinuity models**
+  - Interface elements
+  - XFEM (eXtended Finite Element Method)
+  - Embedded discontinuity elements (weak or strong format)
+
+- **Rate-dependent models** (also effective in statics!)
+  - Rate-dependent crack/damage models
+  - Visco-plastic models (visco-elastic models do NOT solve mesh dependency)
+
+- **Nonlocal models**
+  - Integral models
+  - Gradient models (gradient plasticity, explicit/implicit gradient damage)
+
+- **Cosserat models** (micro-polar continua)  
+  Modified continuum definition with defined micro-structure
+
+Shear banding in biaxial test of granular material with $\textcolor{red}{\text{visco-plastic model}}$ (Drucker-Prager)
 
 ```{figure} Images/shear_banding_viscoplastic.png 
 ---
 ---
 ```
 
+- $\textcolor{red}{\text{Mesh objectivity:}}$ shear band has a finite thickness (set by the visco-plastic length scale)
+
 ## Stability
+
+- $\textcolor{red}{\text{Numerical instability}}$
+
+1) **Local (integration point level) numerical instability** of iterative process  
+   (e.g. implicit return-mapping scheme)  
+   ⇒ Load/time step too large, bad algorithm, highly curved yield surface,...
+
+2) **Global numerical instability** of the Newton-Raphson process  
+   ⇒ Poor tangent stiffness matrix  
+   ⇒ No equilibrium possible
 
 ```{figure} Images/lodi_control.png 
 ---
 ---
 ```
+
+...while arc-length control gives a convergent (stable) process
+
+   ⇒ Around bifurcation and limit points, it is more difficult to obtain proper convergence
+
+⇒ $\textcolor{red}{\text{Numerical instability ≠ mechanical (material/structural) instability}}$  
+⇒ In general, unstable material/structural behaviour can be modelled without loss of stability of the numerical scheme
