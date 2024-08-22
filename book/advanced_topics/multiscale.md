@@ -1,4 +1,4 @@
-# 6.4. Multiscale Methods
+# Multiscale Methods
 
 ## Relationship between macro- and micro-scale
 
@@ -144,7 +144,7 @@ Schematic of FE$^2$ for every Gauss point. Figure from https://doi.org/10.1002/9
 
 It is also possible to run a multiscale loop only in certain regions of the domain to enrich certain parts with micro-scale information. Commonly this is done on shear bands/fractures/faults, i.e. flat interfaces captured as lower dimensional elements and commonly implementing a cohesive zone model. The microscale loop can return the displacement jump for example or oppositely receive the displacement jump and return the traction.
 
-```{figure} ./figures/A-two-dimensional-solid-with-a-heterogeneous-layer_W640
+```{figure} ./figures/A-two-dimensional-solid-with-a-heterogeneous-layer_W640.jpg
 ---
 height: 200px
 name: FE2_fracture

@@ -1,4 +1,4 @@
-# 6.3. Multiphysics
+# Multiphysics
 
 ## Multiphysics in Civil Engineering and Geosciences
 
@@ -8,6 +8,7 @@ Many Civil Engineering and Geosciences problems relating to structures or rock d
 For those problems, the different existing laws of physics are encompassed into the conservation of three main quantities: momentum, mass and energy.
 
 Conservation of momentum:
+
 $$
 \mathrm{\nabla}\cdot\sigma=0
 $$
