@@ -1,6 +1,4 @@
-# Multiphysics
-
-## Multiphysics in Civil Engineering and Geosciences
+## Key concepts
 
 Many Civil Engineering and Geosciences problems relating to structures or rock deformations and fluid flow can be cast as THMC physical phenomena, Thermo-Hydro-Mechanical-Chemical. Sometimes some of the physical processes can be neglected, for instance when pure mechanical analysis can be performed on structures. In other cases, however, such as ..., multiple physical processes and their interactions need to be accounted for. That is when we speak of multiphysics analysis.
 
@@ -52,34 +50,3 @@ $$
 Here the two variables are v and T. Depending on which conservation equation the physical law falls into, the primary variable is distinguished from the secondary variables. In this case, we are dealing with heat transfer corresponding therefore conservation of energy. So the primary variable is T and the secondary variable is v.
 
 At a more indirect level, multiphysics couplings can express themselves in the equations of state where physical properties such as material properties can depend on different physical variables. One example is fluid viscosity which is influenced by both temperature and pressure which in turns influences fluid flow, from the Navier-Stokes equations.
-
-
-## Finite Element implementation of multiphysics couplings
-
-We need to solve for the additional equations brought in by the multiphysics couplings.
-After converting the strong form of the equation terms into the weak form, they need to be discretised.
-The discrete form will as usual correspond to an equation of the type:
-
-$$
-K a = f
-$$
-
-Adding other physical variables to solve for through multiphysics processes will increase the number of degrees of freedom of the system, represented by the size of vector a. Because each variable has to be solved for at every node. For a 1D thermo-mechanical problem solved on a mesh of X nodes, the number of degrees of freedom for the system will be 2X.
-Since the size of a influences the size of the stiffness matrix we are solving for, multiphysics problems are generally more computationally heavy as they are inverting a larger stiffness matrix.
-Note that each variable can be discretised differently so their test/shape functions will be dependent on the primary variable considered. (give example of regularization of Stokes flow with second order velocity and first order pressure? Maybe just orally)
-
-Derivation of the nonlinear term of thermal advection which fall in the discrete form in the off diagonal of the stiffness matrix (more help from Oriol)
-
-### Boundary conditions
-
-Boundary conditions need to apply to each primary variables separately as they are needed to close each governing equation. They are usually captured as constant value or constant flow, described in Finite Element by respectively Dirichlet or Neumann boundary condition. For solid mechanics for example, this is respectively prescribed displacement (Dirichlet BC for u) or prescribed stress (Neumann BC for u).
-
-### Time discretisation
-
-Physical processes have different time scales. Taking examples of chemical reactions vs pressure diffusion vs mechanical shear heating. Solving for multiphysics means accommodating for all those time scales. Most basic solution is to align with the smallest timescale but that can lead in computational heavy simulations if the timescales have orders of magnitude difference. In that case, instead of solving an implicit coupling, the coupling can be explicit where the two different physics are solved separately, and the coupled variable is updated at a different frequency.
-
-### interaction through interface (Oriol)
-physics active in different domains
-solved differently
-interacting at the interface
-introduce FSI

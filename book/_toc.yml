@@ -157,8 +157,16 @@ parts:
     chapters:
       # - file: advanced_topics/unfitted
       # - file: advanced_topics/surface_coupling
-      - file: advanced_topics/multiphysics
-      - file: advanced_topics/multiscale
+      - file: advanced_topics/multiphysics/intro
+        sections:
+        - file: advanced_topics/multiphysics/key_concepts
+        - file: advanced_topics/multiphysics/finite_element
+        - file: advanced_topics/multiphysics/FSI
+      - file: advanced_topics/multiscale/intro
+        sections:
+        - file: advanced_topics/multiscale/key_concepts
+        - file: advanced_topics/multiscale/FE2
+        - file: advanced_topics/multiscale/surrogate
 
   - caption: Practical information
     numbered: 0
