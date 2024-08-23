@@ -116,7 +116,7 @@ $$
 1. **Material (local) stability criterion**
 
 $$
-\dot{\epsilon}^T \dot{\sigma} > 0 \quad \text{or} \quad \Delta \epsilon^T \Delta \sigma > 0 \quad \text{(in every integration point)}
+\dot{\epsilon}^T \dot{\sigma} > 0 \quad \text{or} \quad \textcolor{red}{\Delta \epsilon^T \Delta \sigma > 0} \quad \text{(in every integration point)}
 $$
 
 2. **Structural (global) stability criterion**
@@ -128,21 +128,106 @@ $$
 Critical state only if one of the eigenvalues becomes zero (K is symmetric)
 
 $$
-\Rightarrow \det(\mathbf{K}) = 0 \quad \text{(K loses positive definiteness / becomes singular)}
+\Rightarrow \textcolor{red}{\det(\mathbf{K}) = 0} \quad \text{(K loses positive definiteness / becomes singular)}
 $$
 
+- $\textcolor{red}{\text{Stiffness matrix - eigenvalues}}$
+
+Derivation of eigenvalues:
+
+Homogeneous equation $(\mathbf{K} - \lambda \mathbf{I}) \mathbf{a} = 0$
+
+Non-trivial solution $(\mathbf{a} \neq 0) \Rightarrow \det(\mathbf{K} - \lambda \mathbf{I}) = 0$
+
+roots $\lambda_1 - \lambda_n$
+
+Determinant is the $n^{th}$-degree polynomial of which $\lambda_1 - \lambda_n$ are solutions
+
+$$
+\Rightarrow \det(\mathbf{K} - \lambda \mathbf{I}) = (\lambda_1 - \lambda)(\lambda_2 - \lambda) \dots (\lambda_n - \lambda)
+$$
+
+If $\lambda = 0$, $\Rightarrow \det \mathbf{K} = \lambda_1 \lambda_2 \dots \lambda_n$ (Vieta's rule)
+
+If $\mathbf{K}$ is:  
+$\Rightarrow$ positive definite, if all eigenvalues positive  
+$\Rightarrow$ indefinite, eigenvalues are of different sign  
+$\Rightarrow$ singular, if at least one eigenvalue is zero
+
+$\textcolor{red}{\text{Structural stability? det } \mathbf{K}}$  
+$\textcolor{red}{\text{> 0 ⇒ stable } (\text{all} \lambda_i > 0)}$  
+$\textcolor{red}{\text{= 0 ⇒ critical } (\text{if one or more} \lambda_i = 0)}$  
+$\textcolor{red}{\text{< 0 ⇒ unstable } (\text{if one or more} \lambda_i < 0)}$
+
+- $\textcolor{red}{\text{Finite element computations}}$
+
+$\mathbf{K}$ is updated every step (and every iteration in a full Newton-Raphson scheme)
+
+$\Rightarrow$ Eigenvalues or pivots can be monitored during computation  
+For symmetric stiffness matrices, the number of positive (or negative) pivots is equal to the number of positive (or negative) eigenvalues (pivots are the diagonal terms that appear during LDU-decomposition)
+
+$\Rightarrow$ Lowest eigenvalue (or pivot) decreases as a consequence of the plastic/damage/fracture process
+
+$\Rightarrow$ Due to a finite step size (load/displacement/time) $\lambda_1$ never becomes exactly zero
+
+$\Rightarrow$ When $\lambda_1 < 0$ (all other $\lambda_i > 0$) a $\textcolor{red}{\text{limit point}}$ (loss of stability) or a $\textcolor{red}{\text{bifurcation point}}$ (loss of uniqueness) is passed
+
+$\Rightarrow$ Plot corresponding eigenvector to show failure mode or bifurcation mode
 
 ## Bifurcation - uniqueness
 
 ```{figure} Images/bifurcation.png 
 ---
+align: right
 ---
 ```
+
+- Assume a structure in an equilibrium state
+
+$$
+\mathbf{K} \Delta \mathbf{a} = \mathbf{f}_e^t + \Delta \lambda \mathbf{\hat{f}}_e - \mathbf{f}_i^t
+$$
+
+Since $\mathbf{f}_i^t = \mathbf{f}_e^t \Rightarrow \mathbf{K} \Delta \mathbf{a} = \Delta \lambda \mathbf{\hat{f}}_e$
+
+
+$\textcolor{red}{\Rightarrow 2 \text{ (or more) solutions are possible in a bifurcation point:}}$
+
+$$
+\mathbf{K} \Delta \mathbf{a}_1 = \Delta \lambda \mathbf{\hat{f}}_e
+$$
+
+$$
+\mathbf{K} \Delta \mathbf{a}_2 = \Delta \lambda \mathbf{\hat{f}}_e
+$$
+
+$$
+\mathbf{K} (\Delta \mathbf{a}_1 - \Delta \mathbf{a}_2) = 0
+$$
+
+$$
+\Delta \lambda \neq 0, \text{ no limit point (loss of stability)}
+$$
+
+Non-trivial solution $\Delta \mathbf{a}_1 \neq \Delta \mathbf{a}_2$ if $\color{red}{\det \mathbf{K} = 0}$
+
+$\Rightarrow$ Necessary condition for loss of uniqueness for symmetric and non-symmetric stiffness matrices
+
+- If $\mathbf{K}$ is symmetric and $\det \mathbf{K} = 0$, the condition for loss of stability and loss of uniqueness coincides ($\det \mathbf{K} = 0 \Rightarrow$ limit or bifurcation point)
+
+- $\textcolor{red}{\text{Finite elements computations}}$ (load/arc-length control)
 
 ```{figure} Images/negative_pivots.png 
 ---
 ---
 ```
+
+- First negative pivot belongs to limit point $$\Rightarrow$$ failure mode
+- Second negative pivot belongs to bifurcation point $\Rightarrow$ 2 equilibrium branches  
+  Plot eigenvectors corresponding to negative pivots. An equilibrium path can be enforced by adding an eigenvector to the incremental displacement field  
+  $\Delta \tilde{\mathbf{a}} = \Delta \mathbf{a} + k\mathbf{b}$ ($k$ is scalar, $\mathbf{b}$ is eigenvector)
+- Also, $\textcolor{red}{\text{spurious kinematic modes}}$ (zero-energy modes) may give negative pivots  
+  $\Rightarrow$ Bifurcation point with equilibrium paths that are very close
 
 ```{figure} Images/spurious_kinematic_modes.png 
 ---
@@ -152,13 +237,14 @@ Spurious kinematic modes in direct tension test
 
 ## Localisation
 
-What is localisation of deformation?
+What is $\textcolor{red}{\text{localisation of deformation}}$?
 
-Does a mathematical definition exist ? NO  
-Represents loss of stability (material / structural) ? NO  
-Represents loss of ellipticity (ill-posed boundary-value problem) ? NO
+Does a mathematical definition exist ? $\textcolor{red}{\text{NO}}$  
+Represents loss of stability (material / structural) ? $\textcolor{red}{\text{NO}}$  
+Represents loss of ellipticity (ill-posed boundary-value problem) ? $\textcolor{red}{\text{NO}}$
 
-Experimental / computational observation: Small zones of intense straining occur (while remainder of body is unloading)
+Experimental / computational observation:  
+$\textcolor{red}{\text{Small zones of intense straining occur (while remainder of body is unloading)}}$
 
 
 ```{figure} Images/shear_banding_sands.png 
@@ -217,26 +303,40 @@ Localisation is a multi-scale phenomenon
 ```{figure} Images/localised_deformations.png 
 ---
 ---
-Experiment with localised deformations (mode-I, mode-II) ⇒ softening behaviour
+Experiment with localised deformations (mode-I, mode-II) ⇒ $\textcolor{red}{\text{softening behaviour}}$
 ```
 
 ```{figure} Images/strain_softening_model.png 
 ---
 ---
-Translation to stress-strain relation (1-D) ⇒ strain-softening model
+Translation to stress-strain relation (1-D) ⇒ $\textcolor{red}{\text{strain-softening model}}$
 ```
+
+- However, $\textcolor{red}{\text{serious problems}}$ in case of localised deformations....
 
 ```{figure} Images/serious_problems.png 
 ---
 ---
 ```
 
+⇒ Standard homogenization ($\sigma = \frac{F}{A}$ , $\varepsilon = \frac{\delta}{L}$) is wrong !!!
+Solutions : 
+- Use measurements of strain/deformation field in failure zone
+- Failure zone averaging (technique excludes elastic part of response)
+- Inverse modelling techniques
+Furthermore, there is an influence of boundary conditions, initial conditions and geometry ($\textcolor{red}{\text{size effects}}$) on the measured load-displacement curve (F − $\delta$) 
+
 ## Stability - Localisation
+
+- $\textcolor{red}{\text{Load control vs. displacement control}}$
 
 ```{figure} Images/load_vs_disp_control.png 
 ---
 ---
 ```
+
+
+- $\textcolor{red}{\text{Load control vs. displacement control}}$
 
 ```{figure} Images/truss_element.png 
 ---
