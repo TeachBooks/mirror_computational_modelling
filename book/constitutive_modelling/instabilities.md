@@ -335,7 +335,6 @@ Furthermore, there is an influence of boundary conditions, initial conditions an
 ---
 ```
 
-
 - $\textcolor{red}{\text{Load control vs. displacement control}}$
 
 ```{figure} Images/truss_element.png 
@@ -344,6 +343,10 @@ Furthermore, there is an influence of boundary conditions, initial conditions an
 Truss element (A=1)
 ```
 
+- $\textcolor{red}{\text{Load control vs. displacement control}}$
+
+- $\textcolor{red}{\text{Load control vs. displacement control}}$
+
 ```{figure} Images/weak_element.png 
 ---
 ---
@@ -351,25 +354,30 @@ Truss element (A=1)
 
 ## Mesh sensitivity
 
+- $\textcolor{red}{\text{Strain-softening bar}}$
+
 ```{figure} Images/strain_softening_bar.png 
 ---
 ---
 ```
 
-m = 1 One element ⇒ homogeneous solution
-m = 2 Localisation in half bar
-m = n Vertical tangent if n = ε u/ε 0 (∆u/∆σ = 0 or ∆σ /∆u = ∞)
-m = ∞ Map back on elastic branch (no energy dissipation)
+- $\textcolor{red}{\text{Strain-softening bar}}$
 
 ```{figure} Images/n_elements.png 
 ---
+align: right
 ---
 ```
 
-⇒ Loss of material/local stability
-⇒ Loss of structural/global stability (in case of load/arc-length control)
-⇒ Loss of ellipticity (loss of well-posedness)
-⇒ Mesh dependence
+m = 1 One element ⇒ homogeneous solution  
+m = 2 Localisation in half bar  
+m = n Vertical tangent if $n = \frac{\varepsilon_u}{\varepsilon_0}$ ($\frac{\Delta u}{\Delta \sigma} = 0$ or $\frac{\Delta \sigma}{\Delta u} = \infty$)  
+m = ∞ Map back on elastic branch (no energy dissipation)
+
+⇒ Loss of material/local stability  
+⇒ Loss of structural/global stability (in case of load/arc-length control)  
+⇒ Loss of ellipticity (loss of well-posedness)  
+⇒ $\textcolor{red}{\text{Mesh dependence}}$
 
 ## Localisation - bifurcation
 
