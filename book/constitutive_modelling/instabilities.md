@@ -335,6 +335,28 @@ Furthermore, there is an influence of boundary conditions, initial conditions an
 ---
 ```
 
+$$
+\Delta \sigma = E \Delta \varepsilon_e
+$$(a)
+
+$$
+\Delta \sigma = h^* \Delta \varepsilon_i
+$$(b)
+
+$$
+\Delta \varepsilon = \Delta \varepsilon_e \Delta \varepsilon_i
+$$(c)
+
+Combining equations {eq}`a`, {eq}`b` and {eq}`c` results in eq. {eq}`combined`:
+
+$$
+\sigma = h \Delta \varepsilon \quad \text{in which} \quad h = \frac{h^* E}{E + h^*}
+$$(combined)
+
+if $-E < h^* < 0$ ⇒ $h < 0 $ strain-softening behaviour  
+if $h^* > 0$ ⇒ $h > 0 $ strain-strain-hardening behaviour  
+if $h* > -E$ ⇒ $h > 0 $ local snap-back behaviour
+
 - $\textcolor{red}{\text{Load control vs. displacement control}}$
 
 ```{figure} Images/truss_element.png 
@@ -343,7 +365,65 @@ Furthermore, there is an influence of boundary conditions, initial conditions an
 Truss element (A=1)
 ```
 
+$$
+u(x) = \begin{bmatrix} 1 - \frac{x}{k} & \frac{x}{k} \end{bmatrix} \begin{bmatrix} a_1 \\ a_2 \end{bmatrix} \quad (u(x) = \mathbf{H}\mathbf{a})
+$$
+
+$$
+\varepsilon(x) = \begin{bmatrix} -\frac{1}{k} & \frac{1}{k} \end{bmatrix} \begin{bmatrix} a_1 \\ a_2 \end{bmatrix} \quad (\varepsilon(x) = \mathbf{B}\mathbf{a})
+$$
+
+Elastic element: $\mathbf{K} = k \mathbf{B}^T E \mathbf{B} = \frac{E}{k} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}$
+
+Strain-softening element: $\mathbf{K} = k \mathbf{B}^T h \mathbf{B} = \frac{h}{k} \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}$
+
 - $\textcolor{red}{\text{Load control vs. displacement control}}$
+
+**Load control**
+
+- **Local instability:**
+
+$$
+\Delta \epsilon \Delta \sigma < 0 \quad \text{(in weak element)} \quad \textcolor{red}{\text{YES}}
+$$
+
+- **Structural instability:**
+
+$$
+\frac{1}{k} \begin{bmatrix} h + E & -E \\ -E & E \end{bmatrix} \begin{bmatrix} \Delta a_1 \\ \Delta a_2 \end{bmatrix} = \begin{bmatrix} 0 \\ f_e \end{bmatrix} - \begin{bmatrix} f_{i1} \\ f_{i2} \end{bmatrix}
+$$
+
+$$
+\text{det} \mathbf{K} = \frac{Eh}{k^2} < 0 \quad \text{(loss of positive definiteness)} \quad \textcolor{red}{\text{YES}}
+$$
+
+**Displacement control**
+
+- **Local instability:**
+
+$$
+\Delta \epsilon \Delta \sigma < 0 \quad \text{(in weak element)} \quad \textcolor{red}{\text{YES}}
+$$
+
+- **Structural instability:**
+
+$$
+\frac{1}{k} (h + E) \Delta a_1 = \frac{E}{k} \Delta a_2 - f_{i1} \quad \frac{E}{k} \Delta a_2 \quad (\text{equivalent nodal force})
+$$
+
+$$
+\text{det} \mathbf{K}_{ff} = \frac{1}{k} (h + E) > 0 \quad \text{if} \quad h > - E \quad (\mathbf{K} \rightarrow \mathbf{K}_{ff}) \quad \textcolor{red}{\text{NO}}
+$$
+
+**Conclusion:**
+
+$$
+\Rightarrow \quad \text{Localisation of deformation can occur without loss of stability in displacement control!!}
+$$
+
+$$
+\Rightarrow \quad \text{The condition } h < - E \text{ leads to global snap-back and structural instability}
+$$
 
 - $\textcolor{red}{\text{Load control vs. displacement control}}$
 
@@ -351,6 +431,35 @@ Truss element (A=1)
 ---
 ---
 ```
+
+**Load control**
+
+Structural instability:
+
+$$
+\frac{1}{k} \begin{bmatrix} h + E & -E & 0 \\ -E & 2E & -E \\ 0 & -E & E \end{bmatrix} \begin{bmatrix} \Delta a_1 \\ \Delta a_2 \\ \Delta a_3 \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ f_e \end{bmatrix} - \begin{bmatrix} f_{i1} \\ f_{i2} \\ f_{i3} \end{bmatrix}
+$$
+
+$$
+\text{det} \mathbf{K} = \frac{E^2 h}{k^3} < 0 \text{loss of positive definiteness}  \quad \textcolor{red}{\text{YES}}
+$$
+
+**Displacement control**
+
+Structural instability:
+
+$$
+\frac{1}{k} \begin{bmatrix} h + E & -E \\ -E & 2E \end{bmatrix} \begin{bmatrix} \Delta a_1 \\ \Delta a_2 \end{bmatrix} = \begin{bmatrix} 0 \\ \frac{E}{k} \Delta a_3 \end{bmatrix} - \begin{bmatrix} f_{i1} \\ f_{i2} \end{bmatrix}
+$$
+
+$$
+\text{det} \mathbf{K}_{ff} = \frac{E}{k} (2h + E) > 0 \quad \text{if} \quad h > -\frac{1}{2} E  \quad \textcolor{red}{\text{NO}}
+$$
+
+$$
+\Rightarrow \quad \text{If} \quad h < -\frac{1}{2} E, \quad \text{global snap-back and structural instability} \quad (h < -\frac{E}{n-1} \quad \text{for} \quad n \quad \text{elements})
+$$
+
 
 ## Mesh sensitivity
 
@@ -360,6 +469,23 @@ Truss element (A=1)
 ---
 ---
 ```
+
+After peak load one (weak) element is softening and $m - 1$ elements unload:
+
+$$
+u = \frac{L}{m} \varepsilon_1 + \frac{(m - 1) L}{m} \epsilon_{\text{other}} \quad \text{with} \quad \varepsilon_1 = \frac{f_t}{E} + \frac{\sigma - f_t}{h} \quad \text{and} \quad \varepsilon_{\text{other}} = \frac{\sigma}{E}
+$$
+
+$$
+\Rightarrow \quad u = L \left( \frac{\sigma}{E} + \frac{(E - h)(\sigma - f_t)}{Ehm} \right)
+$$
+
+Slope of load-displacement curve \((\sigma - u)\):
+
+$$
+\frac{\Delta u}{\Delta \sigma} = L \left( \frac{1}{E} + \frac{E - h}{Ehm} \right)
+$$
+
 
 - $\textcolor{red}{\text{Strain-softening bar}}$
 
