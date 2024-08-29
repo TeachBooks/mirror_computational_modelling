@@ -1,9 +1,9 @@
 ## Surrogate model
 
-Performing multiscale simulations using FE$^2$ can be advantageous for the many reasons discussed before.
+Performing multiscale simulations using FE$^2$ can be advantageous for the aforementioned reasons.
 However, simulating the Representative Elementary Volume (REV) for the microscale model is not free, and since it needs to be evaluated many times for any macroscopic simulation, FE$^2$ can quickly become computationally infeasible.
 For each macroscopic timestep, REVs can be simulated in parallel to speed this process up, but sometimes this is still insufficient.
-Then, surrogate models can be used to reduce the computational cost by substituting the REV with a cheaper approximate model.  
+Then, surrogate models can reduce the computational cost by substituting the REV with a cheaper approximate model.  
 
 ### Overview
 Let's consider a case where we use the REV to find the constitutive relation between the stresses $\mathbf{\sigma}$ and strains $\mathbf{\varepsilon}$:
@@ -12,7 +12,7 @@ $$
 \mathbf{\sigma}, D = REV(\mathbf{\varepsilon}).
 $$
 
-The tangent matrix $D$ is optionally returned to allow for faster macroscopic convergence.
+The tangent matrix $D$ is optionally returned to enable faster macroscopic convergence.
 Our surrogate method $\mathcal{S}$ aims to approximate the REV as
 
 $$
@@ -31,11 +31,13 @@ Overview of a multiscale simulation using a surrogate.
 
 ### Surrogate design
 Generally, surrogate models are defined by a set of parameters.
-There are many possible types of surrogate models, currently various types of neural networks are popular and actively researched.
+There are many possible types of surrogate models, such as Proper Orthogonal Decomposition, Gaussian Processes, and various types of neural networks. Especially neural networks are popular, and many variations are actively researched.
+For a recap on neural networks, we refer to the [introduction to Neural Networks in the MUDE online book](https://mude.citg.tudelft.nl/2023/book/ml/nn_interactive.html).
+
 To find the parameters that lead to a good surrogate, we train it on a dataset $\mathcal{D}$.
 $\mathcal{D}$ is created from REV simulation before the full macroscopic problem is simulated.
 This data generation phase needs to cover a wide range of loading scenarios, as it is not always known which will occur during the actual multiscale simulation.
-Still, these REV simulations are computationally expensive to run, so we want to require as few of them as possible.
+Still, these REV simulations are computationally expensive, so we want to require as few of them as possible.
 
 We train our surrogate $\mathcal{S}$ by adjusting our parameters $\mathbf{w}$ to approximate all cases in the training dataset.
 A common approach is to define a loss function that measures the error of the surrogate.
@@ -58,3 +60,18 @@ The surrogate should be computationally much cheaper than running the REV, allow
 A trained surrogate can be used for many simulations, as long as its training data is an accurate representation of the simulation of interest.
 If all training data is generated for specific material properties, then the surrogate cannot be used when these properties change.
 In such a case a new data generation and training process is required.
+
+
+#### Example
+
+We conclude by showing a recent example of a multiscale simulation whose computational cost has been significantly decreased by using a surrogate model as seen in the figure below.
+This surrogate has a custom architecture that brings the physical constitutive models from the lower scale inside the neural network.
+By combining physics and data-driven models, accurate models can be designed that require less training data and perform better outside their training range than their purely data-driven counterparts.
+
+```{figure} ./figures/Example_FE2_surrogate.png
+---
+height: 400px
+name: multiscale_surrogate
+---
+A physically-recurrent neural network is used to drastically accelerate multiscale simulations, while maintaining a high accuracy. From [Maia, M. A., et al. "Physically recurrent neural networks for path-dependent heterogeneous materials: Embedding constitutive models in a data-driven surrogate." Computer Methods in Applied Mechanics and Engineering 407 (2023): 115934.](https://doi.org/10.1016/j.cma.2023.115934)
+```
