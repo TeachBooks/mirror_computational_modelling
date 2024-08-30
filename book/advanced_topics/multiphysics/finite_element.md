@@ -34,7 +34,7 @@ $$
 After discretising $\mathbf{v}$ and $P$ as
 
 $$
-\mathbf{v} \approx \sum_{i=1}^{n}N^v_{i}v_i \\
+\mathbf{v} \approx \sum_{i=1}^{n}N^\mathbf{v}_{i}v_i \\
 \mathbf{p} \approx \sum_{i=1}^{m}N^p_{i}P_i
 $$ (discrete-var)
 
@@ -89,7 +89,7 @@ Triangular Taylor-Hood element. Figure from Segal (2023)[^1].
 
 ### Boundary conditions
 
-Boundary conditions need to apply to each primary variables separately in order to close each governing equation, ensuring a well-posed problem that has a unique and stable solution (see Pyjive workshop on [<em>Applying constraints</em>](../../continuum_linear/Exercises/pyjive_constraints.ipynb)). They are usually described by constant value or constant flow, implemented in Finite Element by respectively Dirichlet or Neumann boundary condition (example in [<em>Strong form equation</em>](../../introduction/poisson2d.md#strong-form-equation)). To give another example for solid mechanics, this corresponds to prescribed displacement (Dirichlet BC for u) or prescribed stress (Neumann BC for u).
+Boundary conditions (BCs) need to apply to each primary variables separately in order to close each governing equation, ensuring a well-posed problem that has a unique and stable solution (see Pyjive workshop on [<em>Applying constraints</em>](../../continuum_linear/Exercises/pyjive_constraints.ipynb)). They are usually described by constant value or constant flow, implemented in Finite Element by respectively Dirichlet or Neumann boundary condition (example in [<em>Strong form equation</em>](../../introduction/poisson2d.md#strong-form-equation)). To give another example for solid mechanics, this corresponds to prescribed displacement (Dirichlet BC of $\mathbf{u}$) or prescribed stress (Neumann BC of $\mathbf{u}$).
 
 ### Time discretisation
 

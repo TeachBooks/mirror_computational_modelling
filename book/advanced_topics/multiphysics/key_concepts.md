@@ -1,8 +1,26 @@
 ## Key concepts
 
-Many Civil Engineering and Geosciences problems relating to structure or rock deformations and fluid flow can be cast as THMC physical phenomena, Thermo-Hydro-Mechanical-Chemical. Sometimes some of the physical processes can be neglected, for instance when pure mechanical analysis can be performed on structures. In other cases however, multiple physical processes and their interactions need to be accounted for. That is when we speak of multiphysics analysis.
+Many Civil Engineering and Geosciences problems relating to structure or rock deformations and fluid flow can be cast as THMC physical phenomena, Thermo-Hydro-Mechanical-Chemical. Sometimes some of the physical processes can be neglected, for instance when pure mechanical analysis can be performed on structures (example of mechanical indentation in [Figure 2](#fig-indenter-video)). In other cases however, multiple physical processes and their interactions need to be accounted for (example of thermo-mechanical welding in [Figure 2](#fig-welding-video)). That is when we speak of multiphysics analysis.
 
-example of pure mech analysis vs heat treatment for metals (https://mooseframework.inl.gov/gallery.html)
+<figure id="fig-indenter-video" style="text-align: left; margin: auto;">
+  <video width="300" controls autoplay loop muted preload="metadata" poster="thumbnail.jpg">
+    <source src="https://mooseframework.inl.gov/large_media/contact/2d_indenter.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <figcaption style="margin-top: 8px; font-size: 14px; color: #555; text-align: left;">
+    <strong>Figure 1:</strong> An elastic axisymmetric spherical indenter penetrates into a base material. Sourced from the <a href="https://mooseframework.inl.gov/gallery.html" target="_blank" rel="noopener noreferrer">MOOSE framework simulation gallery</a>.
+  </figcaption>
+</figure>
+
+<figure id="fig-welding-video" style="text-align: left; margin: auto;">
+  <video width="500" controls autoplay loop muted preload="metadata" poster="thumbnail.jpg">
+    <source src="https://mooseframework.inl.gov/large_media/gallery/weld.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <figcaption style="margin-top: 8px; font-size: 14px; color: #555; text-align: left;">
+    <strong>Figure 2:</strong> Thermo-mechanical simulation of the laser welding process (with a total of 8 weld passes) joining two separate vessel segments. Sourced from the <a href="https://mooseframework.inl.gov/gallery.html" target="_blank" rel="noopener noreferrer">MOOSE framework simulation gallery</a>.
+  </figcaption>
+</figure>
 
 ### Conservation laws
 For those problems, the different existing laws of physics are encompassed into the conservation of three main quantities: momentum, mass and energy.
