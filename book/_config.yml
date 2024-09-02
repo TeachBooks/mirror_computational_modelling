@@ -1,6 +1,6 @@
 # General settings
 title: CiTG Jupyter Book template
-author: Colomés, Rocha, Van der Meer
+author: Colomés, Rocha, Van der Meer, Lesueur
 logo: images/TUDelft_logo_rgb.png
 
 # Execute notebooks when building
@@ -24,6 +24,3 @@ sphinx:
     thebe_config:
       use_thebe_lite: true
       exclude_patterns: ["**/_*.yml", "**/*.md", "**/*.ipynb"]
-
-
-

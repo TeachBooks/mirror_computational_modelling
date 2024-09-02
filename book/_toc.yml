@@ -152,12 +152,29 @@ parts:
       - file: fluid_dynamics/fluids
 # END REMOVE-FROM-PUBLISH
 
+  - caption: Advanced
+    numbered: 2
+    chapters:
+      # - file: advanced_topics/unfitted
+      # - file: advanced_topics/surface_coupling
+      - file: advanced_topics/multiphysics/intro
+        sections:
+        - file: advanced_topics/multiphysics/key_concepts
+        - file: advanced_topics/multiphysics/finite_element
+        - file: advanced_topics/multiphysics/FSI
+      - file: advanced_topics/multiscale/intro
+        sections:
+        - file: advanced_topics/multiscale/key_concepts
+        - file: advanced_topics/multiscale/FE2
+        - file: advanced_topics/multiscale/surrogate
+
   - caption: Practical information
     numbered: 0
     chapters:
     - file: schedules/intro
       sections:
       - file: schedules/1110
+      - file: schedules/1301
       - file: schedules/5110
       - file: schedules/42X0
 
@@ -170,6 +187,7 @@ parts:
       sections:
       - file: exam_tips/1110
       - file: exam_tips/5110
+
 
 # - file: advanced_topics/intro
 #   chapters:
