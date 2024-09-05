@@ -167,6 +167,10 @@ parts:
         - file: advanced_topics/multiscale/key_concepts
         - file: advanced_topics/multiscale/FE2
         - file: advanced_topics/multiscale/surrogate
+        - file: advanced_topics/Exercises/exercises
+          title: Exercises
+          sections:
+          - file: advanced_topics/Exercises/pyjive_fe2
 
   - caption: Practical information
     numbered: 0
