@@ -220,6 +220,78 @@ $$
 
 ## Smeared Cracking
 
+````{card}
+### Additional preliminaries: Sherman-Morrison formula
+
+A useful result on the inversion of a special type of matrices is the **Sherman-Morrison formula**. Let $\mathbf{A}$ be a non-singular $n$ x $4n$ matrix and let $\mathbf{u}$ and $\mathbf{v}$ be two vectors with each $n$ entries. The the following identity holds:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T)^{-1} = \mathbf{A}^{-1} - \frac{\mathbf{A}^{-1}\mathbf{uv}^T\mathbf{A}^{-1}}{1+\mathbf{v}^T\mathbf{A}^{-1}\mathbf{u}}
+$$(sherman_morrison)
+
+**Exercise**
+
+Prove {eq}`sherman_morrison` indirectly by multiplying $\mathbf{A} + \mathbf{uv}^T$ by the right hand side of {eq}`sherman_morrison`.
+
+```{admonition} Solution
+:class: tip, dropdown
+Let's denote the right-hand side of the formula as: 
+
+$$
+\mathbf{X} = \mathbf{A}^{-1} - \frac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}}
+$$
+
+Then the first step is:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = (\mathbf{A} + \mathbf{uv}^T) \left( \mathbf{A}^{-1} - \frac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}} \right)
+$$
+Distribute $\mathbf{A} + \mathbf{uv}^T$:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{A} \mathbf{A}^{-1} - \mathbf{A} \frac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}} + \mathbf{uv}^T \mathbf{A}^{-1} - \mathbf{uv}^T \frac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}}
+$$
+
+Simplify the first two terms to:
+
+1. **First term**: $\mathbf{A} \mathbf{A}^{-1} = \mathbf{I}$, where $\mathbf{I}$ is the identity matrix.
+
+2. **Second term**: $\mathbf{A} \frac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}} = \frac{\mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}}$
+
+Now, let’s recombine the terms (and shift the 2nd and 3rd term around):
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I} + \mathbf{uv}^T \mathbf{A}^{-1} - \frac{\mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}} - \mathbf{uv}^T \frac{\mathbf{A}^{-1} \mathbf{u} \mathbf{v}^T \mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}}
+$$
+
+Factor out $\mathbf{uv}^T \mathbf{A}^{-1}$ from the last two terms and combine them:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I} + \mathbf{uv}^T \mathbf{A}^{-1} - \frac{\mathbf{uv}^T \mathbf{A}^{-1}(1 + \mathbf{uv}^T \mathbf{A}^{-1})}{1 + \mathbf{v}^T \mathbf{A}^{-1} \mathbf{u}}
+$$
+
+Rewrite the numerator of the 3rd term:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I} + \mathbf{uv}^T \mathbf{A}^{-1} - \frac{\mathbf{u} (1 + \mathbf{v}^T \mathbf{A}^{-1}\mathbf{u})\mathbf{v}^T\mathbf{A}^{-1}}{1 + \mathbf{v}^T \mathbf{A}^{-1}\mathbf{u}}
+$$
+
+The 3rd term now has the same nominator and denominator, the fraction can thus be taken out, which results in:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I} + (\mathbf{A} + \mathbf{uv}^T) - (\mathbf{A} + \mathbf{uv}^T)
+$$
+
+The last two terms cancel out, leaving:
+
+$$
+(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}
+$$
+
+Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\mathbf{X} = (\mathbf{A} + \mathbf{uv}^T)^{-1}$, which completes the indirect proof of the Sherman-Morrison formula.
+```
+````
+
 ```{figure} Images/tension_cut_off_experiments.png 
 ---
 ---
