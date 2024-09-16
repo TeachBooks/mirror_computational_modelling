@@ -1,3 +1,5 @@
+$\newcommand{\beps}{\boldsymbol\varepsilon}$ $\newcommand{\bsig}{\boldsymbol\sigma}$ $\newcommand{\ud}{\mathrm{d}}$ $\newcommand{\us}{\mathrm{s}}$ $\newcommand{\ba}{\mathbf{a}}$ $\newcommand{\bb}{\mathbf{b}}$ $\newcommand{\bc}{\mathbf{c}}$ $\newcommand{\bt}{\mathbf{t}}$ $\newcommand{\bu}{\mathbf{u}}$ $\newcommand{\bx}{\mathbf{x}}$ $\newcommand{\bw}{\mathbf{w}}$ $\newcommand{\bN}{\mathbf{N}}$ $\newcommand{\bB}{\mathbf{B}}$ $\newcommand{\bD}{\mathbf{D}}$ $\newcommand{\bK}{\mathbf{K}}$ $\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}}$ $\newcommand{\iD}{\boldsymbol{\mathcal{D}}}$ $\newcommand{\mbf}[1]{\mathbf{#1}}$ $\newcommand{\mrm}[1]{\mathrm{#1}}$ $\newcommand{\bs}[1]{\boldsymbol{#1}}$ $\newcommand{\T}{^\mathrm{T}}$ $\newcommand{\inv}{^{-1}}$ $\newcommand{\myVec}[1]{\left\{ \begin{matrix} #1 \end{matrix} \right\}}$ $\newcommand{\myMat}[1]{\left[ \begin{matrix} #1 \end{matrix} \right]}$ $\newcommand{cA}[1]{\textcolor[RGB]{1,113,136}{#1}}$ $\newcommand{cB}[1]{\textcolor[RGB]{195,49,47}{#1}}$ $\newcommand{cC}[1]{\textcolor[RGB]{0,102,162}{#1}}$ $\newcommand{cD}[1]{\textcolor[RGB]{0,183,211}{#1}}$ $\newcommand{cE}[1]{\textcolor[RGB]{0,163,144}{#1}}$ $\newcommand{cF}[1]{\textcolor[RGB]{97,164,180}{#1}}$ $\newcommand{cG}[1]{\textcolor[RGB]{130,215,198}{#1}}$ $\newcommand{cH}[1]{\textcolor[RGB]{153,210,140}{#1}}$ $\newcommand{cI}[1]{\textcolor[RGB]{235,114,70}{#1}}$ $\newcommand{cJ}[1]{\textcolor[RGB]{241,190,62}{#1}}$ $\newcommand{cK}[1]{\textcolor[RGB]{231,41,138}{#1}}$ 
+
 # Crack models
 
 The main cause of the nonlinearity of concrete is cracking, which is primarily due to the limited capacity of concrete to sustain tensile stresses (or perhaps better, tensile strains). Numerical modelling of cracking concrete started in the late 1960s with the landmark papers of Ngo and Scordelis (1967) and Rashid (1968), in which the discrete and smeared crack models were introduced. Especially the latter approach gained much popularity, and in the 1970s comprehensive efforts were invested in developing constitutive models in a smeared setting which could reproduce the experimentally observed stress-strain characteristics of concrete.
@@ -219,6 +221,31 @@ $$
 ```
 
 ## Smeared Cracking
+Within the smeared crack approach distinction can be made between fixed and rotating crack models. In a fixed smeared-crack model the direction of the normal to the crack is fixed upon initiation of the crack. Rotating crack models on the other hand allow the normal to the crack to rotate during the fracture process. In principle the normal of the crack can corotate with the axes of principal strain or with the axes of principal stress. Most fracture models, however, require a relation between the principal tensile strain and the principal tensile stress. This can only be archieved if the axes of principal stress and the axes of principal strain remain aligned during the entire fracture process. In a subsequent section we shall investigate the implications of this so-called requirement of co-axiality of the stress tensor and the strain tensor. First we shall concentrate on fixed smeared-crack models.
+
+Prior to cracking, concrete is, for many purposes, modelled sufficiently accurately as an isotropic, linear-elastic material. For instance, in a two-dimensional state of stress we have {eq}`plane_stress`, which is often referred to as  **plane stress** (see also {doc}`../continuum_linear/continuum_mechanics`):
+
+$$
+\myVec{\sigma_{xx}\\\sigma_{yy}\\\sigma_{xy}}
+=
+\frac{E}{1-\nu^2}
+\myMat{1 & \nu & 0\\ \nu & 1 & 0\\ 0 & 0 & \frac{1-\nu}{2}}
+\myVec{\varepsilon_{xx}\\\varepsilon_{yy}\\\gamma_{xy}}
+$$(plane_stress)
+
+When the major principal tensile stress exceeds the tensile strength or, in more generally when the combination of principal stresses violates teh tension-cut-off criterion {ref}
+
+```{figure} Images/tension_cut_off_experiments.png 
+---
+---
+Tension cut-off criteria - experimental results
+```
+
+```{figure} Images/tension_cut_off_models.png 
+---
+---
+Tension cut-off criteria - models
+```
 
 ````{card}
 ### Additional preliminaries: Sherman-Morrison formula
@@ -291,15 +318,3 @@ $$
 Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\mathbf{X} = (\mathbf{A} + \mathbf{uv}^T)^{-1}$, which completes the indirect proof of the Sherman-Morrison formula.
 ```
 ````
-
-```{figure} Images/tension_cut_off_experiments.png 
----
----
-Tension cut-off criteria - experimental results
-```
-
-```{figure} Images/tension_cut_off_models.png 
----
----
-Tension cut-off criteria - models
-```
