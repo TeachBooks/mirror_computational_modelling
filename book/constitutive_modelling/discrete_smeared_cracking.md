@@ -316,7 +316,89 @@ $$
 \dot{\varepsilon}^{cr} = \dot{\varepsilon}_1^{cr} + \dot{\varepsilon}_2^{cr} + ...
 $$(cont_cr_strainrate)
 
-where $\dot{\varepsilon}_1^{cr}$ is the strain rate owing to a primary crack, $\dot{\varepsilon}_2^{cr}$ is the strain rate owing to a secondary crack and so on.
+where $\dot{\varepsilon}_1^{cr}$ is the strain rate owing to a primary crack, $\dot{\varepsilon}_2^{cr}$ is the strain rate owing to a secondary crack and so on. The relation between the crack strain rate of a particular crack (either primary or secondary) and the stress rate is conveniently defined in the coordinate system which is aligned with the crack. This necessitates a transformation between the crack strain rate $\dot{\varepsilon}_n^{cr}$ of crack n in the global x,y-coordinate system and a crack strain rate \dot{\varepsilon}_n^{cr} which is expressed in local n,s-coordinates. Restricting the treatment to a two-dimensional configuration (which is not essential), we observe that a crack only has a normal strain rate $\dot{\varepsilon}_n^{cr}$ (mode-I) and a shear strain rate $\dot{\gamma}_n^{cr}$ (mode-II), so that {eq}`e_dot_n`:
+
+$$
+\mathbf{\dot{e}}_n^{cr} = [\dot{e}_n^{cr}, \dot{\gamma}_n^{cr}]^T
+$$(e_dot_n)
+
+The relation between $\dot{\varepsilon}_n^{cr}$ and $\mathbf{\dot{e}}_n^{cr}$ reads {eq}`relation_e_eps_cr`:
+
+$$
+\dot{\varepsilon}_n^{cr} = \mathbf{N}_n \mathbf{\dot{e}}_n^{cr}
+$$(relation_e_eps_cr)
+
+with $\mathbf{N}_n$ as in {eq}`N_n`:
+
+$$
+\mathbf{N}_n = \myMat{cos^2 \phi_n & - sin \phi_n cos \phi_n \\ sin^2 \phi_n & sin \phi_n cos \phi_n \\ 2 sin \phi_n cos \phi_n & cos^2 \phi_n - sin^2 \phi_n}
+$$(N_n)
+
+where $phi_n$ is the inclination angle of the normal of crack n with the x-axis. Substitution of eq. {eq}`relation_e_eps_cr` into eq. {eq}`cont_cr_strainrate` gives for multiple cracks eq. {eq}`multiple_cracks`:
+
+$$
+\dot{\varepsilon}^{cr} = \mathbf{N}_1 \mathbf{\dot{e}}_1^{cr} + \mathbf{N}_2 \mathbf{\dot{e}}_2^{cr} + ...
+$$(multiple_cracks)
+
+For the derivation of the stress-strain law of the system of cracks and concrete, it is convenient to assemble all the crack strain rates that are expressed in their own local coordinate system in a vector $\mathbf{\dot{e}}^{cr}$, as in {eq}`vector_e_cr`:
+
+$$
+\mathbf{\dot{e}}^{cr} = [\dot{e}_1^{cr}, \dot{\gamma}_1^{cr}, \dot{e}_2^{cr}, \dot{\gamma}_2^{cr} ...]^T
+$$(vector_e_cr)
+
+Introducing the matrix $\mathbf{N}$ in {eq}`N`:
+
+$$
+\mathbf{N} = [\mathbf{N}_1, \mathbf{N}_2, ...]
+$$(N)
+
+we observe that we can rewrite eq. {eq}`vector_e_cr` as {eq}`e_cr_rewritten`:
+
+$$
+\dot{\varepsilon}^{cr} = \mathbf{N} \mathbf{\dot{e}}^{cr}
+$$(e_cr_rewritten)
+
+In a similar way, we can define a vector $\mathbf{\dot{s}}_n$ in eq. {eq}`s_n`:
+
+$$
+\mathbf{\dot{s}}_n = [\dot{s}_n, \dot{t}_n]^T
+$$(s_n)
+
+with $\dot{s}_n$ the normal and $\dot{t}_n$ the shear stress rate in crack n of the integration point. The vector $\mathbf{\dot{s}}$, which assembles all the stress rate with respect to their own local n,s-coordinate system then reads as in eq. {eq}`s_vector`:
+
+$$
+\mathbf{\dot{s}} = [\dot{s}_1, \dot{t}_1, \dot{s}_2, \dot{t}_2...]
+$$(s_vector)
+
+The relation between the stress rate in the global coordinate system $\dot{\sigma}$ and the stress vector $\mathbf{\dot{s}}$ can subsequently be derived to be eq. {eq}`s_Ns`:
+
+$$
+\mathbf{\dot{s}} = \mathbf{N}^T \mathbf{\dot{\sigma}}
+$$(s_Ns)
+
+To complete the system of equations, we need a constitutive model for the intact concrete and a stress-strain relation for the smeared cracks. For the concrete between the cracks we assume a relationship of the following structure {eq}`concrete_between_cracks`:
+
+$$
+\mathbf{\dot{\sigma}} = \mathbf{D}^{co} \mathbf{\dot{\varepsilon}}^{co}
+$$(concrete_between_cracks)
+
+with the matrix $\mathbf{D}^{co}$ containing the instantaneous moduli of the concrete. One of the attractive features of the fixed multiple-crack model with strain-decomposition now becomes apparent, namely that the behaviour of the crack and the behaviour of the intact concrete between the cracks can be treated separately. For most fracture analyses it suffices to use the elasticity matrix for $\mathbf{D}^{co} \ (\mathbf{D}^{co} = \mathbf{D}^e)$, but there is no conceptual limitation to carry out analyses with elastoplastic or visco-elastic concrete properties (De Borst 198[^10]). In a similar way, we can define a relation between the crack strain rate $\mathbf{\dot{e}}^{cr}$ of crack n and the stress rate $\mathbf{\dot{s}}_n$ in the crack. Formally a relation can be assumed that reads {eq}`formal_s_n`:
+
+$$
+\mathbf{\dot{s}}_n = \mathbf{D}_n^{cr} \mathbf{\dot{e}}_n^cr
+$$(formal_s_n)
+
+with $\mathbf{D}_n^{cr}$ a 2x2 matrix. For the derivation of the stress-strain relation of the cracked concrete, it is again convenient to assemble all the matrices $\mathbf{D}_n^{cr}$ in one matrix $\mathbf{D}^{cr}$, which is defined as {eq}`D_cr`:
+
+$$
+\mathbf{D}^{cr} = \myMat{\mathbf{D}_1^{cr} & 0 & ... \\ \mathbf{0} & \mathbf{D}_2^{cr} & ... \\ ... & ... & ...}
+$$(D_cr)
+
+so that the relation between $\mathbf{\dot{s}}$ and $\mathbf{\dot{e}}_cr$ reads {eq}`s_e_cr`:
+
+$$
+\mathbf{\dot{s}} = \mathbf{D}^{cr} \mathbf{\dot{e}}^cr
+$$(s_e_cr)
 
 ````{card}
 ### Additional preliminaries: Sherman-Morrison formula
@@ -390,6 +472,18 @@ Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\
 ```
 ````
 
+Using equations {eq}`inc_formulation`, {eq}`e_cr_rewritten`, {eq}`s_Ns`, {eq}`concrete_between_cracks` and {eq}`s_e_cr` we can develop the tangential compliance relation for the cracked concrete {eq}`tang_compliant`:
+
+$$
+\mathbf{\dot{\varepsilon}} = [(\mathbf{D}^{co})^{-1} + \mathbf{N}(\mathbf{D}^{cr})^{-1} \mathbf{N}^T] \mathbf{\dot{\sigma}}
+$$(tang_compliant)
+
+whereupon use of the extended Sherman-Morrison formula gives for the stiffness relation {eq}`ext_sherman_mor_stiff`:
+
+$$
+\mathbf{\dot{\sigma}} = \myVec{\mathbf{D}^{co} - \mathbf{D}^{co} \mathbf{N}[\mathbf{D}^{co} + \mathbf{N}^T \mathbf{D}^{co} \mathbf{N}]^{-1} \mathbf{N}^T \mathbf{D}^{co}} \mathbf{\dot{\varepsilon}}
+$$(ext_sherman_mor_stiff)
+
 [^1]: Ngo D. and Scordelis, A.C. (1967), Finite element analysis of reinforced concrete beams, J. Amer. Concrete Inst. 64, 152-163
 [^2]: Rashid Y.R. (1968), Analysis of prestressed concrete pressure vessels, Nuclear Eng. Des. 7, 334-344
 [^3]: Suidan M. and Schnobrich W.C. (1973), Finite element analysis of reinforced concrete, ASCE J. Struct. Div. 99, 2109-2122
@@ -399,3 +493,4 @@ Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\
 [^7]: Hilliborg, A., Modeer, M. and Petersson, P.E. (1976), Analysis of crack formation and crack growth in concrete by means of fracture mechanics and finite elements, Cement Concr. Res. 6, 773-782
 [^8]: Bažant Z.P. and Oh B.H. (1983), Crack band theory for fracture of concrete, RILEM Mat. Struct. 16, 155-177
 [^9]: De Borst R. and Nauta P. (1985), Non-orthogonal cracks in a smeared finite element model, Eng. Comput. 2, 35-46
+[^10]: De Borst R. (1987), Smeared cracking, plasticity, creep and thermal loading - a unified approach, Comp. Meth. Appl. Mech. Eng. 62, 89-110
