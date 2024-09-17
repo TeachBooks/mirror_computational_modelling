@@ -266,6 +266,41 @@ $$
 \mathbf{\sigma}_{ns} = \mathbf{D}_{ns}^s \varepsilon_{ns}
 $$(sigma_ns)
 
+If we introduce $\phi$ as the angle from teh x-axis to the n-axis, we can relate the components of $\varepsilon_{ns}$ and $\sigma_{ns}$ to those in the global x,y-coordinate. Using the standard transformation matrices $\mathbf{T}_\varepsilon$ and $\mathbf{T}_\sigma$ we get {eq}`eps_ns_T` and {eq}`sigma_ns_T`:
+
+$$
+\varepsilon_{ns} = \mathbf{T}_\varepsilon(\phi) \varepsilon_{xy}  
+$$(eps_ns_T)
+
+$$
+\sigma_{ns} = \mathbf{T}_\sigma(\phi) \sigma_{xy}  
+$$(sigma_ns_T)
+
+We can transform the local secant stiffness relation in the global x-y, coordinate system in {eq}`transformed_secant`:
+
+$$
+\sigma_{xy} = \mathbf{T}_\sigma^{-1}(\phi) \mathbf{D}_{ns}^s \mathbf{T}_\varepsilon(\phi) \varepsilon_{xy}
+$$(transformed_secant)
+
+Because of ill-conditioning use of {eq}`plane_stress` may result in premature convergence difficulties. Also, physically unrealistic and distorted crack patterns can be obtained (e.g., Suidean and Schnobrich 1973[^3]). For this reason, a reduced shear modulus $\beta G \ (0 \leq \beta \leq 1)$ was reinserted in the model in {eq}`D_ns_inserted_betag`:
+
+$$
+\mathbf{D}_{ns}^s = \myMat{0 & 0 & 0\\ 0 & E & 0\\ 0 & 0 & \beta G}
+$$(D_ns_inserted_betag)
+
+The use of this so-called shear retention factor $\beta$ not only reduces the numerical difficulties but it also improves the physical reality of fixed crack models, because it can be thought of as a model representation of aggregate interlock. Most researchers simply adopt a constant shear retention factor ($\beta = 0.2$ is a commenly adopted value) but sometimes a crack-strain dependent factor is employed (Kolmar and Mehlhorn 1984 [^4]). The latter option is more realistic since the capability of a crack to transfer shear stresses in mode-II decreases with increasing crack strain.
+
+The fact that the stiffness normal to the crack in {eq}`D_ns_inserted_betag` is set equal to zero involves a sudden drop of the tensile stress from $f_{ct}$ to zero upon crack initiation. Similar to the use of a zero shear retention factor, this may cause numerical problems. However, careful servocontrolled experiments on plain concrete have shown that concrete is not a perfectly brittle material in the Griffith sense, but that it has some residual load-carrying capacity after reaching the tensile strength. This experimental observation led to the replacement of purely brittle crack models by tension-softening models, in which a descending branch was introduced to model the gradually diminishing tensile strength of concrete upon further crack opening. For discrete crack models, and probably motivated by the cohesisve crack models of Dugdale (1960)[^5] and Blarenblatt (1962)[^6], Hilliborg et al. (1976)[^7] proposed the Fictious Crack model (FCM), which ensured a mesh-independent energy release upon crack propagation. Adaptingthis concept to smeard formulations, Bažant and Oh (1983)[^8] developed the Crack Band Model, in which fracture energy $G_f$ introduced by Hillerborg et al. (1976)[^7] was smeared out over the area in which the crack localizes. In a smeared context, one can model this by inserting a normal reduction factor $\mu$ in the secant stiffness matrix {eq}`D_ns_inserted_mu`:
+
+$$
+\mathbf{D}_{ns}^s = \myMat{\mu E & 0 & 0\\ 0 & E & 0\\ 0 & 0 & \beta G}
+$$(D_ns_inserted_mu)
+
+where, similar to the shear reduction factor $\beta$, the normal reduction factor $\mu$ can be a function of the strain normal to the crack: $\mu = \mu(\varepsilon_{nn})$. a final refinement is given by the addition of Poisson coupling after crack formation. then, we arrive at the mode-I crack band formulation of Bažant and Oh (1983)[^8] extended with mode-II shear retention {eq}`D_ns_Bazant`:
+
+$$
+\mathbf{D}_{ns}^s = \myMat{\frac{\mu E}{1 - \nu^2 \mu} & \frac{\nu \mu E}{1 - \nu^2 \mu} & 0\\ \frac{\nu \mu E}{1 - \nu^2 \mu} & \frac{E}{1 - \nu^2 \mu} & 0\\ 0 & 0 & \beta G}
+$$(D_ns_Bazant)
 
 ````{card}
 ### Additional preliminaries: Sherman-Morrison formula
@@ -341,3 +376,9 @@ Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\
 
 [^1]: Ngo D. and Scordelis, A.C. (1967), Finite element analysis of reinforced concrete beams, J. Amer. Concrete Inst. 64, 152-163
 [^2]: Rashid Y.R. (1968), Analysis of prestressed concrete pressure vessels, Nuclear Eng. Des. 7, 334-344
+[^3]: Suidan M. and Schnobrich W.C. (1973), Finite element analysis of reinforced concrete, ASCE J. Struct. Div. 99, 2109-2122
+[^4]: Kolmar W. and Mehlhorn G. (1984), Comparison of shear stiffness formulations for cracked Concrete Structures (eds F. Damjanić et al.) Pineridge Press, Swansea, pp. 133-147
+[^5]: Dugdale, D.S. (1960), Yielding of steel sheets containing slits, J. Mech. Phys. Solids 8, 100-108
+[^6]: Blarenblatt, G.I. (1962), The mathematical theory of equilibrium cracks in brittle fracture, ADv. Appl. Mech. 7, 55-129
+[^7]: Hilliborg, A., Modeer, M. and Petersson, P.E. (1976), Analysis of crack formation and crack growth in concrete by means of fracture mechanics and finite elements, Cement Concr. Res. 6, 773-782
+[^8]: Bažant Z.P. and Oh B.H. (1983), Crack band theory for fracture of concrete, RILEM Mat. Struct. 16, 155-177
