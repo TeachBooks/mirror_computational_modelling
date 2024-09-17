@@ -2,7 +2,7 @@ $\newcommand{\beps}{\boldsymbol\varepsilon}$ $\newcommand{\bsig}{\boldsymbol\sig
 
 # Crack models
 
-The main cause of the nonlinearity of concrete is cracking, which is primarily due to the limited capacity of concrete to sustain tensile stresses (or perhaps better, tensile strains). Numerical modelling of cracking concrete started in the late 1960s with the landmark papers of Ngo and Scordelis (1967) and Rashid (1968), in which the discrete and smeared crack models were introduced. Especially the latter approach gained much popularity, and in the 1970s comprehensive efforts were invested in developing constitutive models in a smeared setting which could reproduce the experimentally observed stress-strain characteristics of concrete.
+The main cause of the nonlinearity of concrete is cracking, which is primarily due to the limited capacity of concrete to sustain tensile stresses (or perhaps better, tensile strains). Numerical modelling of cracking concrete started in the late 1960s with the landmark papers of Ngo and Scordelis (1967)[^1] and Rashid (1968)[^2], in which the discrete and smeared crack models were introduced. Especially the latter approach gained much popularity, and in the 1970s comprehensive efforts were invested in developing constitutive models in a smeared setting which could reproduce the experimentally observed stress-strain characteristics of concrete.
 
 ```{figure} Images/single_notched_shear.png 
 ---
@@ -233,19 +233,39 @@ $$
 \myVec{\varepsilon_{xx}\\\varepsilon_{yy}\\\gamma_{xy}}
 $$(plane_stress)
 
-When the major principal tensile stress exceeds the tensile strength or, in more generally when the combination of principal stresses violates teh tension-cut-off criterion {ref}
+When the major principal tensile stress exceeds the tensile strength or, in more generally when the combination of principal stresses violates the tension-cut-off criterion (e.g. {ref}`tension_exp` or {ref}`tension_mod`), a fixed crack is initiated perpendicular to the direction of the principals stress. In the first so-called elasticity-based crack models, the isotropic stress-strain law is then replaced by an orthotropic law with fixed n, s-axes of orthotropy, where n is the direction normal to the crack (mode-I) and s refers to the direction tangential to the crack (mode-II). In a first attempt the orthotropic relation can be defined as in {eq}`orthotropic_relation` (Rashid 1968 [^2]).
 
 ```{figure} Images/tension_cut_off_experiments.png 
 ---
+name: tension_exp
 ---
 Tension cut-off criteria - experimental results
 ```
 
 ```{figure} Images/tension_cut_off_models.png 
 ---
+name: tension_mod
 ---
 Tension cut-off criteria - models
 ```
+
+$$
+\myVec{\sigma_{nn}\\\sigma_{ss}\\\sigma_{ns}}
+=
+\myMat{0 & 0 & 0\\ 0 & E & 0\\ 0 & 0 & 0}
+\myVec{\varepsilon_{nn}\\\varepsilon_{ss}\\\gamma_{ns}}
+$$(orthotropic_relation)
+
+Where the orthotropic stress-strain relation has been set up in the coordinate system that aligns with the axes of orthotropy (cracking). Equation {eq}`orthotropic_relation` show that both the normal stiffness and the shear stiffness across the crack are set equal to zero upon cracking. As a consequence all effects of lateral contraction/expansion also disappear. If, for a plane stress situation, $\sigma_{ns} = [\sigma_{nn}, \sigma_{ss}, \sigma_{ns}]^T$ and $\varepsilon_{ns} = [\varepsilon_{nn}, \varepsilon_{ss}, \varepsilon_{ns}]^T$, and the secant siffness matrix $\mathbf{D}_{ns}^s$ is defined as in {eq}`D_ns`, we can write the othrotropic elastics stiffness relation in the n,s-coordinate system as in {eq}`sigma_ns`.
+
+$$
+\mathbf{D}_{ns}^s = \myMat{0 & 0 & 0\\ 0 & E & 0\\ 0 & 0 & 0}
+$$(D_ns)
+
+$$
+\mathbf{\sigma}_{ns} = \mathbf{D}_{ns}^s \varepsilon_{ns}
+$$(sigma_ns)
+
 
 ````{card}
 ### Additional preliminaries: Sherman-Morrison formula
@@ -318,3 +338,6 @@ $$
 Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\mathbf{X} = (\mathbf{A} + \mathbf{uv}^T)^{-1}$, which completes the indirect proof of the Sherman-Morrison formula.
 ```
 ````
+
+[^1]: Ngo D. and Scordelis, A.C. (1967), Finite element analysis of reinforced concrete beams, J. Amer. Concrete Inst. 64, 152-163
+[^2]: Rashid Y.R. (1968), Analysis of prestressed concrete pressure vessels, Nuclear Eng. Des. 7, 334-344
