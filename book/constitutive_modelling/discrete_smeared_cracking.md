@@ -302,6 +302,22 @@ $$
 \mathbf{D}_{ns}^s = \myMat{\frac{\mu E}{1 - \nu^2 \mu} & \frac{\nu \mu E}{1 - \nu^2 \mu} & 0\\ \frac{\nu \mu E}{1 - \nu^2 \mu} & \frac{E}{1 - \nu^2 \mu} & 0\\ 0 & 0 & \beta G}
 $$(D_ns_Bazant)
 
+Crack models as discussed in the preceding section are based on total strain concepts. An injective relation is assumed between the stress $\sigma$ and the total strain $\varepsilon$. This approach has two major disadvantages. Firstly, it is impossible to properly combine cracking and other nonlinear phenomena (e.g. plasticity, creep, thermal effects) when a total relation is adopted between stress and strain. Secondly, the fixed-crack model as outlined in the preceding section assumes that, upon violation of the tension cut-off the direction of the crack plane is fixed. During subsequent loading shear strain may then arise along the crack plane, which, in turn, will lead to a build-up of shear stresses over the crack plane. When a softening model is used after cracking the residual normal stress that acts in a crack and the shear stress over the crack can cause principal values of the stress tensor that may exceed the tensile strength in a direction that is different from the normal to the existing crack plane. This rotation of principal stress axes and the subsequent possible violation of the tension cut-off criterion in a new direction can also not be dealt with properly in a total stress-strain relation. If we would transform the total stress-strain relation for the first crack to coordinate system of the second crack and then correct for proper stress-strain situation in the second crack, backtransformation to the coordinate system of the first crack shows that the correct stress-strain relation for the first crack is nog longer complied with.
+
+To overcome these difficulties a  model can be used in which the total strain is additively decomposed into a concrete part $\varepsilon^{co}$ and a cracking part $\varepsilon^{cr}$. In an incremental formulation we can write {eq}`inc_formulation`:
+
+$$
+\dot{\varepsilon} = \dot{\varepsilon}^{co} + \dot{\varepsilon}^{cr}
+$$(inc_formulation)
+
+As pointed out by de Borst and Nauta (1985)[^9] the crack strain rate $\dot{\varepsilon}^{cr}$ can again be composed of several contributions {eq}`cont_cr_strainrate`:
+
+$$
+\dot{\varepsilon}^{cr} = \dot{\varepsilon}_1^{cr} + \dot{\varepsilon}_2^{cr} + ...
+$$(cont_cr_strainrate)
+
+where $\dot{\varepsilon}_1^{cr}$ is the strain rate owing to a primary crack, $\dot{\varepsilon}_2^{cr}$ is the strain rate owing to a secondary crack and so on.
+
 ````{card}
 ### Additional preliminaries: Sherman-Morrison formula
 
@@ -382,3 +398,4 @@ Since $(\mathbf{A} + \mathbf{uv}^T) \mathbf{X} = \mathbf{I}$, this shows that $\
 [^6]: Blarenblatt, G.I. (1962), The mathematical theory of equilibrium cracks in brittle fracture, ADv. Appl. Mech. 7, 55-129
 [^7]: Hilliborg, A., Modeer, M. and Petersson, P.E. (1976), Analysis of crack formation and crack growth in concrete by means of fracture mechanics and finite elements, Cement Concr. Res. 6, 773-782
 [^8]: Bažant Z.P. and Oh B.H. (1983), Crack band theory for fracture of concrete, RILEM Mat. Struct. 16, 155-177
+[^9]: De Borst R. and Nauta P. (1985), Non-orthogonal cracks in a smeared finite element model, Eng. Comput. 2, 35-46
