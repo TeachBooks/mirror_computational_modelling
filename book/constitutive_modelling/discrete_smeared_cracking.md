@@ -385,7 +385,7 @@ $$(concrete_between_cracks)
 with the matrix $\mathbf{D}^{co}$ containing the instantaneous moduli of the concrete. One of the attractive features of the fixed multiple-crack model with strain-decomposition now becomes apparent, namely that the behaviour of the crack and the behaviour of the intact concrete between the cracks can be treated separately. For most fracture analyses it suffices to use the elasticity matrix for $\mathbf{D}^{co} \ (\mathbf{D}^{co} = \mathbf{D}^e)$, but there is no conceptual limitation to carry out analyses with elastoplastic or visco-elastic concrete properties (De Borst 198[^10]). In a similar way, we can define a relation between the crack strain rate $\mathbf{\dot{e}}^{cr}$ of crack n and the stress rate $\mathbf{\dot{s}}_n$ in the crack. Formally a relation can be assumed that reads {eq}`formal_s_n`:
 
 $$
-\mathbf{\dot{s}}_n = \mathbf{D}_n^{cr} \mathbf{\dot{e}}_n^cr
+\mathbf{\dot{s}}_n = \mathbf{D}_n^{cr} \mathbf{\dot{e}}_n^{cr}
 $$(formal_s_n)
 
 with $\mathbf{D}_n^{cr}$ a 2x2 matrix. For the derivation of the stress-strain relation of the cracked concrete, it is again convenient to assemble all the matrices $\mathbf{D}_n^{cr}$ in one matrix $\mathbf{D}^{cr}$, which is defined as {eq}`D_cr`:
@@ -394,10 +394,10 @@ $$
 \mathbf{D}^{cr} = \myMat{\mathbf{D}_1^{cr} & 0 & ... \\ \mathbf{0} & \mathbf{D}_2^{cr} & ... \\ ... & ... & ...}
 $$(D_cr)
 
-so that the relation between $\mathbf{\dot{s}}$ and $\mathbf{\dot{e}}_cr$ reads {eq}`s_e_cr`:
+so that the relation between $\mathbf{\dot{s}}$ and $\mathbf{\dot{e}}_{cr}$ reads {eq}`s_e_cr`:
 
 $$
-\mathbf{\dot{s}} = \mathbf{D}^{cr} \mathbf{\dot{e}}^cr
+\mathbf{\dot{s}} = \mathbf{D}^{cr} \mathbf{\dot{e}}^{cr}
 $$(s_e_cr)
 
 ````{card}
